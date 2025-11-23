@@ -1,0 +1,51 @@
+.formSectionBg {
+  background: #f5f7fa;
+  border: 1px dashed #b3c2d6;
+  border-radius: 10px;
+  padding: 18px;
+  margin-bottom: 24px;
+}
+
+.sectionTitle {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.col {
+  flex: 1 1 300px;
+}
+.col {
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+
+.label {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.groupedBg {
+  background: #f5f7fa;
+  border: 1px dashed #b3c2d6;
+  border-radius: 10px;
+  padding: 18px 14px 14px 14px;
+  margin-bottom: 18px;
+}
+
+.centerBtn {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.divider {
+  border-top: 1px solid #b3c2d6;
+  margin: 16px 0;
+}
