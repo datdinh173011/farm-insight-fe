@@ -1,0 +1,52 @@
+.sectionTitle {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 24px 0 8px 0;
+  text-align: left;
+}
+.divider {
+  margin: 12px 0;
+}
+.formSection {
+  background: #fafcff;
+  border: 1px solid #e6eaf2;
+  padding: 24px 18px 18px 18px;
+  margin-bottom: 32px;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px #e6eaf2;
+}
+.formRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 8px;
+  align-items: flex-end;
+}
+.formCol {
+  flex: 1 1 220px;
+  min-width: 220px;
+}
+.formColSmall {
+  flex: 1 1 140px;
+  min-width: 140px;
+}
+.formColLarge {
+  flex: 2 1 320px;
+  min-width: 320px;
+}
+.formItem {
+  margin-bottom: 0;
+}
+.formLabel {
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.buttonGroup {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-top: 32px;
+}

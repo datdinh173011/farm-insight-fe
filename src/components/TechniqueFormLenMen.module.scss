@@ -1,0 +1,101 @@
+// Hiển thị các input của phần "Trước khi sử dụng thức ăn ủ lên men" thành một dòng ngang đẹp
+.foodWeightRowInputs {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+// Hiển thị các input của phần "Sau khi sử dụng thức ăn ủ lên men" thành một dòng ngang đẹp
+.foodWeightRowInputsRow {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+// Tối ưu input nhỏ lại cho vừa dòng
+.foodWeightItem {
+  min-width: 160px;
+  flex: 1 1 0;
+}
+
+// Nếu cần label nhỏ lại cho gọn
+.foodWeightItem label {
+  font-size: 13px;
+  white-space: nowrap;
+}
+.formSection {
+  background: #fafcff;
+  border: 1px solid #e6eaf2;
+  padding: 24px 18px 18px 18px;
+  margin-bottom: 32px;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px #e6eaf2;
+}
+
+.sectionTitle {
+  margin-bottom: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.divider {
+  margin: 12px 0 24px 0;
+}
+
+.formRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 0;
+}
+
+.formCol {
+  flex: 1 1 0;
+  min-width: 180px;
+  max-width: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.formColSmall {
+  min-width: 120px;
+  max-width: 160px;
+}
+
+.formColLarge {
+  min-width: 220px;
+  max-width: 320px;
+}
+
+.formLabel {
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.formItem {
+  margin-bottom: 16px;
+}
+
+.buttonGroup {
+  text-align: center;
+  margin-top: 32px;
+}
+
+@media (max-width: 900px) {
+  .formRow {
+    flex-direction: column;
+    gap: 0;
+  }
+  .formCol {
+    max-width: 100%;
+    min-width: 100%;
+  }
+}

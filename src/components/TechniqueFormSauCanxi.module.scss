@@ -1,0 +1,47 @@
+.formSectionBg {
+  background: #fafcff;
+  border: 1px solid #e6eaf2;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px #e6eaf2;
+  padding: 24px 18px 18px 18px;
+  margin-bottom: 32px;
+}
+.sectionTitle {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  margin-top: 24px;
+  text-align: left;
+}
+.formSection {
+  background: #fafcff;
+  border: 1px solid #e6eaf2;
+  padding: 24px 18px 18px 18px;
+  margin-bottom: 32px;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px #e6eaf2;
+}
+.formRow {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+.formCol {
+  flex: 1 1 260px;
+}
+.formLabel {
+  font-size: 15px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.divider {
+  margin: 0 0 16px 0;
+}
+
+.groupedBg {
+  background: #f5f7fa;
+  border: 1px dashed #b3c2d6;
+  border-radius: 10px;
+  padding: 18px 14px 14px 14px;
+  margin-bottom: 18px;
+}

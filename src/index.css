@@ -1,0 +1,15 @@
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background: #f0f2f5;
+}
+
+/* Make antd Card take full area cleanly */
+.ant-card {
+  border-radius: 0;
+  height: 100%;
+}
