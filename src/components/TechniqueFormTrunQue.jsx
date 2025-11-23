@@ -1,5 +1,6 @@
 import React from 'react'
 import { Form, Input, Button, Checkbox, InputNumber} from 'antd'
+import styles from './TechniqueFormTrunQue.module.scss';
 
 const questions = [
   'Bạn nuôi trùn quế bao lâu rồi?',
@@ -84,33 +85,95 @@ export default function TechniqueFormTrunQue({ onFinish, onBack }) {
           <div style={{fontWeight:'bold',fontSize:18,marginBottom:8}}>C. Sử dụng phân trùn quế bón cho cây trồng SAU và TRƯỚC khi nuôi Trùn quế (1 vụ cây trồng gần đây nhất)</div>
           <div style={{background:'#f5f7fa',border:'1px dashed #b3c2d6',borderRadius:10,padding:18,marginBottom:24}}>
             <div style={{display:'flex',gap:16,marginBottom:8}}>
-              <Form.Item name="tenLoaiCayTrongC" label="Nêu tên loại cây trồng được bón phân trùn quế" rules={[{required:true,message:'Bắt buộc nhập'}]} style={{flex:'1 1 300px'}}><Input /></Form.Item>
+              <Form.Item name="tenLoaiCayTrongC" label="Nêu tên loại cây trồng được bón phân trùn quế" rules={[{required:true,message:'Bắt buộc nhập'}]} style={{ width:'50%' }}><Input /></Form.Item>
             </div>
-            <div style={{display:'flex',gap:16,marginBottom:8}}>
-              <div style={{flex:'1 1 300px', display:'flex', flexDirection:'column'}}>
+            <div className={styles.groupedBg}>
                 <div style={{fontWeight:'bold',marginBottom:4}}>Cây được trồng tháng/năm nào?</div>
-                <Form.Item name="thangNamSauPhanTrunQue" label="SAU KHI BÓN PHÂN TRÙN QUẾ" rules={[{required:true,message:'Bắt buộc nhập'}]} style={{marginBottom:8}}>
-                  <Input placeholder="Tháng/năm" />
-                </Form.Item>
-                <Form.Item name="thangNamKhongPhanTrunQue" label="KHÔNG BÓN PHÂN TRÙN QUẾ" rules={[{required:true,message:'Bắt buộc nhập'}]} style={{marginBottom:8}}>
-                  <Input placeholder="Tháng/năm" />
-                </Form.Item>
-              </div>
-              <div style={{flex:'1 1 300px', display:'flex', flexDirection:'column'}}>
+                <div style={{display:'flex',gap:16}}>
+                    <Form.Item name="thangNamSauPhanTrunQue" label="SAU KHI BÓN PHÂN TRÙN QUẾ" rules={[{required:true,message:'Bắt buộc nhập'}]} style={{flex:'1 1 300px',marginBottom:0}}>
+                        <Input min={0} style={{width:'100%'}} placeholder="Tháng/năm" />
+                    </Form.Item>
+                    <Form.Item name="thangNamKhongPhanTrunQue" label="KHÔNG BÓN PHÂN TRÙN QUẾ" rules={[{required:true,message:'Bắt buộc nhập'}]} style={{flex:'1 1 300px',marginBottom:0}}>
+                        <Input min={0} style={{width:'100%'}} placeholder="Tháng/năm" />
+                    </Form.Item>
+                </div>
+            </div>
+            <div className={styles.groupedBg}>
                 <div style={{fontWeight:'bold',marginBottom:4}}>Diện tích trồng (sào/vụ)</div>
-                <Form.Item name="dienTichSauPhanTrunQue" label="SAU KHI BÓN PHÂN TRÙN QUẾ" rules={[{required:true,message:'Bắt buộc nhập'}]} style={{marginBottom:8}}>
-                  <Input placeholder="Sào/vụ" />
-                </Form.Item>
-                <Form.Item name="dienTichKhongPhanTrunQue" label="KHÔNG BÓN PHÂN TRÙN QUẾ" rules={[{required:true,message:'Bắt buộc nhập'}]} style={{marginBottom:8}}>
-                  <Input placeholder="Sào/vụ" />
-                </Form.Item>
+                <div style={{display:'flex',gap:16}}>
+                    <Form.Item name="dienTichSauPhanTrunQue" label="SAU KHI BÓN PHÂN TRÙN QUẾ" rules={[{required:true,message:'Bắt buộc nhập'}]} style={{flex:'1 1 300px',marginBottom:0}}>
+                        <Input placeholder="Sào/vụ" />
+                    </Form.Item>
+                    <Form.Item name="dienTichKhongPhanTrunQue" label="KHÔNG BÓN PHÂN TRÙN QUẾ" rules={[{required:true,message:'Bắt buộc nhập'}]} style={{flex:'1 1 300px',marginBottom:0}}>
+                        <Input placeholder="Sào/vụ" />
+                    </Form.Item>
+                </div>
+            </div>
+            <div className={styles.groupedBg}>
+              <div style={{fontWeight:'bold',marginBottom:4}}>Khối lượng của từng loại phân bón được bón cho cây trồng (kg)</div>
+              <div style={{display:'flex',gap:16}}>
+                <div style={{flex:'1 1 300px'}}>
+                  <div style={{marginBottom:2}}>SAU KHI BÓN PHÂN TRÙN QUẾ</div>
+                  <Form.Item name="khoiLuongNPKBonLotSau" label="Phân NPK bón lót" rules={[{required:true,message:'Bắt buộc nhập'}]} style={{marginBottom:4}}>
+                    <InputNumber min={0} style={{width:'100%'}} />
+                  </Form.Item>
+                  <Form.Item name="khoiLuongNPKBonThucSau" label="Phân NPK bón thúc" rules={[{required:true,message:'Bắt buộc nhập'}]} style={{marginBottom:4}}>
+                    <InputNumber min={0} style={{width:'100%'}} />
+                  </Form.Item>
+                  <Form.Item name="khoiLuongPhanTrunQueSau" label="Phân trùn quế" rules={[{required:true,message:'Bắt buộc nhập'}]} style={{marginBottom:4}}>
+                    <InputNumber min={0} style={{width:'100%'}} />
+                  </Form.Item>
+                  <Form.Item name="khoiLuongPhanKhacSau" label="Phân khác ..." rules={[{required:true,message:'Bắt buộc nhập'}]} style={{marginBottom:4}}>
+                    <Input style={{width:'100%'}} />
+                  </Form.Item>
+                </div>
+                <div style={{flex:'1 1 300px'}}>
+                  <div style={{marginBottom:2}}>KHÔNG BÓN PHÂN TRÙN QUẾ</div>
+                  <Form.Item name="khoiLuongNPKBonLotKhong" label="Phân NPK bón lót" rules={[{required:true,message:'Bắt buộc nhập'}]} style={{marginBottom:4}}>
+                    <InputNumber min={0} style={{width:'100%'}} />
+                  </Form.Item>
+                  <Form.Item name="khoiLuongNPKBonThucKhong" label="Phân NPK bón thúc" rules={[{required:true,message:'Bắt buộc nhập'}]} style={{marginBottom:4}}>
+                    <InputNumber min={0} style={{width:'100%'}} />
+                  </Form.Item>
+                  <Form.Item name="khoiLuongPhanKhacKhong" label="Phân khác ..." rules={[{required:true,message:'Bắt buộc nhập'}]} style={{marginBottom:4}}>
+                    <Input style={{width:'100%'}} />
+                  </Form.Item>
+                </div>
+              </div>
+            </div>
+            <div className={styles.groupedBg}>
+              <div style={{fontWeight:'bold',marginBottom:4}}>Số tiền đã chi cho mỗi loại phân bón (đồng)</div>
+              <div style={{display:'flex',gap:16}}>
+                <div style={{flex:'1 1 300px'}}>
+                  <div style={{marginBottom:2}}>SAU KHI BÓN PHÂN TRÙN QUẾ</div>
+                  <Form.Item name="soTienNPKBonLotSau" label="Phân NPK bón lót" rules={[{required:true,message:'Bắt buộc nhập'}]} style={{marginBottom:4}}>
+                    <InputNumber min={0} style={{width:'100%'}} />
+                  </Form.Item>
+                  <Form.Item name="soTienNPKBonThucSau" label="Phân NPK bón thúc" rules={[{required:true,message:'Bắt buộc nhập'}]} style={{marginBottom:4}}>
+                    <InputNumber min={0} style={{width:'100%'}} />
+                  </Form.Item>
+                  <Form.Item name="soTienPhanTrunQueSau" label="Phân trùn quế" rules={[{required:true,message:'Bắt buộc nhập'}]} style={{marginBottom:4}}>
+                    <InputNumber min={0} style={{width:'100%'}} />
+                  </Form.Item>
+                  <Form.Item name="soTienPhanKhacSau" label="Phân khác ..." rules={[{required:true,message:'Bắt buộc nhập'}]} style={{marginBottom:4}}>
+                    <Input style={{width:'100%'}} />
+                  </Form.Item>
+                </div>
+                <div style={{flex:'1 1 300px'}}>
+                  <div style={{marginBottom:2}}>KHÔNG BÓN PHÂN TRÙN QUẾ</div>
+                  <Form.Item name="soTienNPKBonLotKhong" label="Phân NPK bón lót" rules={[{required:true,message:'Bắt buộc nhập'}]} style={{marginBottom:4}}>
+                    <InputNumber min={0} style={{width:'100%'}} />
+                  </Form.Item>
+                  <Form.Item name="soTienNPKBonThucKhong" label="Phân NPK bón thúc" rules={[{required:true,message:'Bắt buộc nhập'}]} style={{marginBottom:4}}>
+                    <InputNumber min={0} style={{width:'100%'}} />
+                  </Form.Item>
+                  <Form.Item name="soTienPhanKhacKhong" label="Phân khác ..." rules={[{required:true,message:'Bắt buộc nhập'}]} style={{marginBottom:4}}>
+                    <Input style={{width:'100%'}} />
+                  </Form.Item>
+                </div>
               </div>
             </div>
             <div style={{display:'flex',gap:16,marginBottom:8}}>
-              <Form.Item name="khoiLuongPhanBonC" label="Tổng số kg của từng loại phân bón được bón cho cây trồng (kg)" rules={[{required:true,message:'Bắt buộc nhập'}]} style={{flex:'1 1 300px'}}><Input /></Form.Item>
-            </div>
-            <div style={{display:'flex',gap:16,marginBottom:8}}>
-              <Form.Item name="soTienPhanBonC" label="Số tiền đã chi cho mỗi loại phân bón (đồng)" rules={[{required:true,message:'Bắt buộc nhập'}]} style={{flex:'1 1 300px'}}><Input /></Form.Item>
               <Form.Item name="soLanPhunThuocC" label="Số lần phun thuốc trừ sâu hóa học" rules={[{required:true,message:'Bắt buộc nhập'}]} style={{flex:'1 1 300px'}}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
             </div>
             <div style={{display:'flex',gap:16,marginBottom:8}}>
@@ -138,19 +201,81 @@ export default function TechniqueFormTrunQue({ onFinish, onBack }) {
           <div style={{background:'#f5f7fa',border:'1px dashed #b3c2d6',borderRadius:10,padding:18,marginBottom:24}}>
             <div style={{display:'flex',gap:16,marginBottom:8}}>
               <Form.Item name="loaiVatNuoiD" label="Loại vật nuôi" rules={[{required:true,message:'Bắt buộc nhập'}]} style={{flex:'1 1 300px'}}><Input /></Form.Item>
-              <div style={{flex:'1 1 300px', display:'flex', flexDirection:'column'}}>
-                <div style={{fontWeight:'bold',marginBottom:4}}>Số con vật nuôi (số con/lứa)</div>
-                <Form.Item name="soConSauDungTrunQue" label="SAU KHI SỬ DỤNG TRÙN QUẾ LÀM THỨC ĂN" rules={[{required:true,message:'Bắt buộc nhập'}]} style={{marginBottom:8}}>
+            </div>
+            <div className={styles.groupedBg}>
+              <div style={{fontWeight:'bold',marginBottom:4}}>Số con vật nuôi (số con/lứa)</div>
+              <div style={{display:'flex',gap:16}}>
+                <Form.Item name="soConSauDungTrunQue" label="SAU KHI SỬ DỤNG TRÙN QUẾ LÀM THỨC ĂN" rules={[{required:true,message:'Bắt buộc nhập'}]} style={{flex:'1 1 300px',marginBottom:0}}>
                   <InputNumber min={0} style={{width:'100%'}} />
                 </Form.Item>
-                <Form.Item name="soConKhongDungTrunQue" label="KHÔNG SỬ DỤNG TRÙN QUẾ LÀM THỨC ĂN" rules={[{required:true,message:'Bắt buộc nhập'}]} style={{marginBottom:8}}>
+                <Form.Item name="soConKhongDungTrunQue" label="KHÔNG SỬ DỤNG TRÙN QUẾ LÀM THỨC ĂN" rules={[{required:true,message:'Bắt buộc nhập'}]} style={{flex:'1 1 300px',marginBottom:0}}>
                   <InputNumber min={0} style={{width:'100%'}} />
                 </Form.Item>
               </div>
             </div>
-            <div style={{display:'flex',gap:16,marginBottom:8}}>
-              <Form.Item name="khoiLuongThucAnD" label="Tổng số kg của từng loại thức ăn cho lứa nuôi gần đây (kg)" rules={[{required:true,message:'Bắt buộc nhập'}]} style={{flex:'1 1 300px'}}><Input /></Form.Item>
-              <Form.Item name="soTienThucAnD" label="Số tiền đã chi cho mỗi loại thức ăn cho lứa nuôi gần đây (đồng)" rules={[{required:true,message:'Bắt buộc nhập'}]} style={{flex:'1 1 300px'}}><Input /></Form.Item>
+            <div className={styles.groupedBg}>
+              <div style={{fontWeight:'bold',marginBottom:4}}>Khối lượng của từng loại thức ăn cho lứa nuôi gần đây (kg)</div>
+              <div style={{display:'flex',gap:16}}>
+                <div style={{flex:'1 1 300px',borderRadius:8,padding:8}}>
+                  <div style={{marginBottom:2}}>SAU KHI SỬ DỤNG TRÙN QUẾ LÀM THỨC ĂN</div>
+                  <Form.Item name="khoiLuongThucAnTrunQueSau" label="Thức ăn trùn quế" rules={[{required:true,message:'Bắt buộc nhập'}]} style={{marginBottom:4}}>
+                    <InputNumber min={0} style={{width:'100%'}} />
+                  </Form.Item>
+                  <Form.Item name="khoiLuongThucAnTinhSau" label="Thức ăn tinh (ngô, gạo)" rules={[{required:true,message:'Bắt buộc nhập'}]} style={{marginBottom:4}}>
+                    <InputNumber min={0} style={{width:'100%'}} />
+                  </Form.Item>
+                  <Form.Item name="khoiLuongThucAnTongHopSau" label="Thức ăn tổng hợp/viên" rules={[{required:true,message:'Bắt buộc nhập'}]} style={{marginBottom:4}}>
+                    <InputNumber min={0} style={{width:'100%'}} />
+                  </Form.Item>
+                  <Form.Item name="khoiLuongThucAnXanhSau" label="Thức ăn xanh" rules={[{required:true,message:'Bắt buộc nhập'}]} style={{marginBottom:4}}>
+                    <InputNumber min={0} style={{width:'100%'}} />
+                  </Form.Item>
+                </div>
+                <div style={{flex:'1 1 300px',borderRadius:8,padding:8}}>
+                  <div style={{marginBottom:2}}>KHÔNG SỬ DỤNG TRÙN QUẾ LÀM THỨC ĂN</div>
+                  <Form.Item name="khoiLuongThucAnTinhKhong" label="Thức ăn tinh (ngô, gạo)" rules={[{required:true,message:'Bắt buộc nhập'}]} style={{marginBottom:4}}>
+                    <InputNumber min={0} style={{width:'100%'}} />
+                  </Form.Item>
+                  <Form.Item name="khoiLuongThucAnTongHopKhong" label="Thức ăn tổng hợp/viên" rules={[{required:true,message:'Bắt buộc nhập'}]} style={{marginBottom:4}}>
+                    <InputNumber min={0} style={{width:'100%'}} />
+                  </Form.Item>
+                  <Form.Item name="khoiLuongThucAnXanhKhong" label="Thức ăn xanh" rules={[{required:true,message:'Bắt buộc nhập'}]} style={{marginBottom:4}}>
+                    <InputNumber min={0} style={{width:'100%'}} />
+                  </Form.Item>
+                </div>
+              </div>
+            </div>
+            <div className={styles.groupedBg}>
+              <div style={{fontWeight:'bold',marginBottom:4}}>Số tiền đã chi cho mỗi loại thức ăn cho lứa nuôi gần đây (đồng)</div>
+              <div style={{display:'flex',gap:16}}>
+                <div style={{flex:'1 1 300px',borderRadius:8,padding:8}}>
+                  <div style={{marginBottom:2}}>SAU KHI SỬ DỤNG TRÙN QUẾ LÀM THỨC ĂN</div>
+                  <Form.Item name="soTienThucAnTrunQueSau" label="Thức ăn trùn quế" rules={[{required:true,message:'Bắt buộc nhập'}]} style={{marginBottom:4}}>
+                    <InputNumber min={0} style={{width:'100%'}} />
+                  </Form.Item>
+                  <Form.Item name="soTienThucAnTinhSau" label="Thức ăn tinh (ngô, gạo)" rules={[{required:true,message:'Bắt buộc nhập'}]} style={{marginBottom:4}}>
+                    <InputNumber min={0} style={{width:'100%'}} />
+                  </Form.Item>
+                  <Form.Item name="soTienThucAnTongHopSau" label="Thức ăn tổng hợp/viên" rules={[{required:true,message:'Bắt buộc nhập'}]} style={{marginBottom:4}}>
+                    <InputNumber min={0} style={{width:'100%'}} />
+                  </Form.Item>
+                  <Form.Item name="soTienThucAnXanhSau" label="Thức ăn xanh" rules={[{required:true,message:'Bắt buộc nhập'}]} style={{marginBottom:4}}>
+                    <InputNumber min={0} style={{width:'100%'}} />
+                  </Form.Item>
+                </div>
+                <div style={{flex:'1 1 300px',borderRadius:8,padding:8}}>
+                  <div style={{marginBottom:2}}>KHÔNG SỬ DỤNG TRÙN QUẾ LÀM THỨC ĂN</div>
+                  <Form.Item name="soTienThucAnTinhKhong" label="Thức ăn tinh (ngô, gạo)" rules={[{required:true,message:'Bắt buộc nhập'}]} style={{marginBottom:4}}>
+                    <InputNumber min={0} style={{width:'100%'}} />
+                  </Form.Item>
+                  <Form.Item name="soTienThucAnTongHopKhong" label="Thức ăn tổng hợp/viên" rules={[{required:true,message:'Bắt buộc nhập'}]} style={{marginBottom:4}}>
+                    <InputNumber min={0} style={{width:'100%'}} />
+                  </Form.Item>
+                  <Form.Item name="soTienThucAnXanhKhong" label="Thức ăn xanh" rules={[{required:true,message:'Bắt buộc nhập'}]} style={{marginBottom:4}}>
+                    <InputNumber min={0} style={{width:'100%'}} />
+                  </Form.Item>
+                </div>
+              </div>
             </div>
             <div style={{display:'flex',gap:16,marginBottom:8}}>
               <Form.Item name="soTienThuocThuYD" label="Số tiền đã chi cho mua thuốc thú y/lứa" rules={[{required:true,message:'Bắt buộc nhập'}]} style={{flex:'1 1 300px'}}><Input /></Form.Item>
