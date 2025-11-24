@@ -101,41 +101,11 @@ export default function InterviewForm() {
     message.success(`Đã lưu dữ liệu kỹ thuật: ${techniqueKey}`);
   };
 
-  // Bước 3: Điền form chung
-  const handleCommonSubmit = (commonValues) => {
-    // Thu thập dữ liệu từ tất cả các form kỹ thuật
-    const allTechniques = {
-      'Lên men phụ phẩm cây trồng làm thức ăn chăn nuôi': formLenMen.getFieldsValue(true),
-      'Nuôi gà trên đệm lót sinh học': formNuoiGa.getFieldsValue(true),
-      'Nuôi sâu canxi': formSauCanxi.getFieldsValue(true),
-      'Nuôi trùn quế': formTrunQue.getFieldsValue(true),
-      'Ủ phân hữu cơ tại ruộng': formUPhan.getFieldsValue(true),
-      'Xử lý gốc rạ bằng chế phẩm sinh học': formGocRa.getFieldsValue(true),
-    };
-    const payload = {
-      generalInfo: generalInfo,
-      technique: allTechniques,
-      common: commonValues,
-    };
-    // Gửi về backend
-    fetch('https://isatsbangkhaosat.com:81/api/forms/submissions/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(payload),
-    })
-      .then(res => {
-        if (res.ok) {
-          message.success('Gửi thành công toàn bộ phiếu!');
-          setStep(4);
-        } else {
-          message.error('Gửi phiếu thất bại!');
-        }
-      })
-      .catch(() => {
-        message.error('Có lỗi khi gửi phiếu!');
-      });
+  // Bước 3: Điền form chung - callback từ CommonForm khi gửi thành công
+  const handleCommonSubmit = (payload) => {
+    // CommonForm đã gửi API thành công, chỉ cần chuyển sang step 4 (hoàn tất)
+    // và reset toàn bộ state
+    setStep(4);
   };
 
   // Render hoàn tất

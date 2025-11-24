@@ -1,20 +1,38 @@
-import React from 'react'
-import { Form, Input, InputNumber, Button, Checkbox, Typography, Divider } from 'antd'
+import React, { useState } from 'react'
+import { Form, Input, InputNumber, Button, Checkbox, Typography, Divider, Tooltip } from 'antd'
+import { PlusOutlined, DeleteOutlined } from '@ant-design/icons'
 import styles from './TechniqueFormLenMen.module.scss'
 const { Title, Text } = Typography
 
+
 export default function TechniqueFormLenMen({ form, onFinish, onBack, initialValues }) {
+  const [sauMenCount, setSauMenCount] = useState(1)
+  const [truocMenCount, setTruocMenCount] = useState(1)
+  const [thucAnMenCount, setThucAnMenCount] = useState(1)
+
+  const addSauMen = () => setSauMenCount(prev => prev + 1)
+  const removeSauMen = () => setSauMenCount(prev => Math.max(1, prev - 1))
+  const addTruocMen = () => setTruocMenCount(prev => prev + 1)
+  const removeTruocMen = () => setTruocMenCount(prev => Math.max(1, prev - 1))
+  const addThucAnMen = () => setThucAnMenCount(prev => prev + 1)
+  const removeThucAnMen = () => setThucAnMenCount(prev => Math.max(1, prev - 1))
+
+  const normalized = {
+  ...initialValues,
+  sauMen: initialValues?.sauMen ?? [{}, {}, {}],
+  thucAnMen: initialValues?.thucAnMen ?? [{}, {}, {}],
+  };
   return (
     <Form
       form={form}
       layout="vertical"
       onFinish={onFinish}
-      initialValues={initialValues || {}}
+      initialValues={normalized}
       style={{maxWidth: 1200, margin: '0 auto'}}
     >
       <div className={styles.sectionTitle}>A. Quản lý phụ phẩm cây trồng SAU KHI áp dụng kỹ thuật ủ lên men</div>
       <Divider className={styles.divider} />
-        {[0,1,2].map((i) => (
+        {Array.from({length: sauMenCount}).map((_, i) => (
           <div key={i} className={styles.formSection}>
             {/* Group every 2 questions per row for a cleaner layout */}
             <div className={styles.row}>
@@ -47,54 +65,96 @@ export default function TechniqueFormLenMen({ form, onFinish, onBack, initialVal
             </div>
           </div>
         ))}
+      <div className={styles.buttonGroup} style={{marginTop: 16, marginBottom: 32}}>
+        <Button 
+          type="dashed" 
+          onClick={addSauMen}
+          icon={<PlusOutlined />}
+          style={{minWidth: 120}}
+        >
+          Thêm phần
+        </Button>
+        {sauMenCount > 1 && (
+          <Button 
+            type="text" 
+            danger
+            onClick={removeSauMen}
+            icon={<DeleteOutlined />}
+            style={{minWidth: 120}}
+          >
+            Xóa phần cuối
+          </Button>
+        )}
+      </div>
 
       <div level={4} className={styles.sectionTitle}>B. Quản lý phụ phẩm cây trồng TRƯỚC KHI áp dụng kỹ thuật ủ lên men</div>
       <Divider className={styles.divider} />
-      {[0,1,2].map((i) => (
+      {Array.from({length: truocMenCount}).map((_, i) => (
         <div key={i} className={styles.formSection}>
             <div className={styles.row}>
               <div className={styles.col}>
-                <Form.Item className={styles.formItem} name={`loaiCayTruoc_${i}`} label={<span className={styles.formLabel}>Loại cây trồng</span>} rules={i===0?[{required:true,message:'Bắt buộc nhập'}]:[] }> <Input /> </Form.Item>
+                <Form.Item className={styles.formItem} name={[`truocMen`, i, 'loaiCayTruoc']} label={<span className={styles.formLabel}>Loại cây trồng</span>}> <Input /> </Form.Item>
               </div>
               <div className={styles.col}>
-                <Form.Item className={styles.formItem} name={`dienTichTruoc_${i}`} label={<span className={styles.formLabel}>Diện tích đất trồng cây</span>} rules={i===0?[{required:true,message:'Bắt buộc nhập'}]:[] }> <Input /> </Form.Item>
+                <Form.Item className={styles.formItem} name={[`truocMen`, i, 'dienTichTruoc']} label={<span className={styles.formLabel}>Diện tích đất trồng cây</span>}> <Input /> </Form.Item>
               </div>
             </div>
             <div className={styles.row}>
                   <div className={styles.col}>
-                    <Form.Item className={styles.formItem} name={`loaiPhuPhamTruoc_${i}`} label={<span className={styles.formLabel}>Loại phụ phẩm cây trồng</span>} rules={i===0?[{required:true,message:'Bắt buộc nhập'}]:[] }> <Input /> </Form.Item>
+                    <Form.Item className={styles.formItem} name={[`truocMen`, i, 'loaiPhuPhamTruoc']} label={<span className={styles.formLabel}>Loại phụ phẩm cây trồng</span>}> <Input /> </Form.Item>
               </div>
               <div className={styles.col}>
-                <Form.Item className={styles.formItem} name={`khoiLuongPhuPhamTruoc_${i}`} label={<span className={styles.formLabel}>Khối lượng phụ phẩm</span>} rules={i===0?[{required:true,message:'Bắt buộc nhập'}]:[] }> <Input /> </Form.Item>
+                <Form.Item className={styles.formItem} name={[`truocMen`, i, 'khoiLuongPhuPhamTruoc']} label={<span className={styles.formLabel}>Khối lượng phụ phẩm</span>}> <Input /> </Form.Item>
               </div>
             </div>
             <div className={styles.row}>
               <div className={styles.col}>
-                <Form.Item className={styles.formItem} name={`khoiLuongThuGomTruoc_${i}`} label={<span className={styles.formLabel}>Khối lượng thu gom</span>} rules={i===0?[{required:true,message:'Bắt buộc nhập'}]:[] }> <Input /> </Form.Item>
+                <Form.Item className={styles.formItem} name={[`truocMen`, i, 'khoiLuongThuGomTruoc']} label={<span className={styles.formLabel}>Khối lượng thu gom</span>}> <Input /> </Form.Item>
               </div>
             </div>
         </div>
       ))}
+      <div className={styles.buttonGroup} style={{marginTop: 16, marginBottom: 32}}>
+        <Button 
+          type="dashed" 
+          onClick={addTruocMen}
+          icon={<PlusOutlined />}
+          style={{minWidth: 120}}
+        >
+          Thêm phần
+        </Button>
+        {truocMenCount > 1 && (
+          <Button 
+            type="text" 
+            danger
+            onClick={removeTruocMen}
+            icon={<DeleteOutlined />}
+            style={{minWidth: 120}}
+          >
+            Xóa phần cuối
+          </Button>
+        )}
+      </div>
 
       <div level={4} className={styles.sectionTitle}>C. Sử dụng thức ăn ủ lên men làm thức ăn chăn nuôi, sức khoẻ vật nuôi, hiệu quả kinh tế SAU và TRƯỚC khi sử dụng thức ăn ủ lên men</div>
       <Divider className={styles.divider} />
-      {[0,1,2].map((i) => (
+      {Array.from({length: thucAnMenCount}).map((_, i) => (
         <div key={i} className={styles.formSection}>
           <div className={styles.row}>
             <div className={styles.col}>
-              <Form.Item className={styles.formItem} name={`tenVatNuoi_${i}`} label={<span className={styles.formLabel}>Tên vật nuôi</span>} rules={i===0?[{required:true,message:'Bắt buộc nhập'}]:[] } > <Input /> </Form.Item>
+              <Form.Item className={styles.formItem} name={[`thucAnMen`, i, 'tenVatNuoi']} label={<span className={styles.formLabel}>Tên vật nuôi</span>} > <Input /> </Form.Item>
             </div>
           </div>
           <div key={i} className={styles.groupedBg}>
                 <div className={styles.label}><span style={{fontWeight:'500'}}>Tổng số lứa (đợt nuôi) & Số ngày nuôi/ lứa, đã sử dụng thức ăn ủ lên men (trước đến nay) </span></div>
                     <div className={styles.row}>
                         <div className={styles.col} style={{width:'50%'}}>
-                            <Form.Item name={`dienTichSauPhanU_${i}`} label="SAU KHI SỬ DỤNG THỨC ĂN Ủ LÊN MEN" rules={i===0?[{required:true,message:'Bắt buộc nhập'}]:[] }>
+                            <Form.Item name={[`thucAnMen`, i, 'soLuaSauMen']} label="SAU KHI SỬ DỤNG THỨC ĂN Ủ LÊN MEN" rules={i===0?[{required:true,message:'Bắt buộc nhập'}]:[] }>
                             <InputNumber min={0} style={{width:'100%'}} />
                             </Form.Item>
                         </div>
                         <div className={styles.col} style={{width:'50%'}}>
-                            <Form.Item name={`dienTichKhongPhanU_${i}`} label="TRƯỚC KHI SỬ DỤNG THỨC ĂN Ủ LÊN MEN" rules={i===0?[{required:true,message:'Bắt buộc nhập'}]:[] }>
+                            <Form.Item name={[`thucAnMen`, i, 'soLuaKhongMen']} label="TRƯỚC KHI SỬ DỤNG THỨC ĂN Ủ LÊN MEN" rules={i===0?[{required:true,message:'Bắt buộc nhập'}]:[] }>
                             <InputNumber min={0} style={{width:'100%'}} />
                             </Form.Item>
                         </div>
@@ -104,13 +164,12 @@ export default function TechniqueFormLenMen({ form, onFinish, onBack, initialVal
         <div className={styles.label}><span style={{fontWeight:'500'}}>Số lượng vật nuôi (số con/lứa) </span></div>
           <div className={styles.row}>
             <div className={styles.col} style={{width:'50%'}}>
-              {/* renamed field to avoid collision with diện tích fields */}
-              <Form.Item name={`soLuongVatNuoiSau_${i}`} label="SAU KHI SỬ DỤNG THỨC ĂN Ủ LÊN MEN" rules={i===0?[{required:true,message:'Bắt buộc nhập'}]:[] }>
+              <Form.Item name={[`thucAnMen`, i, 'soLuongVatNuoiSau']} label="SAU KHI SỬ DỤNG THỨC ĂN Ủ LÊN MEN" rules={i===0?[{required:true,message:'Bắt buộc nhập'}]:[] }>
               <InputNumber min={0} style={{width:'100%'}} />
               </Form.Item>
             </div>
             <div className={styles.col} style={{width:'50%'}}>
-              <Form.Item name={`soLuongVatNuoiKhong_${i}`} label="TRƯỚC KHI SỬ DỤNG THỨC ĂN Ủ LÊN MEN" rules={i===0?[{required:true,message:'Bắt buộc nhập'}]:[] }>
+              <Form.Item name={[`thucAnMen`, i, 'soLuongVatNuoiKhong']} label="TRƯỚC KHI SỬ DỤNG THỨC ĂN Ủ LÊN MEN" rules={i===0?[{required:true,message:'Bắt buộc nhập'}]:[] }>
               <InputNumber min={0} style={{width:'100%'}} />
               </Form.Item>
             </div>
@@ -194,6 +253,27 @@ export default function TechniqueFormLenMen({ form, onFinish, onBack, initialVal
           </div>
         </div>
       ))}
+      <div className={styles.buttonGroup} style={{marginTop: 16, marginBottom: 32}}>
+        <Button 
+          type="dashed" 
+          onClick={addThucAnMen}
+          icon={<PlusOutlined />}
+          style={{minWidth: 120}}
+        >
+          Thêm phần
+        </Button>
+        {thucAnMenCount > 1 && (
+          <Button 
+            type="text" 
+            danger
+            onClick={removeThucAnMen}
+            icon={<DeleteOutlined />}
+            style={{minWidth: 120}}
+          >
+            Xóa phần cuối
+          </Button>
+        )}
+      </div>
 
       <div className={styles.buttonGroup}>
         <Button onClick={onBack} style={{marginRight:16}}>Quay lại</Button>

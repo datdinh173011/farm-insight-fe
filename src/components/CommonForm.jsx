@@ -61,7 +61,10 @@ export default function CommonForm({ onFinish, onBack, generalInfoData, techniqu
       });
       if (response.ok) {
         message.success('Gửi phiếu thành công!');
-        if (onFinish) onFinish(payload);
+        // Call onFinish to handle navigation and state reset in parent component
+        if (onFinish) {
+          onFinish(payload);
+        }
       } else {
         message.error('Gửi phiếu thất bại!');
       }
