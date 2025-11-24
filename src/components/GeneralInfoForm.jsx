@@ -42,11 +42,11 @@ export default function GeneralInfoForm({ form, onFinish, initialValues }) {
             </Col>
             <Col xs={12} sm={12} md={6}>
               <Form.Item name="dateOfBirth" label="Ngày tháng năm sinh" rules={[{ required: true, message: 'Vui lòng chọn ngày tháng năm sinh' }]}> 
-                <DatePicker format="YYYY/MM/DD" style={{ width: '100%' }} />
+                <Input placeholder='YYYY/MM/DD, ví dụ: 1990/01/01'/>
               </Form.Item>
             </Col>
             <Col xs={12} sm={12} md={6}>
-              <Form.Item name="phone" label="Số điện thoại liên hệ" rules={[{ required: true, message: 'Vui lòng nhập số điện thoại' }, { pattern: /^\+?\d{7,15}$/, message: 'Số điện thoại không hợp lệ (chỉ gồm chữ số, có thể có +)' }]}> 
+              <Form.Item name="phone" label="Số điện thoại liên hệ" > 
                 <Input placeholder="Ví dụ: +84901234567" />
               </Form.Item>
             </Col>

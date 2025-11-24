@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Input, InputNumber, Button, Checkbox } from 'antd';
+import { Form, Input, InputNumber, Button, Checkbox, Divider } from 'antd';
 import styles from './TechniqueFormTrunQue.module.scss';
 
 export default function TechniqueFormUPhan({ form, onFinish, onBack, initialValues }) {
@@ -12,6 +12,7 @@ export default function TechniqueFormUPhan({ form, onFinish, onBack, initialValu
       style={{ maxWidth: 1200, margin: '0 auto' }}
     >
       <div className={styles.sectionTitle}>A. Quản lý phụ phẩm cây trồng SAU KHI áp dụng kỹ thuật ủ phân hữu cơ tại ruộng</div>
+      <Divider className={styles.divider} />
       <div className={styles.formSectionBg}>
         {[0].map((idx) => (
           <div key={idx}>
@@ -37,8 +38,7 @@ export default function TechniqueFormUPhan({ form, onFinish, onBack, initialValu
             </div>
             <div className={styles.row}>
               <Form.Item name={`suDungMayCatNho_${idx}`} label="Sử dụng máy để băm/cắt nhỏ phụ phẩm cây trồng" rules={[{required:true,message:'Bắt buộc nhập'}]} className={styles.col}>
-                <Checkbox value="Có">Có</Checkbox>
-                <Checkbox value="Không">Không</Checkbox>
+                <Input placeholder='Có/Không'/>
               </Form.Item>
               <Form.Item name={`nhienLieuSuDung_${idx}`} label="Lượng nhiên liệu đã sử dụng (dầu diesel/ hoặc điện)" rules={[{required:true,message:'Bắt buộc nhập'}]} className={styles.col}>
                 <Input placeholder="Dầu ... lít, Điện ... kw" />
@@ -51,14 +51,14 @@ export default function TechniqueFormUPhan({ form, onFinish, onBack, initialValu
         ))}
       </div>
       <div className={styles.sectionTitle}>B. Quản lý phụ phẩm cây trồng TRƯỚC KHI (NĂM 2022) áp dụng kỹ thuật ủ phân hữu cơ tại ruộng</div>
+      <Divider className={styles.divider} />
       <div className={styles.formSectionBg}>
         {[0].map((idx) => (
           <div key={idx}>
             <div className={styles.row}>
               <Form.Item name={`loaiCayTrongTruoc_${idx}`} label="Loại cây trồng" rules={[{required:true,message:'Bắt buộc nhập'}]} className={styles.col}><Input /></Form.Item>
               <Form.Item name={`coTrongTruoc_${idx}`} label="Có trồng không?" rules={[{required:true,message:'Bắt buộc nhập'}]} className={styles.col}>
-                <Checkbox value="Có">Có</Checkbox>
-                <Checkbox value="Không">Không</Checkbox>
+                <Input placeholder='Có/Không'/>
               </Form.Item>
             </div>
             <div className={styles.row}>
@@ -73,6 +73,7 @@ export default function TechniqueFormUPhan({ form, onFinish, onBack, initialValu
         ))}
       </div>
       <div className={styles.sectionTitle}>C. Sử dụng phân ủ làm phân bón cây trồng, sức khoẻ cây trồng, hiệu quả kinh tế SAU và TRƯỚC khi sử dụng phân ủ hữu cơ</div>
+      <Divider className={styles.divider} />
       <div className={styles.formSectionBg}>
         {[0].map((idx) => (
           <div key={idx}>
@@ -160,12 +161,10 @@ export default function TechniqueFormUPhan({ form, onFinish, onBack, initialValu
             </div>
             <div className={styles.row}>
               <Form.Item name={`sauBenhC_${idx}`} label="Cây trồng có bị sâu bệnh không" rules={[{required:true,message:'Bắt buộc nhập'}]} className={styles.col}>
-                <Checkbox value="Có">Có</Checkbox>
-                <Checkbox value="Không">Không</Checkbox>
+                <Input placeholder='Có/Không'/>
               </Form.Item>
               <Form.Item name={`suDungThuocSauC_${idx}`} label="Có sử dụng thuốc trừ sâu không" rules={[{required:true,message:'Bắt buộc nhập'}]} className={styles.col}>
-                <Checkbox value="Có">Có</Checkbox>
-                <Checkbox value="Không">Không</Checkbox>
+                <Input placeholder='Có/Không'/>
               </Form.Item>
             </div>
             <div className={styles.row}>

@@ -1,15 +1,19 @@
 .formSectionBg {
-  background: #f5f7fa;
-  border: 1px dashed #b3c2d6;
-  border-radius: 10px;
-  padding: 18px;
-  margin-bottom: 24px;
+  background: #fafcff;
+  border: 1px solid #e6eaf2;
+  padding: 24px 18px 18px 18px;
+  margin-bottom: 32px;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px #e6eaf2;
 }
-
 .sectionTitle {
-  font-weight: bold;
-  font-size: 18px;
-  margin-bottom: 8px;
+  margin-bottom: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .row {
@@ -46,6 +50,5 @@
 }
 
 .divider {
-  border-top: 1px solid #b3c2d6;
-  margin: 16px 0;
+  margin: 12px 0 24px 0;
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Input, Button, Checkbox, InputNumber} from 'antd'
+import { Form, Input, Button, Checkbox, InputNumber, Divider} from 'antd'
 import styles from './TechniqueFormGocRa.module.scss'
 
 const questions = [
@@ -18,6 +18,7 @@ export default function TechniqueFormGocRa({ form, onFinish, onBack, initialValu
       style={{ maxWidth: 1200, margin: '0 auto' }}
     >
       <div className={styles.sectionTitle}>A. Loại phụ phẩm cây trồng, Quản lý phụ phẩm cây trồng và chất thải</div>
+      <Divider className={styles.divider} />
       <div className={styles.formSectionBg}>
         <div className={styles.row}>
           <Form.Item name="thangNamBatDauApDung" label="Tháng/năm bắt đầu áp dụng xử lý gốc rạ bằng chế phẩm sinh học" rules={[{required:true,message:'Bắt buộc nhập'}]} className={styles.col}><Input placeholder="Tháng/năm" /></Form.Item>

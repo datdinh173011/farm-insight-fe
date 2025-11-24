@@ -1,11 +1,15 @@
 .sectionTitle {
-  font-size: 18px;
-  font-weight: bold;
-  margin: 24px 0 8px 0;
-  text-align: left;
+  margin-bottom: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
+
 .divider {
-  margin: 12px 0;
+  margin: 12px 0 24px 0;
 }
 .formSection {
   background: #fafcff;

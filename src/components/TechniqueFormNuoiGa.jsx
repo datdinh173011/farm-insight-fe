@@ -11,11 +11,9 @@ export default function TechniqueFormNuoiGa({ form, onFinish, onBack, initialVal
         onFinish={onFinish}
         style={{ maxWidth: 1200, margin: '0 auto' }}
     >
-    <div className={styles.sectionTitle}>Kỹ thuật: Nuôi gà trên đệm lót sinh học dày</div>
-
     <div className={styles.sectionTitle}>A. Quản lý phụ phẩm cây trồng SAU KHI sử dụng đệm lót sinh học dày</div>
     <Divider className={styles.divider} />
-      {[0].map(i => (
+      {[0,1,2].map(i => (
         <div key={i} className={styles.formSection}>
           <div className={styles.formRow}>
             <Form.Item className={styles.formCol} name={[`sauDemLot`,i,'tenPhuPhamTruoc']} label={<span className={styles.formLabel}>Tên phụ phẩm cây trồng (tận dụng làm đệm lót sinh học dày TỪ TRƯỚC ĐẾN NAY)</span>} rules={i===0?[{required:true,message:'Bắt buộc nhập tên phụ phẩm'}]:[]}> <Input /> </Form.Item>
@@ -34,7 +32,7 @@ export default function TechniqueFormNuoiGa({ form, onFinish, onBack, initialVal
             <Form.Item className={styles.formColSmall} name={[`sauDemLot`,i,'tongKhoiLuongPhanU']} label={<span className={styles.formLabel}>Tổng khối lượng phân ủ thu được từ lớp đệm lót (kg)</span>} rules={i===0?[{required:true,message:'Bắt buộc nhập tổng khối lượng phân ủ'}]:[]}> <Input /> </Form.Item>
           </div>
           <div className={styles.formRow}>
-            <Form.Item className={styles.formColSmall} name={[`sauDemLot`,i,'mayBamCat']} label={<span className={styles.formLabel}>Sử dụng máy để băm/cắt nhỏ phụ phẩm cây trồng</span>} rules={i===0?[{required:true,message:'Bắt buộc chọn máy băm/cắt nhỏ'}]:[]}> <Checkbox> Có </Checkbox> <Checkbox> Không </Checkbox> </Form.Item>
+            <Form.Item className={styles.formColSmall} name={[`sauDemLot`,i,'mayBamCat']} label={<span className={styles.formLabel}>Sử dụng máy để băm/cắt nhỏ phụ phẩm cây trồng</span>} rules={i===0?[{required:true,message:'Bắt buộc chọn máy băm/cắt nhỏ'}]:[]}> <Input placeholder='Có/Không'/> </Form.Item>
             <Form.Item className={styles.formCol} name={[`sauDemLot`,i,'nhienLieu']} label={<span className={styles.formLabel}>Lượng nhiên liệu đã sử dụng (dầu diesel/ hoặc điện)</span>} rules={i===0?[{required:true,message:'Bắt buộc nhập nhiên liệu'}]:[]}> <Input placeholder="Dầu ... lít, Điện ... kw" /> </Form.Item>
             <Form.Item className={styles.formColLarge} name={[`sauDemLot`,i,'chiPhiKhac']} label={<span className={styles.formLabel}>Chi phí vật liệu/đầu vào khác (ví dụ: nhân công, chế phẩm, …) (đồng)</span>} rules={i===0?[{required:true,message:'Bắt buộc nhập chi phí vật liệu/đầu vào khác'}]:[]}> <Input /> </Form.Item>
           </div>
@@ -43,7 +41,7 @@ export default function TechniqueFormNuoiGa({ form, onFinish, onBack, initialVal
 
   <div className={styles.sectionTitle}>B. Quản lý phụ phẩm cây trồng TRƯỚC KHI áp dụng kỹ thuật nuôi gà trên đệm lót sinh học dày (NĂM 2022)</div>
   <Divider className={styles.divider} />
-      {[0].map(i => (
+      {[0,1,2].map(i => (
         <div key={i} className={styles.formSection}>
           <div className={styles.formRow}>
             <Form.Item className={styles.formCol} name={[`truocDemLot`,i,'loaiCayTruoc']} label={<span className={styles.formLabel}>Loại cây trồng, TRƯỚC KHI áp dụng kỹ thuật</span>} rules={i===0?[{required:true,message:'Bắt buộc nhập loại cây trồng'}]:[]}> <Input /> </Form.Item>
@@ -57,7 +55,7 @@ export default function TechniqueFormNuoiGa({ form, onFinish, onBack, initialVal
 
   <div className={styles.sectionTitle}>C. Sử dụng PHÂN Ủ từ lớp đệm lót làm phân bón cây trồng, sức khoẻ cây trồng, hiệu quả kinh tế SAU và TRƯỚC khi sử dụng phân ủ</div>
   <Divider className={styles.divider} />
-      {[0].map(i => (
+      {[0,1,2].map(i => (
         <div key={i} className={styles.formSection}>
           {/* Dòng các câu hỏi đơn */}
           <div className={styles.formRow}>
@@ -130,7 +128,7 @@ export default function TechniqueFormNuoiGa({ form, onFinish, onBack, initialVal
             <Form.Item className={styles.formColSmall} name={[`phanU`,i,'soTienThuocCo']} label={<span className={styles.formLabel}>Số tiền đã chi cho thuốc trừ cỏ hóa học (đồng/sào)</span>} rules={i===0?[{required:true,message:'Bắt buộc nhập số tiền thuốc cỏ'}]:[]}> <Input /> </Form.Item>
             <Form.Item className={styles.formColSmall} name={[`phanU`,i,'soTienCongLaoDong']} label={<span className={styles.formLabel}>Số tiền công lao động (số công/sào x số sào x đơn giá ngày công TB)</span>} rules={i===0?[{required:true,message:'Bắt buộc nhập số tiền công lao động'}]:[]}> <Input /> </Form.Item>
             <Form.Item className={styles.formColSmall} name={[`phanU`,i,'soTienHatGiong']} label={<span className={styles.formLabel}>Số tiền mua hạt giống (đồng/sào)</span>} rules={i===0?[{required:true,message:'Bắt buộc nhập số tiền hạt giống'}]:[]}> <Input /> </Form.Item>
-            <Form.Item className={styles.formColSmall} name={[`phanU`,i,'sauBenh']} label={<span className={styles.formLabel}>Cây trồng có bị sâu bệnh tấn công không?</span>} rules={i===0?[{required:true,message:'Bắt buộc chọn sâu bệnh'}]:[]}> <Checkbox> Có </Checkbox> <Checkbox> Không </Checkbox> </Form.Item>
+            <Form.Item className={styles.formColSmall} name={[`phanU`,i,'sauBenh']} label={<span className={styles.formLabel}>Cây trồng có bị sâu bệnh tấn công không?</span>} rules={i===0?[{required:true,message:'Bắt buộc chọn sâu bệnh'}]:[]}> <Input placeholder='Có/Không'/> </Form.Item>
             <Form.Item className={styles.formColSmall} name={[`phanU`,i,'nangSuat']} label={<span className={styles.formLabel}>Năng suất thu hoạch (kg/sào)</span>} rules={i===0?[{required:true,message:'Bắt buộc nhập năng suất'}]:[]}> <Input /> </Form.Item>
             <Form.Item className={styles.formColSmall} name={[`phanU`,i,'giaBan']} label={<span className={styles.formLabel}>Giá bán (đồng/kg)</span>} rules={i===0?[{required:true,message:'Bắt buộc nhập giá bán'}]:[]}> <Input /> </Form.Item>
             <Form.Item className={styles.formColSmall} name={[`phanU`,i,'thanhTien']} label={<span className={styles.formLabel}>Thành tiền (đồng)</span>} rules={i===0?[{required:true,message:'Bắt buộc nhập thành tiền'}]:[]}> <Input /> </Form.Item>
@@ -140,7 +138,7 @@ export default function TechniqueFormNuoiGa({ form, onFinish, onBack, initialVal
 
   <div className={styles.sectionTitle}>D. Sử dụng thức ăn, sức khỏe ĐÀN GÀ và kinh tế SAU và TRƯỚC khi nuôi gà trên đệm lót sinh học dày</div>
   <Divider className={styles.divider} />
-      {[0].map(i => (
+      {[0,1,2].map(i => (
         <div key={i} className={styles.formSection}>
           {/* Số lượng gà label riêng 1 hàng */}
           <div className={styles.formRow}>
@@ -207,12 +205,12 @@ export default function TechniqueFormNuoiGa({ form, onFinish, onBack, initialVal
           <div className={styles.formRow}>
             <Form.Item className={styles.formColSmall} name={[`danGa`,i,'tienThuoc']} label={<span className={styles.formLabel}>Số tiền đã chi cho mua thuốc thú y</span>} rules={i===0?[{required:true,message:'Bắt buộc nhập số tiền thuốc thú y'}]:[]}> <Input /> </Form.Item>
             <Form.Item className={styles.formColSmall} name={[`danGa`,i,'gioDonDep']} label={<span className={styles.formLabel}>Số giờ dành cho việc dọn dẹp chuồng gà trong 1 tuần</span>} rules={i===0?[{required:true,message:'Bắt buộc nhập số giờ dọn dẹp'}]:[]}> <Input /> </Form.Item>
-            <Form.Item className={styles.formColSmall} name={[`danGa`,i,'gaBiBenh']} label={<span className={styles.formLabel}>Đàn gà có mắc bệnh gì không</span>} rules={i===0?[{required:true,message:'Bắt buộc chọn đàn gà có mắc bệnh không'}]:[]}> <Checkbox> Có </Checkbox> <Checkbox> Không </Checkbox> </Form.Item>
+            <Form.Item className={styles.formColSmall} name={[`danGa`,i,'gaBiBenh']} label={<span className={styles.formLabel}>Đàn gà có mắc bệnh gì không</span>} rules={i===0?[{required:true,message:'Bắt buộc chọn đàn gà có mắc bệnh không'}]:[]}> <Input placeholder='Có/Không'/> </Form.Item>
             <Form.Item className={styles.formColSmall} name={[`danGa`,i,'danhGiaSucKhoe']} label={<span className={styles.formLabel}>Đánh giá sức khỏe đàn gà (1= cực kỳ tệ, 10= rất tốt)</span>} rules={i===0?[{required:true,message:'Bắt buộc nhập đánh giá sức khỏe'}]:[]}> <InputNumber min={1} max={10} style={{width:'100%'}} /> </Form.Item>
             <Form.Item className={styles.formColSmall} name={[`danGa`,i,'soNgayDatTrongLuong']} label={<span className={styles.formLabel}>Số ngày để đạt được trọng lượng mong muốn?</span>} rules={i===0?[{required:true,message:'Bắt buộc nhập số ngày đạt trọng lượng'}]:[]}> <Input /> </Form.Item>
             <Form.Item className={styles.formColSmall} name={[`danGa`,i,'trongLuongXuatChuong']} label={<span className={styles.formLabel}>Trọng lượng trung bình khi xuất chuồng (kg/con)</span>} rules={i===0?[{required:true,message:'Bắt buộc nhập trọng lượng xuất chuồng'}]:[]}> <Input /> </Form.Item>
             <Form.Item className={styles.formColSmall} name={[`danGa`,i,'tongThoiGianNuoi']} label={<span className={styles.formLabel}>Tổng thời gian nuôi đến khi xuất chuồng (tháng)</span>} rules={i===0?[{required:true,message:'Bắt buộc nhập tổng thời gian nuôi'}]:[]}> <Input /> </Form.Item>
-            <Form.Item className={styles.formColSmall} name={[`danGa`,i,'gaPhatTrienNhanhHon']} label={<span className={styles.formLabel}>Đàn gà có phát triển nhanh hơn và/hoặc lớn hơn</span>} rules={i===0?[{required:true,message:'Bắt buộc chọn đàn gà phát triển nhanh hơn'}]:[]}> <Checkbox> Có </Checkbox> <Checkbox> Không </Checkbox> </Form.Item>
+            <Form.Item className={styles.formColSmall} name={[`danGa`,i,'gaPhatTrienNhanhHon']} label={<span className={styles.formLabel}>Đàn gà có phát triển nhanh hơn và/hoặc lớn hơn</span>} rules={i===0?[{required:true,message:'Bắt buộc chọn đàn gà phát triển nhanh hơn'}]:[]}> <Input placeholder='Có/Không'/> </Form.Item>
             <Form.Item className={styles.formColSmall} name={[`danGa`,i,'giaBan']} label={<span className={styles.formLabel}>Giá bán (đồng/kg)</span>} rules={i===0?[{required:true,message:'Bắt buộc nhập giá bán'}]:[]}> <Input /> </Form.Item>
             <Form.Item className={styles.formColSmall} name={[`danGa`,i,'tongThuNhap']} label={<span className={styles.formLabel}>Tổng thu nhập</span>} rules={i===0?[{required:true,message:'Bắt buộc nhập tổng thu nhập'}]:[]}> <Input /> </Form.Item>
             <Form.Item className={styles.formColSmall} name={[`danGa`,i,'danhGiaMui']} label={<span className={styles.formLabel}>Đánh giá mùi từ chuồng gà (0= không có mùi, 10= cực kỳ khó chịu)</span>} rules={i===0?[{required:true,message:'Bắt buộc nhập đánh giá mùi'}]:[]}> <InputNumber min={0} max={10} style={{width:'100%'}} /> </Form.Item>

@@ -1,24 +1,44 @@
 .formSectionBg {
-  background: #f5f7fa;
-  border: 1px dashed #b3c2d6;
-  border-radius: 10px;
-  padding: 18px;
-  margin-bottom: 24px;
+  background: #fafcff;
+  border: 1px solid #e6eaf2;
+  padding: 24px 18px 18px 18px;
+  margin-bottom: 32px;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px #e6eaf2;
 }
 
 .row {
   display: flex;
   gap: 16px;
   margin-bottom: 8px;
+  /* align items at start so taller labels don't vertically center inputs in other columns */
+  align-items: flex-start;
 }
 
 .col {
   flex: 1 1 300px;
+  /* allow columns to shrink properly so ellipsis works on labels */
+  min-width: 0;
 }
 
 .label {
   font-weight: bold;
   margin-bottom: 4px;
+}
+
+/* AntD form label styles: prevent wrapping so long labels don't change row height.
+   Use ellipsis to keep a single line and keep inputs aligned across columns.
+   We use :global to target AntD's classes from CSS modules. */
+:global(.ant-form-item-label > label) {
+  display: block; /* ensure block-level for width/ellipsis */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+:global(.ant-form-item-label) {
+  /* reserve a consistent label area height to avoid shifting inputs */
+  min-height: 24px;
 }
 
 .groupedBg {

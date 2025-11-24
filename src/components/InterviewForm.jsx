@@ -40,21 +40,35 @@ export default function InterviewForm() {
   const [formUPhan] = Form.useForm();
   const [formGocRa] = Form.useForm();
 
-  // Lưu state cho từng form kỹ thuật
+  // Lưu state cho từng form kỹ thuật (sử dụng label đầy đủ làm key)
   const [techniqueAnswers, setTechniqueAnswers] = useState({
-    'len-men-phu-pham' : {},
-    'nuoi-ga-dem-lot': {},
-    'nuoi-sau-canxi': {},
-    'nuoi-trun-que': {},
-    'u-phan-huu-co-tai-ruong': {},
-    'xu-ly-goc-ra-che-pham': {},
+    'Lên men phụ phẩm cây trồng làm thức ăn chăn nuôi': {},
+    'Nuôi gà trên đệm lót sinh học': {},
+    'Nuôi sâu canxi': {},
+    'Nuôi trùn quế': {},
+    'Ủ phân hữu cơ tại ruộng': {},
+    'Xử lý gốc rạ bằng chế phẩm sinh học': {},
   });
-  const [activeTab, setActiveTab] = useState('len-men-phu-pham');
+  const [activeTab, setActiveTab] = useState(null);
+
+  // mapping từ giá trị select (slug) trong GeneralInfoForm => label đầy đủ
+  const slugToLabel = {
+    'len-men-phu-pham': 'Lên men phụ phẩm cây trồng làm thức ăn chăn nuôi',
+    'nuoi-ga-dem-lot': 'Nuôi gà trên đệm lót sinh học',
+    'nuoi-sau-canxi': 'Nuôi sâu canxi',
+    'nuoi-trun-que': 'Nuôi trùn quế',
+    'u-phan-huu-co-tai-ruong': 'Ủ phân hữu cơ tại ruộng',
+    'xu-ly-goc-ra-che-pham': 'Xử lý gốc rạ bằng chế phẩm sinh học',
+  };
 
   // Bước 1: Điền thông tin chung
   const handleGeneralSubmit = () => {
     const values = generalForm.getFieldsValue(true);
     setGeneralInfo(values);
+    // set the active technique tab based on selected technique slug
+    if (values && values.technique && slugToLabel[values.technique]) {
+      setActiveTab(slugToLabel[values.technique]);
+    }
     setStep(2);
   };
 
@@ -156,39 +170,42 @@ export default function InterviewForm() {
       {step === 1 && (
         <GeneralInfoForm form={generalForm} onFinish={handleGeneralSubmit} initialValues={generalInfo} />
       )}
-      {step === 2 && (
-        <Tabs
-          activeKey={activeTab}
-          onChange={setActiveTab}
-          type="card"
-          items={Object.keys(techniqueComponentMap).map(key => ({
-            key,
-            label: key,
-            children: React.createElement(
-              techniqueComponentMap[key],
-              {
-                form:
-                  key === 'Lên men phụ phẩm cây trồng làm thức ăn chăn nuôi' ? formLenMen :
-                  key === 'Nuôi gà trên đệm lót sinh học' ? formNuoiGa :
-                  key === 'Nuôi sâu canxi' ? formSauCanxi :
-                  key === 'Nuôi trùn quế' ? formTrunQue :
-                  key === 'Ủ phân hữu cơ tại ruộng' ? formUPhan :
-                  key === 'Xử lý gốc rạ bằng chế phẩm sinh học' ? formGocRa : null,
-                onFinish: () => handleTechniqueSubmit(key),
-                onBack: () => setStep(1),
-                initialValues: techniqueAnswers[key],
-              }
-            ),
-          }))}
-        />
+      {step === 2 && activeTab && (
+        (() => {
+          const TechniqueComponent = techniqueComponentMap[activeTab];
+          // choose form instance by activeTab label
+          const getFormInstance = (label) => {
+            switch (label) {
+              case 'Lên men phụ phẩm cây trồng làm thức ăn chăn nuôi': return formLenMen;
+              case 'Nuôi gà trên đệm lót sinh học': return formNuoiGa;
+              case 'Nuôi sâu canxi': return formSauCanxi;
+              case 'Nuôi trùn quế': return formTrunQue;
+              case 'Ủ phân hữu cơ tại ruộng': return formUPhan;
+              case 'Xử lý gốc rạ bằng chế phẩm sinh học': return formGocRa;
+              default: return null;
+            }
+          };
+          const formInstance = getFormInstance(activeTab);
+          return (
+            <div>
+              {TechniqueComponent ? (
+                <TechniqueComponent
+                  form={formInstance}
+                  onFinish={() => {
+                    handleTechniqueSubmit(activeTab);
+                    setStep(3);
+                  }}
+                  onBack={() => setStep(1)}
+                  initialValues={techniqueAnswers[activeTab]}
+                />
+              ) : (
+                <div>Không tìm thấy form kỹ thuật đã chọn.</div>
+              )}
+            </div>
+          );
+        })()
       )}
-      {step === 2 && (
-        <div style={{ textAlign: 'center', marginTop: 24 }}>
-          <Button type="primary" onClick={() => setStep(3)}>
-            Tiếp tục sang phần câu hỏi chung
-          </Button>
-        </div>
-      )}
+      {/* Removed the separate continue button; TechniqueForm submit now advances to common questions */}
       {step === 3 && (
         <CommonForm
           onFinish={handleCommonSubmit}
