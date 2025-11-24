@@ -2,13 +2,19 @@ import React from 'react';
 import { Form, Input, InputNumber, Button, Checkbox } from 'antd';
 import styles from './TechniqueFormTrunQue.module.scss';
 
-export default function TechniqueFormUPhan({ onFinish, onBack }) {
+export default function TechniqueFormUPhan({ form, onFinish, onBack, initialValues }) {
   return (
-    <Form layout="vertical" onFinish={onFinish} initialValues={{}} style={{ maxWidth: 1200, margin: '0 auto' }}>
+    <Form
+      form={form}
+      layout="vertical"
+      onFinish={onFinish}
+      initialValues={initialValues || {}}
+      style={{ maxWidth: 1200, margin: '0 auto' }}
+    >
       <div className={styles.sectionTitle}>A. Quản lý phụ phẩm cây trồng SAU KHI áp dụng kỹ thuật ủ phân hữu cơ tại ruộng</div>
       <div className={styles.formSectionBg}>
         {[0].map((idx) => (
-          <div key={idx} className={styles.groupedBg}>
+          <div key={idx}>
             <div className={styles.row}>
               <Form.Item name={`tenPhuPham_${idx}`} label="Tên phụ phẩm cây trồng (tận dụng ủ phân từ trước đến nay)" rules={[{required:true,message:'Bắt buộc nhập'}]} className={styles.col}><Input /></Form.Item>
               <Form.Item name={`thangNamBatDau_${idx}`} label="Tháng/năm bắt đầu tiến hành ủ phân" rules={[{required:true,message:'Bắt buộc nhập'}]} className={styles.col}><Input placeholder="Tháng/năm" /></Form.Item>
@@ -47,7 +53,7 @@ export default function TechniqueFormUPhan({ onFinish, onBack }) {
       <div className={styles.sectionTitle}>B. Quản lý phụ phẩm cây trồng TRƯỚC KHI (NĂM 2022) áp dụng kỹ thuật ủ phân hữu cơ tại ruộng</div>
       <div className={styles.formSectionBg}>
         {[0].map((idx) => (
-          <div key={idx} className={styles.groupedBg}>
+          <div key={idx}>
             <div className={styles.row}>
               <Form.Item name={`loaiCayTrongTruoc_${idx}`} label="Loại cây trồng" rules={[{required:true,message:'Bắt buộc nhập'}]} className={styles.col}><Input /></Form.Item>
               <Form.Item name={`coTrongTruoc_${idx}`} label="Có trồng không?" rules={[{required:true,message:'Bắt buộc nhập'}]} className={styles.col}>
@@ -75,17 +81,17 @@ export default function TechniqueFormUPhan({ onFinish, onBack }) {
             </div>
             <div key={idx} className={styles.groupedBg}>
                 <div className={styles.label}>Diện tích (sào) </div>
-                <div className={styles.row}>
-                <div className={styles.col} style={{width:'50%'}}>
-                    <Form.Item name={`dienTichSauPhanU_${idx}`} label="SAU KHI BÓN PHÂN Ủ" rules={[{required:true,message:'Bắt buộc nhập'}]}>
-                    <InputNumber min={0} style={{width:'100%'}} />
-                    </Form.Item>
-                </div>
-                <div className={styles.col} style={{width:'50%'}}>
-                    <Form.Item name={`dienTichKhongPhanU_${idx}`} label="KHÔNG BÓN PHÂN Ủ" rules={[{required:true,message:'Bắt buộc nhập'}]}>
-                    <InputNumber min={0} style={{width:'100%'}} />
-                    </Form.Item>
-                </div>
+                    <div className={styles.row}>
+                        <div className={styles.col} style={{width:'50%'}}>
+                            <Form.Item name={`dienTichSauPhanU_${idx}`} label="SAU KHI BÓN PHÂN Ủ" rules={[{required:true,message:'Bắt buộc nhập'}]}>
+                            <InputNumber min={0} style={{width:'100%'}} />
+                            </Form.Item>
+                        </div>
+                        <div className={styles.col} style={{width:'50%'}}>
+                            <Form.Item name={`dienTichKhongPhanU_${idx}`} label="KHÔNG BÓN PHÂN Ủ" rules={[{required:true,message:'Bắt buộc nhập'}]}>
+                            <InputNumber min={0} style={{width:'100%'}} />
+                            </Form.Item>
+                        </div>
                 </div>
             </div>
             <div className={styles.groupedBg}>

@@ -3,12 +3,18 @@ import React from 'react';
 import { Form, Input, InputNumber, Checkbox, Button, Divider } from 'antd';
 import styles from './TechniqueFormSauCanxi.module.scss';
 
-export default function TechniqueFormSauCanxi({ onFinish, onBack }) {
+export default function TechniqueFormSauCanxi({ form, onFinish, onBack, initialValues }) {
   return (
-    <Form layout="vertical" onFinish={onFinish} initialValues={{}} style={{ maxWidth: 1200, margin: '0 auto' }}>
-  <div className="sectionTitle">A. Quản lý phụ phẩm cây trồng, vật nuôi và chất thải SAU KHI nuôi Sâu canxi</div>
-  <Divider className="divider" />
-  {[0,1,2].map(i => (
+    <Form
+      form={form}
+      layout="vertical"
+      onFinish={onFinish}
+      initialValues={initialValues || {}}
+      style={{ maxWidth: 1200, margin: '0 auto' }}
+    >
+  <div className={styles.sectionTitle}>A. Quản lý phụ phẩm cây trồng, vật nuôi và chất thải SAU KHI nuôi Sâu canxi</div>
+  <Divider className={styles.divider} />
+  {[0].map(i => (
     <div className={styles.formSectionBg}>
         <div style={{display:'flex',gap:16,marginBottom:8}}>
           <Form.Item name={i === 0 ? "ngayBatDau" : `ngayBatDau${i+1}`} label={<span style={{whiteSpace:'nowrap'}}>Ngày bắt đầu</span>} rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} style={{flex:'1 1 260px'}}><Input /></Form.Item>
@@ -45,9 +51,9 @@ export default function TechniqueFormSauCanxi({ onFinish, onBack }) {
     </div>
     ))}
   
-  <div className="sectionTitle">B. Quản lý sử dụng thức ăn cho Sâu canxi & sản phẩm Sâu canxi thu được (1 lứa nuôi gần đây nhất)</div>
-  <Divider className="divider" />
-  {[0,1,2].map(i => (
+  <div className={styles.sectionTitle}>B. Quản lý sử dụng thức ăn cho Sâu canxi & sản phẩm Sâu canxi thu được (1 lứa nuôi gần đây nhất)</div>
+  <Divider className={styles.divider} />
+  {[0].map(i => (
     <div className={styles.formSectionBg}>
         <div style={{display:'flex',gap:16,marginBottom:8}}>
           <Form.Item name={i === 0 ? "loaiPhuPhamThucAn" : `loaiPhuPhamThucAn${i+1}`} label="Loại phụ phẩm nông nghiệp làm thức ăn cho Sâu canxi" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} style={{flex:'1 1 260px'}}><Input /></Form.Item>
@@ -79,9 +85,9 @@ export default function TechniqueFormSauCanxi({ onFinish, onBack }) {
         </div>
       </div>
     ))}
-  <div className="sectionTitle">C. Sử dụng phân sâu canxi bón cho cây trồng SAU và TRƯỚC khi nuôi sâu canxi (1 vụ cây trồng gần đây nhất)</div>
-  <Divider className="divider" />
-  {[0,1,2].map(i => (
+  <div className={styles.sectionTitle}>C. Sử dụng phân sâu canxi bón cho cây trồng SAU và TRƯỚC khi nuôi sâu canxi (1 vụ cây trồng gần đây nhất)</div>
+  <Divider className={styles.divider} />
+  {[0].map(i => (
     <div className={styles.formSectionBg}>
         <div style={{display:'flex',gap:16,marginBottom:8}}>
           <Form.Item name={i === 0 ? "tenLoaiCayTrongC" : `tenLoaiCayTrongC${i+1}`} label="Nêu tên loại cây trồng được bón phân sâu canxi" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} style={{flex:'1 1 260px'}}><Input /></Form.Item>
@@ -161,9 +167,9 @@ export default function TechniqueFormSauCanxi({ onFinish, onBack }) {
         </div>
       </div>
     ))}
-  <div className="sectionTitle">D. Sử dụng sâu canxi làm thức ăn cho vật nuôi SAU và TRƯỚC khi nuôi sâu canxi (1 lứa nuôi gần đây nhất)</div>
-  <Divider className="divider" />
-    {[0,1,2].map(i => (
+  <div className={styles.sectionTitle}>D. Sử dụng sâu canxi làm thức ăn cho vật nuôi SAU và TRƯỚC khi nuôi sâu canxi (1 lứa nuôi gần đây nhất)</div>
+  <Divider className={styles.divider} />
+    {[0].map(i => (
         <div className={styles.formSectionBg}>
             <div style={{display:'flex',gap:16,marginBottom:8}}>
               <Form.Item name={i === 0 ? "loaiVatNuoiD" : `loaiVatNuoiD${i+1}`} label="Loại vật nuôi" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} style={{flex:'1 1 260px'}}><Input /></Form.Item>

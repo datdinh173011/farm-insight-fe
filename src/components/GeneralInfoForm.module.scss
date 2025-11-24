@@ -1,0 +1,38 @@
+.generalInfoWrapper {
+//   min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.generalInfoForm {
+  background: #fafcff;
+  border: 1px solid #e6eaf2;
+  padding: 24px 18px 18px 18px;
+  margin-bottom: 32px;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px #e6eaf2;
+  width: 80%;
+}
+
+.ant-form-item-label > label {
+  font-weight: 500;
+  color: #2b4c7e;
+}
+
+.ant-btn-primary {
+  font-weight: 600;
+  border-radius: 8px;
+}
+.sectionTitle {
+  margin-bottom: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.divider {
+  margin: 12px 0 24px 0;
+}

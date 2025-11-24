@@ -49,30 +49,50 @@
   margin: 12px 0 24px 0;
 }
 
+.col {
+  flex: 1 1 300px;
+}
+
+.row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
 .formRow {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 24px;
+  align-items: flex-end;
   margin-bottom: 0;
 }
 
+
 .formCol {
   flex: 1 1 0;
-  min-width: 180px;
-  max-width: 260px;
+  min-width: 200px;
+  max-width: 280px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
 }
 
+
 .formColSmall {
-  min-width: 120px;
-  max-width: 160px;
+  min-width: 140px;
+  max-width: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
+
 .formColLarge {
-  min-width: 220px;
-  max-width: 320px;
+  min-width: 240px;
+  max-width: 340px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 .formLabel {
@@ -82,6 +102,13 @@
 
 .formItem {
   margin-bottom: 16px;
+}
+.groupedBg {
+  background: #f5f7fa;
+  border: 1px dashed #b3c2d6;
+  border-radius: 10px;
+  padding: 18px 14px 14px 14px;
+  margin-bottom: 18px;
 }
 
 .buttonGroup {

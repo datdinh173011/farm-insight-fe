@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Input, Button, Checkbox, InputNumber} from 'antd'
+import { Form, Input, Button, Checkbox, InputNumber, Divider} from 'antd'
 import styles from './TechniqueFormTrunQue.module.scss';
 
 const questions = [
@@ -8,9 +8,15 @@ const questions = [
   'Bạn có gặp khó khăn về môi trường nuôi không?'
 ]
 
-export default function TechniqueFormTrunQue({ onFinish, onBack }) {
+export default function TechniqueFormTrunQue({ form, onFinish, onBack, initialValues }) {
   return (
-    <Form layout="vertical" onFinish={onFinish} initialValues={{}} style={{ maxWidth: 1200, margin: '0 auto' }}>
+    <Form
+      form={form}
+      layout="vertical"
+      onFinish={onFinish}
+      initialValues={initialValues || {}}
+      style={{ maxWidth: 1200, margin: '0 auto' }}
+    >
       <div style={{fontWeight:'bold',fontSize:18,marginBottom:8}}>A. Nhóm câu hỏi: Loại phụ phẩm cây trồng, vật nuôi, Quản lý phụ phẩm cây trồng vật nuôi và chất thải SAU KHI nuôi trùn quế (Từ TRƯỚC đến NAY)</div>
       <div style={{background:'#f5f7fa',border:'1px dashed #b3c2d6',borderRadius:10,padding:18,marginBottom:24}}>
         <div style={{display:'flex',gap:16,marginBottom:8}}>
@@ -47,7 +53,8 @@ export default function TechniqueFormTrunQue({ onFinish, onBack }) {
         </div>
       </div>
       {/* Section B, C, D would follow similar structure, with grouped backgrounds and sub-fields as described. For brevity, only section A is fully implemented here. */}
-          <div style={{fontWeight:'bold',fontSize:18,marginBottom:8}}>B. Quản lý sử dụng thức ăn cho trùn quế & sản phẩm trùn quế thu được (1 lứa nuôi gần đây nhất)</div>
+          <div className={styles.sectionTitle}>B. Quản lý sử dụng thức ăn cho trùn quế & sản phẩm trùn quế thu được (1 lứa nuôi gần đây nhất)</div>
+            <Divider className={styles.divider} />
           <div style={{background:'#f5f7fa',border:'1px dashed #b3c2d6',borderRadius:10,padding:18,marginBottom:24}}>
             <div style={{display:'flex',gap:16,marginBottom:8}}>
               <Form.Item name="loaiPhuPhamThucAn" label="Loại phụ phẩm nông nghiệp làm thức ăn cho trùn quế" rules={[{required:true,message:'Bắt buộc nhập'}]} style={{flex:'1 1 300px'}}><Input /></Form.Item>

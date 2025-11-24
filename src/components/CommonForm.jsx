@@ -1,9 +1,77 @@
-import React from 'react'
-import { Form, Input, InputNumber, Button, Checkbox, Radio, Select, Divider } from 'antd'
 
-export default function CommonForm({ onFinish, onBack }) {
+import React from 'react';
+import { Form, Input, InputNumber, Button, Checkbox, Radio, Select, Divider, message } from 'antd';
+import './CommonForm.module.scss';
+import dayjs from "dayjs";
+
+export default function CommonForm({ onFinish, onBack, generalInfoData, techniqueData}) {
+  const [form] = Form.useForm();
+  const stringifiedGeneralInfo = Object.fromEntries(
+    Object.entries(generalInfoData).map(([key, value]) => {
+        if (value?.format) {
+        // DatePicker (dayjs) → string
+        return [key, value.format("YYYY/MM/DD")];
+        }
+        return [key, String(value ?? "")]; 
+    })
+    );
+
+  // Default back handler if not provided
+  const handleBack = () => {
+    if (onBack) {
+      onBack();
+    } else {
+      if (window && window.history) {
+        window.history.back();
+      }
+    }
+  };
+
+  // API submit handler
+  const handleSubmit = async () => {
+    const commonValues = form.getFieldsValue(true); // get all form values
+    // Merge all data
+    // const payload = {
+    //   generalInfo: generalInfoData,
+    //   technique: techniqueData,
+    //   common: commonValues,
+    // };
+    const payload = {
+        "template_type" : String(generalInfoData.technique),
+        "ho_ten" : String(generalInfoData.fullName),
+        "nam_sinh" : dayjs(generalInfoData.dateOfBirth).format("YYYY/MM/DD"),
+        "so_dien_thoai" : String(generalInfoData.phone),
+        "thon" : String(generalInfoData.village),
+        "xa" : String(generalInfoData.commune),
+        "tinh" : String(generalInfoData.province),
+        "data": {
+            ...techniqueData,
+            ...commonValues,
+        },
+        "status": "submitted"
+        
+    }
+    try {
+      const response = await fetch('https://isatsbangkhaosat.com:81/api/forms/submissions/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+      if (response.ok) {
+        message.success('Gửi phiếu thành công!');
+        if (onFinish) onFinish(payload);
+      } else {
+        message.error('Gửi phiếu thất bại!');
+      }
+    } catch (error) {
+      message.error('Có lỗi khi gửi phiếu!');
+    }
+  };
+
   return (
-    <Form layout="vertical" onFinish={onFinish} initialValues={{}} style={{maxWidth: 1200, margin: '0 auto'}}>
+    <Form form={form} layout="vertical" initialValues={{}} style={{maxWidth: 1200, margin: '0 auto'}}>
       <h3>Nhóm câu hỏi chung - phỏng vấn hộ gia đình</h3>
       <Divider />
       {/* 40. Xử lý phụ phẩm cây trồng - hiển thị dạng bảng */}
@@ -573,8 +641,8 @@ export default function CommonForm({ onFinish, onBack }) {
       ]} /> </Form.Item>
       <Divider />
       <Form.Item>
-        <Button onClick={onBack}>Quay lại</Button>
-        <Button type="primary" htmlType="submit" style={{ marginLeft: 8 }}>Gửi toàn bộ phiếu</Button>
+        <Button onClick={handleBack}>Quay lại</Button>
+        <Button type="primary" style={{ marginLeft: 8 }} onClick={handleSubmit}>Gửi toàn bộ phiếu</Button>
       </Form.Item>
     </Form>
   )

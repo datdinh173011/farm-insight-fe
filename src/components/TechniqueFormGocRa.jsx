@@ -8,9 +8,15 @@ const questions = [
   'Bạn có gặp khó khăn về chi phí không?'
 ]
 
-export default function TechniqueFormGocRa({ onFinish, onBack }) {
+export default function TechniqueFormGocRa({ form, onFinish, onBack, initialValues }) {
   return (
-    <Form layout="vertical" onFinish={onFinish} initialValues={{}} style={{ maxWidth: 1200, margin: '0 auto' }}>
+    <Form
+      form={form}
+      layout="vertical"
+      onFinish={onFinish}
+      initialValues={initialValues || {}}
+      style={{ maxWidth: 1200, margin: '0 auto' }}
+    >
       <div className={styles.sectionTitle}>A. Loại phụ phẩm cây trồng, Quản lý phụ phẩm cây trồng và chất thải</div>
       <div className={styles.formSectionBg}>
         <div className={styles.row}>

@@ -6,12 +6,6 @@
   margin-bottom: 24px;
 }
 
-.sectionTitle {
-  font-weight: bold;
-  font-size: 18px;
-  margin-bottom: 8px;
-}
-
 .row {
   display: flex;
   gap: 16px;
@@ -41,7 +35,16 @@
   gap: 16px;
 }
 
+.sectionTitle {
+  margin-bottom: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .divider {
-  border-top: 1px solid #b3c2d6;
-  margin: 16px 0;
+  margin: 12px 0 24px 0;
 }

@@ -2,14 +2,20 @@ import React from 'react';
 import { Form, Input, InputNumber, Checkbox, Button, Divider } from 'antd';
 import styles from './TechniqueFormNuoiGa.module.scss';
 
-export default function TechniqueFormNuoiGa({ onFinish, onBack }) {
+export default function TechniqueFormNuoiGa({ form, onFinish, onBack, initialValues }) {
   return (
-    <Form layout="vertical" onFinish={onFinish} initialValues={{}} style={{ maxWidth: 1200, margin: '0 auto' }}>
-  <div className={styles.sectionTitle}>Kỹ thuật: Nuôi gà trên đệm lót sinh học dày</div>
+    <Form 
+        form={form}
+        layout="vertical"
+        initialValues={initialValues || {}}
+        onFinish={onFinish}
+        style={{ maxWidth: 1200, margin: '0 auto' }}
+    >
+    <div className={styles.sectionTitle}>Kỹ thuật: Nuôi gà trên đệm lót sinh học dày</div>
 
     <div className={styles.sectionTitle}>A. Quản lý phụ phẩm cây trồng SAU KHI sử dụng đệm lót sinh học dày</div>
     <Divider className={styles.divider} />
-      {[0,1,2].map(i => (
+      {[0].map(i => (
         <div key={i} className={styles.formSection}>
           <div className={styles.formRow}>
             <Form.Item className={styles.formCol} name={[`sauDemLot`,i,'tenPhuPhamTruoc']} label={<span className={styles.formLabel}>Tên phụ phẩm cây trồng (tận dụng làm đệm lót sinh học dày TỪ TRƯỚC ĐẾN NAY)</span>} rules={i===0?[{required:true,message:'Bắt buộc nhập tên phụ phẩm'}]:[]}> <Input /> </Form.Item>
@@ -37,7 +43,7 @@ export default function TechniqueFormNuoiGa({ onFinish, onBack }) {
 
   <div className={styles.sectionTitle}>B. Quản lý phụ phẩm cây trồng TRƯỚC KHI áp dụng kỹ thuật nuôi gà trên đệm lót sinh học dày (NĂM 2022)</div>
   <Divider className={styles.divider} />
-      {[0,1,2].map(i => (
+      {[0].map(i => (
         <div key={i} className={styles.formSection}>
           <div className={styles.formRow}>
             <Form.Item className={styles.formCol} name={[`truocDemLot`,i,'loaiCayTruoc']} label={<span className={styles.formLabel}>Loại cây trồng, TRƯỚC KHI áp dụng kỹ thuật</span>} rules={i===0?[{required:true,message:'Bắt buộc nhập loại cây trồng'}]:[]}> <Input /> </Form.Item>
@@ -51,7 +57,7 @@ export default function TechniqueFormNuoiGa({ onFinish, onBack }) {
 
   <div className={styles.sectionTitle}>C. Sử dụng PHÂN Ủ từ lớp đệm lót làm phân bón cây trồng, sức khoẻ cây trồng, hiệu quả kinh tế SAU và TRƯỚC khi sử dụng phân ủ</div>
   <Divider className={styles.divider} />
-      {[0,1,2].map(i => (
+      {[0].map(i => (
         <div key={i} className={styles.formSection}>
           {/* Dòng các câu hỏi đơn */}
           <div className={styles.formRow}>
@@ -134,7 +140,7 @@ export default function TechniqueFormNuoiGa({ onFinish, onBack }) {
 
   <div className={styles.sectionTitle}>D. Sử dụng thức ăn, sức khỏe ĐÀN GÀ và kinh tế SAU và TRƯỚC khi nuôi gà trên đệm lót sinh học dày</div>
   <Divider className={styles.divider} />
-      {[0,1,2].map(i => (
+      {[0].map(i => (
         <div key={i} className={styles.formSection}>
           {/* Số lượng gà label riêng 1 hàng */}
           <div className={styles.formRow}>
