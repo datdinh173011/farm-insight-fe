@@ -27,7 +27,7 @@
   align-items: flex-end;
 }
 .formCol {
-  flex: 1 1 220px;
+  flex: 1 1 calc(50% - 8px);
   min-width: 220px;
 }
 .formColSmall {
@@ -49,8 +49,6 @@
   text-overflow: ellipsis;
 }
 .buttonGroup {
-  display: flex;
-  justify-content: flex-end;
-  gap: 16px;
+  text-align: center;
   margin-top: 32px;
 }

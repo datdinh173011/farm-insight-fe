@@ -140,116 +140,302 @@ export default function TechniqueFormLenMen({ form, onFinish, onBack, initialVal
       <Divider className={styles.divider} />
       {Array.from({length: thucAnMenCount}).map((_, i) => (
         <div key={i} className={styles.formSection}>
-          <div className={styles.row}>
-            <div className={styles.col}>
-              <Form.Item className={styles.formItem} name={[`thucAnMen`, i, 'tenVatNuoi']} label={<span className={styles.formLabel}>Tên vật nuôi</span>} > <Input /> </Form.Item>
-            </div>
+          {/* Input for animal name */}
+          <div style={{ marginBottom: 24 }}>
+            <Form.Item 
+              name={[`thucAnMen`, i, 'tenVatNuoi']} 
+              label={<span style={{ fontWeight: 600 }}>Tên vật nuôi sử dụng thức ăn ủ lên men</span>}
+              rules={[]}
+            >
+              <Input placeholder='Ví dụ: Lợn, Gà...' />
+            </Form.Item>
           </div>
-          <div key={i} className={styles.groupedBg}>
-                <div className={styles.label}><span style={{fontWeight:'500'}}>Tổng số lứa (đợt nuôi) & Số ngày nuôi/ lứa, đã sử dụng thức ăn ủ lên men (trước đến nay) </span></div>
-                    <div className={styles.row}>
-                        <div className={styles.col} style={{width:'50%'}}>
-                            <Form.Item name={[`thucAnMen`, i, 'soLuaSauMen']} label="SAU KHI SỬ DỤNG THỨC ĂN Ủ LÊN MEN" rules={i===0?[{required:true,message:'Bắt buộc nhập'}]:[] }>
-                            <InputNumber min={0} style={{width:'100%'}} />
-                            </Form.Item>
-                        </div>
-                        <div className={styles.col} style={{width:'50%'}}>
-                            <Form.Item name={[`thucAnMen`, i, 'soLuaKhongMen']} label="TRƯỚC KHI SỬ DỤNG THỨC ĂN Ủ LÊN MEN" rules={i===0?[{required:true,message:'Bắt buộc nhập'}]:[] }>
-                            <InputNumber min={0} style={{width:'100%'}} />
-                            </Form.Item>
-                        </div>
-                </div>
-            </div>
-      <div key={i} className={styles.groupedBg}>
-        <div className={styles.label}><span style={{fontWeight:'500'}}>Số lượng vật nuôi (số con/lứa) </span></div>
-          <div className={styles.row}>
-            <div className={styles.col} style={{width:'50%'}}>
-              <Form.Item name={[`thucAnMen`, i, 'soLuongVatNuoiSau']} label="SAU KHI SỬ DỤNG THỨC ĂN Ủ LÊN MEN" rules={i===0?[{required:true,message:'Bắt buộc nhập'}]:[] }>
-              <InputNumber min={0} style={{width:'100%'}} />
-              </Form.Item>
-            </div>
-            <div className={styles.col} style={{width:'50%'}}>
-              <Form.Item name={[`thucAnMen`, i, 'soLuongVatNuoiKhong']} label="TRƯỚC KHI SỬ DỤNG THỨC ĂN Ủ LÊN MEN" rules={i===0?[{required:true,message:'Bắt buộc nhập'}]:[] }>
-              <InputNumber min={0} style={{width:'100%'}} />
-              </Form.Item>
-            </div>
-        </div>
-      </div>
-            <div className={styles.groupedBg}>
-                <div style={{fontWeight:'bold',marginBottom:4}}>Số lượng từng loại phân bón (kg/sào)</div>
-                <div style={{display:'flex',gap:16}}>
-                    <div style={{flex:'1 1 300px'}}>
-                        <div style={{marginBottom:2}}>SAU KHI BÓN PHÂN Ủ</div>
-            <Form.Item name={[`thucAnMen`,i,'khoiLuongSauMen','thucAnMen']} label="Thức ăn ủ lên men" rules={i===0?[{required:true,message:'Bắt buộc nhập'}]:[] } style={{marginBottom:4}}>
-                            <Input style={{width:'100%'}} />
-                        </Form.Item>
-            <Form.Item name={[`thucAnMen`,i,'khoiLuongSauMen','sauCanxi']} label="Sâu canxi/trùn quế"rules={i===0?[{required:true,message:'Bắt buộc nhập'}]:[] } style={{marginBottom:4}}>
-                            <InputNumber min={0} style={{width:'100%'}} />
-                        </Form.Item>
-            <Form.Item name={[`thucAnMen`,i,'khoiLuongSauMen','tinhNgoGao']} label="Thức ăn tinh (ngô, gạo)"rules={i===0?[{required:true,message:'Bắt buộc nhập'}]:[] } style={{marginBottom:4}}>
-                            <Input style={{width:'100%'}} />
-                        </Form.Item>
-            <Form.Item name={[`thucAnMen`,i,'khoiLuongSauMen','tongHopVien']} label="Thức ăn tổng hợp/viên"rules={i===0?[{required:true,message:'Bắt buộc nhập'}]:[] }style={{marginBottom:4}}>
-                            <Input style={{width:'100%'}} />
-                        </Form.Item>
-            <Form.Item name={[`thucAnMen`,i,'khoiLuongSauMen','thucAnXanh']} label="Thức ăn xanh"rules={i===0?[{required:true,message:'Bắt buộc nhập'}]:[] } style={{marginBottom:4}}>
-                            <Input style={{width:'100%'}} />
-                        </Form.Item>
+
+          {/* Main table */}
+          <div style={{ overflowX: 'auto', marginBottom: 24 }}>
+            <table style={{ 
+              width: '100%', 
+              borderCollapse: 'collapse',
+              border: '1px solid #d9d9d9',
+              fontSize: '12px'
+            }}>
+              <thead>
+                <tr style={{ backgroundColor: '#fafafa' }}>
+                  <th style={{ border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', fontWeight: 600, minWidth: 120 }}>
+                    Thời điểm
+                  </th>
+                  <th style={{ border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', fontWeight: 600, minWidth: 180 }}>
+                    5b. Tổng số lứa (đợt nuôi) & Số ngày nuôi/ lứa, đã sử dụng thức ăn ủ lên men (trước đến nay)
+                  </th>
+                  <th style={{ border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', fontWeight: 600, minWidth: 180 }}>
+                    5c. Số lượng vật nuôi (số con/lứa)
+                  </th>
+                  <th style={{ border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', fontWeight: 600, minWidth: 250 }}>
+                    6a. Khối lượng từng loại thức ăn cho vật nuôi trong 1 lứa (kg/con/lứa) x số con/lứa
+                  </th>
+                  <th style={{ border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', fontWeight: 600, minWidth: 250 }}>
+                    6b. Số tiền đã chi mua từng loại thức ăn cho vật nuôi (số tiền = khối lượng thức ăn/con/lứa x đơn giá) x số con / lứa
+                  </th>
+                  <th style={{ border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', fontWeight: 600, minWidth: 180 }}>
+                    6c. Số tiền chi mua thuốc thú y (đồng/lứa)
+                  </th>
+                  <th style={{ border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', fontWeight: 600, minWidth: 180 }}>
+                    6d. Vật nuôi có bị bất kỳ bệnh nào không (có/không)
+                  </th>
+                  <th style={{ border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', fontWeight: 600, minWidth: 180 }}>
+                    6e. Bạn đánh giá sức khỏe vật nuôi như thế nào (1 = cực kỳ tệ, 10: rất tốt)
+                  </th>
+                  <th style={{ border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', fontWeight: 600, minWidth: 180 }}>
+                    6f. Vật nuôi có phát triển nhanh hơn và/hoặc lớn hơn
+                  </th>
+                  <th style={{ border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', fontWeight: 600, minWidth: 180 }}>
+                    6g. Thời gian nuôi đến khi xuất chuồng (tháng)
+                  </th>
+                  <th style={{ border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', fontWeight: 600, minWidth: 180 }}>
+                    6h. Trọng lượng trung bình khi xuất chuồng (kg/con)
+                  </th>
+                  <th style={{ border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', fontWeight: 600, minWidth: 180 }}>
+                    6i. Giá bán (đồng/kg)
+                  </th>
+                  <th style={{ border: '1px solid #d9d9d9', padding: '8px', textAlign: 'center', fontWeight: 600, minWidth: 180 }}>
+                    6j. Thành tiền (đồng)
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {/* Row 1: SAU KHI SỬ DỤNG THỨC ĂN Ủ LÊN MEN */}
+                <tr>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px', fontWeight: 600, backgroundColor: '#f6ffed', textAlign: 'center' }}>
+                    TRƯỚC KHI SỬ DỤNG<br/>THỨC ĂN Ủ LÊN MEN
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <div style={{ fontSize: '11px', marginBottom: '2px' }}>
+                      <Form.Item name={[`thucAnMen`, i, 'soLuaSauMen']} rules={[]} style={{ marginBottom: 0 }}>
+                        <InputNumber placeholder='Lứa' size='small' style={{ width: '100%' }} min={0} />
+                      </Form.Item>
                     </div>
-          <div style={{flex:'1 1 300px'}}>
-            <div style={{marginBottom:2}}>KHÔNG BÓN PHÂN Ủ</div>
-            {/* use separate keys for 'khong' group to avoid overwriting the 'sau' values */}
-            <Form.Item name={[`thucAnMen`,i,'khoiLuongKhongMen','sauCanxi']} label="Sâu canxi/trùn quế"rules={i===0?[{required:true,message:'Bắt buộc nhập'}]:[] } style={{marginBottom:4}}>
-              <InputNumber min={0} style={{width:'100%'}} />
-            </Form.Item>
-            <Form.Item name={[`thucAnMen`,i,'khoiLuongKhongMen','tinhNgoGao']} label="Thức ăn tinh (ngô, gạo)"rules={i===0?[{required:true,message:'Bắt buộc nhập'}]:[] } style={{marginBottom:4}}>
-              <Input style={{width:'100%'}} />
-            </Form.Item>
-            <Form.Item name={[`thucAnMen`,i,'khoiLuongKhongMen','tongHopVien']} label="Thức ăn tổng hợp/viên"rules={i===0?[{required:true,message:'Bắt buộc nhập'}]:[] }style={{marginBottom:4}}>
-              <Input style={{width:'100%'}} />
-            </Form.Item>
-            <Form.Item name={[`thucAnMen`,i,'khoiLuongKhongMen','thucAnXanh']} label="Thức ăn xanh"rules={i===0?[{required:true,message:'Bắt buộc nhập'}]:[] } style={{marginBottom:4}}>
-              <Input style={{width:'100%'}} />
-            </Form.Item>
-          </div>
-                </div>
-            </div>
-          <div className={styles.row}>
-            <div className={styles.col}>
-              <Form.Item className={styles.formItem} name={[`thucAnMen`,i,'soTienThucAn']} label={<span className={styles.formLabel}>Số tiền đã chi mua từng loại thức ăn</span>} > <Input /> </Form.Item>
-            </div>
-            <div className={styles.col}>
-              <Form.Item className={styles.formItem} name={[`thucAnMen`,i,'soTienThuoc']} label={<span className={styles.formLabel}>Số tiền chi mua thuốc thú y</span>} > <Input /> </Form.Item>
-            </div>
-          </div>
-          <div className={styles.row}>  
-            <div className={styles.col}>
-              <Form.Item className={styles.formItem} name={[`thucAnMen`,i,'vatNuoiBiBenh']} label={<span className={styles.formLabel}>Vật nuôi có bị bệnh không</span>}> <Input placeholder='Có/Không' /> </Form.Item>
-            </div>
-            <div className={styles.col}>
-              <Form.Item className={styles.formItem} name={[`thucAnMen`,i,'danhGiaSucKhoe']} label={<span className={styles.formLabel}>Đánh giá sức khoẻ vật nuôi (1-10)</span>}> <InputNumber min={1} max={10} style={{width:'100%'}} /> </Form.Item>
-            </div>
-          </div>
-          <div className={styles.row}>
-            <div className={styles.col}>
-              <Form.Item className={styles.formItem} name={[`thucAnMen`,i,'vatNuoiPhatTrien']} label={<span className={styles.formLabel}>Vật nuôi phát triển nhanh/lớn hơn</span>}> <Input placeholder='Có/Không' /> </Form.Item>
-            </div>
-            <div className={styles.col}>
-              <Form.Item className={styles.formItem} name={[`thucAnMen`,i,'thoiGianNuoi']} label={<span className={styles.formLabel}>Thời gian nuôi đến khi xuất chuồng (tháng)</span>}> <Input /> </Form.Item>
-            </div>
-          </div>
-          <div className={styles.row}>
-            <div className={styles.col}>
-              <Form.Item className={styles.formItem} name={[`thucAnMen`,i,'trongLuongXuatChuong']} label={<span className={styles.formLabel}>Trọng lượng trung bình khi xuất chuồng</span>}> <Input /> </Form.Item>
-            </div>
-            <div className={styles.col}>
-              <Form.Item className={styles.formItem} name={[`thucAnMen`,i,'giaBan']} label={<span className={styles.formLabel}>Giá bán (đồng/kg)</span>}> <Input /> </Form.Item>
-            </div>
-          </div>
-          <div className={styles.row}>
-            <div className={styles.col}>
-              <Form.Item className={styles.formItem} name={[`thucAnMen`,i,'thanhTien']} label={<span className={styles.formLabel}>Thành tiền (đồng)</span>}> <Input /> </Form.Item>
-            </div>
+                    <div style={{ fontSize: '11px' }}>
+                      <Form.Item name={[`thucAnMen`, i, 'soNgayNuoiSauMen']} rules={[]} style={{ marginBottom: 0 }}>
+                        <InputNumber placeholder='Ngày' size='small' style={{ width: '100%' }} min={0} />
+                      </Form.Item>
+                    </div>
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <Form.Item name={[`thucAnMen`, i, 'soLuongVatNuoiSau']} rules={[]} style={{ marginBottom: 0 }}>
+                      <InputNumber placeholder='Con' size='small' style={{ width: '100%' }} min={0} />
+                    </Form.Item>
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <table style={{ width: '100%', borderCollapse: 'collapse', border: '1px solid #e6e6e6' }}>
+                      <thead>
+                        <tr style={{ backgroundColor: '#f5f5f5' }}>
+                          <th style={{ border: '1px solid #e6e6e6', padding: '3px', fontSize: '11px', fontWeight: 500 }}>Tên thức ăn</th>
+                          <th style={{ border: '1px solid #e6e6e6', padding: '3px', fontSize: '11px', fontWeight: 500 }}>Kg</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {['Thức ăn ủ lên men', 'Sâu canxi/trùn quế', 'Thức ăn tinh (ngô, gạo)', 'Thức ăn tổng hợp/viên', 'Thức ăn xanh'].map((thucAnType, idx) => (
+                          <tr key={idx}>
+                            <td style={{ border: '1px solid #e6e6e6', padding: '3px' }}>
+                              <Form.Item name={[`thucAnMen`, i, `sauMen_tenThucAn_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                                <Input placeholder={thucAnType} size='small' style={{ fontSize: '11px' }} />
+                              </Form.Item>
+                            </td>
+                            <td style={{ border: '1px solid #e6e6e6', padding: '3px' }}>
+                              <Form.Item name={[`thucAnMen`, i, `sauMen_kg_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                                <Input placeholder='Kg' size='small' style={{ fontSize: '11px' }} />
+                              </Form.Item>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <table style={{ width: '100%', borderCollapse: 'collapse', border: '1px solid #e6e6e6' }}>
+                      <thead>
+                        <tr style={{ backgroundColor: '#f5f5f5' }}>
+                          <th style={{ border: '1px solid #e6e6e6', padding: '3px', fontSize: '11px', fontWeight: 500 }}>Tên thức ăn</th>
+                          <th style={{ border: '1px solid #e6e6e6', padding: '3px', fontSize: '11px', fontWeight: 500 }}>đồng</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {['Thức ăn ủ lên men', 'Sâu canxi/trùn quế', 'Thức ăn tinh (ngô, gạo)', 'Thức ăn tổng hợp/viên', 'Thức ăn xanh'].map((thucAnType, idx) => (
+                          <tr key={idx}>
+                            <td style={{ border: '1px solid #e6e6e6', padding: '3px' }}>
+                              <Form.Item name={[`thucAnMen`, i, `sauMen_tenThucAnTien_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                                <Input placeholder={thucAnType} size='small' style={{ fontSize: '11px' }} />
+                              </Form.Item>
+                            </td>
+                            <td style={{ border: '1px solid #e6e6e6', padding: '3px' }}>
+                              <Form.Item name={[`thucAnMen`, i, `sauMen_tien_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                                <Input placeholder='đồng' size='small' style={{ fontSize: '11px' }} />
+                              </Form.Item>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <Form.Item name={[`thucAnMen`, i, 'tienThuocSauMen']} rules={[]} style={{ marginBottom: 0 }}>
+                      <Input placeholder='đồng' size='small' />
+                    </Form.Item>
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <Form.Item name={[`thucAnMen`, i, 'vatNuoiBiBenhSau']} rules={[]} style={{ marginBottom: 0 }}>
+                      <Input placeholder='Có/Không' size='small' />
+                    </Form.Item>
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <Form.Item name={[`thucAnMen`, i, 'danhGiaSucKhoeSau']} rules={[]} style={{ marginBottom: 0 }}>
+                      <InputNumber min={1} max={10} placeholder='1-10' size='small' style={{ width: '100%' }} />
+                    </Form.Item>
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <Form.Item name={[`thucAnMen`, i, 'vatNuoiPhatTrienSau']} rules={[]} style={{ marginBottom: 0 }}>
+                      <Input placeholder='Có/Không' size='small' />
+                    </Form.Item>
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <Form.Item name={[`thucAnMen`, i, 'thoiGianNuoiSau']} rules={[]} style={{ marginBottom: 0 }}>
+                      <Input placeholder='Tháng' size='small' />
+                    </Form.Item>
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <Form.Item name={[`thucAnMen`, i, 'trongLuongXuatSau']} rules={[]} style={{ marginBottom: 0 }}>
+                      <Input placeholder='kg/con' size='small' />
+                    </Form.Item>
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <Form.Item name={[`thucAnMen`, i, 'giaBanSau']} rules={[]} style={{ marginBottom: 0 }}>
+                      <Input placeholder='đồng/kg' size='small' />
+                    </Form.Item>
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <Form.Item name={[`thucAnMen`, i, 'thanhTienSau']} rules={[]} style={{ marginBottom: 0 }}>
+                      <Input placeholder='đồng' size='small' />
+                    </Form.Item>
+                  </td>
+                </tr>
+
+                {/* Row 2: TRƯỚC KHI SỬ DỤNG THỨC ĂN Ủ LÊN MEN */}
+                <tr>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px', fontWeight: 600, backgroundColor: '#e6f7ff', textAlign: 'center' }}>
+                    SAU KHI SỬ DỤNG <br/>THỨC ĂN Ủ LÊN MEN
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <div style={{ fontSize: '11px', marginBottom: '2px' }}>
+                      <Form.Item name={[`thucAnMen`, i, 'soLuaTruocMen']} rules={[]} style={{ marginBottom: 0 }}>
+                        <InputNumber placeholder='Lứa' size='small' style={{ width: '100%' }} min={0} />
+                      </Form.Item>
+                    </div>
+                    <div style={{ fontSize: '11px' }}>
+                      <Form.Item name={[`thucAnMen`, i, 'soNgayNuoiTruocMen']} rules={[]} style={{ marginBottom: 0 }}>
+                        <InputNumber placeholder='Ngày' size='small' style={{ width: '100%' }} min={0} />
+                      </Form.Item>
+                    </div>
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <Form.Item name={[`thucAnMen`, i, 'soLuongVatNuoiTruoc']} rules={[]} style={{ marginBottom: 0 }}>
+                      <InputNumber placeholder='Con' size='small' style={{ width: '100%' }} min={0} />
+                    </Form.Item>
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <table style={{ width: '100%', borderCollapse: 'collapse', border: '1px solid #e6e6e6' }}>
+                      <thead>
+                        <tr style={{ backgroundColor: '#f5f5f5' }}>
+                          <th style={{ border: '1px solid #e6e6e6', padding: '3px', fontSize: '11px', fontWeight: 500 }}>Tên thức ăn</th>
+                          <th style={{ border: '1px solid #e6e6e6', padding: '3px', fontSize: '11px', fontWeight: 500 }}>Kg</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {['Sâu canxi/trùn quế', 'Thức ăn tinh (ngô, gạo)', 'Thức ăn tổng hợp/viên', 'Thức ăn xanh'].map((thucAnType, idx) => (
+                          <tr key={idx}>
+                            <td style={{ border: '1px solid #e6e6e6', padding: '3px' }}>
+                              <Form.Item name={[`thucAnMen`, i, `truocMen_tenThucAn_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                                <Input placeholder={thucAnType} size='small' style={{ fontSize: '11px' }} />
+                              </Form.Item>
+                            </td>
+                            <td style={{ border: '1px solid #e6e6e6', padding: '3px' }}>
+                              <Form.Item name={[`thucAnMen`, i, `truocMen_kg_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                                <Input placeholder='Kg' size='small' style={{ fontSize: '11px' }} />
+                              </Form.Item>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <table style={{ width: '100%', borderCollapse: 'collapse', border: '1px solid #e6e6e6' }}>
+                      <thead>
+                        <tr style={{ backgroundColor: '#f5f5f5' }}>
+                          <th style={{ border: '1px solid #e6e6e6', padding: '3px', fontSize: '11px', fontWeight: 500 }}>Tên thức ăn</th>
+                          <th style={{ border: '1px solid #e6e6e6', padding: '3px', fontSize: '11px', fontWeight: 500 }}>đồng</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {['Sâu canxi/trùn quế', 'Thức ăn tinh (ngô, gạo)', 'Thức ăn tổng hợp/viên', 'Thức ăn xanh'].map((thucAnType, idx) => (
+                          <tr key={idx}>
+                            <td style={{ border: '1px solid #e6e6e6', padding: '3px' }}>
+                              <Form.Item name={[`thucAnMen`, i, `truocMen_tenThucAnTien_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                                <Input placeholder={thucAnType} size='small' style={{ fontSize: '11px' }} />
+                              </Form.Item>
+                            </td>
+                            <td style={{ border: '1px solid #e6e6e6', padding: '3px' }}>
+                              <Form.Item name={[`thucAnMen`, i, `truocMen_tien_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                                <Input placeholder='đồng' size='small' style={{ fontSize: '11px' }} />
+                              </Form.Item>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <Form.Item name={[`thucAnMen`, i, 'tienThuocTruocMen']} rules={[]} style={{ marginBottom: 0 }}>
+                      <Input placeholder='đồng' size='small' />
+                    </Form.Item>
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <Form.Item name={[`thucAnMen`, i, 'vatNuoiBiBenhTruoc']} rules={[]} style={{ marginBottom: 0 }}>
+                      <Input placeholder='Có/Không' size='small' />
+                    </Form.Item>
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <Form.Item name={[`thucAnMen`, i, 'danhGiaSucKhoeTruoc']} rules={[]} style={{ marginBottom: 0 }}>
+                      <InputNumber min={1} max={10} placeholder='1-10' size='small' style={{ width: '100%' }} />
+                    </Form.Item>
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <Form.Item name={[`thucAnMen`, i, 'vatNuoiPhatTrienTruoc']} rules={[]} style={{ marginBottom: 0 }}>
+                      <Input placeholder='Có/Không' size='small' />
+                    </Form.Item>
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <Form.Item name={[`thucAnMen`, i, 'thoiGianNuoiTruoc']} rules={[]} style={{ marginBottom: 0 }}>
+                      <Input placeholder='Tháng' size='small' />
+                    </Form.Item>
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <Form.Item name={[`thucAnMen`, i, 'trongLuongXuatTruoc']} rules={[]} style={{ marginBottom: 0 }}>
+                      <Input placeholder='kg/con' size='small' />
+                    </Form.Item>
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <Form.Item name={[`thucAnMen`, i, 'giaBanTruoc']} rules={[]} style={{ marginBottom: 0 }}>
+                      <Input placeholder='đồng/kg' size='small' />
+                    </Form.Item>
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <Form.Item name={[`thucAnMen`, i, 'thanhTienTruoc']} rules={[]} style={{ marginBottom: 0 }}>
+                      <Input placeholder='đồng' size='small' />
+                    </Form.Item>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       ))}
