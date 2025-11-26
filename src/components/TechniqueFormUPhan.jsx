@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Form, Input, InputNumber, Button, Checkbox, Divider } from 'antd';
+import { PlusOutlined, DeleteOutlined } from '@ant-design/icons';
 import styles from './TechniqueFormTrunQue.module.scss';
 
 export default function TechniqueFormUPhan({ form, onFinish, onBack, initialValues }) {
+  const [sectionACount, setSectionACount] = useState(1);
+  const [sectionBCount, setSectionBCount] = useState(1);
+  const [sectionCCount, setSectionCCount] = useState(1);
+
   return (
     <Form
       form={form}
@@ -13,177 +18,363 @@ export default function TechniqueFormUPhan({ form, onFinish, onBack, initialValu
     >
       <div className={styles.sectionTitle}>A. Quản lý phụ phẩm cây trồng SAU KHI áp dụng kỹ thuật ủ phân hữu cơ tại ruộng</div>
       <Divider className={styles.divider} />
-      <div className={styles.formSectionBg}>
-        {[0].map((idx) => (
-          <div key={idx}>
-            <div className={styles.row}>
-              <Form.Item name={`tenPhuPham_${idx}`} label="Tên phụ phẩm cây trồng (tận dụng ủ phân từ trước đến nay)" rules={[{required:true,message:'Bắt buộc nhập'}]} className={styles.col}><Input /></Form.Item>
-              <Form.Item name={`thangNamBatDau_${idx}`} label="Tháng/năm bắt đầu tiến hành ủ phân" rules={[{required:true,message:'Bắt buộc nhập'}]} className={styles.col}><Input placeholder="Tháng/năm" /></Form.Item>
-            </div>
-            <div className={styles.row}>
-              <Form.Item name={`tenPhuPhamTanDung_${idx}`} label="Tên phụ phẩm cây trồng tận dụng để ủ phân" rules={[{required:true,message:'Bắt buộc nhập'}]} className={styles.col}><Input /></Form.Item>
-              <Form.Item name={`khoiLuongPhuPhamTrenRuong_${idx}`} label="Khối lượng phụ phẩm cây trồng có trên đồng ruộng (kg/sào x số sào)" rules={[{required:true,message:'Bắt buộc nhập'}]} className={styles.col}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
-            </div>
-            <div className={styles.row}>
-              <Form.Item name={`khoiLuongPhuPhamThuGom_${idx}`} label="Khối lượng phụ phẩm cây trồng thu gom được (kg/sào x số sào)" rules={[{required:true,message:'Bắt buộc nhập'}]} className={styles.col}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
-              <Form.Item name={`tongKhoiLuongPhuPhamSuDung_${idx}`} label="Tổng khối lượng phụ phẩm cây trồng được sử dụng để ủ phân (kg/sào x số sào)" rules={[{required:true,message:'Bắt buộc nhập'}]} className={styles.col}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
-            </div>
-            <div className={styles.row}>
-              <Form.Item name={`khoiLuongPhanHuuCoThuDuoc_${idx}`} label="Khối lượng phân hữu cơ thu được sau khi ủ (kg/sào x số sào)" rules={[{required:true,message:'Bắt buộc nhập'}]} className={styles.col}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
-              <Form.Item name={`nhungLoaiCayDuocBonPhan_${idx}`} label="Những loại cây trồng được bón phân ủ hữu cơ (1 ô ghi 1 loại cây trồng)" rules={[{required:true,message:'Bắt buộc nhập'}]} className={styles.col}><Input /></Form.Item>
-            </div>
-            <div className={styles.row}>
-              <Form.Item name={`tongSoMuaVuBonPhan_${idx}`} label="Tổng số mùa vụ đã được bón phân ủ hữu cơ (theo từng loại cây trồng)" rules={[{required:true,message:'Bắt buộc nhập'}]} className={styles.col}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
-              <Form.Item name={`dienTichCayDuocBonPhan_${idx}`} label="Diện tích cây trồng được bón phân ủ hữu cơ (số sào/vụ)" rules={[{required:true,message:'Bắt buộc nhập'}]} className={styles.col}><Input /></Form.Item>
-            </div>
-            <div className={styles.row}>
-              <Form.Item name={`suDungMayCatNho_${idx}`} label="Sử dụng máy để băm/cắt nhỏ phụ phẩm cây trồng" rules={[{required:true,message:'Bắt buộc nhập'}]} className={styles.col}>
-                <Input placeholder='Có/Không'/>
-              </Form.Item>
-              <Form.Item name={`nhienLieuSuDung_${idx}`} label="Lượng nhiên liệu đã sử dụng (dầu diesel/ hoặc điện)" rules={[{required:true,message:'Bắt buộc nhập'}]} className={styles.col}>
-                <Input placeholder="Dầu ... lít, Điện ... kw" />
-              </Form.Item>
-            </div>
-            <div className={styles.row}>
-              <Form.Item name={`chiPhiVatLieuKhac_${idx}`} label="Chi phí vật liệu/đầu vào khác (nhân công, ống thông khí, bạt, chế phẩm, rỉ mật…) (đồng)" rules={[{required:true,message:'Bắt buộc nhập'}]} className={styles.col}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
-            </div>
+      {Array.from({ length: sectionACount }).map((_, i) => (
+        <div key={i} className={styles.formSectionBg}>
+          <div className={styles.row}>
+            <Form.Item name={[`sectionA`, i, 'tenPhuPham']} label="Tên phụ phẩm cây trồng (tận dụng ủ phân từ trước đến nay)" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} className={styles.col}><Input /></Form.Item>
+            <Form.Item name={[`sectionA`, i, 'thangNamBatDau']} label="Tháng/năm bắt đầu tiến hành ủ phân" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} className={styles.col}><Input placeholder="Tháng/năm" /></Form.Item>
           </div>
-        ))}
+          <div className={styles.row}>
+            <Form.Item name={[`sectionA`, i, 'tenPhuPhamTanDung']} label="Tên phụ phẩm cây trồng tận dụng để ủ phân" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} className={styles.col}><Input /></Form.Item>
+            <Form.Item name={[`sectionA`, i, 'khoiLuongPhuPhamTrenRuong']} label="Khối lượng phụ phẩm cây trồng có trên đồng ruộng (kg/sào x số sào)" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} className={styles.col}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
+          </div>
+          <div className={styles.row}>
+            <Form.Item name={[`sectionA`, i, 'khoiLuongPhuPhamThuGom']} label="Khối lượng phụ phẩm cây trồng thu gom được (kg/sào x số sào)" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} className={styles.col}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
+            <Form.Item name={[`sectionA`, i, 'tongKhoiLuongPhuPhamSuDung']} label="Tổng khối lượng phụ phẩm cây trồng được sử dụng để ủ phân (kg/sào x số sào)" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} className={styles.col}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
+          </div>
+          <div className={styles.row}>
+            <Form.Item name={[`sectionA`, i, 'khoiLuongPhanHuuCoThuDuoc']} label="Khối lượng phân hữu cơ thu được sau khi ủ (kg/sào x số sào)" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} className={styles.col}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
+            <Form.Item name={[`sectionA`, i, 'nhungLoaiCayDuocBonPhan']} label="Những loại cây trồng được bón phân ủ hữu cơ (1 ô ghi 1 loại cây trồng)" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} className={styles.col}><Input /></Form.Item>
+          </div>
+          <div className={styles.row}>
+            <Form.Item name={[`sectionA`, i, 'tongSoMuaVuBonPhan']} label="Tổng số mùa vụ đã được bón phân ủ hữu cơ (theo từng loại cây trồng)" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} className={styles.col}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
+            <Form.Item name={[`sectionA`, i, 'dienTichCayDuocBonPhan']} label="Diện tích cây trồng được bón phân ủ hữu cơ (số sào/vụ)" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} className={styles.col}><Input /></Form.Item>
+          </div>
+          <div className={styles.row}>
+            <Form.Item name={[`sectionA`, i, 'suDungMayCatNho']} label="Sử dụng máy để băm/cắt nhỏ phụ phẩm cây trồng" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} className={styles.col}>
+              <Input placeholder='Có/Không'/>
+            </Form.Item>
+            <Form.Item name={[`sectionA`, i, 'nhienLieuSuDung']} label="Lượng nhiên liệu đã sử dụng (dầu diesel/ hoặc điện)" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} className={styles.col}>
+              <Input placeholder="Dầu ... lít, Điện ... kw" />
+            </Form.Item>
+          </div>
+          <div className={styles.row}>
+            <Form.Item name={[`sectionA`, i, 'chiPhiVatLieuKhac']} label="Chi phí vật liệu/đầu vào khác (nhân công, ống thông khí, bạt, chế phẩm, rỉ mật…) (đồng)" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} className={styles.col}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
+          </div>
+        </div>
+      ))}
+      <div className={styles.buttonGroup} style={{ marginTop: 16, marginBottom: 32 }}>
+        <Button icon={<PlusOutlined />} onClick={() => setSectionACount(sectionACount + 1)}>Thêm phần</Button>
+        {sectionACount > 1 && (
+          <Button danger icon={<DeleteOutlined />} onClick={() => setSectionACount(sectionACount - 1)}>Xóa phần cuối</Button>
+        )}
       </div>
       <div className={styles.sectionTitle}>B. Quản lý phụ phẩm cây trồng TRƯỚC KHI (NĂM 2022) áp dụng kỹ thuật ủ phân hữu cơ tại ruộng</div>
       <Divider className={styles.divider} />
-      <div className={styles.formSectionBg}>
-        {[0].map((idx) => (
-          <div key={idx}>
-            <div className={styles.row}>
-              <Form.Item name={`loaiCayTrongTruoc_${idx}`} label="Loại cây trồng" rules={[{required:true,message:'Bắt buộc nhập'}]} className={styles.col}><Input /></Form.Item>
-              <Form.Item name={`coTrongTruoc_${idx}`} label="Có trồng không?" rules={[{required:true,message:'Bắt buộc nhập'}]} className={styles.col}>
-                <Input placeholder='Có/Không'/>
-              </Form.Item>
-            </div>
-            <div className={styles.row}>
-              <Form.Item name={`dienTichDatTruoc_${idx}`} label="Diện tích đất trồng cây (sào/vụ x số vụ/năm)" rules={[{required:true,message:'Bắt buộc nhập'}]} className={styles.col}><Input /></Form.Item>
-              <Form.Item name={`tenPhuPhamTruoc_${idx}`} label="Tên phụ phẩm cây trồng (ghi tên từng loại)" rules={[{required:true,message:'Bắt buộc nhập'}]} className={styles.col}><Input /></Form.Item>
-            </div>
-            <div className={styles.row}>
-              <Form.Item name={`khoiLuongPhuPhamTruoc_${idx}`} label="Khối lượng phụ phẩm cây trồng (kg/sào/vụ x số sào)" rules={[{required:true,message:'Bắt buộc nhập'}]} className={styles.col}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
-              <Form.Item name={`khoiLuongPhuPhamThuGomTruoc_${idx}`} label="Khối lượng phụ phẩm cây trồng được thu gom (kg/sào/vụ x số sào)" rules={[{required:true,message:'Bắt buộc nhập'}]} className={styles.col}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
-            </div>
+      {Array.from({ length: sectionBCount }).map((_, i) => (
+        <div key={i} className={styles.formSectionBg}>
+          <div className={styles.row}>
+            <Form.Item name={[`sectionB`, i, 'loaiCayTrongTruoc']} label="Loại cây trồng" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} className={styles.col}><Input /></Form.Item>
+            <Form.Item name={[`sectionB`, i, 'coTrongTruoc']} label="Có trồng không?" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} className={styles.col}>
+              <Input placeholder='Có/Không'/>
+            </Form.Item>
           </div>
-        ))}
+          <div className={styles.row}>
+            <Form.Item name={[`sectionB`, i, 'dienTichDatTruoc']} label="Diện tích đất trồng cây (sào/vụ x số vụ/năm)" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} className={styles.col}><Input /></Form.Item>
+            <Form.Item name={[`sectionB`, i, 'tenPhuPhamTruoc']} label="Tên phụ phẩm cây trồng (ghi tên từng loại)" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} className={styles.col}><Input /></Form.Item>
+          </div>
+          <div className={styles.row}>
+            <Form.Item name={[`sectionB`, i, 'khoiLuongPhuPhamTruoc']} label="Khối lượng phụ phẩm cây trồng (kg/sào/vụ x số sào)" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} className={styles.col}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
+            <Form.Item name={[`sectionB`, i, 'khoiLuongPhuPhamThuGomTruoc']} label="Khối lượng phụ phẩm cây trồng được thu gom (kg/sào/vụ x số sào)" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} className={styles.col}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
+          </div>
+        </div>
+      ))}
+      <div className={styles.buttonGroup} style={{ marginTop: 16, marginBottom: 32 }}>
+        <Button icon={<PlusOutlined />} onClick={() => setSectionBCount(sectionBCount + 1)}>Thêm phần</Button>
+        {sectionBCount > 1 && (
+          <Button danger icon={<DeleteOutlined />} onClick={() => setSectionBCount(sectionBCount - 1)}>Xóa phần cuối</Button>
+        )}
       </div>
-      <div className={styles.sectionTitle}>C. Sử dụng phân ủ làm phân bón cây trồng, sức khoẻ cây trồng, hiệu quả kinh tế SAU và TRƯỚC khi sử dụng phân ủ hữu cơ</div>
+      <div className={styles.sectionTitle}>C. Sử dụng phân ủ làm phân bón cây trồng, sức khoẻ cây trồng, hiệu quả kinh tế SAU và TRƯỚC khi sử dụng phân ủ hữu cơ (Tính cho 1 VỤ cây trồng GẦN ĐÂY NHẤT)</div>
       <Divider className={styles.divider} />
-      <div className={styles.formSectionBg}>
-        {[0].map((idx) => (
-          <div key={idx}>
-            <div style={{display:'flex',gap:16,marginBottom:8}}>
-              <Form.Item name={`tenCayTrongC_${idx}`} label="Tên cây trồng được bón phân ủ hữu cơ" rules={[{required:true,message:'Bắt buộc nhập'}]} style={{ width: '50%' }}><Input /></Form.Item>
-            </div>
-            <div key={idx} className={styles.groupedBg}>
-                <div className={styles.label}>Diện tích (sào) </div>
-                    <div className={styles.row}>
-                        <div className={styles.col} style={{width:'50%'}}>
-                            <Form.Item name={`dienTichSauPhanU_${idx}`} label="SAU KHI BÓN PHÂN Ủ" rules={[{required:true,message:'Bắt buộc nhập'}]}>
-                            <InputNumber min={0} style={{width:'100%'}} />
-                            </Form.Item>
-                        </div>
-                        <div className={styles.col} style={{width:'50%'}}>
-                            <Form.Item name={`dienTichKhongPhanU_${idx}`} label="KHÔNG BÓN PHÂN Ủ" rules={[{required:true,message:'Bắt buộc nhập'}]}>
-                            <InputNumber min={0} style={{width:'100%'}} />
-                            </Form.Item>
-                        </div>
-                </div>
-            </div>
-            <div className={styles.groupedBg}>
-                <div style={{fontWeight:'bold',marginBottom:4}}>Số lượng từng loại phân bón (kg/sào)</div>
-                <div style={{display:'flex',gap:16}}>
-                    <div style={{flex:'1 1 300px'}}>
-                        <div style={{marginBottom:2}}>SAU KHI BÓN PHÂN Ủ</div>
-                        <Form.Item name={`phanBonC_${idx}_1`} label="Phân ủ/đệm lót/trùn quế/sâu canxi (kg/sào)" rules={[{required:true,message:'Bắt buộc nhập'}]} style={{marginBottom:4}}>
-                            <InputNumber min={0} style={{width:'100%'}} />
-                        </Form.Item>
-                        <Form.Item name={`phanBonC_${idx}_2`} label="Phân NPK bón lót (kg/sào)" rules={[{required:true,message:'Bắt buộc nhập'}]} style={{marginBottom:4}}>
-                            <InputNumber min={0} style={{width:'100%'}} />
-                        </Form.Item>
-                        <Form.Item name={`phanBonC_${idx}_3`} label="Phân NPK bón thúc (kg/sào)" rules={[{required:true,message:'Bắt buộc nhập'}]} style={{marginBottom:4}}>
-                            <Input style={{width:'100%'}} />
-                        </Form.Item>
-                        <Form.Item name={`phanBonC_${idx}_4`} label="Phân khác (kg/sào)" rules={[{required:true,message:'Bắt buộc nhập'}]}style={{marginBottom:4}}>
-                            <Input style={{width:'100%'}} />
-                        </Form.Item>
-                    </div>
-                    <div style={{flex:'1 1 300px'}}>
-                        <div style={{marginBottom:2}}>KHÔNG BÓN PHÂN Ủ</div>
-                        <Form.Item name={`phanBonC_${idx}_2`} label="Phân NPK bón lót (kg/sào)" rules={[{required:true,message:'Bắt buộc nhập'}]} style={{marginBottom:4}}>
-                            <InputNumber min={0} style={{width:'100%'}} />
-                        </Form.Item>
-                        <Form.Item name={`phanBonC_${idx}_3`} label="Phân NPK bón thúc (kg/sào)" rules={[{required:true,message:'Bắt buộc nhập'}]} style={{marginBottom:4}}>
-                            <Input style={{width:'100%'}} />
-                        </Form.Item>
-                        <Form.Item name={`phanBonC_${idx}_4`} label="Phân khác (kg/sào)" rules={[{required:true,message:'Bắt buộc nhập'}]}style={{marginBottom:4}}>
-                            <Input style={{width:'100%'}} />
-                        </Form.Item>
-                    </div>
-                </div>
-            </div>
-            <div className={styles.groupedBg}>
-                <div style={{fontWeight:'bold',marginBottom:4}}>Số tiền đã chi cho mua từng loại phần bón (số tiền = khối lượng phân bón/ sào x số sào x đơn giá) </div>
-                <div style={{display:'flex',gap:16}}>
-                    <div style={{flex:'1 1 300px'}}>
-                        <div style={{marginBottom:2}}>SAU KHI BÓN PHÂN Ủ</div>
-                        <Form.Item name={`phanBonC_${idx}_1`} label="Phân ủ/đệm lót/trùn quế/sâu canxi (kg/sào)" rules={[{required:true,message:'Bắt buộc nhập'}]} style={{marginBottom:4}}>
-                            <InputNumber min={0} style={{width:'100%'}} />
-                        </Form.Item>
-                        <Form.Item name={`phanBonC_${idx}_2`} label="Phân NPK bón lót (kg/sào)" rules={[{required:true,message:'Bắt buộc nhập'}]} style={{marginBottom:4}}>
-                            <InputNumber min={0} style={{width:'100%'}} />
-                        </Form.Item>
-                        <Form.Item name={`phanBonC_${idx}_3`} label="Phân NPK bón thúc (kg/sào)" rules={[{required:true,message:'Bắt buộc nhập'}]} style={{marginBottom:4}}>
-                            <Input style={{width:'100%'}} />
-                        </Form.Item>
-                        <Form.Item name={`phanBonC_${idx}_4`} label="Phân khác (kg/sào)" rules={[{required:true,message:'Bắt buộc nhập'}]}style={{marginBottom:4}}>
-                            <Input style={{width:'100%'}} />
-                        </Form.Item>
-                    </div>
-                    <div style={{flex:'1 1 300px'}}>
-                        <div style={{marginBottom:2}}>KHÔNG BÓN PHÂN Ủ</div>
-                        <Form.Item name={`phanBonC_${idx}_2`} label="Phân NPK bón lót (kg/sào)" rules={[{required:true,message:'Bắt buộc nhập'}]} style={{marginBottom:4}}>
-                            <InputNumber min={0} style={{width:'100%'}} />
-                        </Form.Item>
-                        <Form.Item name={`phanBonC_${idx}_3`} label="Phân NPK bón thúc (kg/sào)" rules={[{required:true,message:'Bắt buộc nhập'}]} style={{marginBottom:4}}>
-                            <Input style={{width:'100%'}} />
-                        </Form.Item>
-                        <Form.Item name={`phanBonC_${idx}_4`} label="Phân khác (kg/sào)" rules={[{required:true,message:'Bắt buộc nhập'}]}style={{marginBottom:4}}>
-                            <Input style={{width:'100%'}} />
-                        </Form.Item>
-                    </div>
-                </div>
-            </div>
-            <div className={styles.row}>
-              <Form.Item name={`sauBenhC_${idx}`} label="Cây trồng có bị sâu bệnh không" rules={[{required:true,message:'Bắt buộc nhập'}]} className={styles.col}>
-                <Input placeholder='Có/Không'/>
-              </Form.Item>
-              <Form.Item name={`suDungThuocSauC_${idx}`} label="Có sử dụng thuốc trừ sâu không" rules={[{required:true,message:'Bắt buộc nhập'}]} className={styles.col}>
-                <Input placeholder='Có/Không'/>
-              </Form.Item>
-            </div>
-            <div className={styles.row}>
-              <Form.Item name={`tienThuocSauC_${idx}`} label="Số tiền mua thuốc trừ sâu (đồng/sào)" rules={[{required:true,message:'Bắt buộc nhập'}]} className={styles.col}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
-              <Form.Item name={`tienThuocCoC_${idx}`} label="Số tiền mua thuốc diệt cỏ (đồng/sào)" rules={[{required:true,message:'Bắt buộc nhập'}]} className={styles.col}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
-            </div>
-            <div className={styles.row}>
-              <Form.Item name={`tienCongLaoDongC_${idx}`} label="Số tiền công lao động (số công/sào x số sào x đơn giá ngày công trung bình)" rules={[{required:true,message:'Bắt buộc nhập'}]} className={styles.col}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
-              <Form.Item name={`tienHatGiongC_${idx}`} label="Số tiền mua hạt giống (đồng/sào)" rules={[{required:true,message:'Bắt buộc nhập'}]} className={styles.col}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
-            </div>
-            <div className={styles.row}>
-              <Form.Item name={`nangSuatThuHoachC_${idx}`} label="Năng suất thu hoạch được (kg/sào)" rules={[{required:true,message:'Bắt buộc nhập'}]} className={styles.col}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
-              <Form.Item name={`giaBanC_${idx}`} label="Giá bán (đồng/kg)" rules={[{required:true,message:'Bắt buộc nhập'}]} className={styles.col}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
-            </div>
-            <div className={styles.row}>
-              <Form.Item name={`thanhTienC_${idx}`} label="Thành tiền (tổng diện tích/vụ)" rules={[{required:true,message:'Bắt buộc nhập'}]} className={styles.col}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
-            </div>
+      {Array.from({ length: sectionCCount }).map((_, i) => (
+        <div key={i} className={styles.formSection}>
+          <div style={{ marginBottom: 24 }}>
+            <Form.Item 
+              name={[`sectionC`, i, '20a']} 
+              label={<span className={styles.formLabel} style={{ fontWeight: 600 }}>11a. Tên cây trồng được bón phân ủ hữu cơ</span>} 
+              rules={i === 0 ? [{ required: true, message: 'Bắt buộc nhập tên cây trồng' }] : []}
+            > 
+              <Input placeholder='Ví dụ: Lúa, Rau...' /> 
+            </Form.Item>
           </div>
-        ))}
+          <div style={{ overflowX: 'auto', marginBottom: 24 }}>
+            <table style={{ 
+              width: '100%', 
+              borderCollapse: 'collapse',
+              border: '1px solid #d9d9d9',
+              fontSize: '13px'
+            }}>
+              <thead>
+                <tr style={{ backgroundColor: '#fafafa' }}>
+                  <th style={{ border: '1px solid #d9d9d9', padding: '10px', textAlign: 'center', fontWeight: 600, minWidth: 150 }}>
+                    Giai đoạn
+                  </th>
+                  <th style={{ border: '1px solid #d9d9d9', padding: '10px', textAlign: 'center', fontWeight: 600, minWidth: 180 }}>
+                    11b. Diện tích (sào/vụ)
+                  </th>
+                  <th style={{ border: '1px solid #d9d9d9', padding: '10px', textAlign: 'center', fontWeight: 600, minWidth: 280 }}>
+                    11c. Số lượng từng loại phân bón (kg/sào)
+                  </th>
+                  <th style={{ border: '1px solid #d9d9d9', padding: '10px', textAlign: 'center', fontWeight: 600, minWidth: 280 }}>
+                    11d. Số tiền đã chi cho mua từng loại phân bón (số tiền = khối lượng phân bón/ sào x số sào x đơn giá)
+                  </th>
+                  <th style={{ border: '1px solid #d9d9d9', padding: '10px', textAlign: 'center', fontWeight: 600, minWidth: 180 }}>
+                    11e. Cây trồng có bị sâu bệnh không (có/không)
+                  </th>
+                  <th style={{ border: '1px solid #d9d9d9', padding: '10px', textAlign: 'center', fontWeight: 600, minWidth: 180 }}>
+                    11f. Có sử dụng thuốc trừ sâu không (có/không)
+                  </th>
+                  <th style={{ border: '1px solid #d9d9d9', padding: '10px', textAlign: 'center', fontWeight: 600, minWidth: 180 }}>
+                    11g. Số tiền mua thuốc trừ sâu (đồng/sào)
+                  </th>
+                  <th style={{ border: '1px solid #d9d9d9', padding: '10px', textAlign: 'center', fontWeight: 600, minWidth: 180 }}>
+                    11h. Số tiền mua thuốc diệt cỏ (đồng/sào)
+                  </th>
+                  <th style={{ border: '1px solid #d9d9d9', padding: '10px', textAlign: 'center', fontWeight: 600, minWidth: 180 }}>
+                    11i. Số tiền công lao động (số công/ sào x số sào x đơn giá ngày công trung bình) (1 công = 8 tiếng)
+                  </th>
+                  <th style={{ border: '1px solid #d9d9d9', padding: '10px', textAlign: 'center', fontWeight: 600, minWidth: 180 }}>
+                    11j. Số tiền mua hạt giống (đồng/sào)
+                  </th>
+                  <th style={{ border: '1px solid #d9d9d9', padding: '10px', textAlign: 'center', fontWeight: 600, minWidth: 180 }}>
+                    11k. Năng suất thu hoạch được (kg/sào)
+                  </th>
+                  <th style={{ border: '1px solid #d9d9d9', padding: '10px', textAlign: 'center', fontWeight: 600, minWidth: 180 }}>
+                    11l. Giá bán (đồng/kg)
+                  </th>
+                  <th style={{ border: '1px solid #d9d9d9', padding: '10px', textAlign: 'center', fontWeight: 600, minWidth: 180 }}>
+                    11m. Thành tiền (đồng)
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {/* Row 1: KHÔNG BÓN PHÂN Ủ */}
+                <tr>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '8px', fontWeight: 600, backgroundColor: '#e6f7ff' }}>
+                    KHÔNG BÓN<br/>PHÂN Ủ
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <Form.Item name={[`sectionC`, i, '20ctruoc']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                      <Input placeholder='Sào' size='small' />
+                    </Form.Item>
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <table style={{ width: '100%', borderCollapse: 'collapse', border: '1px solid #e6e6e6' }}>
+                      <thead>
+                        <tr style={{ backgroundColor: '#f5f5f5' }}>
+                          <th style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '12px', fontWeight: 500 }}>Tên phân bón</th>
+                          <th style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '12px', fontWeight: 500 }}>kg</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {['Phân NPK bón lót', 'Phân NPK bón thúc', 'Phân khác'].map((phanType, idx) => (
+                          <tr key={idx}>
+                            <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
+                              <Form.Item name={[`sectionC`, i, `truocPhan_tenPhan_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                                <Input placeholder={phanType} size='small' style={{ fontSize: '12px' }} />
+                              </Form.Item>
+                            </td>
+                            <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
+                              <Form.Item name={[`sectionC`, i, `truocPhan_kg_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                                <Input placeholder='kg' size='small' style={{ fontSize: '12px' }} />
+                              </Form.Item>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <table style={{ width: '100%', borderCollapse: 'collapse', border: '1px solid #e6e6e6' }}>
+                      <thead>
+                        <tr style={{ backgroundColor: '#f5f5f5' }}>
+                          <th style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '12px', fontWeight: 500 }}>Tên phân bón</th>
+                          <th style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '12px', fontWeight: 500 }}>đồng</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {['Phân NPK bón lót', 'Phân NPK bón thúc', 'Phân khác'].map((phanType, idx) => (
+                          <tr key={idx}>
+                            <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
+                              <Form.Item name={[`sectionC`, i, `truocPhan_tenPhanTien_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                                <Input placeholder={phanType} size='small' style={{ fontSize: '12px' }} />
+                              </Form.Item>
+                            </td>
+                            <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
+                              <Form.Item name={[`sectionC`, i, `truocPhan_tien_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                                <Input placeholder='đồng' size='small' style={{ fontSize: '12px' }} />
+                              </Form.Item>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <Form.Item name={[`sectionC`, i, '20ftruoc']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                      <Input placeholder='Có/Không' size='small' />
+                    </Form.Item>
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <Form.Item name={[`sectionC`, i, '20gtruoc']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                      <Input placeholder='Có/Không' size='small' />
+                    </Form.Item>
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <Form.Item name={[`sectionC`, i, '20htruoc']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                      <Input placeholder='đồng' size='small' />
+                    </Form.Item>
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <Form.Item name={[`sectionC`, i, '20itruoc']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                      <Input placeholder='đồng' size='small' />
+                    </Form.Item>
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <Form.Item name={[`sectionC`, i, '20jtruoc']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                      <Input placeholder='đồng' size='small' />
+                    </Form.Item>
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <Form.Item name={[`sectionC`, i, '20ktruoc']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                      <Input placeholder='đồng' size='small' />
+                    </Form.Item>
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <Form.Item name={[`sectionC`, i, '20ltruoc']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                      <Input placeholder='kg' size='small' />
+                    </Form.Item>
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <Form.Item name={[`sectionC`, i, '20mtruoc']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                      <Input placeholder='đồng' size='small' />
+                    </Form.Item>
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <Form.Item name={[`sectionC`, i, '20ntruoc']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                      <Input placeholder='đồng' size='small' />
+                    </Form.Item>
+                  </td>
+                </tr>
+                {/* Row 2: SAU KHI BÓN PHÂN Ủ */}
+                <tr>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '8px', fontWeight: 600, backgroundColor: '#f6ffed' }}>
+                    SAU KHI BÓN<br/>PHÂN Ủ
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <Form.Item name={[`sectionC`, i, '20csau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                      <Input placeholder='Sào' size='small' />
+                    </Form.Item>
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <table style={{ width: '100%', borderCollapse: 'collapse', border: '1px solid #e6e6e6' }}>
+                      <thead>
+                        <tr style={{ backgroundColor: '#f5f5f5' }}>
+                          <th style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '12px', fontWeight: 500 }}>Tên phân bón</th>
+                          <th style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '12px', fontWeight: 500 }}>kg</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {['Phân ủ hữu cơ', 'Phân NPK bón lót', 'Phân NPK bón thúc', 'Phân khác'].map((phanType, idx) => (
+                          <tr key={idx}>
+                            <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
+                              <Form.Item name={[`sectionC`, i, `sauPhan_tenPhan_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                                <Input placeholder={phanType} size='small' style={{ fontSize: '12px' }} />
+                              </Form.Item>
+                            </td>
+                            <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
+                              <Form.Item name={[`sectionC`, i, `sauPhan_kg_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                                <Input placeholder='kg' size='small' style={{ fontSize: '12px' }} />
+                              </Form.Item>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <table style={{ width: '100%', borderCollapse: 'collapse', border: '1px solid #e6e6e6' }}>
+                      <thead>
+                        <tr style={{ backgroundColor: '#f5f5f5' }}>
+                          <th style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '12px', fontWeight: 500 }}>Tên phân bón</th>
+                          <th style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '12px', fontWeight: 500 }}>đồng</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {['Phân ủ hữu cơ', 'Phân NPK bón lót', 'Phân NPK bón thúc', 'Phân khác'].map((phanType, idx) => (
+                          <tr key={idx}>
+                            <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
+                              <Form.Item name={[`sectionC`, i, `sauPhan_tenPhanTien_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                                <Input placeholder={phanType} size='small' style={{ fontSize: '12px' }} />
+                              </Form.Item>
+                            </td>
+                            <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
+                              <Form.Item name={[`sectionC`, i, `sauPhan_tien_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                                <Input placeholder='đồng' size='small' style={{ fontSize: '12px' }} />
+                              </Form.Item>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <Form.Item name={[`sectionC`, i, '20fsau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                      <Input placeholder='Có/Không' size='small' />
+                    </Form.Item>
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <Form.Item name={[`sectionC`, i, '20gsau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                      <Input placeholder='Có/Không' size='small' />
+                    </Form.Item>
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <Form.Item name={[`sectionC`, i, '20hsau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                      <Input placeholder='đồng' size='small' />
+                    </Form.Item>
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <Form.Item name={[`sectionC`, i, '20isau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                      <Input placeholder='đồng' size='small' />
+                    </Form.Item>
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <Form.Item name={[`sectionC`, i, '20jsau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                      <Input placeholder='đồng' size='small' />
+                    </Form.Item>
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <Form.Item name={[`sectionC`, i, '20ksau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                      <Input placeholder='đồng' size='small' />
+                    </Form.Item>
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <Form.Item name={[`sectionC`, i, '20lsau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                      <Input placeholder='kg' size='small' />
+                    </Form.Item>
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <Form.Item name={[`sectionC`, i, '20msau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                      <Input placeholder='đồng' size='small' />
+                    </Form.Item>
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <Form.Item name={[`sectionC`, i, '20nsau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                      <Input placeholder='đồng' size='small' />
+                    </Form.Item>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      ))}
+      <div className={styles.buttonGroup} style={{ marginTop: 16, marginBottom: 32 }}>
+        <Button icon={<PlusOutlined />} onClick={() => setSectionCCount(sectionCCount + 1)}>Thêm phần</Button>
+        {sectionCCount > 1 && (
+          <Button danger icon={<DeleteOutlined />} onClick={() => setSectionCCount(sectionCCount - 1)}>Xóa phần cuối</Button>
+        )}
       </div>
       <Form.Item>
         <div className={styles.centerBtn}>
