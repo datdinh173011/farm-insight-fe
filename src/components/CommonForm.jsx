@@ -29,13 +29,35 @@ export default function CommonForm({ onFinish, onBack, generalInfoData, techniqu
 
   // API submit handler
   const handleSubmit = async () => {
+    try {
+      // Validate form trước khi submit
+      await form.validateFields();
+    } catch (error) {
+      console.log('Validation failed:', error);
+      message.warning('Vui lòng điền đầy đủ các trường bắt buộc!');
+      return;
+    }
+    
     const commonValues = form.getFieldsValue(true); // get all form values
+    
+    // Debug: Log để kiểm tra dữ liệu
+    console.log('=== COMMON FORM VALUES ===');
+    console.log('coTrongLua:', commonValues.coTrongLua);
+    console.log('coNuoiDongVat:', commonValues.coNuoiDongVat);
+    console.log('kyThuatDeHayKho:', commonValues.kyThuatDeHayKho);
+    console.log('suKienThamGia:', commonValues.suKienThamGia);
+    console.log('lyDoKhongThamGia:', commonValues.lyDoKhongThamGia);
+    console.log('soNguoiChiaSeKyThuat:', commonValues.soNguoiChiaSeKyThuat);
+    console.log('duDinhChiaSe:', commonValues.duDinhChiaSe);
+    console.log('tyLeHoApDung:', commonValues.tyLeHoApDung);
+    console.log('bietDanhHieuXanh:', commonValues.bietDanhHieuXanh);
+    console.log('muonThamGiaXanh:', commonValues.muonThamGiaXanh);
+    console.log('thuNhap2025:', commonValues.thuNhap2025);
+    console.log('nguonThuNhap:', commonValues.nguonThuNhap);
+    console.log('trinhDoHocVan:', commonValues.trinhDoHocVan);
+    console.log('All common values:', commonValues);
+    
     // Merge all data
-    // const payload = {
-    //   generalInfo: generalInfoData,
-    //   technique: techniqueData,
-    //   common: commonValues,
-    // };
     const payload = {
         "template_type" : String(generalInfoData.technique),
         "ho_ten" : String(generalInfoData.fullName),
@@ -51,6 +73,10 @@ export default function CommonForm({ onFinish, onBack, generalInfoData, techniqu
         "status": "submitted"
         
     }
+    
+    console.log('=== PAYLOAD TO SEND ===');
+    console.log(JSON.stringify(payload, null, 2));
+    
     try {
       const response = await fetch('https://isatsbangkhaosat.com:81/api/forms/submissions/', {
         method: 'POST',
@@ -66,9 +92,12 @@ export default function CommonForm({ onFinish, onBack, generalInfoData, techniqu
           onFinish(payload);
         }
       } else {
+        const errorData = await response.text();
+        console.error('Server error:', errorData);
         message.error('Gửi phiếu thất bại!');
       }
     } catch (error) {
+      console.error('Network error:', error);
       message.error('Có lỗi khi gửi phiếu!');
     }
   };
