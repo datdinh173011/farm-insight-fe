@@ -118,7 +118,7 @@ export default function TechniqueFormTrunQue({ form, onFinish, onBack, initialVa
         <div key={i} className={styles.formSection}>
           <div style={{ marginBottom: 24 }}>
             <Form.Item 
-              name={[`sectionD`, i, '20a']} 
+              name={[`sectionC`, i, '20a']} 
               label={<span className={styles.formLabel} style={{ fontWeight: 600 }}>20a. Nêu tên loại cây trồng được bón phân trùn quế</span>} 
               rules={i === 0 ? [{ required: true, message: 'Bắt buộc nhập loại vật nuôi' }] : []}
             > 

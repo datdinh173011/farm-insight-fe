@@ -4,10 +4,18 @@ import { PlusOutlined, DeleteOutlined } from '@ant-design/icons';
 import styles from './TechniqueFormNuoiGa.module.scss';
 
 export default function TechniqueFormNuoiGa({ form, onFinish, onBack, initialValues }) {
-  const [sauDemLotCount, setSauDemLotCount] = useState(1);
-  const [truocDemLotCount, setTruocDemLotCount] = useState(1);
-  const [phanUCount, setPhanUCount] = useState(1);
-  const [danGaCount, setDanGaCount] = useState(1);
+  const [sectionACount, setSectionACount] = useState(
+    initialValues?.sectionA?.length > 0 ? initialValues.sectionA.length : 1
+  );
+  const [sectionBCount, setSectionBCount] = useState(
+    initialValues?.sectionB?.length > 0 ? initialValues.sectionB.length : 1
+  );
+  const [phanUCount, setPhanUCount] = useState(
+    initialValues?.phanU?.length > 0 ? initialValues.phanU.length : 1
+  );
+  const [danGaCount, setDanGaCount] = useState(
+    initialValues?.danGa?.length > 0 ? initialValues.danGa.length : 1
+  );
 
   return (
     <Form
@@ -19,71 +27,99 @@ export default function TechniqueFormNuoiGa({ form, onFinish, onBack, initialVal
     >
       <div className={styles.sectionTitle}>A. Quản lý phụ phẩm cây trồng SAU KHI sử dụng đệm lót sinh học dày</div>
       <Divider className={styles.divider} />
-      {Array.from({ length: sauDemLotCount }).map((_, i) => (
+      {Array.from({ length: sectionACount }).map((_, i) => (
         <div key={i} className={styles.formSection}>
-          <div className={styles.formRow}>
-            <Form.Item className={styles.formCol} name={[`sauDemLot`, i, 'tenPhuPhamTruoc']} label={<span className={styles.formLabel}>Tên phụ phẩm cây trồng (tận dụng làm đệm lót sinh học dày TỪ TRƯỚC ĐẾN NAY)</span>} rules={[]}> <Input /> </Form.Item>
-            <Form.Item className={styles.formCol} name={[`sauDemLot`, i, 'thangNamBatDau']} label={<span className={styles.formLabel}>Tháng/năm bắt đầu áp dụng kỹ thuật</span>} rules={[]}> <Input placeholder='Tháng/năm'/> </Form.Item>
+          <div className={styles.row}>
+            <Form.Item className={styles.col} name={[`sectionA`, i, 'tenPhuPhamTruoc']} label="Tên phụ phẩm cây trồng (tận dụng làm đệm lót sinh học dày TỪ TRƯỚC ĐẾN NAY)"><Input /></Form.Item>
+            <Form.Item className={styles.col} name={[`sectionA`, i, 'thangNamBatDau']} label="Tháng/năm bắt đầu áp dụng kỹ thuật"><Input placeholder='Tháng/năm'/></Form.Item>
           </div>
-          <div className={styles.formRow}>
-            <Form.Item className={styles.formCol} name={[`sauDemLot`, i, 'tongSoMuaVu']} label={<span className={styles.formLabel}>Tổng số mùa vụ đã tận dụng phụ phẩm để làm đệm lót sinh học dày TỪ TRƯỚC ĐẾN NAY (vụ)</span>} rules={[]}> <InputNumber min={0} style={{ width: '100%' }} /> </Form.Item>
-            <Form.Item className={styles.formCol} name={[`sauDemLot`, i, 'tenCayBonPhan']} label={<span className={styles.formLabel}>Tên những loại cây trồng được bón phân ủ thu được từ lớp đệm lót</span>} rules={[]}> <Input /> </Form.Item>
+          <div className={styles.row}>
+            <Form.Item className={styles.col} name={[`sectionA`, i, 'tongSoMuaVu']} label="Tổng số mùa vụ đã tận dụng phụ phẩm để làm đệm lót sinh học TỪ TRƯỚC ĐẾN NAY (vụ)"><InputNumber min={0} style={{ width: '100%' }} /></Form.Item>
+            <Form.Item className={styles.col} name={[`sectionA`, i, 'tenCayBonPhan']} label="Tên những loại cây trồng được bón phân ủ thu được từ lớp đệm lót"><Input /></Form.Item>
           </div>
-          <div className={styles.formRow}>
-            <Form.Item className={styles.formCol} name={[`sauDemLot`, i, 'dienTichCayBonPhan']} label={<span className={styles.formLabel}>Diện tích cây trồng được bón phân ủ thu được từ lớp đệm lót trong 1 vụ (sào/vụ)</span>} rules={[]}> <Input /> </Form.Item>
-            <Form.Item className={styles.formCol} name={[`sauDemLot`, i, 'tongSoMuaVuBonPhan']} label={<span className={styles.formLabel}>Tổng số mùa vụ đã được bón phân ủ thu được từ lớp đệm lót</span>} rules={[]}> <InputNumber min={0} style={{ width: '100%' }} /> </Form.Item>
+          <div className={styles.row}>
+            <Form.Item className={styles.col} name={[`sectionA`, i, 'dienTichCayBonPhan']} label="Diện tích cây trồng được bón phân ủ thu được từ lớp đệm lót trong 1 vụ (sào/vụ)"><Input /></Form.Item>
+            <Form.Item className={styles.col} name={[`sectionA`, i, 'tongSoMuaVuBonPhan']} label="Tổng số mùa vụ đã được bón phân ủ thu được từ lớp đệm lót"><InputNumber min={0} style={{ width: '100%' }} /></Form.Item>
           </div>
-          <div className={styles.formRow}>
-            <Form.Item className={styles.formCol} name={[`sauDemLot`, i, 'tenPhuPhamDuocTao']} label={<span className={styles.formLabel}>Tên phụ phẩm cây trồng được tận dụng làm đệm lót sinh học dày</span>} rules={[]}> <Input /> </Form.Item>
-            <Form.Item className={styles.formCol} name={[`sauDemLot`, i, 'dienTichTaoPhuPham']} label={<span className={styles.formLabel}>Diện tích cây trồng tạo ra loại phụ phẩm được tận dụng làm đệm lót sinh học dày (sào)</span>} rules={[]}> <Input /> </Form.Item>
+          <div className={styles.row}>
+            <Form.Item className={styles.col} name={[`sectionA`, i, 'tenPhuPhamDuocTao']} label="Tên phụ phẩm cây trồng được tận dụng làm đệm lót sinh học dày"><Input /></Form.Item>
+            <Form.Item className={styles.col} name={[`sectionA`, i, 'dienTichTaoPhuPham']} label="Diện tích cây trồng tạo ra loại phụ phẩm được tận dụng làm đệm lót sinh học dày (sào)"><Input /></Form.Item>
           </div>
-          <div className={styles.formRow}>
-            <Form.Item className={styles.formCol} name={[`sauDemLot`, i, 'khoiLuongTrenDong']} label={<span className={styles.formLabel}>Khối lượng phụ phẩm cây trồng có trên đồng ruộng (kg/sào x số sào)</span>} rules={[]}> <Input /> </Form.Item>
-            <Form.Item className={styles.formCol} name={[`sauDemLot`, i, 'khoiLuongThuGom']} label={<span className={styles.formLabel}>Khối lượng phụ phẩm cây trồng thu gom được (kg/sào x số sào)</span>} rules={[]}> <Input /> </Form.Item>
+          <div className={styles.row}>
+            <Form.Item className={styles.col} name={[`sectionA`, i, 'khoiLuongTrenDong']} label="Khối lượng phụ phẩm cây trồng có trên đồng ruộng (kg/sào x số sào)"><Input /></Form.Item>
+            <Form.Item className={styles.col} name={[`sectionA`, i, 'khoiLuongThuGom']} label="Khối lượng phụ phẩm cây trồng thu gom được (kg/sào x số sào)"><Input /></Form.Item>
           </div>
-          <div className={styles.formRow}>
-            <Form.Item className={styles.formCol} name={[`sauDemLot`, i, 'tongKhoiLuongLamDemLot']} label={<span className={styles.formLabel}>Tổng khối lượng phụ phẩm cây trồng được tận dụng để làm đệm lót (kg)</span>} rules={[]}> <Input /> </Form.Item>
-            <Form.Item className={styles.formCol} name={[`sauDemLot`, i, 'tongKhoiLuongPhanU']} label={<span className={styles.formLabel}>Tổng khối lượng phân ủ thu được từ lớp đệm lót (kg)</span>} rules={[]}> <Input /> </Form.Item>
+          <div className={styles.row}>
+            <Form.Item className={styles.col} name={[`sectionA`, i, 'tongKhoiLuongLamDemLot']} label="Tổng khối lượng phụ phẩm cây trồng được tận dụng để làm đệm lót (kg)"><Input /></Form.Item>
+            <Form.Item className={styles.col} name={[`sectionA`, i, 'tongKhoiLuongPhanU']} label="Tổng khối lượng phân ủ thu được từ lớp đệm lót (kg)"><Input /></Form.Item>
           </div>
-          <div className={styles.formRow}>
-            <Form.Item className={styles.formCol} name={[`sauDemLot`, i, 'mayBamCat']} label={<span className={styles.formLabel}>Sử dụng máy để băm/cắt nhỏ phụ phẩm cây trồng</span>} rules={[]}> <Input placeholder='Có/Không' /> </Form.Item>
-            <Form.Item className={styles.formCol} name={[`sauDemLot`, i, 'nhienLieu']} label={<span className={styles.formLabel}>Lượng nhiên liệu đã sử dụng (dầu diesel/ hoặc điện)</span>} rules={[]}> <Input placeholder="Dầu ... lít, Điện ... kw" /> </Form.Item>
+          <div className={styles.row}>
+            <Form.Item className={styles.col} name={[`sectionA`, i, 'mayBamCat']} label="Sử dụng máy để băm/cắt nhỏ phụ phẩm cây trồng"><Input placeholder='Có/Không' /></Form.Item>
+            <Form.Item className={styles.col} name={[`sectionA`, i, 'nhienLieu']} label="Lượng nhiên liệu đã sử dụng (dầu diesel/ hoặc điện)"><Input placeholder="Dầu ... lít, Điện ... kw" /></Form.Item>
           </div>
-          <div className={styles.formRow}>
-            <Form.Item className={styles.formCol} name={[`sauDemLot`, i, 'chiPhiKhac']} label={<span className={styles.formLabel}>Chi phí vật liệu/đầu vào khác (ví dụ: nhân công, chế phẩm, …) (đồng)</span>} rules={[]}> <Input /> </Form.Item>
-            <Form.Item className={styles.formCol} name={[`placeholder1_${i}`]} label={<span className={styles.formLabel}></span>} style={{ visibility: 'hidden' }}> <Input /> </Form.Item>
+          <div className={styles.row}>
+            <Form.Item className={styles.col} name={[`sectionA`, i, 'chiPhiKhac']} label="Chi phí vật liệu/đầu vào khác (ví dụ: nhân công, chế phẩm, …) (đồng)"><Input /></Form.Item>
           </div>
         </div>
       ))}
       <div className={styles.buttonGroup} style={{ marginTop: 16, marginBottom: 32 }}>
-        <Button icon={<PlusOutlined />} onClick={() => setSauDemLotCount(sauDemLotCount + 1)}>Thêm phần</Button>
-        {sauDemLotCount > 1 && (
-          <Button danger icon={<DeleteOutlined />} onClick={() => setSauDemLotCount(sauDemLotCount - 1)}>Xoá phần cuối</Button>
+        <Button
+          type="dashed"
+          icon={<PlusOutlined />}
+          onClick={() => setSectionACount(sectionACount + 1)}
+          style={{ minWidth: 120 }}
+        >
+          Thêm phần
+        </Button>
+        {sectionACount > 1 && (
+          <Button
+            type="text"
+            danger
+            icon={<DeleteOutlined />}
+            onClick={() => setSectionACount(sectionACount - 1)}
+            style={{ minWidth: 120 }}
+          >
+            Xóa phần cuối
+          </Button>
         )}
       </div>
 
       <div className={styles.sectionTitle}>B. Quản lý phụ phẩm cây trồng TRƯỚC KHI áp dụng kỹ thuật nuôi gà trên đệm lót sinh học dày (NĂM 2022)</div>
       <Divider className={styles.divider} />
-      {Array.from({ length: truocDemLotCount }).map((_, i) => (
+      {Array.from({ length: sectionBCount }).map((_, i) => (
         <div key={i} className={styles.formSection}>
-          <div className={styles.formRow}>
-            <Form.Item className={styles.formCol} name={[`truocDemLot`, i, 'loaiCayTruoc']} label={<span className={styles.formLabel}>Loại cây trồng, TRƯỚC KHI áp dụng kỹ thuật</span>} rules={[]}> <Input /> </Form.Item>
-            <Form.Item className={styles.formCol} name={[`truocDemLot`, i, 'dienTichTruoc']} label={<span className={styles.formLabel}>Diện tích đất trồng cây, TRƯỚC KHI áp dụng kỹ thuật (sào/vụ x số vụ/năm)</span>} rules={[]}> <Input /> </Form.Item>
+          <div className={styles.row}>
+            <Form.Item className={styles.col} name={[`sectionB`, i, 'loaiCayTruoc']} label="Loại cây trồng, TRƯỚC KHI áp dụng kỹ thuật"><Input /></Form.Item>
+            <Form.Item className={styles.col} name={[`sectionB`, i, 'dienTichTruoc']} label="Diện tích đất trồng cây, TRƯỚC KHI áp dụng kỹ thuật (sào/vụ x số vụ/năm)"><Input /></Form.Item>
           </div>
-          <div className={styles.formRow}>
-            <Form.Item className={styles.formCol} name={[`truocDemLot`, i, 'loaiPhuPhamTruoc']} label={<span className={styles.formLabel}>Có những loại phụ phẩm cây trồng nào, TRƯỚC KHI áp dụng kỹ thuật</span>} rules={[]}> <Input /> </Form.Item>
-            <Form.Item className={styles.formCol} name={[`truocDemLot`, i, 'khoiLuongPhuPhamTruoc']} label={<span className={styles.formLabel}>Có bao nhiêu kg phụ phẩm cây trồng tại ruộng/vườn TRƯỚC KHI áp dụng kỹ thuật (kg/sào/vụ x số sào/vụ)</span>} rules={[]}> <Input /> </Form.Item>
+          <div className={styles.row}>
+            <Form.Item className={styles.col} name={[`sectionB`, i, 'loaiPhuPhamTruoc']} label="Có những loại phụ phẩm cây trồng nào, TRƯỚC KHI áp dụng kỹ thuật"><Input /></Form.Item>
+            <Form.Item className={styles.col} name={[`sectionB`, i, 'khoiLuongPhuPhamTruoc']} label="Có bao nhiêu kg phụ phẩm cây trồng tại ruộng/vườn TRƯỚC KHI áp dụng kỹ thuật (kg/sào/vụ x số sào/vụ)"><Input /></Form.Item>
           </div>
-          <div className={styles.formRow}>
-            <Form.Item className={styles.formCol} name={[`truocDemLot`, i, 'khoiLuongThuGomTruoc']} label={<span className={styles.formLabel}>Có bao nhiêu kg phụ phẩm cây trồng được thu gom TRƯỚC KHI áp dụng kỹ thuật (kg/sào/vụ x số sào/vụ)</span>} rules={[]}> <Input /> </Form.Item>
-            <Form.Item className={styles.formCol} name={[`placeholder2_${i}`]} label={<span className={styles.formLabel}></span>} style={{ visibility: 'hidden' }}> <Input /> </Form.Item>
+          <div className={styles.row}>
+            <Form.Item className={styles.col} name={[`sectionB`, i, 'khoiLuongThuGomTruoc']} label="Có bao nhiêu kg phụ phẩm cây trồng được thu gom TRƯỚC KHI áp dụng kỹ thuật (kg/sào/vụ x số sào/vụ)"><Input /></Form.Item>
           </div>
         </div>
       ))}
       <div className={styles.buttonGroup} style={{ marginTop: 16, marginBottom: 32 }}>
-        <Button icon={<PlusOutlined />} onClick={() => setTruocDemLotCount(truocDemLotCount + 1)}>Thêm phần</Button>
-        {truocDemLotCount > 1 && (
-          <Button danger icon={<DeleteOutlined />} onClick={() => setTruocDemLotCount(truocDemLotCount - 1)}>Xóa phần cuối</Button>
+        <Button
+          type="dashed"
+          icon={<PlusOutlined />}
+          onClick={() => setSectionBCount(sectionBCount + 1)}
+          style={{ minWidth: 120 }}
+        >
+          Thêm phần
+        </Button>
+        {sectionBCount > 1 && (
+          <Button
+            type="text"
+            danger
+            icon={<DeleteOutlined />}
+            onClick={() => setSectionBCount(sectionBCount - 1)}
+            style={{ minWidth: 120 }}
+          >
+            Xóa phần cuối
+          </Button>
         )}
       </div>
 

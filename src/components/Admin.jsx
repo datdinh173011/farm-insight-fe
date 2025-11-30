@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 import { Typography, Button } from 'antd';
 import { LogoutOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
+import SubmissionsTable from './SubmissionsTable';
 import styles from './Admin.module.scss';
 const { Title } = Typography;
 
@@ -28,8 +29,7 @@ export default function Admin() {
           Đăng xuất
         </Button>
       </div>
-      <Title level={2} className={styles.title}>Chào mừng đến trang Quản trị</Title>
-      <div className={styles.content}>Bạn đã đăng nhập thành công!</div>
+      <SubmissionsTable />
     </div>
   );
 }

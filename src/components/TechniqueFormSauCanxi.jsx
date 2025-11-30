@@ -18,7 +18,7 @@ export default function TechniqueFormSauCanxi({ form, onFinish, onBack, initialV
       initialValues={initialValues || {}}
       style={{ maxWidth: 1200, margin: '0 auto' }}
     >
-      <div className={styles.sectionTitle}>A. Quản lý phụ phẩm cây trồng, vật nuôi và chất thải SAU KHI nuôi Sâu canxi</div>
+      <div className={styles.sectionTitle}>A. Nhóm câu hỏi: Loại phụ phẩm cây trồng, vật nuôi, Quản lý phụ phẩm cây trồng vật nuôi và chất thải SAU KHI nuôi Sâu canxi (Từ TRƯỚC đến NAY).</div>
       <Divider className={styles.divider} />
       {Array.from({ length: sectionACount }).map((_, i) => (
         <div key={i} className={styles.formSectionBg}>
@@ -63,7 +63,7 @@ export default function TechniqueFormSauCanxi({ form, onFinish, onBack, initialV
         )}
       </div>
 
-      <div className={styles.sectionTitle}>B. Quản lý sử dụng thức ăn cho Sâu canxi & sản phẩm Sâu canxi thu được (1 lứa nuôi gần đây nhất)</div>
+      <div className={styles.sectionTitle}>B. Nhóm câu hỏi: Quản lý sử dụng thức ăn cho Sâu canxi & sản phẩm Sâu canxi thu được (Tính cho 1 LỨA nuôi GẦN ĐÂY NHẤT)</div>
       <Divider className={styles.divider} />
       {Array.from({ length: sectionBCount }).map((_, i) => (
         <div key={i} className={styles.formSectionBg}>

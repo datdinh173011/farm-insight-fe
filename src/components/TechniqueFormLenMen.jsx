@@ -6,81 +6,82 @@ const { Title, Text } = Typography
 
 
 export default function TechniqueFormLenMen({ form, onFinish, onBack, initialValues }) {
-  const [sauMenCount, setSauMenCount] = useState(1)
-  const [truocMenCount, setTruocMenCount] = useState(1)
-  const [thucAnMenCount, setThucAnMenCount] = useState(1)
+  const [sectionACount, setSectionACount] = useState(
+    initialValues?.sectionA?.length > 0 ? initialValues.sectionA.length : 1
+  )
+  const [sectionBCount, setSectionBCount] = useState(
+    initialValues?.sectionB?.length > 0 ? initialValues.sectionB.length : 1
+  )
+  const [sectionCCount, setSectionCCount] = useState(
+    initialValues?.sectionC?.length > 0 ? initialValues.sectionC.length : 1
+  )
 
-  const addSauMen = () => setSauMenCount(prev => prev + 1)
-  const removeSauMen = () => setSauMenCount(prev => Math.max(1, prev - 1))
-  const addTruocMen = () => setTruocMenCount(prev => prev + 1)
-  const removeTruocMen = () => setTruocMenCount(prev => Math.max(1, prev - 1))
-  const addThucAnMen = () => setThucAnMenCount(prev => prev + 1)
-  const removeThucAnMen = () => setThucAnMenCount(prev => Math.max(1, prev - 1))
+  const addSectionA = () => setSectionACount(prev => prev + 1)
+  const removeSectionA = () => setSectionACount(prev => Math.max(1, prev - 1))
+  const addSectionB = () => setSectionBCount(prev => prev + 1)
+  const removeSectionB = () => setSectionBCount(prev => Math.max(1, prev - 1))
+  const addSectionC = () => setSectionCCount(prev => prev + 1)
+  const removeSectionC = () => setSectionCCount(prev => Math.max(1, prev - 1))
 
-  const normalized = {
-  ...initialValues,
-  sauMen: initialValues?.sauMen ?? [{}, {}, {}],
-  thucAnMen: initialValues?.thucAnMen ?? [{}, {}, {}],
-  };
   return (
     <Form
       form={form}
       layout="vertical"
       onFinish={onFinish}
-      initialValues={normalized}
-      style={{maxWidth: 1200, margin: '0 auto'}}
+      initialValues={initialValues || {}}
+      style={{ maxWidth: 1200, margin: '0 auto' }}
     >
       <div className={styles.sectionTitle}>A. Quản lý phụ phẩm cây trồng SAU KHI áp dụng kỹ thuật ủ lên men</div>
       <Divider className={styles.divider} />
-        {Array.from({length: sauMenCount}).map((_, i) => (
-          <div key={i} className={styles.formSection}>
-            {/* Group every 2 questions per row for a cleaner layout */}
-            <div className={styles.row}>
-              <Form.Item className={styles.col} name={[`sauMen`,i,'tenPhuPhamCayTrong']} label="Tên phụ phẩm cây trồng (sử dụng ủ lên men)" rules={i===0?[{required:true,message:'Bắt buộc nhập'}]:[] }><Input /></Form.Item>
-              <Form.Item className={styles.col} name={[`sauMen`,i,'thangNamDau']} label="Tháng/năm áp dụng kỹ thuật ủ lên men (lần đầu tiên)" rules={i===0?[{required:true,message:'Bắt buộc nhập'}]:[] }><Input /></Form.Item>
-            </div>
-            <div className={styles.row}>
-              <Form.Item className={styles.col} name={[`sauMen`,i,'dienTichTrong']} label="Diện tích trồng trong 1 vụ" rules={i===0?[{required:true,message:'Bắt buộc nhập'}]:[] }><Input /></Form.Item>
-              <Form.Item className={styles.col} name={[`sauMen`,i,'soLanMen']} label="Tổng số lần (số vụ) đã tiến hành lên men" rules={i===0?[{required:true,message:'Bắt buộc nhập'}]:[] }><InputNumber style={{width:'100%'}} /></Form.Item>
-            </div>
-            <div className={styles.row}>
-              <Form.Item className={styles.col} name={[`sauMen`,i,'thangNamGanNhat']} label="Tháng/năm bắt đầu vụ gần đây nhất" rules={i===0?[{required:true,message:'Bắt buộc nhập'}]:[] }><Input /></Form.Item>
-              <Form.Item className={styles.col} name={[`sauMen`,i,'tenPhuPhamTanDung']} label="Tên phụ phẩm cây trồng tận dụng để ủ lên men" rules={i===0?[{required:true,message:'Bắt buộc nhập'}]:[] }><Input /></Form.Item>
-            </div>
-            <div className={styles.row}>
-              <Form.Item className={styles.col} name={[`sauMen`,i,'dienTichDat']} label="Diện tích đất được sử dụng để trồng cây lấy phụ phẩm ủ lên men (số sào/ vụ)" rules={i===0?[{required:true,message:'Bắt buộc nhập'}]:[] }><Input /></Form.Item>
-              <Form.Item className={styles.col} name={[`sauMen`,i,'khoiLuongTrenDong']} label="Khối lượng phụ phẩm cây trồng có trên đồng ruộng (kg/ sào/ vụ x số sào)" rules={i===0?[{required:true,message:'Bắt buộc nhập'}]:[] }><Input /></Form.Item>
-            </div>
-            <div className={styles.row}>
-              <Form.Item className={styles.col} name={[`sauMen`,i,'khoiLuongThuGom']} label="Tổng khối lượng phụ phẩm cây trồng thu gom được (kg/ sào/ vụ x số sào)" rules={i===0?[{required:true,message:'Bắt buộc nhập'}]:[] }><Input /></Form.Item>
-              <Form.Item className={styles.col} name={[`sauMen`,i,'khoiLuongSuDungMen']} label="Tổng khối lượng phụ phẩm cây trồng được sử dụng để ủ lên men (kg/ sào/ vụ x số sào)" rules={i===0?[{required:true,message:'Bắt buộc nhập'}]:[] }><Input /></Form.Item>
-            </div>
-            <div className={styles.row}>
-              <Form.Item className={styles.col} name={[`sauMen`,i,'khoiLuongThucAnMen']} label="Khối lượng thức ăn ủ lên men thu được (kg)" rules={i===0?[{required:true,message:'Bắt buộc nhập'}]:[] }><Input /></Form.Item>
-              <Form.Item className={styles.col} name={[`sauMen`,i,'mayBamCat']} label="Sử dụng máy để băm/ cắt nhỏ phụ phẩm cây trồng (có/ không)" rules={i===0?[{required:true,message:'Bắt buộc chọn máy băm/cắt nhỏ'}]:[] }><Input placeholder='Có/Không'/></Form.Item>
-            </div>
-            <div className={styles.row}>
-              <Form.Item className={styles.col} name={[`sauMen`,i,'nhienLieu']} label="Lượng nhiên liệu đã sử dụng cho 1 lần lên men (dầu diesel/ hoặc điện; kg/ hoặc giờ)" rules={i===0?[{required:true,message:'Bắt buộc nhập nhiên liệu'}]:[] }><Input placeholder="Dầu ... lít, Điện ... kw" /></Form.Item>
-              <Form.Item className={styles.col} name={[`sauMen`,i,'chiPhiKhac']} label="Chi phí vật liệu/ đầu vào khác cho 1 lần lên men (ví dụ: thùng, túi ủ, chế phẩm,...)" rules={i===0?[{required:true,message:'Bắt buộc nhập chi phí vật liệu/đầu vào khác'}]:[] }><Input placeholder="Thùng, túi ủ, chế phẩm, rỉ mật, cám..." /></Form.Item>
-            </div>
+      {Array.from({ length: sectionACount }).map((_, i) => (
+        <div key={i} className={styles.formSection}>
+          {/* Group every 2 questions per row for a cleaner layout */}
+          <div className={styles.row}>
+            <Form.Item className={styles.col} name={[`sectionA`, i, 'tenPhuPhamCayTrong']} label="Tên phụ phẩm cây trồng (sử dụng ủ lên men)" rules={i === 0 ? [{ required: true, message: 'Bắt buộc nhập' }] : []}><Input /></Form.Item>
+            <Form.Item className={styles.col} name={[`sectionA`, i, 'thangNamDau']} label="Tháng/năm áp dụng kỹ thuật ủ lên men (lần đầu tiên)" rules={i === 0 ? [{ required: true, message: 'Bắt buộc nhập' }] : []}><Input /></Form.Item>
           </div>
-        ))}
-      <div className={styles.buttonGroup} style={{marginTop: 16, marginBottom: 32}}>
-        <Button 
-          type="dashed" 
-          onClick={addSauMen}
+          <div className={styles.row}>
+            <Form.Item className={styles.col} name={[`sectionA`, i, 'dienTichTrong']} label="Diện tích trồng trong 1 vụ" rules={i === 0 ? [{ required: true, message: 'Bắt buộc nhập' }] : []}><Input /></Form.Item>
+            <Form.Item className={styles.col} name={[`sectionA`, i, 'soLanMen']} label="Tổng số lần (số vụ) đã tiến hành lên men" rules={i === 0 ? [{ required: true, message: 'Bắt buộc nhập' }] : []}><InputNumber style={{ width: '100%' }} /></Form.Item>
+          </div>
+          <div className={styles.row}>
+            <Form.Item className={styles.col} name={[`sectionA`, i, 'thangNamGanNhat']} label="Tháng/năm bắt đầu vụ gần đây nhất" rules={i === 0 ? [{ required: true, message: 'Bắt buộc nhập' }] : []}><Input /></Form.Item>
+            <Form.Item className={styles.col} name={[`sectionA`, i, 'tenPhuPhamTanDung']} label="Tên phụ phẩm cây trồng tận dụng để ủ lên men" rules={i === 0 ? [{ required: true, message: 'Bắt buộc nhập' }] : []}><Input /></Form.Item>
+          </div>
+          <div className={styles.row}>
+            <Form.Item className={styles.col} name={[`sectionA`, i, 'dienTichDat']} label="Diện tích đất được sử dụng để trồng cây lấy phụ phẩm ủ lên men (số sào/ vụ)" rules={i === 0 ? [{ required: true, message: 'Bắt buộc nhập' }] : []}><Input /></Form.Item>
+            <Form.Item className={styles.col} name={[`sectionA`, i, 'khoiLuongTrenDong']} label="Khối lượng phụ phẩm cây trồng có trên đồng ruộng (kg/ sào/ vụ x số sào)" rules={i === 0 ? [{ required: true, message: 'Bắt buộc nhập' }] : []}><Input /></Form.Item>
+          </div>
+          <div className={styles.row}>
+            <Form.Item className={styles.col} name={[`sectionA`, i, 'khoiLuongThuGom']} label="Tổng khối lượng phụ phẩm cây trồng thu gom được (kg/ sào/ vụ x số sào)" rules={i === 0 ? [{ required: true, message: 'Bắt buộc nhập' }] : []}><Input /></Form.Item>
+            <Form.Item className={styles.col} name={[`sectionA`, i, 'khoiLuongSuDungMen']} label="Tổng khối lượng phụ phẩm cây trồng được sử dụng để ủ lên men (kg/ sào/ vụ x số sào)" rules={i === 0 ? [{ required: true, message: 'Bắt buộc nhập' }] : []}><Input /></Form.Item>
+          </div>
+          <div className={styles.row}>
+            <Form.Item className={styles.col} name={[`sectionA`, i, 'khoiLuongThucAnMen']} label="Khối lượng thức ăn ủ lên men thu được (kg)" rules={i === 0 ? [{ required: true, message: 'Bắt buộc nhập' }] : []}><Input /></Form.Item>
+            <Form.Item className={styles.col} name={[`sectionA`, i, 'mayBamCat']} label="Sử dụng máy để băm/ cắt nhỏ phụ phẩm cây trồng (có/ không)" rules={i === 0 ? [{ required: true, message: 'Bắt buộc chọn máy băm/cắt nhỏ' }] : []}><Input placeholder='Có/Không' /></Form.Item>
+          </div>
+          <div className={styles.row}>
+            <Form.Item className={styles.col} name={[`sectionA`, i, 'nhienLieu']} label="Lượng nhiên liệu đã sử dụng cho 1 lần lên men (dầu diesel/ hoặc điện; kg/ hoặc giờ)" rules={i === 0 ? [{ required: true, message: 'Bắt buộc nhập nhiên liệu' }] : []}><Input placeholder="Dầu ... lít, Điện ... kw" /></Form.Item>
+            <Form.Item className={styles.col} name={[`sectionA`, i, 'chiPhiKhac']} label="Chi phí vật liệu/ đầu vào khác cho 1 lần lên men (ví dụ: thùng, túi ủ, chế phẩm,...)" rules={i === 0 ? [{ required: true, message: 'Bắt buộc nhập chi phí vật liệu/đầu vào khác' }] : []}><Input placeholder="Thùng, túi ủ, chế phẩm, rỉ mật, cám..." /></Form.Item>
+          </div>
+        </div>
+      ))}
+      <div className={styles.buttonGroup} style={{ marginTop: 16, marginBottom: 32 }}>
+        <Button
+          type="dashed"
+          onClick={addSectionA}
           icon={<PlusOutlined />}
-          style={{minWidth: 120}}
+          style={{ minWidth: 120 }}
         >
           Thêm phần
         </Button>
-        {sauMenCount > 1 && (
-          <Button 
-            type="text" 
+        {sectionACount > 1 && (
+          <Button
+            type="text"
             danger
-            onClick={removeSauMen}
+            onClick={removeSectionA}
             icon={<DeleteOutlined />}
-            style={{minWidth: 120}}
+            style={{ minWidth: 120 }}
           >
             Xóa phần cuối
           </Button>
@@ -89,47 +90,37 @@ export default function TechniqueFormLenMen({ form, onFinish, onBack, initialVal
 
       <div level={4} className={styles.sectionTitle}>B. Quản lý phụ phẩm cây trồng TRƯỚC KHI áp dụng kỹ thuật ủ lên men</div>
       <Divider className={styles.divider} />
-      {Array.from({length: truocMenCount}).map((_, i) => (
+      {Array.from({ length: sectionBCount }).map((_, i) => (
         <div key={i} className={styles.formSection}>
-            <div className={styles.row}>
-              <div className={styles.col}>
-                <Form.Item className={styles.formItem} name={[`truocMen`, i, 'loaiCayTruoc']} label={<span className={styles.formLabel}>Loại cây trồng</span>}> <Input /> </Form.Item>
-              </div>
-              <div className={styles.col}>
-                <Form.Item className={styles.formItem} name={[`truocMen`, i, 'dienTichTruoc']} label={<span className={styles.formLabel}>Diện tích đất trồng cây</span>}> <Input /> </Form.Item>
-              </div>
-            </div>
-            <div className={styles.row}>
-                  <div className={styles.col}>
-                    <Form.Item className={styles.formItem} name={[`truocMen`, i, 'loaiPhuPhamTruoc']} label={<span className={styles.formLabel}>Loại phụ phẩm cây trồng</span>}> <Input /> </Form.Item>
-              </div>
-              <div className={styles.col}>
-                <Form.Item className={styles.formItem} name={[`truocMen`, i, 'khoiLuongPhuPhamTruoc']} label={<span className={styles.formLabel}>Khối lượng phụ phẩm</span>}> <Input /> </Form.Item>
-              </div>
-            </div>
-            <div className={styles.row}>
-              <div className={styles.col}>
-                <Form.Item className={styles.formItem} name={[`truocMen`, i, 'khoiLuongThuGomTruoc']} label={<span className={styles.formLabel}>Khối lượng thu gom</span>}> <Input /> </Form.Item>
-              </div>
-            </div>
+          <div className={styles.row}>
+            <Form.Item className={styles.col} name={[`sectionB`, i, 'loaiCayTruoc']} label="Loại cây trồng"><Input /></Form.Item>
+            <Form.Item className={styles.col} name={[`sectionB`, i, 'dienTichTruoc']} label="Diện tích đất trồng cây"><Input /></Form.Item>
+          </div>
+          <div className={styles.row}>
+            <Form.Item className={styles.col} name={[`sectionB`, i, 'loaiPhuPhamTruoc']} label="Loại phụ phẩm cây trồng"><Input /></Form.Item>
+            <Form.Item className={styles.col} name={[`sectionB`, i, 'khoiLuongPhuPhamTruoc']} label="Khối lượng phụ phẩm"><Input /></Form.Item>
+          </div>
+          <div className={styles.row}>
+            <Form.Item className={styles.col} name={[`sectionB`, i, 'khoiLuongThuGomTruoc']} label="Khối lượng thu gom"><Input /></Form.Item>
+          </div>
         </div>
       ))}
-      <div className={styles.buttonGroup} style={{marginTop: 16, marginBottom: 32}}>
-        <Button 
-          type="dashed" 
-          onClick={addTruocMen}
+      <div className={styles.buttonGroup} style={{ marginTop: 16, marginBottom: 32 }}>
+        <Button
+          type="dashed"
+          onClick={addSectionB}
           icon={<PlusOutlined />}
-          style={{minWidth: 120}}
+          style={{ minWidth: 120 }}
         >
           Thêm phần
         </Button>
-        {truocMenCount > 1 && (
-          <Button 
-            type="text" 
+        {sectionBCount > 1 && (
+          <Button
+            type="text"
             danger
-            onClick={removeTruocMen}
+            onClick={removeSectionB}
             icon={<DeleteOutlined />}
-            style={{minWidth: 120}}
+            style={{ minWidth: 120 }}
           >
             Xóa phần cuối
           </Button>
@@ -138,12 +129,12 @@ export default function TechniqueFormLenMen({ form, onFinish, onBack, initialVal
 
       <div level={4} className={styles.sectionTitle}>C. Sử dụng thức ăn ủ lên men làm thức ăn chăn nuôi, sức khoẻ vật nuôi, hiệu quả kinh tế SAU và TRƯỚC khi sử dụng thức ăn ủ lên men</div>
       <Divider className={styles.divider} />
-      {Array.from({length: thucAnMenCount}).map((_, i) => (
+      {Array.from({ length: sectionCCount }).map((_, i) => (
         <div key={i} className={styles.formSection}>
           {/* Input for animal name */}
           <div style={{ marginBottom: 24 }}>
-            <Form.Item 
-              name={[`thucAnMen`, i, 'tenVatNuoi']} 
+            <Form.Item
+              name={[`sectionC`, i, 'tenVatNuoi']}
               label={<span style={{ fontWeight: 600 }}>Tên vật nuôi sử dụng thức ăn ủ lên men</span>}
               rules={[]}
             >
@@ -153,8 +144,8 @@ export default function TechniqueFormLenMen({ form, onFinish, onBack, initialVal
 
           {/* Main table */}
           <div style={{ overflowX: 'auto', marginBottom: 24 }}>
-            <table style={{ 
-              width: '100%', 
+            <table style={{
+              width: '100%',
               borderCollapse: 'collapse',
               border: '1px solid #d9d9d9',
               fontSize: '12px'
@@ -206,22 +197,22 @@ export default function TechniqueFormLenMen({ form, onFinish, onBack, initialVal
                 {/* Row 1: SAU KHI SỬ DỤNG THỨC ĂN Ủ LÊN MEN */}
                 <tr>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px', fontWeight: 600, backgroundColor: '#f6ffed', textAlign: 'center' }}>
-                    TRƯỚC KHI SỬ DỤNG<br/>THỨC ĂN Ủ LÊN MEN
+                    TRƯỚC KHI SỬ DỤNG<br />THỨC ĂN Ủ LÊN MEN
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
                     <div style={{ fontSize: '11px', marginBottom: '2px' }}>
-                      <Form.Item name={[`thucAnMen`, i, 'soLuaSauMen']} rules={[]} style={{ marginBottom: 0 }}>
+                      <Form.Item name={[`sectionC`, i, 'soLuaSauMen']} rules={[]} style={{ marginBottom: 0 }}>
                         <InputNumber placeholder='Lứa' size='small' style={{ width: '100%' }} min={0} />
                       </Form.Item>
                     </div>
                     <div style={{ fontSize: '11px' }}>
-                      <Form.Item name={[`thucAnMen`, i, 'soNgayNuoiSauMen']} rules={[]} style={{ marginBottom: 0 }}>
+                      <Form.Item name={[`sectionC`, i, 'soNgayNuoiSauMen']} rules={[]} style={{ marginBottom: 0 }}>
                         <InputNumber placeholder='Ngày' size='small' style={{ width: '100%' }} min={0} />
                       </Form.Item>
                     </div>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`thucAnMen`, i, 'soLuongVatNuoiSau']} rules={[]} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionC`, i, 'soLuongVatNuoiSau']} rules={[]} style={{ marginBottom: 0 }}>
                       <InputNumber placeholder='Con' size='small' style={{ width: '100%' }} min={0} />
                     </Form.Item>
                   </td>
@@ -237,12 +228,12 @@ export default function TechniqueFormLenMen({ form, onFinish, onBack, initialVal
                         {['Thức ăn ủ lên men', 'Sâu canxi/trùn quế', 'Thức ăn tinh (ngô, gạo)', 'Thức ăn tổng hợp/viên', 'Thức ăn xanh'].map((thucAnType, idx) => (
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '3px' }}>
-                              <Form.Item name={[`thucAnMen`, i, `sauMen_tenThucAn_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                              <Form.Item name={[`sectionC`, i, `sauMen_tenThucAn_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
                                 <Input placeholder={thucAnType} size='small' style={{ fontSize: '11px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '3px' }}>
-                              <Form.Item name={[`thucAnMen`, i, `sauMen_kg_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                              <Form.Item name={[`sectionC`, i, `sauMen_kg_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
                                 <Input placeholder='Kg' size='small' style={{ fontSize: '11px' }} />
                               </Form.Item>
                             </td>
@@ -263,12 +254,12 @@ export default function TechniqueFormLenMen({ form, onFinish, onBack, initialVal
                         {['Thức ăn ủ lên men', 'Sâu canxi/trùn quế', 'Thức ăn tinh (ngô, gạo)', 'Thức ăn tổng hợp/viên', 'Thức ăn xanh'].map((thucAnType, idx) => (
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '3px' }}>
-                              <Form.Item name={[`thucAnMen`, i, `sauMen_tenThucAnTien_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                              <Form.Item name={[`sectionC`, i, `sauMen_tenThucAnTien_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
                                 <Input placeholder={thucAnType} size='small' style={{ fontSize: '11px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '3px' }}>
-                              <Form.Item name={[`thucAnMen`, i, `sauMen_tien_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                              <Form.Item name={[`sectionC`, i, `sauMen_tien_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
                                 <Input placeholder='đồng' size='small' style={{ fontSize: '11px' }} />
                               </Form.Item>
                             </td>
@@ -278,42 +269,42 @@ export default function TechniqueFormLenMen({ form, onFinish, onBack, initialVal
                     </table>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`thucAnMen`, i, 'tienThuocSauMen']} rules={[]} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionC`, i, 'tienThuocSauMen']} rules={[]} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`thucAnMen`, i, 'vatNuoiBiBenhSau']} rules={[]} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionC`, i, 'vatNuoiBiBenhSau']} rules={[]} style={{ marginBottom: 0 }}>
                       <Input placeholder='Có/Không' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`thucAnMen`, i, 'danhGiaSucKhoeSau']} rules={[]} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionC`, i, 'danhGiaSucKhoeSau']} rules={[]} style={{ marginBottom: 0 }}>
                       <InputNumber min={1} max={10} placeholder='1-10' size='small' style={{ width: '100%' }} />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`thucAnMen`, i, 'vatNuoiPhatTrienSau']} rules={[]} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionC`, i, 'vatNuoiPhatTrienSau']} rules={[]} style={{ marginBottom: 0 }}>
                       <Input placeholder='Có/Không' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`thucAnMen`, i, 'thoiGianNuoiSau']} rules={[]} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionC`, i, 'thoiGianNuoiSau']} rules={[]} style={{ marginBottom: 0 }}>
                       <Input placeholder='Tháng' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`thucAnMen`, i, 'trongLuongXuatSau']} rules={[]} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionC`, i, 'trongLuongXuatSau']} rules={[]} style={{ marginBottom: 0 }}>
                       <Input placeholder='kg/con' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`thucAnMen`, i, 'giaBanSau']} rules={[]} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionC`, i, 'giaBanSau']} rules={[]} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng/kg' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`thucAnMen`, i, 'thanhTienSau']} rules={[]} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionC`, i, 'thanhTienSau']} rules={[]} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' />
                     </Form.Item>
                   </td>
@@ -322,22 +313,22 @@ export default function TechniqueFormLenMen({ form, onFinish, onBack, initialVal
                 {/* Row 2: TRƯỚC KHI SỬ DỤNG THỨC ĂN Ủ LÊN MEN */}
                 <tr>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px', fontWeight: 600, backgroundColor: '#e6f7ff', textAlign: 'center' }}>
-                    SAU KHI SỬ DỤNG <br/>THỨC ĂN Ủ LÊN MEN
+                    SAU KHI SỬ DỤNG <br />THỨC ĂN Ủ LÊN MEN
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
                     <div style={{ fontSize: '11px', marginBottom: '2px' }}>
-                      <Form.Item name={[`thucAnMen`, i, 'soLuaTruocMen']} rules={[]} style={{ marginBottom: 0 }}>
+                      <Form.Item name={[`sectionC`, i, 'soLuaTruocMen']} rules={[]} style={{ marginBottom: 0 }}>
                         <InputNumber placeholder='Lứa' size='small' style={{ width: '100%' }} min={0} />
                       </Form.Item>
                     </div>
                     <div style={{ fontSize: '11px' }}>
-                      <Form.Item name={[`thucAnMen`, i, 'soNgayNuoiTruocMen']} rules={[]} style={{ marginBottom: 0 }}>
+                      <Form.Item name={[`sectionC`, i, 'soNgayNuoiTruocMen']} rules={[]} style={{ marginBottom: 0 }}>
                         <InputNumber placeholder='Ngày' size='small' style={{ width: '100%' }} min={0} />
                       </Form.Item>
                     </div>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`thucAnMen`, i, 'soLuongVatNuoiTruoc']} rules={[]} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionC`, i, 'soLuongVatNuoiTruoc']} rules={[]} style={{ marginBottom: 0 }}>
                       <InputNumber placeholder='Con' size='small' style={{ width: '100%' }} min={0} />
                     </Form.Item>
                   </td>
@@ -353,12 +344,12 @@ export default function TechniqueFormLenMen({ form, onFinish, onBack, initialVal
                         {['Sâu canxi/trùn quế', 'Thức ăn tinh (ngô, gạo)', 'Thức ăn tổng hợp/viên', 'Thức ăn xanh'].map((thucAnType, idx) => (
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '3px' }}>
-                              <Form.Item name={[`thucAnMen`, i, `truocMen_tenThucAn_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                              <Form.Item name={[`sectionC`, i, `truocMen_tenThucAn_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
                                 <Input placeholder={thucAnType} size='small' style={{ fontSize: '11px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '3px' }}>
-                              <Form.Item name={[`thucAnMen`, i, `truocMen_kg_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                              <Form.Item name={[`sectionC`, i, `truocMen_kg_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
                                 <Input placeholder='Kg' size='small' style={{ fontSize: '11px' }} />
                               </Form.Item>
                             </td>
@@ -379,12 +370,12 @@ export default function TechniqueFormLenMen({ form, onFinish, onBack, initialVal
                         {['Sâu canxi/trùn quế', 'Thức ăn tinh (ngô, gạo)', 'Thức ăn tổng hợp/viên', 'Thức ăn xanh'].map((thucAnType, idx) => (
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '3px' }}>
-                              <Form.Item name={[`thucAnMen`, i, `truocMen_tenThucAnTien_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                              <Form.Item name={[`sectionC`, i, `truocMen_tenThucAnTien_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
                                 <Input placeholder={thucAnType} size='small' style={{ fontSize: '11px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '3px' }}>
-                              <Form.Item name={[`thucAnMen`, i, `truocMen_tien_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                              <Form.Item name={[`sectionC`, i, `truocMen_tien_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
                                 <Input placeholder='đồng' size='small' style={{ fontSize: '11px' }} />
                               </Form.Item>
                             </td>
@@ -394,42 +385,42 @@ export default function TechniqueFormLenMen({ form, onFinish, onBack, initialVal
                     </table>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`thucAnMen`, i, 'tienThuocTruocMen']} rules={[]} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionC`, i, 'tienThuocTruocMen']} rules={[]} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`thucAnMen`, i, 'vatNuoiBiBenhTruoc']} rules={[]} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionC`, i, 'vatNuoiBiBenhTruoc']} rules={[]} style={{ marginBottom: 0 }}>
                       <Input placeholder='Có/Không' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`thucAnMen`, i, 'danhGiaSucKhoeTruoc']} rules={[]} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionC`, i, 'danhGiaSucKhoeTruoc']} rules={[]} style={{ marginBottom: 0 }}>
                       <InputNumber min={1} max={10} placeholder='1-10' size='small' style={{ width: '100%' }} />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`thucAnMen`, i, 'vatNuoiPhatTrienTruoc']} rules={[]} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionC`, i, 'vatNuoiPhatTrienTruoc']} rules={[]} style={{ marginBottom: 0 }}>
                       <Input placeholder='Có/Không' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`thucAnMen`, i, 'thoiGianNuoiTruoc']} rules={[]} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionC`, i, 'thoiGianNuoiTruoc']} rules={[]} style={{ marginBottom: 0 }}>
                       <Input placeholder='Tháng' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`thucAnMen`, i, 'trongLuongXuatTruoc']} rules={[]} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionC`, i, 'trongLuongXuatTruoc']} rules={[]} style={{ marginBottom: 0 }}>
                       <Input placeholder='kg/con' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`thucAnMen`, i, 'giaBanTruoc']} rules={[]} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionC`, i, 'giaBanTruoc']} rules={[]} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng/kg' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`thucAnMen`, i, 'thanhTienTruoc']} rules={[]} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionC`, i, 'thanhTienTruoc']} rules={[]} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' />
                     </Form.Item>
                   </td>
@@ -439,22 +430,22 @@ export default function TechniqueFormLenMen({ form, onFinish, onBack, initialVal
           </div>
         </div>
       ))}
-      <div className={styles.buttonGroup} style={{marginTop: 16, marginBottom: 32}}>
-        <Button 
-          type="dashed" 
-          onClick={addThucAnMen}
+      <div className={styles.buttonGroup} style={{ marginTop: 16, marginBottom: 32 }}>
+        <Button
+          type="dashed"
+          onClick={addSectionC}
           icon={<PlusOutlined />}
-          style={{minWidth: 120}}
+          style={{ minWidth: 120 }}
         >
           Thêm phần
         </Button>
-        {thucAnMenCount > 1 && (
-          <Button 
-            type="text" 
+        {sectionCCount > 1 && (
+          <Button
+            type="text"
             danger
-            onClick={removeThucAnMen}
+            onClick={removeSectionC}
             icon={<DeleteOutlined />}
-            style={{minWidth: 120}}
+            style={{ minWidth: 120 }}
           >
             Xóa phần cuối
           </Button>
@@ -462,8 +453,8 @@ export default function TechniqueFormLenMen({ form, onFinish, onBack, initialVal
       </div>
 
       <div className={styles.buttonGroup}>
-        <Button onClick={onBack} style={{marginRight:16}}>Quay lại</Button>
-        <Button type="primary" htmlType="submit" style={{minWidth:180,fontWeight:'bold'}}>Hoàn tất phần kỹ thuật</Button>
+        <Button onClick={onBack} style={{ marginRight: 16 }}>Quay lại</Button>
+        <Button type="primary" htmlType="submit" style={{ minWidth: 180, fontWeight: 'bold' }}>Hoàn tất phần kỹ thuật</Button>
       </div>
     </Form>
   )

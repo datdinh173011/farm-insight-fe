@@ -52,3 +52,12 @@
   text-align: center;
   margin-top: 32px;
 }
+.col {
+  flex: 1 1 300px;
+}
+
+.row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 8px;
+}

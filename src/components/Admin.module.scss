@@ -1,17 +1,14 @@
 .adminWrapper {
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   background: linear-gradient(120deg, #e0eafc 0%, #cfdef3 100%);
+  padding: 24px;
 }
 
 .topRight {
-  position: absolute;
-  top: 32px;
-  right: 48px;
-  z-index: 10;
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 100;
 }
 
 .logoutBtn {
@@ -20,22 +17,9 @@
   border-radius: 8px;
   background: linear-gradient(90deg, #2b4c7e 0%, #4e8cff 100%);
   border: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 .logoutBtn:hover, .logoutBtn:focus {
   background: linear-gradient(90deg, #4e8cff 0%, #2b4c7e 100%);
-}
-
-.title {
-  color: #2b4c7e;
-  font-weight: 700;
-  margin-bottom: 24px;
-}
-
-.content {
-  font-size: 20px;
-  color: #4e8cff;
-  background: #fff;
-  padding: 24px 32px;
-  border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
