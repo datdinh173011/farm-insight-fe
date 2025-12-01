@@ -114,7 +114,152 @@ export default function SubmissionsTable() {
     setModalVisible(true);
   };
 
-  // Export to Excel with detailed data
+  // Field label mapping for common questions
+  const fieldLabelMap = {
+    // Common questions (câu 40-70)
+    'cau40': 'Câu 40: Có khó khăn khi áp dụng kỹ thuật',
+    'cau41': 'Câu 41: Mô tả khó khăn',
+    'cau42': 'Câu 42: Nhận hỗ trợ khi áp dụng',
+    'cau43': 'Câu 43: Mô tả hỗ trợ',
+    'cau44': 'Câu 44: Hỗ trợ của ai',
+    'cau45': 'Câu 45: Tập huấn đầy đủ',
+    'cau46': 'Câu 46: Nhận kit hỗ trợ',
+    'cau47': 'Câu 47: Kit hỗ trợ đầy đủ',
+    'cau48': 'Câu 48: Nội dung kit thiếu',
+    'cau49': 'Câu 49: Tự mua vật tư',
+    'cau50': 'Câu 50: Số tiền tự chi',
+    'cau51': 'Câu 51: Đánh giá chất lượng kit',
+    'cau52': 'Câu 52: Vấn đề chất lượng kit',
+    'cau53': 'Câu 53: Giải quyết vấn đề',
+    'cau54': 'Câu 54: Mức độ hài lòng',
+    'cau55_loiIch1': 'Câu 55.1: Lợi ích kinh tế',
+    'cau55_loiIch2': 'Câu 55.2: Lợi ích môi trường',
+    'cau56': 'Câu 56: Chi tiết lợi ích',
+    'cau57': 'Câu 57: Tiếp tục áp dụng',
+    'cau58': 'Câu 58: Lý do không tiếp tục',
+    'cau59': 'Câu 59: Giới thiệu cho người khác',
+    'cau60': 'Câu 60: Lý do không giới thiệu',
+    'cau61': 'Câu 61: Mở rộng quy mô',
+    'cau62': 'Câu 62: Lý do không mở rộng',
+    'cau63': 'Câu 63: Nhu cầu hỗ trợ thêm',
+    'cau64': 'Câu 64: Chi tiết hỗ trợ mong muốn',
+    'cau65': 'Câu 65: Đào tạo thêm cần thiết',
+    'cau66': 'Câu 66: Nội dung đào tạo',
+    'cau67': 'Câu 67: Đề xuất cải tiến',
+    'cau68': 'Câu 68: Kết nối thị trường',
+    'cau69': 'Câu 69: Nhận xét khác',
+    'cau70': 'Câu 70: Đánh giá tổng thể',
+  };
+
+  // Section name mapping
+  const sectionNameMap = {
+    'sectionA': 'Section A',
+    'sectionB': 'Section B',
+    'sectionC': 'Section C',
+    'sectionD': 'Section D',
+  };
+
+  // Helper function to create readable label from field key
+  const createFieldLabel = (key) => {
+    // Check if it's a common question
+    if (fieldLabelMap[key]) {
+      return fieldLabelMap[key];
+    }
+
+    // Parse section array notation: sectionA[0].fieldName
+    const sectionMatch = key.match(/^(section[ABCD])\[(\d+)\]\.(.+)$/);
+    if (sectionMatch) {
+      const [, section, index, fieldName] = sectionMatch;
+      const sectionLabel = sectionNameMap[section] || section;
+      const partNumber = parseInt(index) + 1;
+      
+      // Clean up field name
+      const cleanFieldName = fieldName
+        .replace(/_/g, ' ')
+        .replace(/([A-Z])/g, ' $1')
+        .trim()
+        .replace(/\s+/g, ' ')
+        .toLowerCase()
+        .split(' ')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ');
+      
+      return `${sectionLabel} - Phần ${partNumber} - ${cleanFieldName}`;
+    }
+
+    // Parse nested field: field.subfield
+    const dotMatch = key.match(/^([^.]+)\.(.+)$/);
+    if (dotMatch) {
+      const [, parent, child] = dotMatch;
+      const cleanParent = parent.replace(/_/g, ' ').replace(/([A-Z])/g, ' $1').trim();
+      const cleanChild = child.replace(/_/g, ' ').replace(/([A-Z])/g, ' $1').trim();
+      return `${cleanParent} - ${cleanChild}`;
+    }
+
+    // Default: clean up underscores and camelCase
+    return key
+      .replace(/_/g, ' ')
+      .replace(/([A-Z])/g, ' $1')
+      .trim()
+      .replace(/\s+/g, ' ')
+      .split(' ')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+  };
+
+  // Helper function to flatten data into single row with human-readable labels
+  const flattenDataForExcel = (data) => {
+    const flatData = {};
+    
+    // Helper to flatten nested objects with dot notation
+    const flattenObject = (obj, prefix = '') => {
+      Object.keys(obj).forEach(key => {
+        const value = obj[key];
+        const newKey = prefix ? `${prefix}.${key}` : key;
+        
+        if (Array.isArray(value)) {
+          // For arrays (sections), create indexed columns
+          value.forEach((item, index) => {
+            if (typeof item === 'object' && item !== null) {
+              Object.keys(item).forEach(subKey => {
+                const arrayKey = `${newKey}[${index}].${subKey}`;
+                const subValue = item[subKey];
+                
+                // Create human-readable label
+                const label = createFieldLabel(arrayKey);
+                
+                if (typeof subValue === 'object' && subValue !== null && !Array.isArray(subValue)) {
+                  // Nested object within array item
+                  Object.keys(subValue).forEach(subSubKey => {
+                    const nestedLabel = createFieldLabel(`${arrayKey}.${subSubKey}`);
+                    flatData[nestedLabel] = subValue[subSubKey] || '';
+                  });
+                } else if (Array.isArray(subValue)) {
+                  flatData[label] = JSON.stringify(subValue);
+                } else {
+                  flatData[label] = subValue || '';
+                }
+              });
+            } else {
+              const label = createFieldLabel(`${newKey}[${index}]`);
+              flatData[label] = value[index] || '';
+            }
+          });
+        } else if (typeof value === 'object' && value !== null) {
+          // Nested object - flatten recursively
+          flattenObject(value, newKey);
+        } else {
+          const label = createFieldLabel(newKey);
+          flatData[label] = value || '';
+        }
+      });
+    };
+
+    flattenObject(data);
+    return flatData;
+  };
+
+  // Export to Excel with single row per record and nested table structure
   const exportToExcel = () => {
     if (data.length === 0) {
       message.warning('Không có dữ liệu để xuất');
@@ -153,7 +298,7 @@ export default function SubmissionsTable() {
       ];
       XLSX.utils.book_append_sheet(wb, ws1, 'Tổng hợp');
 
-      // Sheet 2-7: Detailed data for each technique
+      // Sheet 2-7: Detailed data for each technique - ONE ROW PER RECORD
       const techniqueGroups = {};
       data.forEach((record) => {
         const techType = record.template_type;
@@ -169,39 +314,43 @@ export default function SubmissionsTable() {
         const sheetData = [];
 
         records.forEach((record, idx) => {
-          // Flatten nested data structure
-          const flatData = {
+          // Create single row for this record
+          const rowData = {
             'STT': idx + 1,
             'Họ tên': record.ho_ten || '',
             'Năm sinh': record.nam_sinh || '',
             'SĐT': record.so_dien_thoai || '',
-            'Địa chỉ': `${record.thon || ''}, ${record.xa || ''}, ${record.tinh || ''}`,
+            'Thôn': record.thon || '',
+            'Xã': record.xa || '',
+            'Tỉnh': record.tinh || '',
             'Ngày gửi': record.submitted_at ? dayjs(record.submitted_at).format('DD/MM/YYYY HH:mm') : '',
           };
 
-          // Add technique data fields
+          // Flatten nested data structure into single row
           if (record.data && typeof record.data === 'object') {
-            const flattenObject = (obj, prefix = '') => {
-              Object.keys(obj).forEach((key) => {
-                const value = obj[key];
-                const newKey = prefix ? `${prefix}_${key}` : key;
-
-                if (Array.isArray(value)) {
-                  flatData[newKey] = JSON.stringify(value);
-                } else if (typeof value === 'object' && value !== null) {
-                  flattenObject(value, newKey);
-                } else {
-                  flatData[newKey] = value || '';
-                }
-              });
-            };
-            flattenObject(record.data);
+            const flatData = flattenDataForExcel(record.data);
+            Object.assign(rowData, flatData);
           }
 
-          sheetData.push(flatData);
+          sheetData.push(rowData);
         });
 
         const ws = XLSX.utils.json_to_sheet(sheetData);
+        
+        // Auto-size columns based on content
+        const colWidths = [];
+        if (sheetData.length > 0) {
+          const headers = Object.keys(sheetData[0]);
+          headers.forEach((header) => {
+            const maxLen = Math.max(
+              header.length,
+              ...sheetData.map(row => String(row[header] || '').length)
+            );
+            colWidths.push({ wch: Math.min(maxLen + 2, 60) });
+          });
+          ws['!cols'] = colWidths;
+        }
+
         // Truncate sheet name to max 31 characters (Excel limit)
         const truncatedName = sheetName.length > 31 ? sheetName.substring(0, 28) + '...' : sheetName;
         XLSX.utils.book_append_sheet(wb, ws, truncatedName);
