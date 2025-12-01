@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Input, InputNumber, Checkbox, Button, Divider, Table } from 'antd';
+import { Form, Input, InputNumber, Radio, Button, Divider, Table } from 'antd';
 import { PlusOutlined, DeleteOutlined } from '@ant-design/icons';
 import styles from './TechniqueFormNuoiGa.module.scss';
 
@@ -54,7 +54,12 @@ export default function TechniqueFormNuoiGa({ form, onFinish, onBack, initialVal
             <Form.Item className={styles.col} name={[`sectionA`, i, 'tongKhoiLuongPhanU']} label="Tổng khối lượng phân ủ thu được từ lớp đệm lót (kg)"><Input /></Form.Item>
           </div>
           <div className={styles.row}>
-            <Form.Item className={styles.col} name={[`sectionA`, i, 'mayBamCat']} label="Sử dụng máy để băm/cắt nhỏ phụ phẩm cây trồng"><Input placeholder='Có/Không' /></Form.Item>
+            <Form.Item className={styles.col} name={[`sectionA`, i, 'mayBamCat']} label="Sử dụng máy để băm/cắt nhỏ phụ phẩm cây trồng">
+              <Radio.Group>
+                <Radio value="Có">Có</Radio>
+                <Radio value="Không">Không</Radio>
+              </Radio.Group>
+            </Form.Item>
             <Form.Item className={styles.col} name={[`sectionA`, i, 'nhienLieu']} label="Lượng nhiên liệu đã sử dụng (dầu diesel/ hoặc điện)"><Input placeholder="Dầu ... lít, Điện ... kw" /></Form.Item>
           </div>
           <div className={styles.row}>
@@ -222,7 +227,7 @@ export default function TechniqueFormNuoiGa({ form, onFinish, onBack, initialVal
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
                               <Form.Item name={[`phanU`, i, `khongPhanU_tenPhan_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
-                                <Input defaultValue={phanType} size='small' style={{ fontSize: '12px' }} />
+                                <Input defaultValue={phanType} disabled size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
@@ -248,7 +253,7 @@ export default function TechniqueFormNuoiGa({ form, onFinish, onBack, initialVal
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
                               <Form.Item name={[`phanU`, i, `khongPhanU_tenPhanTien_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
-                                <Input defaultValue={phanType} size='small' style={{ fontSize: '12px' }} />
+                                <Input defaultValue={phanType} disabled size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
@@ -298,7 +303,10 @@ export default function TechniqueFormNuoiGa({ form, onFinish, onBack, initialVal
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
                     <Form.Item name={[`phanU`, i, '32lkhong']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
-                      <Input placeholder='Có/Không' size='small' />
+                      <Radio.Group>
+                        <Radio value="Có">Có</Radio>
+                        <Radio value="Không">Không</Radio>
+                      </Radio.Group>
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
@@ -343,7 +351,7 @@ export default function TechniqueFormNuoiGa({ form, onFinish, onBack, initialVal
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
                               <Form.Item name={[`phanU`, i, `sauPhanU_tenPhan2_${idx}`]} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
-                                <Input defaultValue={phanType} size='small' style={{ fontSize: '12px' }} />
+                                <Input defaultValue={phanType} disabled size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
@@ -369,7 +377,7 @@ export default function TechniqueFormNuoiGa({ form, onFinish, onBack, initialVal
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
                               <Form.Item name={[`phanU`, i, `sauPhanU_tenPhanTien2_${idx}`]} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
-                                <Input defaultValue={phanType} size='small' style={{ fontSize: '12px' }} />
+                                <Input defaultValue={phanType} disabled size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
@@ -419,7 +427,10 @@ export default function TechniqueFormNuoiGa({ form, onFinish, onBack, initialVal
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
                     <Form.Item name={[`phanU`, i, '32lsau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
-                      <Input placeholder='Có/Không' size='small' />
+                      <Radio.Group>
+                        <Radio value="Có">Có</Radio>
+                        <Radio value="Không">Không</Radio>
+                      </Radio.Group>
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
@@ -540,7 +551,7 @@ export default function TechniqueFormNuoiGa({ form, onFinish, onBack, initialVal
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
                               <Form.Item name={[`danGa`, i, `sauDemLot_tenThucAn_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
-                                <Input defaultValue={thucAnType} size='small' style={{ fontSize: '11px' }} />
+                                <Input defaultValue={thucAnType} disabled size='small' style={{ fontSize: '11px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
@@ -566,7 +577,7 @@ export default function TechniqueFormNuoiGa({ form, onFinish, onBack, initialVal
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
                               <Form.Item name={[`danGa`, i, `sauDemLot_tenThucAnTien_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
-                                <Input defaultValue={thucAnType} size='small' style={{ fontSize: '11px' }} />
+                                <Input defaultValue={thucAnType} disabled size='small' style={{ fontSize: '11px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
@@ -591,7 +602,10 @@ export default function TechniqueFormNuoiGa({ form, onFinish, onBack, initialVal
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
                     <Form.Item name={[`danGa`, i, 'gaBiBenh']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
-                      <Input placeholder='Có/Không' size='small' />
+                      <Radio.Group>
+                        <Radio value="Có">Có</Radio>
+                        <Radio value="Không">Không</Radio>
+                      </Radio.Group>
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
@@ -616,7 +630,10 @@ export default function TechniqueFormNuoiGa({ form, onFinish, onBack, initialVal
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
                     <Form.Item name={[`danGa`, i, 'gaPhatTrienNhanhHon']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
-                      <Input placeholder='Có/Không' size='small' />
+                      <Radio.Group>
+                        <Radio value="Có">Có</Radio>
+                        <Radio value="Không">Không</Radio>
+                      </Radio.Group>
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
@@ -659,7 +676,7 @@ export default function TechniqueFormNuoiGa({ form, onFinish, onBack, initialVal
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
                               <Form.Item name={[`danGa`, i, `truocDemLot_tenThucAn_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
-                                <Input defaultValue={thucAnType} size='small' style={{ fontSize: '11px' }} />
+                                <Input defaultValue={thucAnType} disabled size='small' style={{ fontSize: '11px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
@@ -685,7 +702,7 @@ export default function TechniqueFormNuoiGa({ form, onFinish, onBack, initialVal
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
                               <Form.Item name={[`danGa`, i, `truocDemLot_tenThucAnTien_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
-                                <Input defaultValue={thucAnType} size='small' style={{ fontSize: '11px' }} />
+                                <Input defaultValue={thucAnType} disabled size='small' style={{ fontSize: '11px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
@@ -710,7 +727,10 @@ export default function TechniqueFormNuoiGa({ form, onFinish, onBack, initialVal
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
                     <Form.Item name={[`danGa`, i, 'gaBiBenh2']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
-                      <Input placeholder='Có/Không' size='small' />
+                      <Radio.Group>
+                        <Radio value="Có">Có</Radio>
+                        <Radio value="Không">Không</Radio>
+                      </Radio.Group>
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
@@ -735,7 +755,10 @@ export default function TechniqueFormNuoiGa({ form, onFinish, onBack, initialVal
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
                     <Form.Item name={[`danGa`, i, 'gaPhatTrienNhanhHon2']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
-                      <Input placeholder='Có/Không' size='small' />
+                      <Radio.Group>
+                        <Radio value="Có">Có</Radio>
+                        <Radio value="Không">Không</Radio>
+                      </Radio.Group>
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>

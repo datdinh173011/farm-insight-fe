@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Form, Input, Button, Checkbox, InputNumber, Divider} from 'antd'
+import { Form, Input, Button, Checkbox, InputNumber, Divider, Radio} from 'antd'
 import { PlusOutlined, DeleteOutlined } from '@ant-design/icons'
 import styles from './TechniqueFormGocRa.module.scss'
 
@@ -141,7 +141,7 @@ export default function TechniqueFormGocRa({ form, onFinish, onBack, initialValu
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
                               <Form.Item name={[`sectionB`, i, `truocPhan_tenPhan_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
-                                <Input placeholder={phanType} size='small' style={{ fontSize: '12px' }} />
+                                <Input defaultValue={phanType} disabled size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
@@ -167,7 +167,7 @@ export default function TechniqueFormGocRa({ form, onFinish, onBack, initialValu
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
                               <Form.Item name={[`sectionB`, i, `truocPhan_tenPhanTien_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
-                                <Input placeholder={phanType} size='small' style={{ fontSize: '12px' }} />
+                                <Input defaultValue={phanType} disabled size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
@@ -182,12 +182,18 @@ export default function TechniqueFormGocRa({ form, onFinish, onBack, initialValu
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
                     <Form.Item name={[`sectionB`, i, '16etruoc']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
-                      <Input placeholder='Có/Không' size='small' />
+                      <Radio.Group>
+                        <Radio value="Có">Có</Radio>
+                        <Radio value="Không">Không</Radio>
+                      </Radio.Group>
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
                     <Form.Item name={[`sectionB`, i, '16ftruoc']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
-                      <Input placeholder='Có/Không' size='small' />
+                      <Radio.Group>
+                        <Radio value="Có">Có</Radio>
+                        <Radio value="Không">Không</Radio>
+                      </Radio.Group>
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
@@ -197,7 +203,10 @@ export default function TechniqueFormGocRa({ form, onFinish, onBack, initialValu
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
                     <Form.Item name={[`sectionB`, i, '16htruoc']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
-                      <Input placeholder='Có/Không' size='small' />
+                      <Radio.Group>
+                        <Radio value="Có">Có</Radio>
+                        <Radio value="Không">Không</Radio>
+                      </Radio.Group>
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
@@ -254,7 +263,7 @@ export default function TechniqueFormGocRa({ form, onFinish, onBack, initialValu
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
                               <Form.Item name={[`sectionB`, i, `sauPhan_tenPhan_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
-                                <Input placeholder={phanType} size='small' style={{ fontSize: '12px' }} />
+                                <Input defaultValue={phanType} disabled size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
@@ -280,7 +289,7 @@ export default function TechniqueFormGocRa({ form, onFinish, onBack, initialValu
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
                               <Form.Item name={[`sectionB`, i, `sauPhan_tenPhanTien_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
-                                <Input placeholder={phanType} size='small' style={{ fontSize: '12px' }} />
+                                <Input defaultValue={phanType} disabled size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
@@ -295,12 +304,18 @@ export default function TechniqueFormGocRa({ form, onFinish, onBack, initialValu
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
                     <Form.Item name={[`sectionB`, i, '16esau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
-                      <Input placeholder='Có/Không' size='small' />
+                      <Radio.Group>
+                        <Radio value="Có">Có</Radio>
+                        <Radio value="Không">Không</Radio>
+                      </Radio.Group>
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
                     <Form.Item name={[`sectionB`, i, '16fsau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
-                      <Input placeholder='Có/Không' size='small' />
+                      <Radio.Group>
+                        <Radio value="Có">Có</Radio>
+                        <Radio value="Không">Không</Radio>
+                      </Radio.Group>
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
@@ -310,7 +325,10 @@ export default function TechniqueFormGocRa({ form, onFinish, onBack, initialValu
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
                     <Form.Item name={[`sectionB`, i, '16hsau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
-                      <Input placeholder='Có/Không' size='small' />
+                      <Radio.Group>
+                        <Radio value="Có">Có</Radio>
+                        <Radio value="Không">Không</Radio>
+                      </Radio.Group>
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>

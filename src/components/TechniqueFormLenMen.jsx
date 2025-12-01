@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Form, Input, InputNumber, Button, Checkbox, Typography, Divider, Tooltip } from 'antd'
+import { Form, Input, InputNumber, Button, Radio, Typography, Divider, Tooltip } from 'antd'
 import { PlusOutlined, DeleteOutlined } from '@ant-design/icons'
 import styles from './TechniqueFormLenMen.module.scss'
 const { Title, Text } = Typography
@@ -58,7 +58,12 @@ export default function TechniqueFormLenMen({ form, onFinish, onBack, initialVal
           </div>
           <div className={styles.row}>
             <Form.Item className={styles.col} name={[`sectionA`, i, 'khoiLuongThucAnMen']} label="Khối lượng thức ăn ủ lên men thu được (kg)" rules={i === 0 ? [{ required: true, message: 'Bắt buộc nhập' }] : []}><Input /></Form.Item>
-            <Form.Item className={styles.col} name={[`sectionA`, i, 'mayBamCat']} label="Sử dụng máy để băm/ cắt nhỏ phụ phẩm cây trồng (có/ không)" rules={i === 0 ? [{ required: true, message: 'Bắt buộc chọn máy băm/cắt nhỏ' }] : []}><Input placeholder='Có/Không' /></Form.Item>
+            <Form.Item className={styles.col} name={[`sectionA`, i, 'mayBamCat']} label="Sử dụng máy để băm/ cắt nhỏ phụ phẩm cây trồng (có/ không)" rules={i === 0 ? [{ required: true, message: 'Bắt buộc chọn máy băm/cắt nhỏ' }] : []}>
+              <Radio.Group>
+                <Radio value="Có">Có</Radio>
+                <Radio value="Không">Không</Radio>
+              </Radio.Group>
+            </Form.Item>
           </div>
           <div className={styles.row}>
             <Form.Item className={styles.col} name={[`sectionA`, i, 'nhienLieu']} label="Lượng nhiên liệu đã sử dụng cho 1 lần lên men (dầu diesel/ hoặc điện; kg/ hoặc giờ)" rules={i === 0 ? [{ required: true, message: 'Bắt buộc nhập nhiên liệu' }] : []}><Input placeholder="Dầu ... lít, Điện ... kw" /></Form.Item>
@@ -229,7 +234,7 @@ export default function TechniqueFormLenMen({ form, onFinish, onBack, initialVal
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '3px' }}>
                               <Form.Item name={[`sectionC`, i, `sauMen_tenThucAn_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
-                                <Input defaultValue={thucAnType} size='small' style={{ fontSize: '11px' }} />
+                                <Input defaultValue={thucAnType} disabled size='small' style={{ fontSize: '11px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '3px' }}>
@@ -255,7 +260,7 @@ export default function TechniqueFormLenMen({ form, onFinish, onBack, initialVal
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '3px' }}>
                               <Form.Item name={[`sectionC`, i, `sauMen_tenThucAnTien_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
-                                <Input defaultValue={thucAnType} size='small' style={{ fontSize: '11px' }} />
+                                <Input defaultValue={thucAnType} disabled size='small' style={{ fontSize: '11px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '3px' }}>
@@ -275,7 +280,10 @@ export default function TechniqueFormLenMen({ form, onFinish, onBack, initialVal
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
                     <Form.Item name={[`sectionC`, i, 'vatNuoiBiBenhSau']} rules={[]} style={{ marginBottom: 0 }}>
-                      <Input placeholder='Có/Không' size='small' />
+                      <Radio.Group>
+                        <Radio value="Có">Có</Radio>
+                        <Radio value="Không">Không</Radio>
+                      </Radio.Group>
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
@@ -285,7 +293,10 @@ export default function TechniqueFormLenMen({ form, onFinish, onBack, initialVal
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
                     <Form.Item name={[`sectionC`, i, 'vatNuoiPhatTrienSau']} rules={[]} style={{ marginBottom: 0 }}>
-                      <Input placeholder='Có/Không' size='small' />
+                      <Radio.Group>
+                        <Radio value="Có">Có</Radio>
+                        <Radio value="Không">Không</Radio>
+                      </Radio.Group>
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
@@ -345,7 +356,7 @@ export default function TechniqueFormLenMen({ form, onFinish, onBack, initialVal
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '3px' }}>
                               <Form.Item name={[`sectionC`, i, `truocMen_tenThucAn_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
-                                <Input defaultValue={thucAnType} size='small' style={{ fontSize: '11px' }} />
+                                <Input defaultValue={thucAnType} disabled size='small' style={{ fontSize: '11px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '3px' }}>
@@ -371,7 +382,7 @@ export default function TechniqueFormLenMen({ form, onFinish, onBack, initialVal
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '3px' }}>
                               <Form.Item name={[`sectionC`, i, `truocMen_tenThucAnTien_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
-                                <Input defaultValue={thucAnType} size='small' style={{ fontSize: '11px' }} />
+                                <Input defaultValue={thucAnType} disabled size='small' style={{ fontSize: '11px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '3px' }}>
@@ -391,7 +402,10 @@ export default function TechniqueFormLenMen({ form, onFinish, onBack, initialVal
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
                     <Form.Item name={[`sectionC`, i, 'vatNuoiBiBenhTruoc']} rules={[]} style={{ marginBottom: 0 }}>
-                      <Input placeholder='Có/Không' size='small' />
+                      <Radio.Group>
+                        <Radio value="Có">Có</Radio>
+                        <Radio value="Không">Không</Radio>
+                      </Radio.Group>
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
@@ -401,7 +415,10 @@ export default function TechniqueFormLenMen({ form, onFinish, onBack, initialVal
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
                     <Form.Item name={[`sectionC`, i, 'vatNuoiPhatTrienTruoc']} rules={[]} style={{ marginBottom: 0 }}>
-                      <Input placeholder='Có/Không' size='small' />
+                      <Radio.Group>
+                        <Radio value="Có">Có</Radio>
+                        <Radio value="Không">Không</Radio>
+                      </Radio.Group>
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>

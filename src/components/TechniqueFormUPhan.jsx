@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Input, InputNumber, Button, Checkbox, Divider } from 'antd';
+import { Form, Input, InputNumber, Button, Radio, Divider } from 'antd';
 import { PlusOutlined, DeleteOutlined } from '@ant-design/icons';
 import styles from './TechniqueFormTrunQue.module.scss';
 
@@ -42,7 +42,10 @@ export default function TechniqueFormUPhan({ form, onFinish, onBack, initialValu
           </div>
           <div className={styles.row}>
             <Form.Item name={[`sectionA`, i, 'suDungMayCatNho']} label="Sử dụng máy để băm/cắt nhỏ phụ phẩm cây trồng" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} className={styles.col}>
-              <Input placeholder='Có/Không'/>
+              <Radio.Group>
+                <Radio value="Có">Có</Radio>
+                <Radio value="Không">Không</Radio>
+              </Radio.Group>
             </Form.Item>
             <Form.Item name={[`sectionA`, i, 'nhienLieuSuDung']} label="Lượng nhiên liệu đã sử dụng (dầu diesel/ hoặc điện)" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} className={styles.col}>
               <Input placeholder="Dầu ... lít, Điện ... kw" />
@@ -66,7 +69,10 @@ export default function TechniqueFormUPhan({ form, onFinish, onBack, initialValu
           <div className={styles.row}>
             <Form.Item name={[`sectionB`, i, 'loaiCayTrongTruoc']} label="Loại cây trồng" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} className={styles.col}><Input /></Form.Item>
             <Form.Item name={[`sectionB`, i, 'coTrongTruoc']} label="Có trồng không?" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} className={styles.col}>
-              <Input placeholder='Có/Không'/>
+              <Radio.Group>
+                <Radio value="Có">Có</Radio>
+                <Radio value="Không">Không</Radio>
+              </Radio.Group>
             </Form.Item>
           </div>
           <div className={styles.row}>
@@ -172,7 +178,7 @@ export default function TechniqueFormUPhan({ form, onFinish, onBack, initialValu
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
                               <Form.Item name={[`sectionC`, i, `truocPhan_tenPhan_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
-                                <Input placeholder={phanType} size='small' style={{ fontSize: '12px' }} />
+                                <Input defaultValue={phanType} disabled size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
@@ -198,7 +204,7 @@ export default function TechniqueFormUPhan({ form, onFinish, onBack, initialValu
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
                               <Form.Item name={[`sectionC`, i, `truocPhan_tenPhanTien_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
-                                <Input placeholder={phanType} size='small' style={{ fontSize: '12px' }} />
+                                <Input defaultValue={phanType} disabled size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
@@ -213,12 +219,18 @@ export default function TechniqueFormUPhan({ form, onFinish, onBack, initialValu
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
                     <Form.Item name={[`sectionC`, i, '20ftruoc']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
-                      <Input placeholder='Có/Không' size='small' />
+                      <Radio.Group>
+                        <Radio value="Có">Có</Radio>
+                        <Radio value="Không">Không</Radio>
+                      </Radio.Group>
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
                     <Form.Item name={[`sectionC`, i, '20gtruoc']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
-                      <Input placeholder='Có/Không' size='small' />
+                      <Radio.Group>
+                        <Radio value="Có">Có</Radio>
+                        <Radio value="Không">Không</Radio>
+                      </Radio.Group>
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
@@ -280,7 +292,7 @@ export default function TechniqueFormUPhan({ form, onFinish, onBack, initialValu
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
                               <Form.Item name={[`sectionC`, i, `sauPhan_tenPhan_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
-                                <Input placeholder={phanType} size='small' style={{ fontSize: '12px' }} />
+                                <Input defaultValue={phanType} disabled size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
@@ -306,7 +318,7 @@ export default function TechniqueFormUPhan({ form, onFinish, onBack, initialValu
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
                               <Form.Item name={[`sectionC`, i, `sauPhan_tenPhanTien_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
-                                <Input placeholder={phanType} size='small' style={{ fontSize: '12px' }} />
+                                <Input defaultValue={phanType} disabled size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
@@ -321,12 +333,18 @@ export default function TechniqueFormUPhan({ form, onFinish, onBack, initialValu
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
                     <Form.Item name={[`sectionC`, i, '20fsau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
-                      <Input placeholder='Có/Không' size='small' />
+                      <Radio.Group>
+                        <Radio value="Có">Có</Radio>
+                        <Radio value="Không">Không</Radio>
+                      </Radio.Group>
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
                     <Form.Item name={[`sectionC`, i, '20gsau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
-                      <Input placeholder='Có/Không' size='small' />
+                      <Radio.Group>
+                        <Radio value="Có">Có</Radio>
+                        <Radio value="Không">Không</Radio>
+                      </Radio.Group>
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>

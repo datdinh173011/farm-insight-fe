@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Form, Input, Button, Checkbox, InputNumber, Divider} from 'antd'
+import { Form, Input, Button, Radio, InputNumber, Divider} from 'antd'
 import { PlusOutlined, DeleteOutlined } from '@ant-design/icons'
 import styles from './TechniqueFormTrunQue.module.scss';
 
@@ -213,7 +213,7 @@ export default function TechniqueFormTrunQue({ form, onFinish, onBack, initialVa
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
                               <Form.Item name={[`sectionC`, i, `sauPhan_tenPhan_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
-                                <Input placeholder={phanType} size='small' style={{ fontSize: '12px' }} />
+                                <Input defaultValue={phanType} disabled size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
@@ -239,7 +239,7 @@ export default function TechniqueFormTrunQue({ form, onFinish, onBack, initialVa
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
                               <Form.Item name={[`sectionC`, i, `sauPhan_tenPhanTien_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
-                                <Input placeholder={phanType} size='small' style={{ fontSize: '12px' }} />
+                                <Input defaultValue={phanType} disabled size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
@@ -289,7 +289,10 @@ export default function TechniqueFormTrunQue({ form, onFinish, onBack, initialVa
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
                     <Form.Item name={[`sectionC`, i, '20mtruoc']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
-                      <Input placeholder='Có/Không' size='small' />
+                      <Radio.Group>
+                        <Radio value="Có">Có</Radio>
+                        <Radio value="Không">Không</Radio>
+                      </Radio.Group>
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
@@ -336,7 +339,7 @@ export default function TechniqueFormTrunQue({ form, onFinish, onBack, initialVa
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
                               <Form.Item name={[`sectionC`, i, `khongPhan_tenPhan_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
-                                <Input placeholder={phanType} size='small' style={{ fontSize: '12px' }} />
+                                <Input defaultValue={phanType} disabled size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
@@ -362,7 +365,7 @@ export default function TechniqueFormTrunQue({ form, onFinish, onBack, initialVa
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
                               <Form.Item name={[`sectionC`, i, `khongPhan_tenPhanTien_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
-                                <Input placeholder={phanType} size='small' style={{ fontSize: '12px' }} />
+                                <Input defaultValue={phanType} disabled size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
@@ -412,7 +415,10 @@ export default function TechniqueFormTrunQue({ form, onFinish, onBack, initialVa
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
                     <Form.Item name={[`sectionC`, i, '20msau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
-                      <Input placeholder='Có/Không' size='small' />
+                      <Radio.Group>
+                        <Radio value="Có">Có</Radio>
+                        <Radio value="Không">Không</Radio>
+                      </Radio.Group>
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
@@ -529,7 +535,7 @@ export default function TechniqueFormTrunQue({ form, onFinish, onBack, initialVa
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
                               <Form.Item name={[`sectionD`, i, `khongCanxi_tenThucAn_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
-                                <Input placeholder={thucAnType} size='small' style={{ fontSize: '12px' }} />
+                                <Input defaultValue={thucAnType} disabled size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
@@ -555,7 +561,7 @@ export default function TechniqueFormTrunQue({ form, onFinish, onBack, initialVa
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
                               <Form.Item name={[`sectionD`, i, `khongCanxi_tenThucAnTien_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
-                                <Input placeholder={thucAnType} size='small' style={{ fontSize: '12px' }} />
+                                <Input defaultValue={thucAnType} disabled size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
@@ -575,7 +581,10 @@ export default function TechniqueFormTrunQue({ form, onFinish, onBack, initialVa
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
                     <Form.Item name={[`sectionD`, i, '29ekhong']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
-                      <Input placeholder='Có/Không' size='small' />
+                      <Radio.Group>
+                        <Radio value="Có">Có</Radio>
+                        <Radio value="Không">Không</Radio>
+                      </Radio.Group>
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
@@ -585,7 +594,10 @@ export default function TechniqueFormTrunQue({ form, onFinish, onBack, initialVa
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
                     <Form.Item name={[`sectionD`, i, '29gkhong']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
-                      <Input placeholder='Có/Không' size='small' />
+                      <Radio.Group>
+                        <Radio value="Có">Có</Radio>
+                        <Radio value="Không">Không</Radio>
+                      </Radio.Group>
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
@@ -633,7 +645,7 @@ export default function TechniqueFormTrunQue({ form, onFinish, onBack, initialVa
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
                               <Form.Item name={[`sectionD`, i, `sauCanxi_tenThucAn_${idx}`]} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
-                                <Input placeholder={thucAnType} size='small' style={{ fontSize: '12px' }} />
+                                <Input defaultValue={thucAnType} disabled size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
@@ -659,7 +671,7 @@ export default function TechniqueFormTrunQue({ form, onFinish, onBack, initialVa
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
                               <Form.Item name={[`sectionD`, i, `sauCanxi_tenThucAnTien_${idx}`]} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
-                                <Input placeholder={thucAnType} size='small' style={{ fontSize: '12px' }} />
+                                <Input defaultValue={thucAnType} disabled size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
@@ -679,7 +691,10 @@ export default function TechniqueFormTrunQue({ form, onFinish, onBack, initialVa
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
                     <Form.Item name={[`sectionD`, i, '29esau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
-                      <Input placeholder='Có/Không' size='small' />
+                      <Radio.Group>
+                        <Radio value="Có">Có</Radio>
+                        <Radio value="Không">Không</Radio>
+                      </Radio.Group>
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
@@ -689,7 +704,10 @@ export default function TechniqueFormTrunQue({ form, onFinish, onBack, initialVa
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
                     <Form.Item name={[`sectionD`, i, '29gsau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
-                      <Input placeholder='Có/Không' size='small' />
+                      <Radio.Group>
+                        <Radio value="Có">Có</Radio>
+                        <Radio value="Không">Không</Radio>
+                      </Radio.Group>
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>

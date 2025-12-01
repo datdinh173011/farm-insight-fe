@@ -6,14 +6,14 @@ import styles from './GeneralInfoForm.module.scss';
 
 const { Option } = Select;
 
-const techniques = [
-  'len-men-phu-pham',
-  'nuoi-ga-dem-lot',
-  'nuoi-sau-canxi',
-  'nuoi-trun-que',
-  'u-phan-huu-co-tai-ruong',
-  'xu-ly-goc-ra-che-pham'
-];
+const techniques = {
+  'len-men-phu-pham': 'Lên men phụ phẩm cây trồng làm thức ăn chăn nuôi',
+  'nuoi-ga-dem-lot': 'Nuôi gà trên đệm lót sinh học',
+  'nuoi-sau-canxi': 'Nuôi sâu canxi',
+  'nuoi-trun-que': 'Nuôi trùn quế',
+  'u-phan-huu-co-tai-ruong': 'Ủ phân hữu cơ tại ruộng',
+  'xu-ly-goc-ra-che-pham': 'Xử lý gốc rạ bằng chế phẩm sinh học'
+};
 
 
 export default function GeneralInfoForm({ form, onFinish, initialValues }) {
@@ -70,8 +70,8 @@ export default function GeneralInfoForm({ form, onFinish, initialValues }) {
           </Row>
           <Form.Item name="technique" label="Gia đình bạn tham gia, triển khai kỹ thuật nào" rules={[{ required: true, message: 'Vui lòng chọn một kỹ thuật' }]}> 
             <Select placeholder="Chọn kỹ thuật">
-              {techniques.map((t, idx) => (
-                <Option key={idx} value={t}>{t}</Option>
+              {Object.entries(techniques).map(([slug, label]) => (
+                <Option key={slug} value={slug}>{label}</Option>
               ))}
             </Select>
           </Form.Item>
