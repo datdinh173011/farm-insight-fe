@@ -141,7 +141,7 @@ export default function CommonForm({ onFinish, onBack, generalInfoData, techniqu
     const payload = {
         "template_type" : String(generalInfoData.technique),
         "ho_ten" : String(generalInfoData.fullName),
-        "nam_sinh" : generalInfoData.dateOfBirth?.split('/').reverse().join('/') ?? '',
+        "nam_sinh" : String(generalInfoData.dateOfBirth),
         "so_dien_thoai" : String(generalInfoData.phone || ''),
         "thon" : String(generalInfoData.village),
         "xa" : String(generalInfoData.commune),

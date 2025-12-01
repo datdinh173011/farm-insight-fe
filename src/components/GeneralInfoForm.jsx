@@ -1,6 +1,6 @@
 
 import React, { useEffect } from 'react';
-import { Form, Input, Divider, Select, Row, Col, Button, DatePicker } from 'antd';
+import { Form, Input, Divider, Select, Row, Col, Button, DatePicker, InputNumber } from 'antd';
 import styles from './GeneralInfoForm.module.scss';
 
 
@@ -42,7 +42,7 @@ export default function GeneralInfoForm({ form, onFinish, initialValues }) {
             </Col>
             <Col xs={12} sm={12} md={6}>
               <Form.Item name="dateOfBirth" label="Ngày tháng năm sinh" rules={[{ required: true, message: 'Vui lòng chọn ngày tháng năm sinh' }]}> 
-                <Input placeholder='Ví dụ: 30/04/1975'/>
+                <InputNumber placeholder='Ví dụ: 1975'/>
               </Form.Item>
             </Col>
             <Col xs={12} sm={12} md={6}>
