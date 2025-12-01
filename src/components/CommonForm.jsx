@@ -2,19 +2,9 @@
 import React from 'react';
 import { Form, Input, InputNumber, Button, Checkbox, Radio, Select, Divider, message } from 'antd';
 import './CommonForm.module.scss';
-import dayjs from "dayjs";
 
 export default function CommonForm({ onFinish, onBack, generalInfoData, techniqueData}) {
   const [form] = Form.useForm();
-  const stringifiedGeneralInfo = Object.fromEntries(
-    Object.entries(generalInfoData).map(([key, value]) => {
-        if (value?.format) {
-        // DatePicker (dayjs) → string
-        return [key, value.format("YYYY/MM/DD")];
-        }
-        return [key, String(value ?? "")]; 
-    })
-    );
 
   // Default back handler if not provided
   const handleBack = () => {
@@ -40,35 +30,125 @@ export default function CommonForm({ onFinish, onBack, generalInfoData, techniqu
     
     const commonValues = form.getFieldsValue(true); // get all form values
     
+    console.log('=== FULL commonValues from getFieldsValue ===');
+    console.log(commonValues);
+    console.log('===');
+    
+    // Sử dụng trực tiếp commonValues từ form.getFieldsValue(true)
+    // Đảm bảo các trường có giá trị mặc định nếu undefined
+    const sanitizedCommonValues = {
+      // Các trường bảng/array
+      xulyPhuPhamTruoc: commonValues.xulyPhuPhamTruoc || {},
+      xulyPhuPhamSau: commonValues.xulyPhuPhamSau || {},
+      biogasGasPercent: commonValues.biogasGasPercent ?? null,
+      biogasPhanPercent: commonValues.biogasPhanPercent ?? null,
+      biogasNgayXaKhi: commonValues.biogasNgayXaKhi ?? null,
+      
+      // Câu 41-43
+      coTrongLua: commonValues.coTrongLua ?? null,
+      xulyGocRaTruoc: commonValues.xulyGocRaTruoc || {},
+      xulyGocRaSau: commonValues.xulyGocRaSau || {},
+      coNuoiDongVat: commonValues.coNuoiDongVat ?? null,
+      
+      // Câu 44
+      xulyPhanTruoc: commonValues.xulyPhanTruoc || {},
+      xulyPhanSau: commonValues.xulyPhanSau || {},
+      biogasPhanGasPercent: commonValues.biogasPhanGasPercent ?? null,
+      biogasPhanPhanPercent: commonValues.biogasPhanPhanPercent ?? null,
+      biogasPhanNgayXaKhi: commonValues.biogasPhanNgayXaKhi ?? null,
+      
+      // Câu 45-50
+      kyThuatDeHayKho: commonValues.kyThuatDeHayKho ?? null,
+      ykienKyThuat_0: commonValues.ykienKyThuat_0 ?? null,
+      ykienKyThuat_1: commonValues.ykienKyThuat_1 ?? null,
+      ykienKyThuat_2: commonValues.ykienKyThuat_2 ?? null,
+      ykienKyThuat_3: commonValues.ykienKyThuat_3 ?? null,
+      ykienKyThuat_4: commonValues.ykienKyThuat_4 ?? null,
+      
+      // Câu 51-53 - hoạt động (7 items x 3 fields = 21 fields)
+      ...Array.from({length: 7}, (_, idx) => ({
+        [`hoatDong_${idx}_ngheNoi`]: commonValues[`hoatDong_${idx}_ngheNoi`] ?? null,
+        [`hoatDong_${idx}_thamDu`]: commonValues[`hoatDong_${idx}_thamDu`] ?? null,
+        [`hoatDong_${idx}_anhHuong`]: commonValues[`hoatDong_${idx}_anhHuong`] ?? null,
+      })).reduce((acc, obj) => ({...acc, ...obj}), {}),
+      
+      // Câu 54-56
+      suKienThamGia: commonValues.suKienThamGia ?? null,
+      loiIch1: commonValues.loiIch1 ?? null,
+      loiIch2: commonValues.loiIch2 ?? null,
+      lyDoKhongThamGia: commonValues.lyDoKhongThamGia ?? null,
+      
+      // Câu 57-58 - truyền thông (10 items x 2 fields = 20 fields)
+      ...Array.from({length: 10}, (_, idx) => ({
+        [`truyenThong_${idx}_ngheNoi`]: commonValues[`truyenThong_${idx}_ngheNoi`] ?? null,
+        [`truyenThong_${idx}_anhHuong`]: commonValues[`truyenThong_${idx}_anhHuong`] ?? null,
+      })).reduce((acc, obj) => ({...acc, ...obj}), {}),
+      
+      // Câu 59 - khả năng tiếp tục (6 items)
+      ...Array.from({length: 6}, (_, idx) => ({
+        [`khaNangTiepTuc_${idx}`]: commonValues[`khaNangTiepTuc_${idx}`] ?? null,
+      })).reduce((acc, obj) => ({...acc, ...obj}), {}),
+      
+      // Câu 60-61
+      soNguoiChiaSeKyThuat: commonValues.soNguoiChiaSeKyThuat ?? 0,
+      duDinhChiaSe: commonValues.duDinhChiaSe ?? null,
+      
+      // Câu 62 - mặt hấp dẫn (6 items x 2 fields = 12 fields)
+      ...Array.from({length: 6}, (_, idx) => ({
+        [`matHapDanNhat_${idx}`]: commonValues[`matHapDanNhat_${idx}`] ?? null,
+        [`matHapDanHai_${idx}`]: commonValues[`matHapDanHai_${idx}`] ?? null,
+      })).reduce((acc, obj) => ({...acc, ...obj}), {}),
+      
+      // Câu 63 - yếu tố quan trọng (9 items)
+      ...Array.from({length: 9}, (_, idx) => ({
+        [`yeuToQuanTrong_${idx}`]: commonValues[`yeuToQuanTrong_${idx}`] ?? null,
+      })).reduce((acc, obj) => ({...acc, ...obj}), {}),
+      
+      // Câu 64
+      tyLeHoApDung: commonValues.tyLeHoApDung ?? null,
+      
+      // Câu 65 - chấp thuận (6 items)
+      ...Array.from({length: 6}, (_, idx) => ({
+        [`chapThuan_${idx}`]: commonValues[`chapThuan_${idx}`] ?? null,
+      })).reduce((acc, obj) => ({...acc, ...obj}), {}),
+      
+      // Câu 66-70
+      bietDanhHieuXanh: commonValues.bietDanhHieuXanh ?? null,
+      muonThamGiaXanh: commonValues.muonThamGiaXanh ?? null,
+      thuNhap2025: commonValues.thuNhap2025 ?? 0,
+      nguonThuNhap: commonValues.nguonThuNhap || [],
+      trinhDoHocVan: commonValues.trinhDoHocVan ?? null
+    };
+    
     // Debug: Log để kiểm tra dữ liệu
     console.log('=== COMMON FORM VALUES ===');
-    console.log('coTrongLua:', commonValues.coTrongLua);
-    console.log('coNuoiDongVat:', commonValues.coNuoiDongVat);
-    console.log('kyThuatDeHayKho:', commonValues.kyThuatDeHayKho);
-    console.log('suKienThamGia:', commonValues.suKienThamGia);
-    console.log('lyDoKhongThamGia:', commonValues.lyDoKhongThamGia);
-    console.log('soNguoiChiaSeKyThuat:', commonValues.soNguoiChiaSeKyThuat);
-    console.log('duDinhChiaSe:', commonValues.duDinhChiaSe);
-    console.log('tyLeHoApDung:', commonValues.tyLeHoApDung);
-    console.log('bietDanhHieuXanh:', commonValues.bietDanhHieuXanh);
-    console.log('muonThamGiaXanh:', commonValues.muonThamGiaXanh);
-    console.log('thuNhap2025:', commonValues.thuNhap2025);
-    console.log('nguonThuNhap:', commonValues.nguonThuNhap);
-    console.log('trinhDoHocVan:', commonValues.trinhDoHocVan);
-    console.log('All common values:', commonValues);
+    console.log('coTrongLua:', sanitizedCommonValues.coTrongLua);
+    console.log('coNuoiDongVat:', sanitizedCommonValues.coNuoiDongVat);
+    console.log('kyThuatDeHayKho:', sanitizedCommonValues.kyThuatDeHayKho);
+    console.log('suKienThamGia:', sanitizedCommonValues.suKienThamGia);
+    console.log('lyDoKhongThamGia:', sanitizedCommonValues.lyDoKhongThamGia);
+    console.log('soNguoiChiaSeKyThuat:', sanitizedCommonValues.soNguoiChiaSeKyThuat);
+    console.log('duDinhChiaSe:', sanitizedCommonValues.duDinhChiaSe);
+    console.log('tyLeHoApDung:', sanitizedCommonValues.tyLeHoApDung);
+    console.log('bietDanhHieuXanh:', sanitizedCommonValues.bietDanhHieuXanh);
+    console.log('muonThamGiaXanh:', sanitizedCommonValues.muonThamGiaXanh);
+    console.log('thuNhap2025:', sanitizedCommonValues.thuNhap2025);
+    console.log('nguonThuNhap:', sanitizedCommonValues.nguonThuNhap);
+    console.log('trinhDoHocVan:', sanitizedCommonValues.trinhDoHocVan);
+    console.log('All sanitized values:', sanitizedCommonValues);
     
     // Merge all data
     const payload = {
         "template_type" : String(generalInfoData.technique),
         "ho_ten" : String(generalInfoData.fullName),
-        "nam_sinh" : dayjs(generalInfoData.dateOfBirth).format("YYYY/MM/DD"),
-        "so_dien_thoai" : String(generalInfoData.phone),
+        "nam_sinh" : generalInfoData.dateOfBirth?.split('/').reverse().join('/') ?? '',
+        "so_dien_thoai" : String(generalInfoData.phone || ''),
         "thon" : String(generalInfoData.village),
         "xa" : String(generalInfoData.commune),
         "tinh" : String(generalInfoData.province),
         "data": {
             ...techniqueData,
-            ...commonValues,
+            ...sanitizedCommonValues,
         },
         "status": "submitted"
         
@@ -103,7 +183,16 @@ export default function CommonForm({ onFinish, onBack, generalInfoData, techniqu
   };
 
   return (
-    <Form form={form} layout="vertical" initialValues={{}} style={{maxWidth: 1200, margin: '0 auto'}}>
+    <Form 
+      form={form} 
+      layout="vertical" 
+      style={{maxWidth: 1200, margin: '0 auto'}}
+      onValuesChange={(changedValues, allValues) => {
+        console.log('=== Form Values Changed ===');
+        console.log('Changed:', changedValues);
+        console.log('All Values:', allValues);
+      }}
+    >
       <h3>Nhóm câu hỏi chung - phỏng vấn hộ gia đình</h3>
       <Divider />
       {/* 40. Xử lý phụ phẩm cây trồng - hiển thị dạng bảng */}
@@ -179,7 +268,12 @@ export default function CommonForm({ onFinish, onBack, generalInfoData, techniqu
       </Form.Item>
       <Divider />
       {/* 41. Có trồng lúa không */}
-      <Form.Item name="coTrongLua" label="41. Gia đình bạn có trồng Lúa không?" rules={[{required:true}]}> <Radio.Group><Radio value="Có">Có</Radio><Radio value="Không">Không</Radio></Radio.Group> </Form.Item>
+      <Form.Item name="coTrongLua" label="41. Gia đình bạn có trồng Lúa không?" rules={[{required:false}]}>
+        <Radio.Group>
+          <Radio value="Có">Có</Radio>
+          <Radio value="Không">Không</Radio>
+        </Radio.Group>
+      </Form.Item>
       {/* 42. Xử lý gốc rạ - hiển thị dạng bảng */}
       <Form.Item label="42. Bạn xử lý gốc rạ như thế nào trước và sau khi tham gia mô hình và bao nhiêu phần trăm gốc rạ đã được xử lý theo cách đó?">
         <div style={{marginBottom:8}}>Nhập phần trăm cho từng phương pháp (tổng các mục là 100%)</div>
@@ -214,7 +308,12 @@ export default function CommonForm({ onFinish, onBack, generalInfoData, techniqu
         </div>
       </Form.Item>
       {/* 43. Có nuôi động vật không */}
-      <Form.Item name="coNuoiDongVat" label="43. Gia đình bạn có nuôi động vật nào không?" rules={[{required:true}]}> <Radio.Group><Radio value="Có">Có</Radio><Radio value="Không">Không</Radio></Radio.Group> </Form.Item>
+      <Form.Item name="coNuoiDongVat" label="43. Gia đình bạn có nuôi động vật nào không?" rules={[{required:false}]}>
+        <Radio.Group>
+          <Radio value="Có">Có</Radio>
+          <Radio value="Không">Không</Radio>
+        </Radio.Group>
+      </Form.Item>
       {/* 44. Xử lý phân gia súc - hiển thị dạng bảng */}
       <Form.Item label="44. Bạn xử lý phân gia súc như thế nào trước và sau khi tham gia mô hình và bao nhiêu phần trăm phân được xử lý theo cách đó?">
         <div style={{marginBottom:8}}>Nhập phần trăm cho từng phương pháp (tổng các mục là 100%)</div>
@@ -296,14 +395,16 @@ export default function CommonForm({ onFinish, onBack, generalInfoData, techniqu
       </Form.Item>
       {/* 46-50. Ý kiến về kỹ thuật */}
       {["Thực hiện đúng kỹ thuật sẽ giúp tăng lợi nhuận","Thực hiện đúng kỹ thuật sẽ giúp giảm chi phí","Thực hiện đúng kỹ thuật sẽ giúp giảm khối lượng công việc","Thực hiện đúng kỹ thuật sẽ tốt cho môi trường","Thực hiện đúng kỹ thuật sẽ giúp cải thiện chất lượng đất"].map((label, idx) => (
-        <Form.Item key={idx} name={`ykienKyThuat_${idx}`} label={`${46+idx}. ${label}`} rules={[{required:false}]}> <Radio.Group>
-          <Radio value={1}>Không đồng ý</Radio>
-          <Radio value={2}>Có phần không đồng ý</Radio>
-          <Radio value={3}>Không đồng ý cũng không phản đối</Radio>
-          <Radio value={4}>Có phần đồng ý</Radio>
-          <Radio value={5}>Hoàn toàn đồng ý</Radio>
-          <Radio value={6}>Không biết kỹ thuật này</Radio>
-        </Radio.Group></Form.Item>
+        <Form.Item key={idx} name={`ykienKyThuat_${idx}`} label={`${46+idx}. ${label}`} rules={[{required:false}]}>
+          <Radio.Group>
+            <Radio value={1}>Không đồng ý</Radio>
+            <Radio value={2}>Có phần không đồng ý</Radio>
+            <Radio value={3}>Không đồng ý cũng không phản đối</Radio>
+            <Radio value={4}>Có phần đồng ý</Radio>
+            <Radio value={5}>Hoàn toàn đồng ý</Radio>
+            <Radio value={6}>Không biết kỹ thuật này</Radio>
+          </Radio.Group>
+        </Form.Item>
       ))}
       <Divider />
       {/* 51-53. Hoạt động liên quan xử lý chất thải - hiển thị dạng bảng */}
@@ -356,15 +457,21 @@ export default function CommonForm({ onFinish, onBack, generalInfoData, techniqu
         </div>
       </Form.Item>
       {/* 54. Sự kiện sẽ tham gia */}
-      <Form.Item name="suKienThamGia" label="54. Bạn sẽ tham gia sự kiện nào?" rules={[{required:false}]}> <Select placeholder="Chọn sự kiện" style={{width:400}} options={[
-        {value:'hoTroGiongVatTu',label:'Được Dự án hỗ trợ về con giống/vật tư để xây dựng mô hình'},
-        {value:'tot',label:'Tham gia lớp tập huấn giảng viên nguồn (TOT)'},
-        {value:'ffs',label:'Tham gia lớp tập huấn nông dân (FFS)'},
-        {value:'farmerGroup',label:'Các buổi sinh hoạt của các hợp tác xã, các chi, tổ hội nông dân nghề nghiệp, các câu lạc bộ nông dân'},
-        {value:'event',label:'Hội nghị truyền thông/ Sự kiện tuyên truyền/ Hội thi'},
-        {value:'exchange',label:'Các chuyến tham quan học tập, chia sẻ kinh nghiệm'},
-        {value:'peer',label:'Một người nông dân khác đã hướng dẫn tôi về kỹ thuật'}
-      ]} /> </Form.Item>
+      <Form.Item name="suKienThamGia" label="54. Bạn sẽ tham gia sự kiện nào?" rules={[{required:false}]}>
+        <Select 
+          placeholder="Chọn sự kiện" 
+          style={{width:400}} 
+          options={[
+            {value:'hoTroGiongVatTu',label:'Được Dự án hỗ trợ về con giống/vật tư để xây dựng mô hình'},
+            {value:'tot',label:'Tham gia lớp tập huấn giảng viên nguồn (TOT)'},
+            {value:'ffs',label:'Tham gia lớp tập huấn nông dân (FFS)'},
+            {value:'farmerGroup',label:'Các buổi sinh hoạt của các hợp tác xã, các chi, tổ hội nông dân nghề nghiệp, các câu lạc bộ nông dân'},
+            {value:'event',label:'Hội nghị truyền thông/ Sự kiện tuyên truyền/ Hội thi'},
+            {value:'exchange',label:'Các chuyến tham quan học tập, chia sẻ kinh nghiệm'},
+            {value:'peer',label:'Một người nông dân khác đã hướng dẫn tôi về kỹ thuật'}
+          ]} 
+        />
+      </Form.Item>
       {/* 55. Lợi ích sự kiện */}
       <Form.Item label="55. Với các sự kiện bạn đã tham dự, hãy chọn 1 lợi ích quan trọng nhất và 1 lợi ích quan trọng thứ hai">
         <Form.Item name="loiIch1" label="Lợi ích quan trọng nhất" rules={[{required:false}]} style={{display:'inline-block',width:'45%',marginRight:8}}>
@@ -403,16 +510,22 @@ export default function CommonForm({ onFinish, onBack, generalInfoData, techniqu
         </Form.Item>
       </Form.Item>
       {/* 56. Lý do không tham gia */}
-      <Form.Item name="lyDoKhongThamGia" label="56. Nếu không tham gia hoạt động nào, hãy nêu lý do" rules={[{required:false}]}> <Select placeholder='Chọn lý do'style={{width:400}} options={[
-        {value:'khongBiet',label:'Không biết về chúng'},
-        {value:'khongLienQuan',label:'Không liên quan đến tôi'},
-        {value:'viTri',label:'Vị trí không thuận tiện'},
-        {value:'thoiGian',label:'Thời gian không thuận tiện'},
-        {value:'trachNhiem',label:'Trách nhiệm khác'},
-        {value:'khongChacChan',label:'Không chắc chắn sự kiện này là về cái gì'},
-        {value:'daBiet',label:'Tôi đã biết về thông tin được truyền đạt'},
-        {value:'khac',label:'Khác'}
-      ]} /> </Form.Item>
+      <Form.Item name="lyDoKhongThamGia" label="56. Nếu không tham gia hoạt động nào, hãy nêu lý do" rules={[{required:false}]}>
+        <Select 
+          placeholder="Chọn lý do" 
+          style={{width:400}} 
+          options={[
+            {value:'khongBiet',label:'Không biết về chúng'},
+            {value:'khongLienQuan',label:'Không liên quan đến tôi'},
+            {value:'viTri',label:'Vị trí không thuận tiện'},
+            {value:'thoiGian',label:'Thời gian không thuận tiện'},
+            {value:'trachNhiem',label:'Trách nhiệm khác'},
+            {value:'khongChacChan',label:'Không chắc chắn sự kiện này là về cái gì'},
+            {value:'daBiet',label:'Tôi đã biết về thông tin được truyền đạt'},
+            {value:'khac',label:'Khác'}
+          ]} 
+        />
+      </Form.Item>
       <Divider />
       {/* 57-58. Truyền thông */}
       <Form.Item label="57-58. Bạn đã nghe hoặc thấy bất kỳ phương tiện/hình thức/tư liệu truyền thông nào dưới đây">
@@ -496,14 +609,18 @@ export default function CommonForm({ onFinish, onBack, generalInfoData, techniqu
         </div>
       </Form.Item>
       {/* 60. Chia sẻ kỹ thuật */}
-      <Form.Item name="soNguoiChiaSeKyThuat" label="60. Bạn đã từng chia sẻ kỹ thuật này với bao nhiêu người? (0=chưa từng chia sẻ)" rules={[{required:false}]}> <InputNumber min={0} style={{width:120}} /> </Form.Item>
+      <Form.Item name="soNguoiChiaSeKyThuat" label="60. Bạn đã từng chia sẻ kỹ thuật này với bao nhiêu người? (0=chưa từng chia sẻ)" rules={[{required:false}]}>
+        <InputNumber min={0} style={{width:120}} />
+      </Form.Item>
       {/* 61. Dự định chia sẻ */}
-      <Form.Item name="duDinhChiaSe" label="61. Trong tương lai, bạn có dự định chia sẻ những kỹ thuật này với hàng xóm, bạn bè và người thân không?" rules={[{required:false}]}> <Radio.Group>
-        <Radio value="ratCoThe">Rất có thể</Radio>
-        <Radio value="coThe">Có thể</Radio>
-        <Radio value="khoXayRa">Khó xảy ra</Radio>
-        <Radio value="ratKhoXayRa">Rất khó xảy ra</Radio>
-      </Radio.Group></Form.Item>
+      <Form.Item name="duDinhChiaSe" label="61. Trong tương lai, bạn có dự định chia sẻ những kỹ thuật này với hàng xóm, bạn bè và người thân không?" rules={[{required:false}]}>
+        <Radio.Group>
+          <Radio value="ratCoThe">Rất có thể</Radio>
+          <Radio value="coThe">Có thể</Radio>
+          <Radio value="khoXayRa">Khó xảy ra</Radio>
+          <Radio value="ratKhoXayRa">Rất khó xảy ra</Radio>
+        </Radio.Group>
+      </Form.Item>
       {/* 62. Khía cạnh hấp dẫn */}
         <Form.Item label="62. Khía cạnh nào của từng kỹ thuật xử lý phụ phẩm này hấp dẫn bạn xếp thứ nhất và xếp thứ hai?">
             <div style={{overflowX:'auto'}}>
@@ -606,7 +723,9 @@ export default function CommonForm({ onFinish, onBack, generalInfoData, techniqu
         </div>
         </Form.Item>
       {/* 64. Tỷ lệ hộ gia đình áp dụng kỹ thuật */}
-      <Form.Item name="tyLeHoApDung" label="64. Theo bạn, hiện nay tỷ lệ hộ gia đình trong thôn áp dụng kỹ thuật như bạn là bao nhiêu?" rules={[{required:false}]}> <InputNumber min={0} max={100} addonAfter="%" style={{width:120}} /> </Form.Item>
+      <Form.Item name="tyLeHoApDung" label="64. Theo bạn, hiện nay tỷ lệ hộ gia đình trong thôn áp dụng kỹ thuật như bạn là bao nhiêu?" rules={[{required:false}]}>
+        <InputNumber min={0} max={100} addonAfter="%" style={{width:120}} />
+      </Form.Item>
       {/* 65. Sự chấp thuận các phương pháp */}
       <Form.Item label="65. Bạn có ủng hộ những phương pháp sau đây không?">
         <div style={{overflowX:'auto'}}>
@@ -643,34 +762,51 @@ export default function CommonForm({ onFinish, onBack, generalInfoData, techniqu
         </div>
       </Form.Item>
       {/* 66. Biết về danh hiệu "Người gìn giữ tương lai xanh" */}
-      <Form.Item name="bietDanhHieuXanh" label="66. Bạn có biết đến tên gọi/ danh hiệu “Người gìn giữ tương lai xanh” không?" rules={[{required:false}]}> <Radio.Group>
-        <Radio value="nhomXanh">Tôi thuộc nhóm “Người gìn giữ tương lai xanh”</Radio>
-        <Radio value="daNghe">Tôi đã nghe nói về nó, nhưng tôi không tham gia</Radio>
-        <Radio value="khongBiet">Tôi không biết</Radio>
-      </Radio.Group></Form.Item>
+      <Form.Item name="bietDanhHieuXanh" label={`66. Bạn có biết đến tên gọi/ danh hiệu "Người gìn giữ tương lai xanh" không?`} rules={[{required:false}]}> 
+        <Radio.Group>
+          <Radio value="nhomXanh">Tôi thuộc nhóm “Người gìn giữ tương lai xanh”</Radio>
+          <Radio value="daNghe">Tôi đã nghe nói về nó, nhưng tôi không tham gia</Radio>
+          <Radio value="khongBiet">Tôi không biết</Radio>
+        </Radio.Group>
+      </Form.Item>
       {/* 67. Muốn tham gia nhóm "Người gìn giữ tương lai xanh" */}
-      <Form.Item name="muonThamGiaXanh" label="67. Bạn có muốn tham gia nhóm “Người gìn giữ tương lai xanh” không?" rules={[{required:false}]}> <Radio.Group>
-        <Radio value="co">Có</Radio>
-        <Radio value="khong">Không</Radio>
-      </Radio.Group></Form.Item>
+      <Form.Item name="muonThamGiaXanh" label={`67. Bạn có muốn tham gia nhóm "Người gìn giữ tương lai xanh" không?`} rules={[{required:false}]}> 
+        <Radio.Group>
+          <Radio value="co">Có</Radio>
+          <Radio value="khong">Không</Radio>
+        </Radio.Group>
+      </Form.Item>
       {/* 68. Ước tính thu nhập */}
-      <Form.Item name="thuNhap2025" label="68. Ước tính thu nhập trung bình hàng tháng trong năm 2025 của hộ gia đình (đồng)" rules={[{required:false}]}> <InputNumber min={0} style={{width:200}} /> </Form.Item>
+      <Form.Item name="thuNhap2025" label="68. Ước tính thu nhập trung bình hàng tháng trong năm 2025 của hộ gia đình (đồng)" rules={[{required:false}]}>
+        <InputNumber min={0} style={{width:200}} />
+      </Form.Item>
       {/* 69. Nguồn thu nhập */}
-      <Form.Item name="nguonThuNhap" label="69. Nguồn thu nhập của hộ gia đình bạn từ đâu?" rules={[{required:false}]}> <Select mode="multiple" style={{width:400}} options={[
-        {value:'trongTrot',label:'Trồng trọt'},
-        {value:'chanNuoi',label:'Chăn nuôi gia súc/gia cầm/Cá'},
-        {value:'congNhan',label:'Làm việc tại công ty'},
-        {value:'doanhNghiep',label:'Điều hành doanh nghiệp'},
-        {value:'khac',label:'Khác'}
-      ]} /> </Form.Item>
+      <Form.Item name="nguonThuNhap" label="69. Nguồn thu nhập của hộ gia đình bạn từ đâu?" rules={[{required:false}]}>
+        <Select 
+          mode="multiple" 
+          style={{width:400}} 
+          options={[
+            {value:'trongTrot',label:'Trồng trọt'},
+            {value:'chanNuoi',label:'Chăn nuôi gia súc/gia cầm/Cá'},
+            {value:'congNhan',label:'Làm việc tại công ty'},
+            {value:'doanhNghiep',label:'Điều hành doanh nghiệp'},
+            {value:'khac',label:'Khác'}
+          ]} 
+        />
+      </Form.Item>
       {/* 70. Trình độ học vấn */}
-      <Form.Item name="trinhDoHocVan" label="70. Trình độ học vấn của bạn?" rules={[{required:false}]}> <Select style={{width:400}} options={[
-        {value:'tieuHoc',label:'Tiểu học'},
-        {value:'thcs',label:'Trung học cơ sở'},
-        {value:'thpt',label:'Trung học phổ thông'},
-        {value:'trungCap',label:'Trung cấp'},
-        {value:'caoDangDaiHoc',label:'Cao đẳng/Đại học trở lên'}
-      ]} /> </Form.Item>
+      <Form.Item name="trinhDoHocVan" label="70. Trình độ học vấn của bạn?" rules={[{required:false}]}>
+        <Select 
+          style={{width:400}} 
+          options={[
+            {value:'tieuHoc',label:'Tiểu học'},
+            {value:'thcs',label:'Trung học cơ sở'},
+            {value:'thpt',label:'Trung học phổ thông'},
+            {value:'trungCap',label:'Trung cấp'},
+            {value:'caoDangDaiHoc',label:'Cao đẳng/Đại học trở lên'}
+          ]} 
+        />
+      </Form.Item>
       <Divider />
       <Form.Item>
         <Button onClick={handleBack}>Quay lại</Button>

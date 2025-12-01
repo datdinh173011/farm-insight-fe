@@ -181,7 +181,7 @@ export default function InterviewForm() {
           onFinish={handleCommonSubmit}
           onBack={() => setStep(2)}
           generalInfoData={generalInfo}
-          techniqueData={techniqueAnswers}
+          techniqueData={techniqueAnswers[activeTab] || {}}
         />
       )}
       {step === 4 && renderDone()}
