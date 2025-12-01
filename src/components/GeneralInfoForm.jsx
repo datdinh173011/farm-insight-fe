@@ -42,7 +42,7 @@ export default function GeneralInfoForm({ form, onFinish, initialValues }) {
             </Col>
             <Col xs={12} sm={12} md={6}>
               <Form.Item name="dateOfBirth" label="Ngày tháng năm sinh" rules={[{ required: true, message: 'Vui lòng chọn ngày tháng năm sinh' }]}> 
-                <InputNumber placeholder='Ví dụ: 1975'/>
+                <InputNumber placeholder='Ví dụ: 1975' style={{ width: '100%'}} min={1900}/>
               </Form.Item>
             </Col>
             <Col xs={12} sm={12} md={6}>

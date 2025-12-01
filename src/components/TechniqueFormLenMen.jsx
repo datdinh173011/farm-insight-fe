@@ -202,12 +202,12 @@ export default function TechniqueFormLenMen({ form, onFinish, onBack, initialVal
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
                     <div style={{ fontSize: '11px', marginBottom: '2px' }}>
                       <Form.Item name={[`sectionC`, i, 'soLuaSauMen']} rules={[]} style={{ marginBottom: 0 }}>
-                        <InputNumber placeholder='Lứa' size='small' style={{ width: '100%' }} min={0} />
+                        <Input placeholder='Lứa' size='small' style={{ width: '100%' }} min={0} />
                       </Form.Item>
                     </div>
                     <div style={{ fontSize: '11px' }}>
                       <Form.Item name={[`sectionC`, i, 'soNgayNuoiSauMen']} rules={[]} style={{ marginBottom: 0 }}>
-                        <InputNumber placeholder='Ngày' size='small' style={{ width: '100%' }} min={0} />
+                        <Input placeholder='Ngày' size='small' style={{ width: '100%' }} min={0} />
                       </Form.Item>
                     </div>
                   </td>
@@ -229,7 +229,7 @@ export default function TechniqueFormLenMen({ form, onFinish, onBack, initialVal
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '3px' }}>
                               <Form.Item name={[`sectionC`, i, `sauMen_tenThucAn_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
-                                <Input placeholder={thucAnType} size='small' style={{ fontSize: '11px' }} />
+                                <Input defaultValue={thucAnType} size='small' style={{ fontSize: '11px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '3px' }}>
@@ -255,7 +255,7 @@ export default function TechniqueFormLenMen({ form, onFinish, onBack, initialVal
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '3px' }}>
                               <Form.Item name={[`sectionC`, i, `sauMen_tenThucAnTien_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
-                                <Input placeholder={thucAnType} size='small' style={{ fontSize: '11px' }} />
+                                <Input defaultValue={thucAnType} size='small' style={{ fontSize: '11px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '3px' }}>
@@ -318,12 +318,12 @@ export default function TechniqueFormLenMen({ form, onFinish, onBack, initialVal
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
                     <div style={{ fontSize: '11px', marginBottom: '2px' }}>
                       <Form.Item name={[`sectionC`, i, 'soLuaTruocMen']} rules={[]} style={{ marginBottom: 0 }}>
-                        <InputNumber placeholder='Lứa' size='small' style={{ width: '100%' }} min={0} />
+                        <Input placeholder='Lứa' size='small' style={{ width: '100%' }} min={0} />
                       </Form.Item>
                     </div>
                     <div style={{ fontSize: '11px' }}>
                       <Form.Item name={[`sectionC`, i, 'soNgayNuoiTruocMen']} rules={[]} style={{ marginBottom: 0 }}>
-                        <InputNumber placeholder='Ngày' size='small' style={{ width: '100%' }} min={0} />
+                        <Input placeholder='Ngày' size='small' style={{ width: '100%' }} min={0} />
                       </Form.Item>
                     </div>
                   </td>
@@ -345,7 +345,7 @@ export default function TechniqueFormLenMen({ form, onFinish, onBack, initialVal
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '3px' }}>
                               <Form.Item name={[`sectionC`, i, `truocMen_tenThucAn_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
-                                <Input placeholder={thucAnType} size='small' style={{ fontSize: '11px' }} />
+                                <Input defaultValue={thucAnType} size='small' style={{ fontSize: '11px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '3px' }}>
@@ -371,7 +371,7 @@ export default function TechniqueFormLenMen({ form, onFinish, onBack, initialVal
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '3px' }}>
                               <Form.Item name={[`sectionC`, i, `truocMen_tenThucAnTien_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
-                                <Input placeholder={thucAnType} size='small' style={{ fontSize: '11px' }} />
+                                <Input defaultValue={thucAnType} size='small' style={{ fontSize: '11px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '3px' }}>

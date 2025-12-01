@@ -222,7 +222,7 @@ export default function TechniqueFormNuoiGa({ form, onFinish, onBack, initialVal
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
                               <Form.Item name={[`phanU`, i, `khongPhanU_tenPhan_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
-                                <Input placeholder={phanType} size='small' style={{ fontSize: '12px' }} />
+                                <Input defaultValue={phanType} size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
@@ -248,7 +248,7 @@ export default function TechniqueFormNuoiGa({ form, onFinish, onBack, initialVal
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
                               <Form.Item name={[`phanU`, i, `khongPhanU_tenPhanTien_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
-                                <Input placeholder={phanType} size='small' style={{ fontSize: '12px' }} />
+                                <Input defaultValue={phanType} size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
@@ -343,7 +343,7 @@ export default function TechniqueFormNuoiGa({ form, onFinish, onBack, initialVal
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
                               <Form.Item name={[`phanU`, i, `sauPhanU_tenPhan2_${idx}`]} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
-                                <Input placeholder={phanType} size='small' style={{ fontSize: '12px' }} />
+                                <Input defaultValue={phanType} size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
@@ -369,7 +369,7 @@ export default function TechniqueFormNuoiGa({ form, onFinish, onBack, initialVal
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
                               <Form.Item name={[`phanU`, i, `sauPhanU_tenPhanTien2_${idx}`]} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
-                                <Input placeholder={phanType} size='small' style={{ fontSize: '12px' }} />
+                                <Input defaultValue={phanType} size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
@@ -540,7 +540,7 @@ export default function TechniqueFormNuoiGa({ form, onFinish, onBack, initialVal
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
                               <Form.Item name={[`danGa`, i, `sauDemLot_tenThucAn_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
-                                <Input placeholder={thucAnType} size='small' style={{ fontSize: '11px' }} />
+                                <Input defaultValue={thucAnType} size='small' style={{ fontSize: '11px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
@@ -566,7 +566,7 @@ export default function TechniqueFormNuoiGa({ form, onFinish, onBack, initialVal
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
                               <Form.Item name={[`danGa`, i, `sauDemLot_tenThucAnTien_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
-                                <Input placeholder={thucAnType} size='small' style={{ fontSize: '11px' }} />
+                                <Input defaultValue={thucAnType} size='small' style={{ fontSize: '11px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
@@ -659,7 +659,7 @@ export default function TechniqueFormNuoiGa({ form, onFinish, onBack, initialVal
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
                               <Form.Item name={[`danGa`, i, `truocDemLot_tenThucAn_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
-                                <Input placeholder={thucAnType} size='small' style={{ fontSize: '11px' }} />
+                                <Input defaultValue={thucAnType} size='small' style={{ fontSize: '11px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
@@ -685,7 +685,7 @@ export default function TechniqueFormNuoiGa({ form, onFinish, onBack, initialVal
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
                               <Form.Item name={[`danGa`, i, `truocDemLot_tenThucAnTien_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
-                                <Input placeholder={thucAnType} size='small' style={{ fontSize: '11px' }} />
+                                <Input defaultValue={thucAnType} size='small' style={{ fontSize: '11px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
