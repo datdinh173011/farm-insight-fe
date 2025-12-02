@@ -3,6 +3,9 @@ import { Table, Typography, Empty } from 'antd';
 
 const { Title } = Typography;
 
+// Default values for form fields that use disabled inputs
+const PHAN_BON_TYPES = ['Phân NPK bón lót', 'Phân NPK bón thúc', 'Phân đạm', 'Phân kali', 'Phân khác'];
+
 // Field labels for Xử lý gốc rạ technique
 const FIELD_LABELS = {
   sectionA: {
@@ -186,19 +189,12 @@ const renderSectionBComparison = (items) => {
                         </tr>
                       </thead>
                       <tbody>
-                        {[0, 1, 2, 3, 4].map(idx => {
-                          const tenPhan = item[`truocPhan_tenPhan_${idx}`];
-                          const kg = item[`truocPhan_kg_${idx}`];
-                          if (tenPhan || kg) {
-                            return (
-                              <tr key={idx}>
-                                <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '11px' }}>{tenPhan || '-'}</td>
-                                <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '11px' }}>{kg || '-'}</td>
-                              </tr>
-                            );
-                          }
-                          return null;
-                        })}
+                        {PHAN_BON_TYPES.map((defaultName, idx) => (
+                          <tr key={idx}>
+                            <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '11px' }}>{defaultName}</td>
+                            <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '11px' }}>{item[`truocPhan_kg_${idx}`] || '-'}</td>
+                          </tr>
+                        ))}
                       </tbody>
                     </table>
                   </td>
@@ -211,19 +207,12 @@ const renderSectionBComparison = (items) => {
                         </tr>
                       </thead>
                       <tbody>
-                        {[0, 1, 2, 3, 4].map(idx => {
-                          const tenPhan = item[`truocPhan_tenPhanTien_${idx}`];
-                          const tien = item[`truocPhan_tien_${idx}`];
-                          if (tenPhan || tien) {
-                            return (
-                              <tr key={idx}>
-                                <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '11px' }}>{tenPhan || '-'}</td>
-                                <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '11px' }}>{tien || '-'}</td>
-                              </tr>
-                            );
-                          }
-                          return null;
-                        })}
+                        {PHAN_BON_TYPES.map((defaultName, idx) => (
+                          <tr key={idx}>
+                            <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '11px' }}>{defaultName}</td>
+                            <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '11px' }}>{item[`truocPhan_tien_${idx}`] || '-'}</td>
+                          </tr>
+                        ))}
                       </tbody>
                     </table>
                   </td>
@@ -256,19 +245,12 @@ const renderSectionBComparison = (items) => {
                         </tr>
                       </thead>
                       <tbody>
-                        {[0, 1, 2, 3, 4].map(idx => {
-                          const tenPhan = item[`sauPhan_tenPhan_${idx}`];
-                          const kg = item[`sauPhan_kg_${idx}`];
-                          if (tenPhan || kg) {
-                            return (
-                              <tr key={idx}>
-                                <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '11px' }}>{tenPhan || '-'}</td>
-                                <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '11px' }}>{kg || '-'}</td>
-                              </tr>
-                            );
-                          }
-                          return null;
-                        })}
+                        {PHAN_BON_TYPES.map((defaultName, idx) => (
+                          <tr key={idx}>
+                            <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '11px' }}>{defaultName}</td>
+                            <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '11px' }}>{item[`sauPhan_kg_${idx}`] || '-'}</td>
+                          </tr>
+                        ))}
                       </tbody>
                     </table>
                   </td>
@@ -281,19 +263,12 @@ const renderSectionBComparison = (items) => {
                         </tr>
                       </thead>
                       <tbody>
-                        {[0, 1, 2, 3, 4].map(idx => {
-                          const tenPhan = item[`sauPhan_tenPhanTien_${idx}`];
-                          const tien = item[`sauPhan_tien_${idx}`];
-                          if (tenPhan || tien) {
-                            return (
-                              <tr key={idx}>
-                                <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '11px' }}>{tenPhan || '-'}</td>
-                                <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '11px' }}>{tien || '-'}</td>
-                              </tr>
-                            );
-                          }
-                          return null;
-                        })}
+                        {PHAN_BON_TYPES.map((defaultName, idx) => (
+                          <tr key={idx}>
+                            <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '11px' }}>{defaultName}</td>
+                            <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '11px' }}>{item[`sauPhan_tien_${idx}`] || '-'}</td>
+                          </tr>
+                        ))}
                       </tbody>
                     </table>
                   </td>

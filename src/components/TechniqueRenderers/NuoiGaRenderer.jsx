@@ -3,6 +3,22 @@ import { Table, Typography, Empty } from 'antd';
 
 const { Title } = Typography;
 
+// Default values for fertilizer types (phanU section)
+const PHAN_BON_TYPES = [
+  'Phân ủ/ phân đệm lót/ phân trùn quế/ phân sâu canxi',
+  'Phân NPK bón lót',
+  'Phân NPK bón thúc',
+  'Phân khác (ghi rõ)'
+];
+
+// Default values for food types (danGa section)
+const THUC_AN_GA_TYPES = [
+  'Sâu canxi/trùn quế',
+  'Thức ăn tinh (ngô, gạo)',
+  'Thức ăn tổng hợp/viên',
+  'Thức ăn xanh'
+];
+
 // Field labels for Nuôi gà technique
 const FIELD_LABELS = {
   sectionA: {
@@ -240,18 +256,14 @@ const renderSectionCComparison = (items) => {
                         </tr>
                       </thead>
                       <tbody>
-                        {[0, 1, 2, 3].map(idx => {
-                          const tenPhan = item[`khongPhanU_tenPhan_${idx}`];
+                        {PHAN_BON_TYPES.map((tenPhan, idx) => {
                           const kg = item[`khongPhanU_kg_${idx}`];
-                          if (tenPhan || kg) {
-                            return (
-                              <tr key={idx}>
-                                <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '11px' }}>{tenPhan || '-'}</td>
-                                <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '11px' }}>{kg || '-'}</td>
-                              </tr>
-                            );
-                          }
-                          return null;
+                          return (
+                            <tr key={idx}>
+                              <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '11px' }}>{tenPhan}</td>
+                              <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '11px' }}>{kg || '-'}</td>
+                            </tr>
+                          );
                         })}
                       </tbody>
                     </table>
@@ -265,18 +277,14 @@ const renderSectionCComparison = (items) => {
                         </tr>
                       </thead>
                       <tbody>
-                        {[0, 1, 2, 3].map(idx => {
-                          const tenPhan = item[`khongPhanU_tenPhanTien_${idx}`];
+                        {PHAN_BON_TYPES.map((tenPhan, idx) => {
                           const tien = item[`khongPhanU_tien_${idx}`];
-                          if (tenPhan || tien) {
-                            return (
-                              <tr key={idx}>
-                                <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '11px' }}>{tenPhan || '-'}</td>
-                                <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '11px' }}>{tien || '-'}</td>
-                              </tr>
-                            );
-                          }
-                          return null;
+                          return (
+                            <tr key={idx}>
+                              <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '11px' }}>{tenPhan}</td>
+                              <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '11px' }}>{tien || '-'}</td>
+                            </tr>
+                          );
                         })}
                       </tbody>
                     </table>
@@ -311,18 +319,14 @@ const renderSectionCComparison = (items) => {
                         </tr>
                       </thead>
                       <tbody>
-                        {[0, 1, 2, 3].map(idx => {
-                          const tenPhan = item[`sauPhanU_tenPhan2_${idx}`];
+                        {PHAN_BON_TYPES.map((tenPhan, idx) => {
                           const kg = item[`sauPhanU_kg2_${idx}`];
-                          if (tenPhan || kg) {
-                            return (
-                              <tr key={idx}>
-                                <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '11px' }}>{tenPhan || '-'}</td>
-                                <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '11px' }}>{kg || '-'}</td>
-                              </tr>
-                            );
-                          }
-                          return null;
+                          return (
+                            <tr key={idx}>
+                              <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '11px' }}>{tenPhan}</td>
+                              <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '11px' }}>{kg || '-'}</td>
+                            </tr>
+                          );
                         })}
                       </tbody>
                     </table>
@@ -336,18 +340,14 @@ const renderSectionCComparison = (items) => {
                         </tr>
                       </thead>
                       <tbody>
-                        {[0, 1, 2, 3].map(idx => {
-                          const tenPhan = item[`sauPhanU_tenPhanTien2_${idx}`];
+                        {PHAN_BON_TYPES.map((tenPhan, idx) => {
                           const tien = item[`sauPhanU_tien2_${idx}`];
-                          if (tenPhan || tien) {
-                            return (
-                              <tr key={idx}>
-                                <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '11px' }}>{tenPhan || '-'}</td>
-                                <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '11px' }}>{tien || '-'}</td>
-                              </tr>
-                            );
-                          }
-                          return null;
+                          return (
+                            <tr key={idx}>
+                              <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '11px' }}>{tenPhan}</td>
+                              <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '11px' }}>{tien || '-'}</td>
+                            </tr>
+                          );
                         })}
                       </tbody>
                     </table>
@@ -471,18 +471,14 @@ const renderSectionDComparison = (items) => {
                         </tr>
                       </thead>
                       <tbody>
-                        {[0, 1, 2, 3].map(idx => {
-                          const tenThucAn = item[`sauDemLot_tenThucAn_${idx}`];
+                        {THUC_AN_GA_TYPES.map((tenThucAn, idx) => {
                           const kg = item[`sauDemLot_kg_${idx}`];
-                          if (tenThucAn || kg) {
-                            return (
-                              <tr key={idx}>
-                                <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '11px' }}>{tenThucAn || '-'}</td>
-                                <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '11px' }}>{kg || '-'}</td>
-                              </tr>
-                            );
-                          }
-                          return null;
+                          return (
+                            <tr key={idx}>
+                              <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '11px' }}>{tenThucAn}</td>
+                              <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '11px' }}>{kg || '-'}</td>
+                            </tr>
+                          );
                         })}
                       </tbody>
                     </table>
@@ -496,18 +492,14 @@ const renderSectionDComparison = (items) => {
                         </tr>
                       </thead>
                       <tbody>
-                        {[0, 1, 2, 3].map(idx => {
-                          const tenThucAn = item[`sauDemLot_tenThucAnTien_${idx}`];
+                        {THUC_AN_GA_TYPES.map((tenThucAn, idx) => {
                           const tien = item[`sauDemLot_tien_${idx}`];
-                          if (tenThucAn || tien) {
-                            return (
-                              <tr key={idx}>
-                                <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '11px' }}>{tenThucAn || '-'}</td>
-                                <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '11px' }}>{tien || '-'}</td>
-                              </tr>
-                            );
-                          }
-                          return null;
+                          return (
+                            <tr key={idx}>
+                              <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '11px' }}>{tenThucAn}</td>
+                              <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '11px' }}>{tien || '-'}</td>
+                            </tr>
+                          );
                         })}
                       </tbody>
                     </table>
@@ -542,18 +534,14 @@ const renderSectionDComparison = (items) => {
                         </tr>
                       </thead>
                       <tbody>
-                        {[0, 1, 2, 3].map(idx => {
-                          const tenThucAn = item[`truocDemLot_tenThucAn_${idx}`];
+                        {THUC_AN_GA_TYPES.map((tenThucAn, idx) => {
                           const kg = item[`truocDemLot_kg_${idx}`];
-                          if (tenThucAn || kg) {
-                            return (
-                              <tr key={idx}>
-                                <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '11px' }}>{tenThucAn || '-'}</td>
-                                <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '11px' }}>{kg || '-'}</td>
-                              </tr>
-                            );
-                          }
-                          return null;
+                          return (
+                            <tr key={idx}>
+                              <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '11px' }}>{tenThucAn}</td>
+                              <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '11px' }}>{kg || '-'}</td>
+                            </tr>
+                          );
                         })}
                       </tbody>
                     </table>
@@ -567,18 +555,14 @@ const renderSectionDComparison = (items) => {
                         </tr>
                       </thead>
                       <tbody>
-                        {[0, 1, 2, 3].map(idx => {
-                          const tenThucAn = item[`truocDemLot_tenThucAnTien_${idx}`];
+                        {THUC_AN_GA_TYPES.map((tenThucAn, idx) => {
                           const tien = item[`truocDemLot_tien_${idx}`];
-                          if (tenThucAn || tien) {
-                            return (
-                              <tr key={idx}>
-                                <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '11px' }}>{tenThucAn || '-'}</td>
-                                <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '11px' }}>{tien || '-'}</td>
-                              </tr>
-                            );
-                          }
-                          return null;
+                          return (
+                            <tr key={idx}>
+                              <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '11px' }}>{tenThucAn}</td>
+                              <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '11px' }}>{tien || '-'}</td>
+                            </tr>
+                          );
                         })}
                       </tbody>
                     </table>

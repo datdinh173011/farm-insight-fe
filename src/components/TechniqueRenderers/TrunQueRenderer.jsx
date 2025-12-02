@@ -3,6 +3,12 @@ import { Table, Typography, Empty } from 'antd';
 
 const { Title } = Typography;
 
+// Default values for form fields that use disabled inputs
+const PHAN_BON_TRUOC_TYPES = ['Phân NPK bón lót', 'Phân NPK bón thúc', 'Phân khác'];
+const PHAN_BON_SAU_TYPES = ['Phân NPK bón lót', 'Phân NPK bón thúc', 'Phân trùn quế', 'Phân khác'];
+const THUC_AN_KHONG_TYPES = ['Thức ăn tinh (ngô, gạo)', 'Thức ăn tổng hợp/viên', 'Thức ăn xanh'];
+const THUC_AN_SAU_TYPES = ['Trùn quế', 'Thức ăn tinh (ngô, gạo)', 'Thức ăn tổng hợp/viên', 'Thức ăn xanh'];
+
 // Field labels for Trùn quế technique
 const FIELD_LABELS = {
   sectionA: {
@@ -189,10 +195,10 @@ const renderSectionCComparison = (items, sectionTitle) => {
                         </tr>
                       </thead>
                       <tbody>
-                        {[0, 1, 2].map(idx => (
+                        {PHAN_BON_TRUOC_TYPES.map((defaultName, idx) => (
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '12px' }}>
-                              {item[`sauPhan_tenPhan_${idx}`] || '-'}
+                              {defaultName}
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '12px' }}>
                               {item[`sauPhan_kg_${idx}`] || '-'}
@@ -211,10 +217,10 @@ const renderSectionCComparison = (items, sectionTitle) => {
                         </tr>
                       </thead>
                       <tbody>
-                        {[0, 1, 2].map(idx => (
+                        {PHAN_BON_TRUOC_TYPES.map((defaultName, idx) => (
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '12px' }}>
-                              {item[`sauPhan_tenPhanTien_${idx}`] || '-'}
+                              {defaultName}
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '12px' }}>
                               {item[`sauPhan_tien_${idx}`] || '-'}
@@ -256,10 +262,10 @@ const renderSectionCComparison = (items, sectionTitle) => {
                         </tr>
                       </thead>
                       <tbody>
-                        {[0, 1, 2, 3].map(idx => (
+                        {PHAN_BON_SAU_TYPES.map((defaultName, idx) => (
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '12px' }}>
-                              {item[`khongPhan_tenPhan_${idx}`] || '-'}
+                              {defaultName}
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '12px' }}>
                               {item[`khongPhan_kg_${idx}`] || '-'}
@@ -278,10 +284,10 @@ const renderSectionCComparison = (items, sectionTitle) => {
                         </tr>
                       </thead>
                       <tbody>
-                        {[0, 1, 2, 3].map(idx => (
+                        {PHAN_BON_SAU_TYPES.map((defaultName, idx) => (
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '12px' }}>
-                              {item[`khongPhan_tenPhanTien_${idx}`] || '-'}
+                              {defaultName}
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '12px' }}>
                               {item[`khongPhan_tien_${idx}`] || '-'}
@@ -395,10 +401,10 @@ const renderSectionDComparison = (items, sectionTitle) => {
                         </tr>
                       </thead>
                       <tbody>
-                        {[0, 1, 2].map(idx => (
+                        {THUC_AN_KHONG_TYPES.map((defaultName, idx) => (
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '12px' }}>
-                              {item[`khongCanxi_tenThucAn_${idx}`] || '-'}
+                              {defaultName}
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '12px' }}>
                               {item[`khongCanxi_kg_${idx}`] || '-'}
@@ -417,10 +423,10 @@ const renderSectionDComparison = (items, sectionTitle) => {
                         </tr>
                       </thead>
                       <tbody>
-                        {[0, 1, 2].map(idx => (
+                        {THUC_AN_KHONG_TYPES.map((defaultName, idx) => (
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '12px' }}>
-                              {item[`khongCanxi_tenThucAnTien_${idx}`] || '-'}
+                              {defaultName}
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '12px' }}>
                               {item[`khongCanxi_tien_${idx}`] || '-'}
@@ -456,10 +462,10 @@ const renderSectionDComparison = (items, sectionTitle) => {
                         </tr>
                       </thead>
                       <tbody>
-                        {[0, 1, 2, 3].map(idx => (
+                        {THUC_AN_SAU_TYPES.map((defaultName, idx) => (
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '12px' }}>
-                              {item[`sauCanxi_tenThucAn_${idx}`] || '-'}
+                              {defaultName}
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '12px' }}>
                               {item[`sauCanxi_kg_${idx}`] || '-'}
@@ -478,10 +484,10 @@ const renderSectionDComparison = (items, sectionTitle) => {
                         </tr>
                       </thead>
                       <tbody>
-                        {[0, 1, 2, 3].map(idx => (
+                        {THUC_AN_SAU_TYPES.map((defaultName, idx) => (
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '12px' }}>
-                              {item[`sauCanxi_tenThucAnTien_${idx}`] || '-'}
+                              {defaultName}
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '12px' }}>
                               {item[`sauCanxi_tien_${idx}`] || '-'}

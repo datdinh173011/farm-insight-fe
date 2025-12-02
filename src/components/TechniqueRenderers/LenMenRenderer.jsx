@@ -57,6 +57,23 @@ const FIELD_LABELS = {
   },
 };
 
+// Default food types for TRƯỚC KHI (sauMen fields - before using fermented food)
+const THUC_AN_SAU_MEN = [
+  'Thức ăn ủ lên men',
+  'Sâu canxi/trùn quế', 
+  'Thức ăn tinh (ngô, gạo)',
+  'Thức ăn tổng hợp/viên',
+  'Thức ăn xanh'
+];
+
+// Default food types for SAU KHI (truocMen fields - after using fermented food)
+const THUC_AN_TRUOC_MEN = [
+  'Sâu canxi/trùn quế',
+  'Thức ăn tinh (ngô, gạo)',
+  'Thức ăn tổng hợp/viên',
+  'Thức ăn xanh'
+];
+
 // Helper function to render Section C with comparison table (TRƯỚC vs SAU)
 const renderSectionCComparison = (items) => {
   if (!items || !Array.isArray(items) || items.length === 0) return null;
@@ -159,22 +176,18 @@ const renderSectionCComparison = (items) => {
                         </tr>
                       </thead>
                       <tbody>
-                        {[0, 1, 2, 3, 4].map(idx => {
-                          const tenThucAn = item[`sauMen_tenThucAn_${idx}`];
+                        {THUC_AN_SAU_MEN.map((tenThucAn, idx) => {
                           const kg = item[`sauMen_kg_${idx}`];
-                          if (tenThucAn || kg) {
-                            return (
-                              <tr key={idx}>
-                                <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '12px' }}>
-                                  {tenThucAn || '-'}
-                                </td>
-                                <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '12px' }}>
-                                  {kg || '-'}
-                                </td>
-                              </tr>
-                            );
-                          }
-                          return null;
+                          return (
+                            <tr key={idx}>
+                              <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '12px' }}>
+                                {tenThucAn}
+                              </td>
+                              <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '12px' }}>
+                                {kg || '-'}
+                              </td>
+                            </tr>
+                          );
                         })}
                       </tbody>
                     </table>
@@ -188,22 +201,18 @@ const renderSectionCComparison = (items) => {
                         </tr>
                       </thead>
                       <tbody>
-                        {[0, 1, 2, 3, 4].map(idx => {
-                          const tenThucAn = item[`sauMen_tenThucAnTien_${idx}`];
+                        {THUC_AN_SAU_MEN.map((tenThucAn, idx) => {
                           const tien = item[`sauMen_tien_${idx}`];
-                          if (tenThucAn || tien) {
-                            return (
-                              <tr key={idx}>
-                                <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '12px' }}>
-                                  {tenThucAn || '-'}
-                                </td>
-                                <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '12px' }}>
-                                  {tien || '-'}
-                                </td>
-                              </tr>
-                            );
-                          }
-                          return null;
+                          return (
+                            <tr key={idx}>
+                              <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '12px' }}>
+                                {tenThucAn}
+                              </td>
+                              <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '12px' }}>
+                                {tien || '-'}
+                              </td>
+                            </tr>
+                          );
                         })}
                       </tbody>
                     </table>
@@ -239,22 +248,18 @@ const renderSectionCComparison = (items) => {
                         </tr>
                       </thead>
                       <tbody>
-                        {[0, 1, 2, 3].map(idx => {
-                          const tenThucAn = item[`truocMen_tenThucAn_${idx}`];
+                        {THUC_AN_TRUOC_MEN.map((tenThucAn, idx) => {
                           const kg = item[`truocMen_kg_${idx}`];
-                          if (tenThucAn || kg) {
-                            return (
-                              <tr key={idx}>
-                                <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '12px' }}>
-                                  {tenThucAn || '-'}
-                                </td>
-                                <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '12px' }}>
-                                  {kg || '-'}
-                                </td>
-                              </tr>
-                            );
-                          }
-                          return null;
+                          return (
+                            <tr key={idx}>
+                              <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '12px' }}>
+                                {tenThucAn}
+                              </td>
+                              <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '12px' }}>
+                                {kg || '-'}
+                              </td>
+                            </tr>
+                          );
                         })}
                       </tbody>
                     </table>
@@ -268,22 +273,18 @@ const renderSectionCComparison = (items) => {
                         </tr>
                       </thead>
                       <tbody>
-                        {[0, 1, 2, 3].map(idx => {
-                          const tenThucAn = item[`truocMen_tenThucAnTien_${idx}`];
+                        {THUC_AN_TRUOC_MEN.map((tenThucAn, idx) => {
                           const tien = item[`truocMen_tien_${idx}`];
-                          if (tenThucAn || tien) {
-                            return (
-                              <tr key={idx}>
-                                <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '12px' }}>
-                                  {tenThucAn || '-'}
-                                </td>
-                                <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '12px' }}>
-                                  {tien || '-'}
-                                </td>
-                              </tr>
-                            );
-                          }
-                          return null;
+                          return (
+                            <tr key={idx}>
+                              <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '12px' }}>
+                                {tenThucAn}
+                              </td>
+                              <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '12px' }}>
+                                {tien || '-'}
+                              </td>
+                            </tr>
+                          );
                         })}
                       </tbody>
                     </table>
