@@ -210,7 +210,7 @@ export default function TechniqueFormNuoiGa({ form, onFinish, onBack, initialVal
                     KHÔNG BÓN PHÂN Ủ<br/>(NĂM 2022)
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`phanU`, i, '32bkhong']} rules={[]} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`phanU`, i, '32bkhong']} style={{ marginBottom: 0 }}>
                       <Input placeholder='Sào' size='small' />
                     </Form.Item>
                   </td>
@@ -226,12 +226,12 @@ export default function TechniqueFormNuoiGa({ form, onFinish, onBack, initialVal
                         {['Phân ủ/ phân đệm lót/ phân trùn quế/ phân sâu canxi', 'Phân NPK bón lót', 'Phân NPK bón thúc', 'Phân khác (ghi rõ)'].map((phanType, idx) => (
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
-                              <Form.Item name={[`phanU`, i, `khongPhanU_tenPhan_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                              <Form.Item name={[`phanU`, i, `khongPhanU_tenPhan_${idx}`]} style={{ marginBottom: 0 }}>
                                 <Input defaultValue={phanType} disabled size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
-                              <Form.Item name={[`phanU`, i, `khongPhanU_kg_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                              <Form.Item name={[`phanU`, i, `khongPhanU_kg_${idx}`]} style={{ marginBottom: 0 }}>
                                 <Input placeholder='Kg' size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
@@ -252,12 +252,12 @@ export default function TechniqueFormNuoiGa({ form, onFinish, onBack, initialVal
                         {['Phân ủ/ phân đệm lót/ phân trùn quế/ phân sâu canxi', 'Phân NPK bón lót', 'Phân NPK bón thúc', 'Phân khác (ghi rõ)'].map((phanType, idx) => (
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
-                              <Form.Item name={[`phanU`, i, `khongPhanU_tenPhanTien_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                              <Form.Item name={[`phanU`, i, `khongPhanU_tenPhanTien_${idx}`]} style={{ marginBottom: 0 }}>
                                 <Input defaultValue={phanType} disabled size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
-                              <Form.Item name={[`phanU`, i, `khongPhanU_tien_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                              <Form.Item name={[`phanU`, i, `khongPhanU_tien_${idx}`]} style={{ marginBottom: 0 }}>
                                 <Input placeholder='đồng' size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
@@ -267,42 +267,42 @@ export default function TechniqueFormNuoiGa({ form, onFinish, onBack, initialVal
                     </table>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`phanU`, i, '32ekhong']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`phanU`, i, '32ekhong']} style={{ marginBottom: 0 }}>
                       <InputNumber placeholder='Lần' size='small' style={{ width: '100%' }}/>
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`phanU`, i, '32fkhong']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`phanU`, i, '32fkhong']} style={{ marginBottom: 0 }}>
                       <InputNumber placeholder='Bình' size='small' style={{ width: '100%' }}/>
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`phanU`, i, '32gkhong']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`phanU`, i, '32gkhong']} style={{ marginBottom: 0 }}>
                       <InputNumber placeholder='Bình' size='small' style={{ width: '100%' }}/>
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`phanU`, i, '32hkhong']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`phanU`, i, '32hkhong']} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' style={{ width: '100%' }} min={0} />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`phanU`, i, '32ikhong']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`phanU`, i, '32ikhong']} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' style={{ width: '100%' }} min={0} />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`phanU`, i, '32jkhong']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`phanU`, i, '32jkhong']} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' style={{ width: '100%' }} min={0} />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`phanU`, i, '32kkhong']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`phanU`, i, '32kkhong']} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' style={{ width: '100%' }} />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`phanU`, i, '32lkhong']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`phanU`, i, '32lkhong']} style={{ marginBottom: 0 }}>
                       <Radio.Group>
                         <Radio value="Có">Có</Radio>
                         <Radio value="Không">Không</Radio>
@@ -310,17 +310,17 @@ export default function TechniqueFormNuoiGa({ form, onFinish, onBack, initialVal
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`phanU`, i, '32mtruoc']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`phanU`, i, '32mtruoc']} style={{ marginBottom: 0 }}>
                       <Input placeholder='kg/sào' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`phanU`, i, '32ntruoc']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`phanU`, i, '32ntruoc']} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`phanU`, i, '32otruoc']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`phanU`, i, '32otruoc']} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' />
                     </Form.Item>
                   </td>
@@ -334,7 +334,7 @@ export default function TechniqueFormNuoiGa({ form, onFinish, onBack, initialVal
                     SAU KHI BÓN PHÂN Ủ<br/>(VỤ GẦN ĐÂY)
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`phanU`, i, 'dienTichSauPhanU2']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`phanU`, i, 'dienTichSauPhanU2']} style={{ marginBottom: 0 }}>
                       <Input placeholder='Sào' size='small' />
                     </Form.Item>
                   </td>
@@ -350,12 +350,12 @@ export default function TechniqueFormNuoiGa({ form, onFinish, onBack, initialVal
                         {['Phân ủ/ phân đệm lót/ phân trùn quế/ phân sâu canxi', 'Phân NPK bón lót', 'Phân NPK bón thúc', 'Phân khác (ghi rõ)'].map((phanType, idx) => (
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
-                              <Form.Item name={[`phanU`, i, `sauPhanU_tenPhan2_${idx}`]} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                              <Form.Item name={[`phanU`, i, `sauPhanU_tenPhan2_${idx}`]} style={{ marginBottom: 0 }}>
                                 <Input defaultValue={phanType} disabled size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
-                              <Form.Item name={[`phanU`, i, `sauPhanU_kg2_${idx}`]} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                              <Form.Item name={[`phanU`, i, `sauPhanU_kg2_${idx}`]} style={{ marginBottom: 0 }}>
                                 <Input placeholder='Kg' size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
@@ -376,12 +376,12 @@ export default function TechniqueFormNuoiGa({ form, onFinish, onBack, initialVal
                         {['Phân ủ/ phân đệm lót/ phân trùn quế/ phân sâu canxi', 'Phân NPK bón lót', 'Phân NPK bón thúc', 'Phân khác (ghi rõ)'].map((phanType, idx) => (
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
-                              <Form.Item name={[`phanU`, i, `sauPhanU_tenPhanTien2_${idx}`]} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                              <Form.Item name={[`phanU`, i, `sauPhanU_tenPhanTien2_${idx}`]} style={{ marginBottom: 0 }}>
                                 <Input defaultValue={phanType} disabled size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
-                              <Form.Item name={[`phanU`, i, `sauPhanU_tien2_${idx}`]} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                              <Form.Item name={[`phanU`, i, `sauPhanU_tien2_${idx}`]} style={{ marginBottom: 0 }}>
                                 <Input placeholder='đồng' size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
@@ -391,42 +391,42 @@ export default function TechniqueFormNuoiGa({ form, onFinish, onBack, initialVal
                     </table>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`phanU`, i, '32esau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`phanU`, i, '32esau']} style={{ marginBottom: 0 }}>
                       <InputNumber placeholder='Lần' size='small' style={{ width: '100%' }} min={0} />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`phanU`, i, '32fsau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`phanU`, i, '32fsau']} style={{ marginBottom: 0 }}>
                       <InputNumber placeholder='Bình' size='small' style={{ width: '100%' }} min={0} />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`phanU`, i, '32gsau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`phanU`, i, '32gsau']} style={{ marginBottom: 0 }}>
                       <InputNumber placeholder='Bình' size='small' style={{ width: '100%' }} min={0} />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`phanU`, i, '32hsao']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`phanU`, i, '32hsao']} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`phanU`, i, '32isau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`phanU`, i, '32isau']} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`phanU`, i, '32jsau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`phanU`, i, '32jsau']} style={{ marginBottom: 0 }}>
                       <Input placeholder='Đ' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`phanU`, i, '32ksau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`phanU`, i, '32ksau']} style={{ marginBottom: 0 }}>
                       <Input placeholder='Đ' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`phanU`, i, '32lsau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`phanU`, i, '32lsau']} style={{ marginBottom: 0 }}>
                       <Radio.Group>
                         <Radio value="Có">Có</Radio>
                         <Radio value="Không">Không</Radio>
@@ -434,18 +434,18 @@ export default function TechniqueFormNuoiGa({ form, onFinish, onBack, initialVal
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                      <Form.Item name={[`phanU`, i, '32msau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                      <Form.Item name={[`phanU`, i, '32msau']} style={{ marginBottom: 0 }}>
                         <Input placeholder='kg/sào' size='small' />
                       </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                      <Form.Item name={[`phanU`, i, '32nsau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                      <Form.Item name={[`phanU`, i, '32nsau']} style={{ marginBottom: 0 }}>
                         <Input placeholder='đồng' size='small' />
                       </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
                     <div style={{ fontSize: '12px', marginBottom: '4px' }}>
-                      <Form.Item name={[`phanU`, i, '32osau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                      <Form.Item name={[`phanU`, i, '32osau']} style={{ marginBottom: 0 }}>
                         <Input placeholder='đồng' size='small' />
                       </Form.Item>
                     </div>
@@ -534,7 +534,7 @@ export default function TechniqueFormNuoiGa({ form, onFinish, onBack, initialVal
                     TRƯỚC KHI<br/>đệm lót
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`danGa`, i, 'soLuongGaSauDemLot']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`danGa`, i, 'soLuongGaSauDemLot']} style={{ marginBottom: 0 }}>
                       <InputNumber placeholder='Con' size='small' style={{ width: '100%' }} min={0} />
                     </Form.Item>
                   </td>
@@ -550,12 +550,12 @@ export default function TechniqueFormNuoiGa({ form, onFinish, onBack, initialVal
                         {['Sâu canxi/trùn quế', 'Thức ăn tinh (ngô, gạo)', 'Thức ăn tổng hợp/viên', 'Thức ăn xanh'].map((thucAnType, idx) => (
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
-                              <Form.Item name={[`danGa`, i, `sauDemLot_tenThucAn_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                              <Form.Item name={[`danGa`, i, `sauDemLot_tenThucAn_${idx}`]} style={{ marginBottom: 0 }}>
                                 <Input defaultValue={thucAnType} disabled size='small' style={{ fontSize: '11px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
-                              <Form.Item name={[`danGa`, i, `sauDemLot_kg_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                              <Form.Item name={[`danGa`, i, `sauDemLot_kg_${idx}`]} style={{ marginBottom: 0 }}>
                                 <Input placeholder='Kg' size='small' style={{ fontSize: '11px' }} />
                               </Form.Item>
                             </td>
@@ -576,12 +576,12 @@ export default function TechniqueFormNuoiGa({ form, onFinish, onBack, initialVal
                         {['Sâu canxi/trùn quế', 'Thức ăn tinh (ngô, gạo)', 'Thức ăn tổng hợp/viên', 'Thức ăn xanh'].map((thucAnType, idx) => (
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
-                              <Form.Item name={[`danGa`, i, `sauDemLot_tenThucAnTien_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                              <Form.Item name={[`danGa`, i, `sauDemLot_tenThucAnTien_${idx}`]} style={{ marginBottom: 0 }}>
                                 <Input defaultValue={thucAnType} disabled size='small' style={{ fontSize: '11px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
-                              <Form.Item name={[`danGa`, i, `sauDemLot_tien_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                              <Form.Item name={[`danGa`, i, `sauDemLot_tien_${idx}`]} style={{ marginBottom: 0 }}>
                                 <Input placeholder='đồng' size='small' style={{ fontSize: '11px' }} />
                               </Form.Item>
                             </td>
@@ -591,17 +591,17 @@ export default function TechniqueFormNuoiGa({ form, onFinish, onBack, initialVal
                     </table>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`danGa`, i, 'tienThuoc']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`danGa`, i, 'tienThuoc']} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`danGa`, i, 'gioDonDep']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`danGa`, i, 'gioDonDep']} style={{ marginBottom: 0 }}>
                       <Input placeholder='Giờ' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`danGa`, i, 'gaBiBenh']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`danGa`, i, 'gaBiBenh']} style={{ marginBottom: 0 }}>
                       <Radio.Group>
                         <Radio value="Có">Có</Radio>
                         <Radio value="Không">Không</Radio>
@@ -609,27 +609,27 @@ export default function TechniqueFormNuoiGa({ form, onFinish, onBack, initialVal
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`danGa`, i, 'danhGiaSucKhoe']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`danGa`, i, 'danhGiaSucKhoe']} style={{ marginBottom: 0 }}>
                       <InputNumber min={1} max={10} placeholder='1-10' size='small' style={{ width: '100%' }} />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`danGa`, i, 'soNgayDatTrongLuong']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`danGa`, i, 'soNgayDatTrongLuong']} style={{ marginBottom: 0 }}>
                       <Input placeholder='Ngày' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`danGa`, i, 'trongLuongXuatChuong']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`danGa`, i, 'trongLuongXuatChuong']} style={{ marginBottom: 0 }}>
                       <Input placeholder='kg/con' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`danGa`, i, 'tongThoiGianNuoi']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`danGa`, i, 'tongThoiGianNuoi']} style={{ marginBottom: 0 }}>
                       <Input placeholder='Tháng' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`danGa`, i, 'gaPhatTrienNhanhHon']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`danGa`, i, 'gaPhatTrienNhanhHon']} style={{ marginBottom: 0 }}>
                       <Radio.Group>
                         <Radio value="Có">Có</Radio>
                         <Radio value="Không">Không</Radio>
@@ -637,17 +637,17 @@ export default function TechniqueFormNuoiGa({ form, onFinish, onBack, initialVal
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`danGa`, i, 'giaBan']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`danGa`, i, 'giaBan']} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng/kg' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`danGa`, i, 'tongThuNhap']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`danGa`, i, 'tongThuNhap']} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`danGa`, i, 'danhGiaMui']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`danGa`, i, 'danhGiaMui']} style={{ marginBottom: 0 }}>
                       <InputNumber min={0} max={10} placeholder='0-10' size='small' style={{ width: '100%' }} />
                     </Form.Item>
                   </td>
@@ -659,7 +659,7 @@ export default function TechniqueFormNuoiGa({ form, onFinish, onBack, initialVal
                     SAU KHI<br/>đệm lót
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`danGa`, i, 'soLuongGaTruocDemLot']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`danGa`, i, 'soLuongGaTruocDemLot']} style={{ marginBottom: 0 }}>
                       <InputNumber placeholder='Con' size='small' style={{ width: '100%' }} min={0} />
                     </Form.Item>
                   </td>
@@ -675,12 +675,12 @@ export default function TechniqueFormNuoiGa({ form, onFinish, onBack, initialVal
                         {['Sâu canxi/trùn quế', 'Thức ăn tinh (ngô, gạo)', 'Thức ăn tổng hợp/viên', 'Thức ăn xanh'].map((thucAnType, idx) => (
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
-                              <Form.Item name={[`danGa`, i, `truocDemLot_tenThucAn_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                              <Form.Item name={[`danGa`, i, `truocDemLot_tenThucAn_${idx}`]} style={{ marginBottom: 0 }}>
                                 <Input defaultValue={thucAnType} disabled size='small' style={{ fontSize: '11px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
-                              <Form.Item name={[`danGa`, i, `truocDemLot_kg_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                              <Form.Item name={[`danGa`, i, `truocDemLot_kg_${idx}`]} style={{ marginBottom: 0 }}>
                                 <Input placeholder='Kg' size='small' style={{ fontSize: '11px' }} />
                               </Form.Item>
                             </td>
@@ -701,12 +701,12 @@ export default function TechniqueFormNuoiGa({ form, onFinish, onBack, initialVal
                         {['Sâu canxi/trùn quế', 'Thức ăn tinh (ngô, gạo)', 'Thức ăn tổng hợp/viên', 'Thức ăn xanh'].map((thucAnType, idx) => (
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
-                              <Form.Item name={[`danGa`, i, `truocDemLot_tenThucAnTien_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                              <Form.Item name={[`danGa`, i, `truocDemLot_tenThucAnTien_${idx}`]} style={{ marginBottom: 0 }}>
                                 <Input defaultValue={thucAnType} disabled size='small' style={{ fontSize: '11px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
-                              <Form.Item name={[`danGa`, i, `truocDemLot_tien_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                              <Form.Item name={[`danGa`, i, `truocDemLot_tien_${idx}`]} style={{ marginBottom: 0 }}>
                                 <Input placeholder='đồng' size='small' style={{ fontSize: '11px' }} />
                               </Form.Item>
                             </td>
@@ -716,17 +716,17 @@ export default function TechniqueFormNuoiGa({ form, onFinish, onBack, initialVal
                     </table>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`danGa`, i, 'tienThuoc2']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`danGa`, i, 'tienThuoc2']} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`danGa`, i, 'gioDonDep2']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`danGa`, i, 'gioDonDep2']} style={{ marginBottom: 0 }}>
                       <Input placeholder='Giờ' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`danGa`, i, 'gaBiBenh2']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`danGa`, i, 'gaBiBenh2']} style={{ marginBottom: 0 }}>
                       <Radio.Group>
                         <Radio value="Có">Có</Radio>
                         <Radio value="Không">Không</Radio>
@@ -734,27 +734,27 @@ export default function TechniqueFormNuoiGa({ form, onFinish, onBack, initialVal
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`danGa`, i, 'danhGiaSucKhoe2']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`danGa`, i, 'danhGiaSucKhoe2']} style={{ marginBottom: 0 }}>
                       <InputNumber min={1} max={10} placeholder='1-10' size='small' style={{ width: '100%' }} />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`danGa`, i, 'soNgayDatTrongLuong2']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`danGa`, i, 'soNgayDatTrongLuong2']} style={{ marginBottom: 0 }}>
                       <Input placeholder='Ngày' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`danGa`, i, 'trongLuongXuatChuong2']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`danGa`, i, 'trongLuongXuatChuong2']} style={{ marginBottom: 0 }}>
                       <Input placeholder='kg/con' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`danGa`, i, 'tongThoiGianNuoi2']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`danGa`, i, 'tongThoiGianNuoi2']} style={{ marginBottom: 0 }}>
                       <Input placeholder='Tháng' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`danGa`, i, 'gaPhatTrienNhanhHon2']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`danGa`, i, 'gaPhatTrienNhanhHon2']} style={{ marginBottom: 0 }}>
                       <Radio.Group>
                         <Radio value="Có">Có</Radio>
                         <Radio value="Không">Không</Radio>
@@ -762,17 +762,17 @@ export default function TechniqueFormNuoiGa({ form, onFinish, onBack, initialVal
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`danGa`, i, 'giaBan2']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`danGa`, i, 'giaBan2']} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng/kg' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`danGa`, i, 'tongThuNhap2']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`danGa`, i, 'tongThuNhap2']} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`danGa`, i, 'danhGiaMui2']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`danGa`, i, 'danhGiaMui2']} style={{ marginBottom: 0 }}>
                       <InputNumber min={0} max={10} placeholder='0-10' size='small' style={{ width: '100%' }} />
                     </Form.Item>
                   </td>

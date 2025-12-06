@@ -238,12 +238,12 @@ export default function TechniqueFormTrunQue({ form, onFinish, onBack, initialVa
                         {['Phân NPK bón lót', 'Phân NPK bón thúc', 'Phân khác'].map((phanType, idx) => (
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
-                              <Form.Item name={[`sectionC`, i, `sauPhan_tenPhanTien_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                              <Form.Item name={[`sectionC`, i, `sauPhan_tenPhanTien_${idx}`]} style={{ marginBottom: 0 }}>
                                 <Input defaultValue={phanType} disabled size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
-                              <Form.Item name={[`sectionC`, i, `sauPhan_tien_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                              <Form.Item name={[`sectionC`, i, `sauPhan_tien_${idx}`]}  style={{ marginBottom: 0 }}>
                                 <Input placeholder='đồng' size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
@@ -253,42 +253,42 @@ export default function TechniqueFormTrunQue({ form, onFinish, onBack, initialVa
                     </table>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionC`, i, '20ftruoc']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionC`, i, '20ftruoc']} style={{ marginBottom: 0 }}>
                       <Input placeholder='Số lần' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionC`, i, '20gtruoc']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionC`, i, '20gtruoc']} style={{ marginBottom: 0 }}>
                       <Input placeholder='Số bình' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionC`, i, '20htruoc']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionC`, i, '20htruoc']} style={{ marginBottom: 0 }}>
                       <Input placeholder='Số bình' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionC`, i, '20itruoc']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionC`, i, '20itruoc']} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionC`, i, '20jtruoc']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionC`, i, '20jtruoc']} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionC`, i, '20ktruoc']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionC`, i, '20ktruoc']} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionC`, i, '20ltruoc']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionC`, i, '20ltruoc']} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionC`, i, '20mtruoc']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionC`, i, '20mtruoc']} style={{ marginBottom: 0 }}>
                       <Radio.Group>
                         <Radio value="Có">Có</Radio>
                         <Radio value="Không">Không</Radio>
@@ -296,17 +296,17 @@ export default function TechniqueFormTrunQue({ form, onFinish, onBack, initialVa
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionC`, i, '20ntruoc']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionC`, i, '20ntruoc']} style={{ marginBottom: 0 }}>
                       <Input placeholder='kg' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionC`, i, '20otruc']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionC`, i, '20otruc']} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionC`, i, '20ptruoc']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionC`, i, '20ptruoc']} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' />
                     </Form.Item>
                   </td>
@@ -317,12 +317,12 @@ export default function TechniqueFormTrunQue({ form, onFinish, onBack, initialVa
                     SAU KHI BÓN<br/>PHÂN TRÙN QUẾ
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionC`, i, '20bsau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionC`, i, '20bsau']} style={{ marginBottom: 0 }}>
                       <Input placeholder='Tháng/năm' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionC`, i, '20csau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionC`, i, '20csau']} style={{ marginBottom: 0 }}>
                       <Input placeholder='Sào' size='small' />
                     </Form.Item>
                   </td>
@@ -338,12 +338,12 @@ export default function TechniqueFormTrunQue({ form, onFinish, onBack, initialVa
                         {['Phân NPK bón lót', 'Phân NPK bón thúc', 'Phân trùn quế', 'Phân khác'].map((phanType, idx) => (
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
-                              <Form.Item name={[`sectionC`, i, `khongPhan_tenPhan_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                              <Form.Item name={[`sectionC`, i, `khongPhan_tenPhan_${idx}`]} style={{ marginBottom: 0 }}>
                                 <Input defaultValue={phanType} disabled size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
-                              <Form.Item name={[`sectionC`, i, `khongPhan_kg_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                              <Form.Item name={[`sectionC`, i, `khongPhan_kg_${idx}`]} style={{ marginBottom: 0 }}>
                                 <Input placeholder='kg' size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
@@ -364,12 +364,12 @@ export default function TechniqueFormTrunQue({ form, onFinish, onBack, initialVa
                         {['Phân NPK bón lót', 'Phân NPK bón thúc', 'Phân trùn quế', 'Phân khác'].map((phanType, idx) => (
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
-                              <Form.Item name={[`sectionC`, i, `khongPhan_tenPhanTien_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                              <Form.Item name={[`sectionC`, i, `khongPhan_tenPhanTien_${idx}`]} style={{ marginBottom: 0 }}>
                                 <Input defaultValue={phanType} disabled size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
-                              <Form.Item name={[`sectionC`, i, `khongPhan_tien_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                              <Form.Item name={[`sectionC`, i, `khongPhan_tien_${idx}`]} style={{ marginBottom: 0 }}>
                                 <Input placeholder='đồng' size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
@@ -379,42 +379,42 @@ export default function TechniqueFormTrunQue({ form, onFinish, onBack, initialVa
                     </table>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionC`, i, '20fsau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionC`, i, '20fsau']} style={{ marginBottom: 0 }}>
                       <Input placeholder='Số lần' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionC`, i, '20gsau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionC`, i, '20gsau']} style={{ marginBottom: 0 }}>
                       <Input placeholder='Số bình' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionC`, i, '20hsau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionC`, i, '20hsau']} style={{ marginBottom: 0 }}>
                       <Input placeholder='Số bình' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionC`, i, '20isau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionC`, i, '20isau']} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionC`, i, '20jsau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionC`, i, '20jsau']} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionC`, i, '20ksau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionC`, i, '20ksau']} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionC`, i, '20lsau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionC`, i, '20lsau']} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionC`, i, '20msau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionC`, i, '20msau']} style={{ marginBottom: 0 }}>
                       <Radio.Group>
                         <Radio value="Có">Có</Radio>
                         <Radio value="Không">Không</Radio>
@@ -422,17 +422,17 @@ export default function TechniqueFormTrunQue({ form, onFinish, onBack, initialVa
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionC`, i, '20nsau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionC`, i, '20nsau']} style={{ marginBottom: 0 }}>
                       <Input placeholder='kg' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionC`, i, '20osau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionC`, i, '20osau']} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionC`, i, '20psau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionC`, i, '20psau']} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' />
                     </Form.Item>
                   </td>
@@ -518,7 +518,7 @@ export default function TechniqueFormTrunQue({ form, onFinish, onBack, initialVa
                     KHÔNG SỬ DỤNG<br/>TRÙN QUẾ <br/>LÀM THỨC ĂN
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionD`, i, '29akhong']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionD`, i, '29akhong']} style={{ marginBottom: 0 }}>
                       <InputNumber placeholder='con' size='small' style={{ width: '100%' }} min={0} />
                     </Form.Item>
                   </td>
@@ -534,12 +534,12 @@ export default function TechniqueFormTrunQue({ form, onFinish, onBack, initialVa
                         {['Thức ăn tinh (ngô, gạo)', 'Thức ăn tổng hợp/viên', 'Thức ăn xanh'].map((thucAnType, idx) => (
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
-                              <Form.Item name={[`sectionD`, i, `khongCanxi_tenThucAn_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                              <Form.Item name={[`sectionD`, i, `khongCanxi_tenThucAn_${idx}`]} style={{ marginBottom: 0 }}>
                                 <Input defaultValue={thucAnType} disabled size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
-                              <Form.Item name={[`sectionD`, i, `khongCanxi_kg_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                              <Form.Item name={[`sectionD`, i, `khongCanxi_kg_${idx}`]} style={{ marginBottom: 0 }}>
                                 <Input placeholder='kg' size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
@@ -560,12 +560,12 @@ export default function TechniqueFormTrunQue({ form, onFinish, onBack, initialVa
                         {['Thức ăn tinh (ngô, gạo)', 'Thức ăn tổng hợp/viên', 'Thức ăn xanh'].map((thucAnType, idx) => (
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
-                              <Form.Item name={[`sectionD`, i, `khongCanxi_tenThucAnTien_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                              <Form.Item name={[`sectionD`, i, `khongCanxi_tenThucAnTien_${idx}`]} style={{ marginBottom: 0 }}>
                                 <Input defaultValue={thucAnType} disabled size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
-                              <Form.Item name={[`sectionD`, i, `khongCanxi_tien_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                              <Form.Item name={[`sectionD`, i, `khongCanxi_tien_${idx}`]} style={{ marginBottom: 0 }}>
                                 <Input placeholder='đồng' size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
@@ -575,12 +575,12 @@ export default function TechniqueFormTrunQue({ form, onFinish, onBack, initialVa
                     </table>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionD`, i, '29dkhong']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionD`, i, '29dkhong']} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionD`, i, '29ekhong']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionD`, i, '29ekhong']} style={{ marginBottom: 0 }}>
                       <Radio.Group>
                         <Radio value="Có">Có</Radio>
                         <Radio value="Không">Không</Radio>
@@ -588,12 +588,12 @@ export default function TechniqueFormTrunQue({ form, onFinish, onBack, initialVa
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionD`, i, '29fkhong']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionD`, i, '29fkhong']} style={{ marginBottom: 0 }}>
                       <InputNumber placeholder='1-10' size='small' style={{ width: '100%' }} min={1} max={10} />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionD`, i, '29gkhong']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionD`, i, '29gkhong']} style={{ marginBottom: 0 }}>
                       <Radio.Group>
                         <Radio value="Có">Có</Radio>
                         <Radio value="Không">Không</Radio>
@@ -601,22 +601,22 @@ export default function TechniqueFormTrunQue({ form, onFinish, onBack, initialVa
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionD`, i, '29hkhong']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionD`, i, '29hkhong']} style={{ marginBottom: 0 }}>
                       <Input placeholder='tháng' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionD`, i, '29ikhong']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionD`, i, '29ikhong']} style={{ marginBottom: 0 }}>
                       <Input placeholder='kg' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionD`, i, '29jkhong']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionD`, i, '29jkhong']} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionD`, i, '29kkhong']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionD`, i, '29kkhong']} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' />
                     </Form.Item>
                   </td>
@@ -628,7 +628,7 @@ export default function TechniqueFormTrunQue({ form, onFinish, onBack, initialVa
                     SAU KHI SỬ DỤNG <br/>TRÙN QUẾ<br/>LÀM THỨC ĂN
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionD`, i, '29asau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionD`, i, '29asau']} style={{ marginBottom: 0 }}>
                       <InputNumber placeholder='con' size='small' style={{ width: '100%' }} min={0} />
                     </Form.Item>
                   </td>
@@ -644,12 +644,12 @@ export default function TechniqueFormTrunQue({ form, onFinish, onBack, initialVa
                         {['Trùn quế', 'Thức ăn tinh (ngô, gạo)', 'Thức ăn tổng hợp/viên', 'Thức ăn xanh'].map((thucAnType, idx) => (
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
-                              <Form.Item name={[`sectionD`, i, `sauCanxi_tenThucAn_${idx}`]} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                              <Form.Item name={[`sectionD`, i, `sauCanxi_tenThucAn_${idx}`]} style={{ marginBottom: 0 }}>
                                 <Input defaultValue={thucAnType} disabled size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
-                              <Form.Item name={[`sectionD`, i, `sauCanxi_kg_${idx}`]} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                              <Form.Item name={[`sectionD`, i, `sauCanxi_kg_${idx}`]} style={{ marginBottom: 0 }}>
                                 <Input placeholder='kg' size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
@@ -670,12 +670,12 @@ export default function TechniqueFormTrunQue({ form, onFinish, onBack, initialVa
                         {['Trùn quế', 'Thức ăn tinh (ngô, gạo)', 'Thức ăn tổng hợp/viên', 'Thức ăn xanh'].map((thucAnType, idx) => (
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
-                              <Form.Item name={[`sectionD`, i, `sauCanxi_tenThucAnTien_${idx}`]} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                              <Form.Item name={[`sectionD`, i, `sauCanxi_tenThucAnTien_${idx}`]} style={{ marginBottom: 0 }}>
                                 <Input defaultValue={thucAnType} disabled size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
-                              <Form.Item name={[`sectionD`, i, `sauCanxi_tien_${idx}`]} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                              <Form.Item name={[`sectionD`, i, `sauCanxi_tien_${idx}`]} style={{ marginBottom: 0 }}>
                                 <Input placeholder='đồng' size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
@@ -685,12 +685,12 @@ export default function TechniqueFormTrunQue({ form, onFinish, onBack, initialVa
                     </table>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionD`, i, '29dsau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionD`, i, '29dsau']} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionD`, i, '29esau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionD`, i, '29esau']} style={{ marginBottom: 0 }}>
                       <Radio.Group>
                         <Radio value="Có">Có</Radio>
                         <Radio value="Không">Không</Radio>
@@ -698,12 +698,12 @@ export default function TechniqueFormTrunQue({ form, onFinish, onBack, initialVa
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionD`, i, '29fsau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionD`, i, '29fsau']} style={{ marginBottom: 0 }}>
                       <InputNumber placeholder='1-10' size='small' style={{ width: '100%' }} min={1} max={10} />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionD`, i, '29gsau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionD`, i, '29gsau']} style={{ marginBottom: 0 }}>
                       <Radio.Group>
                         <Radio value="Có">Có</Radio>
                         <Radio value="Không">Không</Radio>
@@ -711,22 +711,22 @@ export default function TechniqueFormTrunQue({ form, onFinish, onBack, initialVa
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionD`, i, '29hsau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionD`, i, '29hsau']} style={{ marginBottom: 0 }}>
                       <Input placeholder='tháng' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionD`, i, '29isau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionD`, i, '29isau']} style={{ marginBottom: 0 }}>
                       <Input placeholder='kg' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionD`, i, '29jsau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionD`, i, '29jsau']} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionD`, i, '29ksau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionD`, i, '29ksau']} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' />
                     </Form.Item>
                   </td>
