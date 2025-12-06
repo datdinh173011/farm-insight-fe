@@ -123,75 +123,13 @@ const renderSectionCComparison = (items, sectionTitle) => {
                 </tr>
               </thead>
               <tbody>
-                {/* Row 1: KHÔNG BÓN PHÂN Ủ */}
-                <tr>
-                  <td style={{ border: '1px solid #d9d9d9', padding: '8px', fontWeight: 600, backgroundColor: '#e6f7ff' }}>
-                    KHÔNG BÓN<br/>PHÂN Ủ
-                  </td>
-                  <td style={{ border: '1px solid #d9d9d9', padding: '6px', textAlign: 'center' }} rowSpan={2}>
-                    {item['20a'] || '-'}
-                  </td>
-                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    {item['20ctruoc'] || '-'}
-                  </td>
-                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <table style={{ width: '100%', borderCollapse: 'collapse', border: '1px solid #e6e6e6' }}>
-                      <thead>
-                        <tr style={{ backgroundColor: '#f5f5f5' }}>
-                          <th style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '12px', fontWeight: 500 }}>Tên phân bón</th>
-                          <th style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '12px', fontWeight: 500 }}>kg</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {PHAN_BON_TRUOC_TYPES.map((defaultName, idx) => (
-                          <tr key={idx}>
-                            <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '12px' }}>
-                              {defaultName}
-                            </td>
-                            <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '12px' }}>
-                              {item[`truocPhan_kg_${idx}`] || '-'}
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </td>
-                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <table style={{ width: '100%', borderCollapse: 'collapse', border: '1px solid #e6e6e6' }}>
-                      <thead>
-                        <tr style={{ backgroundColor: '#f5f5f5' }}>
-                          <th style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '12px', fontWeight: 500 }}>Tên phân bón</th>
-                          <th style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '12px', fontWeight: 500 }}>đồng</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {PHAN_BON_TRUOC_TYPES.map((defaultName, idx) => (
-                          <tr key={idx}>
-                            <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '12px' }}>
-                              {defaultName}
-                            </td>
-                            <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '12px' }}>
-                              {item[`truocPhan_tien_${idx}`] || '-'}
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </td>
-                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>{item['20ftruoc'] || '-'}</td>
-                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>{item['20gtruoc'] || '-'}</td>
-                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>{item['20htruoc'] || '-'}</td>
-                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>{item['20itruoc'] || '-'}</td>
-                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>{item['20jtruoc'] || '-'}</td>
-                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>{item['20ktruoc'] || '-'}</td>
-                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>{item['20ltruoc'] || '-'}</td>
-                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>{item['20mtruoc'] || '-'}</td>
-                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>{item['20ntruoc'] || '-'}</td>
-                </tr>
-                {/* Row 2: SAU KHI BÓN PHÂN Ủ */}
+                {/* Row 1: SAU KHI BÓN PHÂN Ủ */}
                 <tr>
                   <td style={{ border: '1px solid #d9d9d9', padding: '8px', fontWeight: 600, backgroundColor: '#f6ffed' }}>
                     SAU KHI BÓN<br/>PHÂN Ủ
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px', textAlign: 'center' }} rowSpan={2}>
+                    {item['20a'] || '-'}
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
                     {item['20csau'] || '-'}
@@ -249,6 +187,69 @@ const renderSectionCComparison = (items, sectionTitle) => {
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>{item['20lsau'] || '-'}</td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>{item['20msau'] || '-'}</td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>{item['20nsau'] || '-'}</td>
+                </tr>
+
+                {/* Row 2: KHÔNG BÓN PHÂN Ủ */}
+                <tr>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '8px', fontWeight: 600, backgroundColor: '#e6f7ff' }}>
+                    KHÔNG BÓN<br/>PHÂN Ủ
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    {item['20ctruoc'] || '-'}
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <table style={{ width: '100%', borderCollapse: 'collapse', border: '1px solid #e6e6e6' }}>
+                      <thead>
+                        <tr style={{ backgroundColor: '#f5f5f5' }}>
+                          <th style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '12px', fontWeight: 500 }}>Tên phân bón</th>
+                          <th style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '12px', fontWeight: 500 }}>kg</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {PHAN_BON_TRUOC_TYPES.map((defaultName, idx) => (
+                          <tr key={idx}>
+                            <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '12px' }}>
+                              {defaultName}
+                            </td>
+                            <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '12px' }}>
+                              {item[`truocPhan_kg_${idx}`] || '-'}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <table style={{ width: '100%', borderCollapse: 'collapse', border: '1px solid #e6e6e6' }}>
+                      <thead>
+                        <tr style={{ backgroundColor: '#f5f5f5' }}>
+                          <th style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '12px', fontWeight: 500 }}>Tên phân bón</th>
+                          <th style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '12px', fontWeight: 500 }}>đồng</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {PHAN_BON_TRUOC_TYPES.map((defaultName, idx) => (
+                          <tr key={idx}>
+                            <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '12px' }}>
+                              {defaultName}
+                            </td>
+                            <td style={{ border: '1px solid #e6e6e6', padding: '4px', fontSize: '12px' }}>
+                              {item[`truocPhan_tien_${idx}`] || '-'}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>{item['20ftruoc'] || '-'}</td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>{item['20gtruoc'] || '-'}</td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>{item['20htruoc'] || '-'}</td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>{item['20itruoc'] || '-'}</td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>{item['20jtruoc'] || '-'}</td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>{item['20ktruoc'] || '-'}</td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>{item['20ltruoc'] || '-'}</td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>{item['20mtruoc'] || '-'}</td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>{item['20ntruoc'] || '-'}</td>
                 </tr>
               </tbody>
             </table>
