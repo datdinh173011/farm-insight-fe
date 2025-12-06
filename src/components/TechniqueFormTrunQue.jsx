@@ -28,36 +28,36 @@ export default function TechniqueFormTrunQue({ form, onFinish, onBack, initialVa
       {Array.from({ length: sectionACount }).map((_, i) => (
         <div key={i} className={styles.formSectionBg}>
           <div className={styles.row}>
-            <Form.Item name={[`sectionA`, i, 'ngayBatDau']} label="Ngày bắt đầu" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} className={styles.col}><Input /></Form.Item>
-            <Form.Item name={[`sectionA`, i, 'soLuaTrunQue']} label="Số lứa trùn quế đã nuôi" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} className={styles.col}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
+            <Form.Item name={[`sectionA`, i, 'ngayBatDau']} label="Ngày bắt đầu" className={styles.col}><Input /></Form.Item>
+            <Form.Item name={[`sectionA`, i, 'soLuaTrunQue']} label="Số lứa trùn quế đã nuôi" className={styles.col}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
           </div>
           <div className={styles.row}>
-            <Form.Item name={[`sectionA`, i, 'soNgayMotLua']} label="Số ngày để nuôi một lứa trùn quế (bắt đầu thả sinh khối – thu hoạch, TB 60 ngày)" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} className={styles.col}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
-            <Form.Item name={[`sectionA`, i, 'tongChiPhiXayDung']} label="Tổng chi phí xây dựng khu nuôi trùn quế (bao gồm vật liệu và nhân công)" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} className={styles.col}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
+            <Form.Item name={[`sectionA`, i, 'soNgayMotLua']} label="Số ngày để nuôi một lứa trùn quế (bắt đầu thả sinh khối – thu hoạch, TB 60 ngày)" className={styles.col}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
+            <Form.Item name={[`sectionA`, i, 'tongChiPhiXayDung']} label="Tổng chi phí xây dựng khu nuôi trùn quế (bao gồm vật liệu và nhân công)" className={styles.col}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
           </div>
           <div className={styles.row}>
-            <Form.Item name={[`sectionA`, i, 'chiPhiMuaGiong']} label="Chi phí mua giống (sinh khối trùn quế)" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} className={styles.col}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
-            <Form.Item name={[`sectionA`, i, 'chiPhiDauVaoKhac']} label="Chi phí đầu vào/vật liệu khác (cho Trùn quế)" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} className={styles.col}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
+            <Form.Item name={[`sectionA`, i, 'chiPhiMuaGiong']} label="Chi phí mua giống (sinh khối trùn quế)" className={styles.col}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
+            <Form.Item name={[`sectionA`, i, 'chiPhiDauVaoKhac']} label="Chi phí đầu vào/vật liệu khác (cho Trùn quế)" className={styles.col}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
           </div>
           <div className={styles.row}>
-            <Form.Item name={[`sectionA`, i, 'cachSuDungTrunQue']} label="Cách sử dụng trùn quế" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} className={styles.col}>
+            <Form.Item name={[`sectionA`, i, 'cachSuDungTrunQue']} label="Cách sử dụng trùn quế" className={styles.col}>
               <Input placeholder="Làm thức ăn cho vật nuôi, Đem bán, Khác (ghi rõ)" />
             </Form.Item>
-            <Form.Item name={[`sectionA`, i, 'tenLoaiVatNuoi']} label="Tên loài vật nuôi được nuôi bằng trùn quế" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} style={{flex:'1 1 300px'}}><Input /></Form.Item>
+            <Form.Item name={[`sectionA`, i, 'tenLoaiVatNuoi']} label="Tên loài vật nuôi được nuôi bằng trùn quế" style={{flex:'1 1 300px'}}><Input /></Form.Item>
           </div>
           <div className={styles.row}>
-            <Form.Item name={[`sectionA`, i, 'soLuongConVatNuoi']} label="Số lượng con vật nuôi/lứa" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} style={{flex:'1 1 300px'}}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
-            <Form.Item name={[`sectionA`, i, 'soLuaVatNuoi']} label="Số lứa (được cho ăn trùn quế)" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} style={{flex:'1 1 300px'}}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
+            <Form.Item name={[`sectionA`, i, 'soLuongConVatNuoi']} label="Số lượng con vật nuôi/lứa" style={{flex:'1 1 300px'}}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
+            <Form.Item name={[`sectionA`, i, 'soLuaVatNuoi']} label="Số lứa (được cho ăn trùn quế)" style={{flex:'1 1 300px'}}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
           </div>
           <div className={styles.row}>
-            <Form.Item name={[`sectionA`, i, 'cachSuDungPhanTrunQue']} label="Cách sử dụng phân trùn quế" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} style={{flex:'1 1 300px'}}>
+            <Form.Item name={[`sectionA`, i, 'cachSuDungPhanTrunQue']} label="Cách sử dụng phân trùn quế" style={{flex:'1 1 300px'}}>
               <Input placeholder="Bón phân cho cây trồng, Sử dụng như thuốc trừ sâu tự nhiên, Đem bán" />
             </Form.Item>
-            <Form.Item name={[`sectionA`, i, 'tenCayTrongPhanTrunQue']} label="Nêu tên những loài cây trồng được bón bằng phân trùn quế (1 ô ghi 1 loại cây trồng)" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} style={{flex:'1 1 300px'}}><Input /></Form.Item>
+            <Form.Item name={[`sectionA`, i, 'tenCayTrongPhanTrunQue']} label="Nêu tên những loài cây trồng được bón bằng phân trùn quế (1 ô ghi 1 loại cây trồng)" style={{flex:'1 1 300px'}}><Input /></Form.Item>
           </div>
           <div className={styles.row}>
-            <Form.Item name={[`sectionA`, i, 'tongSoVuTrongPhanTrunQue']} label="Tổng số vụ trồng (sử dụng phân bón trùn quế/vụ; số vụ/năm x số năm)" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} style={{flex:'1 1 300px'}}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
-            <Form.Item name={[`sectionA`, i, 'dienTichCayTrongPhanTrunQue']} label="Diện tích cây trồng được bón phân trùn quế (số sào/vụ x số vụ/năm)" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} style={{flex:'1 1 300px'}}><Input /></Form.Item>
+            <Form.Item name={[`sectionA`, i, 'tongSoVuTrongPhanTrunQue']} label="Tổng số vụ trồng (sử dụng phân bón trùn quế/vụ; số vụ/năm x số năm)" style={{flex:'1 1 300px'}}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
+            <Form.Item name={[`sectionA`, i, 'dienTichCayTrongPhanTrunQue']} label="Diện tích cây trồng được bón phân trùn quế (số sào/vụ x số vụ/năm)" style={{flex:'1 1 300px'}}><Input /></Form.Item>
           </div>
         </div>
       ))}
@@ -73,36 +73,36 @@ export default function TechniqueFormTrunQue({ form, onFinish, onBack, initialVa
       {Array.from({ length: sectionBCount }).map((_, i) => (
         <div key={i} className={styles.formSectionBg}>
           <div className={styles.row}>
-            <Form.Item name={[`sectionB`, i, 'loaiPhuPhamThucAn']} label="Loại phụ phẩm nông nghiệp làm thức ăn cho trùn quế" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} className={styles.col}><Input /></Form.Item>
-            <Form.Item name={[`sectionB`, i, 'khoiLuongPhuPhamTB']} label="Khối lượng phụ phẩm nông nghiệp thải trung bình mỗi ngày (kg/con/ngày)" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} className={styles.col}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
+            <Form.Item name={[`sectionB`, i, 'loaiPhuPhamThucAn']} label="Loại phụ phẩm nông nghiệp làm thức ăn cho trùn quế" className={styles.col}><Input /></Form.Item>
+            <Form.Item name={[`sectionB`, i, 'khoiLuongPhuPhamTB']} label="Khối lượng phụ phẩm nông nghiệp thải trung bình mỗi ngày (kg/con/ngày)" className={styles.col}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
           </div>
           <div className={styles.row}>
-            <Form.Item name={[`sectionB`, i, 'soLuongVatNuoi']} label="Số lượng từng loại vật nuôi" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} className={styles.col}><Input /></Form.Item>
-            <Form.Item name={[`sectionB`, i, 'soNgayLuaNuoi']} label="Số ngày/lứa nuôi" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} className={styles.col}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
+            <Form.Item name={[`sectionB`, i, 'soLuongVatNuoi']} label="Số lượng từng loại vật nuôi" className={styles.col}><Input /></Form.Item>
+            <Form.Item name={[`sectionB`, i, 'soNgayLuaNuoi']} label="Số ngày/lứa nuôi" className={styles.col}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
           </div>
           <div className={styles.row}>
-            <Form.Item name={[`sectionB`, i, 'soLuaNuoi']} label="Số lứa nuôi" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} className={styles.col}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
-            <Form.Item name={[`sectionB`, i, 'tongKhoiLuongPhuPhamSX']} label="Tổng khối lượng phụ phẩm nông nghiệp sản xuất ra được (kg)" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} className={styles.col}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
+            <Form.Item name={[`sectionB`, i, 'soLuaNuoi']} label="Số lứa nuôi" className={styles.col}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
+            <Form.Item name={[`sectionB`, i, 'tongKhoiLuongPhuPhamSX']} label="Tổng khối lượng phụ phẩm nông nghiệp sản xuất ra được (kg)" className={styles.col}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
           </div>
           <div className={styles.row}>
-            <Form.Item name={[`sectionB`, i, 'khoiLuongPhuPhamDungChoTrunQue']} label="Khối lượng phụ phẩm nông nghiệp dùng cho trùn quế (kg/ngày)" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} className={styles.col}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
-            <Form.Item name={[`sectionB`, i, 'tyLePhuPhamDungChoTrunQue']} label="Tỷ lệ % phụ phẩm nông nghiệp dùng cho trùn quế (19g/19f)" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} className={styles.col}><Input /></Form.Item>
+            <Form.Item name={[`sectionB`, i, 'khoiLuongPhuPhamDungChoTrunQue']} label="Khối lượng phụ phẩm nông nghiệp dùng cho trùn quế (kg/ngày)" className={styles.col}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
+            <Form.Item name={[`sectionB`, i, 'tyLePhuPhamDungChoTrunQue']} label="Tỷ lệ % phụ phẩm nông nghiệp dùng cho trùn quế (19g/19f)" className={styles.col}><Input /></Form.Item>
           </div>
           <div className={styles.row}>
-            <Form.Item name={[`sectionB`, i, 'dienTichNuoiTrunQue']} label="Diện tích được sử dụng để nuôi trùn quế (m2/lứa)" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} className={styles.col}><Input /></Form.Item>
-            <Form.Item name={[`sectionB`, i, 'chiPhiMuaGiongB']} label="Chi phí mua giống (sinh khối trùn quế, tính cho 1m2/lứa)" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} className={styles.col}><Input /></Form.Item>
+            <Form.Item name={[`sectionB`, i, 'dienTichNuoiTrunQue']} label="Diện tích được sử dụng để nuôi trùn quế (m2/lứa)" className={styles.col}><Input /></Form.Item>
+            <Form.Item name={[`sectionB`, i, 'chiPhiMuaGiongB']} label="Chi phí mua giống (sinh khối trùn quế, tính cho 1m2/lứa)" className={styles.col}><Input /></Form.Item>
           </div>
           <div className={styles.row}>
-            <Form.Item name={[`sectionB`, i, 'soNgayDeNuoiMotLuaB']} label="Số ngày để nuôi một lứa trùn quế (ngày)" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} className={styles.col}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
-            <Form.Item name={[`sectionB`, i, 'khoiLuongTrunQueThuDuoc']} label="Khối lượng trùn quế thu được (kg/lứa)" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} className={styles.col}><Input /></Form.Item>
+            <Form.Item name={[`sectionB`, i, 'soNgayDeNuoiMotLuaB']} label="Số ngày để nuôi một lứa trùn quế (ngày)" className={styles.col}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
+            <Form.Item name={[`sectionB`, i, 'khoiLuongTrunQueThuDuoc']} label="Khối lượng trùn quế thu được (kg/lứa)" className={styles.col}><Input /></Form.Item>
           </div>
           <div className={styles.row}>
-            <Form.Item name={[`sectionB`, i, 'khoiLuongPhanTrunQueThuDuoc']} label="Khối lượng phân trùn quế thu được (kg/lứa)" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} className={styles.col}><Input /></Form.Item>
-            <Form.Item name={[`sectionB`, i, 'congLaoDong']} label="Công lao động (số giờ/ngày)" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} className={styles.col}><Input /></Form.Item>
+            <Form.Item name={[`sectionB`, i, 'khoiLuongPhanTrunQueThuDuoc']} label="Khối lượng phân trùn quế thu được (kg/lứa)" className={styles.col}><Input /></Form.Item>
+            <Form.Item name={[`sectionB`, i, 'congLaoDong']} label="Công lao động (số giờ/ngày)" className={styles.col}><Input /></Form.Item>
           </div>
           <div className={styles.row}>
-            <Form.Item name={[`sectionB`, i, 'gioQuetDonPhanChuongTruoc']} label="Khi chưa nuôi trùn quế, trong 1 ngày dành bao nhiêu giờ để quét dọn phân chuồng" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} className={styles.col}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
-            <Form.Item name={[`sectionB`, i, 'gioDonPhanChuongSau']} label="Khi nuôi trùn quế, 1 ngày dành bao nhiêu giờ để dọn dẹp phân chuồng dùng cho trùn quế" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} className={styles.col}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
+            <Form.Item name={[`sectionB`, i, 'gioQuetDonPhanChuongTruoc']} label="Khi chưa nuôi trùn quế, trong 1 ngày dành bao nhiêu giờ để quét dọn phân chuồng" className={styles.col}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
+            <Form.Item name={[`sectionB`, i, 'gioDonPhanChuongSau']} label="Khi nuôi trùn quế, 1 ngày dành bao nhiêu giờ để dọn dẹp phân chuồng dùng cho trùn quế" className={styles.col}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
           </div>
         </div>
       ))}
@@ -120,7 +120,6 @@ export default function TechniqueFormTrunQue({ form, onFinish, onBack, initialVa
             <Form.Item 
               name={[`sectionC`, i, '20a']} 
               label={<span className={styles.formLabel} style={{ fontWeight: 600 }}>20a. Nêu tên loại cây trồng được bón phân trùn quế</span>} 
-              rules={i === 0 ? [{ required: true, message: 'Bắt buộc nhập loại vật nuôi' }] : []}
             > 
               <Input placeholder='Ví dụ: Lúa...' /> 
             </Form.Item>
@@ -191,12 +190,12 @@ export default function TechniqueFormTrunQue({ form, onFinish, onBack, initialVa
                     KHÔNG BÓN<br/>PHÂN TRÙN QUẾ
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionC`, i, '20btruoc']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionC`, i, '20btruoc']} style={{ marginBottom: 0 }}>
                       <Input placeholder='Tháng/năm' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionC`, i, '20ctruoc']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionC`, i, '20ctruoc']} style={{ marginBottom: 0 }}>
                       <Input placeholder='Sào' size='small' />
                     </Form.Item>
                   </td>
@@ -212,12 +211,12 @@ export default function TechniqueFormTrunQue({ form, onFinish, onBack, initialVa
                         {['Phân NPK bón lót', 'Phân NPK bón thúc', 'Phân khác'].map((phanType, idx) => (
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
-                              <Form.Item name={[`sectionC`, i, `sauPhan_tenPhan_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                              <Form.Item name={[`sectionC`, i, `sauPhan_tenPhan_${idx}`]} style={{ marginBottom: 0 }}>
                                 <Input defaultValue={phanType} disabled size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
-                              <Form.Item name={[`sectionC`, i, `sauPhan_kg_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                              <Form.Item name={[`sectionC`, i, `sauPhan_kg_${idx}`]} style={{ marginBottom: 0 }}>
                                 <Input placeholder='kg' size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>

@@ -26,22 +26,22 @@ export default function TechniqueFormGocRa({ form, onFinish, onBack, initialValu
       {Array.from({ length: sectionACount }).map((_, i) => (
         <div key={i} className={styles.formSectionBg}>
           <div className={styles.row}>
-            <Form.Item name={[`sectionA`, i, 'thangNamBatDauApDung']} label="Tháng/năm bắt đầu áp dụng xử lý gốc rạ bằng chế phẩm sinh học" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} className={styles.col}><Input placeholder="Tháng/năm" /></Form.Item>
-            <Form.Item name={[`sectionA`, i, 'soVuXuLyGocRa']} label="Số vụ xử lý gốc rạ bằng chế phẩm (số vụ/năm x số năm)" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} className={styles.col}><Input /></Form.Item>
+            <Form.Item name={[`sectionA`, i, 'thangNamBatDauApDung']} label="Tháng/năm bắt đầu áp dụng xử lý gốc rạ bằng chế phẩm sinh học" className={styles.col}><Input placeholder="Tháng/năm" /></Form.Item>
+            <Form.Item name={[`sectionA`, i, 'soVuXuLyGocRa']} label="Số vụ xử lý gốc rạ bằng chế phẩm (số vụ/năm x số năm)" className={styles.col}><Input /></Form.Item>
           </div>
           <div className={styles.row}>
-            <Form.Item name={[`sectionA`, i, 'thangNamBatDauVuGanDay']} label="Tháng/năm bắt đầu vụ gần đây" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} className={styles.col}><Input placeholder="Tháng/năm" /></Form.Item>
-            <Form.Item name={[`sectionA`, i, 'dienTichGocRaSauThuHoach']} label="Diện tích ruộng có gốc rạ sau thu hoạch được xử lý bằng chế phẩm sinh học (sào/vụ)" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} className={styles.col}><Input /></Form.Item>
+            <Form.Item name={[`sectionA`, i, 'thangNamBatDauVuGanDay']} label="Tháng/năm bắt đầu vụ gần đây" className={styles.col}><Input placeholder="Tháng/năm" /></Form.Item>
+            <Form.Item name={[`sectionA`, i, 'dienTichGocRaSauThuHoach']} label="Diện tích ruộng có gốc rạ sau thu hoạch được xử lý bằng chế phẩm sinh học (sào/vụ)" className={styles.col}><Input /></Form.Item>
           </div>
           <div className={styles.row}>
-            <Form.Item name={[`sectionA`, i, 'chePhamSinhHocSuDung']} label="Các loại chế phẩm sinh học được sử dụng" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} className={styles.col}>
+            <Form.Item name={[`sectionA`, i, 'chePhamSinhHocSuDung']} label="Các loại chế phẩm sinh học được sử dụng" className={styles.col}>
               <Input placeholder = "Trichoderma, Sumitri, Khác (ghi rõ)"/>
             </Form.Item>
-            <Form.Item name={[`sectionA`, i, 'tienMuaChePham']} label="Số tiền chi mua chế phẩm sinh học (đồng/sào)" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} className={styles.col}><Input /></Form.Item>
+            <Form.Item name={[`sectionA`, i, 'tienMuaChePham']} label="Số tiền chi mua chế phẩm sinh học (đồng/sào)" className={styles.col}><Input /></Form.Item>
           </div>
           <div className={styles.row}>
-            <Form.Item name={[`sectionA`, i, 'tienNhanCongPhun']} label="Số tiền chi nhân công phun chế phẩm sinh học (đồng/sào)" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} className={styles.col}><Input /></Form.Item>
-            <Form.Item name={[`sectionA`, i, 'nangSuatLuaSauXuLy']} label="Năng suất lúa của vụ sau khi xử lý gốc rạ bằng chế phẩm (kg/sào)" rules={i === 0 ? [{required:true,message:'Bắt buộc nhập'}] : []} className={styles.col}><Input /></Form.Item>
+            <Form.Item name={[`sectionA`, i, 'tienNhanCongPhun']} label="Số tiền chi nhân công phun chế phẩm sinh học (đồng/sào)" className={styles.col}><Input /></Form.Item>
+            <Form.Item name={[`sectionA`, i, 'nangSuatLuaSauXuLy']} label="Năng suất lúa của vụ sau khi xử lý gốc rạ bằng chế phẩm (kg/sào)" className={styles.col}><Input /></Form.Item>
           </div>
         </div>
       ))}
@@ -124,7 +124,7 @@ export default function TechniqueFormGocRa({ form, onFinish, onBack, initialValu
                     KHÔNG ÁP DỤNG<br/>KỸ THUẬT
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionB`, i, '16btruoc']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionB`, i, '16btruoc']} style={{ marginBottom: 0 }}>
                       <Input placeholder='Sào' size='small' />
                     </Form.Item>
                   </td>
@@ -140,12 +140,12 @@ export default function TechniqueFormGocRa({ form, onFinish, onBack, initialValu
                         {['Phân NPK bón lót', 'Phân NPK bón thúc', 'Phân đạm', 'Phân kali', 'Phân khác'].map((phanType, idx) => (
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
-                              <Form.Item name={[`sectionB`, i, `truocPhan_tenPhan_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                              <Form.Item name={[`sectionB`, i, `truocPhan_tenPhan_${idx}`]} style={{ marginBottom: 0 }}>
                                 <Input defaultValue={phanType} disabled size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
-                              <Form.Item name={[`sectionB`, i, `truocPhan_kg_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                              <Form.Item name={[`sectionB`, i, `truocPhan_kg_${idx}`]} style={{ marginBottom: 0 }}>
                                 <Input placeholder='kg' size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
@@ -166,12 +166,12 @@ export default function TechniqueFormGocRa({ form, onFinish, onBack, initialValu
                         {['Phân NPK bón lót', 'Phân NPK bón thúc', 'Phân đạm', 'Phân kali', 'Phân khác'].map((phanType, idx) => (
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
-                              <Form.Item name={[`sectionB`, i, `truocPhan_tenPhanTien_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                              <Form.Item name={[`sectionB`, i, `truocPhan_tenPhanTien_${idx}`]} style={{ marginBottom: 0 }}>
                                 <Input defaultValue={phanType} disabled size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
-                              <Form.Item name={[`sectionB`, i, `truocPhan_tien_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                              <Form.Item name={[`sectionB`, i, `truocPhan_tien_${idx}`]} style={{ marginBottom: 0 }}>
                                 <Input placeholder='đồng' size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
@@ -181,7 +181,7 @@ export default function TechniqueFormGocRa({ form, onFinish, onBack, initialValu
                     </table>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionB`, i, '16etruoc']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionB`, i, '16etruoc']} style={{ marginBottom: 0 }}>
                       <Radio.Group>
                         <Radio value="Có">Có</Radio>
                         <Radio value="Không">Không</Radio>
@@ -189,7 +189,7 @@ export default function TechniqueFormGocRa({ form, onFinish, onBack, initialValu
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionB`, i, '16ftruoc']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionB`, i, '16ftruoc']} style={{ marginBottom: 0 }}>
                       <Radio.Group>
                         <Radio value="Có">Có</Radio>
                         <Radio value="Không">Không</Radio>
@@ -197,12 +197,12 @@ export default function TechniqueFormGocRa({ form, onFinish, onBack, initialValu
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionB`, i, '16gtruoc']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionB`, i, '16gtruoc']} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionB`, i, '16htruoc']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionB`, i, '16htruoc']} style={{ marginBottom: 0 }}>
                       <Radio.Group>
                         <Radio value="Có">Có</Radio>
                         <Radio value="Không">Không</Radio>
@@ -210,32 +210,32 @@ export default function TechniqueFormGocRa({ form, onFinish, onBack, initialValu
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionB`, i, '16itruoc']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionB`, i, '16itruoc']} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionB`, i, '16jtruoc']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionB`, i, '16jtruoc']} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionB`, i, '16ktruoc']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionB`, i, '16ktruoc']} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionB`, i, '16ltruoc']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionB`, i, '16ltruoc']} style={{ marginBottom: 0 }}>
                       <Input placeholder='kg' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionB`, i, '16mtruoc']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionB`, i, '16mtruoc']} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionB`, i, '16ntruoc']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionB`, i, '16ntruoc']} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' />
                     </Form.Item>
                   </td>
@@ -246,7 +246,7 @@ export default function TechniqueFormGocRa({ form, onFinish, onBack, initialValu
                     SAU KHI ÁP DỤNG<br/>KỸ THUẬT
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionB`, i, '16bsau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionB`, i, '16bsau']} style={{ marginBottom: 0 }}>
                       <Input placeholder='Sào' size='small' />
                     </Form.Item>
                   </td>
@@ -262,12 +262,12 @@ export default function TechniqueFormGocRa({ form, onFinish, onBack, initialValu
                         {['Phân NPK bón lót', 'Phân NPK bón thúc', 'Phân đạm', 'Phân kali', 'Phân khác'].map((phanType, idx) => (
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
-                              <Form.Item name={[`sectionB`, i, `sauPhan_tenPhan_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                              <Form.Item name={[`sectionB`, i, `sauPhan_tenPhan_${idx}`]} style={{ marginBottom: 0 }}>
                                 <Input defaultValue={phanType} disabled size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
-                              <Form.Item name={[`sectionB`, i, `sauPhan_kg_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                              <Form.Item name={[`sectionB`, i, `sauPhan_kg_${idx}`]} style={{ marginBottom: 0 }}>
                                 <Input placeholder='kg' size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
@@ -288,12 +288,12 @@ export default function TechniqueFormGocRa({ form, onFinish, onBack, initialValu
                         {['Phân NPK bón lót', 'Phân NPK bón thúc', 'Phân đạm', 'Phân kali', 'Phân khác'].map((phanType, idx) => (
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
-                              <Form.Item name={[`sectionB`, i, `sauPhan_tenPhanTien_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                              <Form.Item name={[`sectionB`, i, `sauPhan_tenPhanTien_${idx}`]} style={{ marginBottom: 0 }}>
                                 <Input defaultValue={phanType} disabled size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
-                              <Form.Item name={[`sectionB`, i, `sauPhan_tien_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                              <Form.Item name={[`sectionB`, i, `sauPhan_tien_${idx}`]} style={{ marginBottom: 0 }}>
                                 <Input placeholder='đồng' size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
@@ -303,7 +303,7 @@ export default function TechniqueFormGocRa({ form, onFinish, onBack, initialValu
                     </table>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionB`, i, '16esau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionB`, i, '16esau']} style={{ marginBottom: 0 }}>
                       <Radio.Group>
                         <Radio value="Có">Có</Radio>
                         <Radio value="Không">Không</Radio>
@@ -311,7 +311,7 @@ export default function TechniqueFormGocRa({ form, onFinish, onBack, initialValu
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionB`, i, '16fsau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionB`, i, '16fsau']} style={{ marginBottom: 0 }}>
                       <Radio.Group>
                         <Radio value="Có">Có</Radio>
                         <Radio value="Không">Không</Radio>
@@ -319,12 +319,12 @@ export default function TechniqueFormGocRa({ form, onFinish, onBack, initialValu
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionB`, i, '16gsau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionB`, i, '16gsau']} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionB`, i, '16hsau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionB`, i, '16hsau']} style={{ marginBottom: 0 }}>
                       <Radio.Group>
                         <Radio value="Có">Có</Radio>
                         <Radio value="Không">Không</Radio>
@@ -332,32 +332,32 @@ export default function TechniqueFormGocRa({ form, onFinish, onBack, initialValu
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionB`, i, '16isau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionB`, i, '16isau']} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionB`, i, '16jsau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionB`, i, '16jsau']} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionB`, i, '16ksau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionB`, i, '16ksau']} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionB`, i, '16lsau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionB`, i, '16lsau']} style={{ marginBottom: 0 }}>
                       <Input placeholder='kg' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionB`, i, '16msau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionB`, i, '16msau']} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionB`, i, '16nsau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={[`sectionB`, i, '16nsau']} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' />
                     </Form.Item>
                   </td>

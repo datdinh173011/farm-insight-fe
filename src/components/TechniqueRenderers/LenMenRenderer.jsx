@@ -152,10 +152,10 @@ const renderSectionCComparison = (items) => {
                 </tr>
               </thead>
               <tbody>
-                {/* TRƯỚC KHI SỬ DỤNG (dữ liệu từ fields có "Sau" - màu xanh lá) */}
+                {/* SAU KHI SỬ DỤNG (dữ liệu từ fields có "Truoc" - màu xanh) */}
                 <tr>
                   <td style={{ border: '1px solid #d9d9d9', padding: '8px', fontWeight: 600, backgroundColor: '#f6ffed', textAlign: 'center' }}>
-                    TRƯỚC KHI SỬ DỤNG<br />THỨC ĂN Ủ LÊN MEN
+                    SAU KHI SỬ DỤNG<br />THỨC ĂN Ủ LÊN MEN
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px', textAlign: 'center' }} rowSpan={2}>
                     {item.tenVatNuoi || '-'}
@@ -227,10 +227,10 @@ const renderSectionCComparison = (items) => {
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>{item.thanhTienSau || '-'}</td>
                 </tr>
 
-                {/* SAU KHI SỬ DỤNG (dữ liệu từ fields có "Truoc" - màu xanh) */}
+                {/* TRƯỚC KHI SỬ DỤNG (dữ liệu từ fields có "Sau" - màu xanh lá) */}
                 <tr>
                   <td style={{ border: '1px solid #d9d9d9', padding: '8px', fontWeight: 600, backgroundColor: '#e6f7ff', textAlign: 'center' }}>
-                    SAU KHI SỬ DỤNG<br />THỨC ĂN Ủ LÊN MEN
+                    TRƯỚC KHI SỬ DỤNG<br />THỨC ĂN Ủ LÊN MEN
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
                     {item.soLuaTruocMen && <div>Lứa: {item.soLuaTruocMen}</div>}

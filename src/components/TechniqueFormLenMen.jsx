@@ -199,132 +199,10 @@ export default function TechniqueFormLenMen({ form, onFinish, onBack, initialVal
                 </tr>
               </thead>
               <tbody>
-                {/* Row 1: SAU KHI SỬ DỤNG THỨC ĂN Ủ LÊN MEN */}
-                <tr>
-                  <td style={{ border: '1px solid #d9d9d9', padding: '6px', fontWeight: 600, backgroundColor: '#f6ffed', textAlign: 'center' }}>
-                    TRƯỚC KHI SỬ DỤNG<br />THỨC ĂN Ủ LÊN MEN
-                  </td>
-                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <div style={{ fontSize: '11px', marginBottom: '2px' }}>
-                      <Form.Item name={[`sectionC`, i, 'soLuaSauMen']} rules={[]} style={{ marginBottom: 0 }}>
-                        <Input placeholder='Lứa' size='small' style={{ width: '100%' }} min={0} />
-                      </Form.Item>
-                    </div>
-                    <div style={{ fontSize: '11px' }}>
-                      <Form.Item name={[`sectionC`, i, 'soNgayNuoiSauMen']} rules={[]} style={{ marginBottom: 0 }}>
-                        <Input placeholder='Ngày' size='small' style={{ width: '100%' }} min={0} />
-                      </Form.Item>
-                    </div>
-                  </td>
-                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionC`, i, 'soLuongVatNuoiSau']} rules={[]} style={{ marginBottom: 0 }}>
-                      <InputNumber placeholder='Con' size='small' style={{ width: '100%' }} min={0} />
-                    </Form.Item>
-                  </td>
-                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <table style={{ width: '100%', borderCollapse: 'collapse', border: '1px solid #e6e6e6' }}>
-                      <thead>
-                        <tr style={{ backgroundColor: '#f5f5f5' }}>
-                          <th style={{ border: '1px solid #e6e6e6', padding: '3px', fontSize: '11px', fontWeight: 500 }}>Tên thức ăn</th>
-                          <th style={{ border: '1px solid #e6e6e6', padding: '3px', fontSize: '11px', fontWeight: 500 }}>Kg</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {['Thức ăn ủ lên men', 'Sâu canxi/trùn quế', 'Thức ăn tinh (ngô, gạo)', 'Thức ăn tổng hợp/viên', 'Thức ăn xanh'].map((thucAnType, idx) => (
-                          <tr key={idx}>
-                            <td style={{ border: '1px solid #e6e6e6', padding: '3px' }}>
-                              <Form.Item name={[`sectionC`, i, `sauMen_tenThucAn_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
-                                <Input defaultValue={thucAnType} disabled size='small' style={{ fontSize: '11px' }} />
-                              </Form.Item>
-                            </td>
-                            <td style={{ border: '1px solid #e6e6e6', padding: '3px' }}>
-                              <Form.Item name={[`sectionC`, i, `sauMen_kg_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
-                                <Input placeholder='Kg' size='small' style={{ fontSize: '11px' }} />
-                              </Form.Item>
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </td>
-                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <table style={{ width: '100%', borderCollapse: 'collapse', border: '1px solid #e6e6e6' }}>
-                      <thead>
-                        <tr style={{ backgroundColor: '#f5f5f5' }}>
-                          <th style={{ border: '1px solid #e6e6e6', padding: '3px', fontSize: '11px', fontWeight: 500 }}>Tên thức ăn</th>
-                          <th style={{ border: '1px solid #e6e6e6', padding: '3px', fontSize: '11px', fontWeight: 500 }}>đồng</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {['Thức ăn ủ lên men', 'Sâu canxi/trùn quế', 'Thức ăn tinh (ngô, gạo)', 'Thức ăn tổng hợp/viên', 'Thức ăn xanh'].map((thucAnType, idx) => (
-                          <tr key={idx}>
-                            <td style={{ border: '1px solid #e6e6e6', padding: '3px' }}>
-                              <Form.Item name={[`sectionC`, i, `sauMen_tenThucAnTien_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
-                                <Input defaultValue={thucAnType} disabled size='small' style={{ fontSize: '11px' }} />
-                              </Form.Item>
-                            </td>
-                            <td style={{ border: '1px solid #e6e6e6', padding: '3px' }}>
-                              <Form.Item name={[`sectionC`, i, `sauMen_tien_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
-                                <Input placeholder='đồng' size='small' style={{ fontSize: '11px' }} />
-                              </Form.Item>
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </td>
-                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionC`, i, 'tienThuocSauMen']} rules={[]} style={{ marginBottom: 0 }}>
-                      <Input placeholder='đồng' size='small' />
-                    </Form.Item>
-                  </td>
-                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionC`, i, 'vatNuoiBiBenhSau']} rules={[]} style={{ marginBottom: 0 }}>
-                      <Radio.Group>
-                        <Radio value="Có">Có</Radio>
-                        <Radio value="Không">Không</Radio>
-                      </Radio.Group>
-                    </Form.Item>
-                  </td>
-                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionC`, i, 'danhGiaSucKhoeSau']} rules={[]} style={{ marginBottom: 0 }}>
-                      <InputNumber min={1} max={10} placeholder='1-10' size='small' style={{ width: '100%' }} />
-                    </Form.Item>
-                  </td>
-                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionC`, i, 'vatNuoiPhatTrienSau']} rules={[]} style={{ marginBottom: 0 }}>
-                      <Radio.Group>
-                        <Radio value="Có">Có</Radio>
-                        <Radio value="Không">Không</Radio>
-                      </Radio.Group>
-                    </Form.Item>
-                  </td>
-                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionC`, i, 'thoiGianNuoiSau']} rules={[]} style={{ marginBottom: 0 }}>
-                      <Input placeholder='Tháng' size='small' />
-                    </Form.Item>
-                  </td>
-                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionC`, i, 'trongLuongXuatSau']} rules={[]} style={{ marginBottom: 0 }}>
-                      <Input placeholder='kg/con' size='small' />
-                    </Form.Item>
-                  </td>
-                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionC`, i, 'giaBanSau']} rules={[]} style={{ marginBottom: 0 }}>
-                      <Input placeholder='đồng/kg' size='small' />
-                    </Form.Item>
-                  </td>
-                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={[`sectionC`, i, 'thanhTienSau']} rules={[]} style={{ marginBottom: 0 }}>
-                      <Input placeholder='đồng' size='small' />
-                    </Form.Item>
-                  </td>
-                </tr>
-
-                {/* Row 2: TRƯỚC KHI SỬ DỤNG THỨC ĂN Ủ LÊN MEN */}
+                {/* Row 1: TRƯỚC KHI SỬ DỤNG THỨC ĂN Ủ LÊN MEN */}
                 <tr>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px', fontWeight: 600, backgroundColor: '#e6f7ff', textAlign: 'center' }}>
-                    SAU KHI SỬ DỤNG <br />THỨC ĂN Ủ LÊN MEN
+                    TRƯỚC KHI SỬ DỤNG<br />THỨC ĂN Ủ LÊN MEN
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
                     <div style={{ fontSize: '11px', marginBottom: '2px' }}>
@@ -438,6 +316,128 @@ export default function TechniqueFormLenMen({ form, onFinish, onBack, initialVal
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
                     <Form.Item name={[`sectionC`, i, 'thanhTienTruoc']} rules={[]} style={{ marginBottom: 0 }}>
+                      <Input placeholder='đồng' size='small' />
+                    </Form.Item>
+                  </td>
+                </tr>
+
+                {/* Row 2: SAU KHI SỬ DỤNG THỨC ĂN Ủ LÊN MEN */}
+                <tr>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px', fontWeight: 600, backgroundColor: '#f6ffed', textAlign: 'center' }}>
+                    SAU KHI SỬ DỤNG <br />THỨC ĂN Ủ LÊN MEN
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <div style={{ fontSize: '11px', marginBottom: '2px' }}>
+                      <Form.Item name={[`sectionC`, i, 'soLuaSauMen']} rules={[]} style={{ marginBottom: 0 }}>
+                        <Input placeholder='Lứa' size='small' style={{ width: '100%' }} min={0} />
+                      </Form.Item>
+                    </div>
+                    <div style={{ fontSize: '11px' }}>
+                      <Form.Item name={[`sectionC`, i, 'soNgayNuoiSauMen']} rules={[]} style={{ marginBottom: 0 }}>
+                        <Input placeholder='Ngày' size='small' style={{ width: '100%' }} min={0} />
+                      </Form.Item>
+                    </div>
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <Form.Item name={[`sectionC`, i, 'soLuongVatNuoiSau']} rules={[]} style={{ marginBottom: 0 }}>
+                      <InputNumber placeholder='Con' size='small' style={{ width: '100%' }} min={0} />
+                    </Form.Item>
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <table style={{ width: '100%', borderCollapse: 'collapse', border: '1px solid #e6e6e6' }}>
+                      <thead>
+                        <tr style={{ backgroundColor: '#f5f5f5' }}>
+                          <th style={{ border: '1px solid #e6e6e6', padding: '3px', fontSize: '11px', fontWeight: 500 }}>Tên thức ăn</th>
+                          <th style={{ border: '1px solid #e6e6e6', padding: '3px', fontSize: '11px', fontWeight: 500 }}>Kg</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {['Thức ăn ủ lên men', 'Sâu canxi/trùn quế', 'Thức ăn tinh (ngô, gạo)', 'Thức ăn tổng hợp/viên', 'Thức ăn xanh'].map((thucAnType, idx) => (
+                          <tr key={idx}>
+                            <td style={{ border: '1px solid #e6e6e6', padding: '3px' }}>
+                              <Form.Item name={[`sectionC`, i, `sauMen_tenThucAn_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                                <Input defaultValue={thucAnType} disabled size='small' style={{ fontSize: '11px' }} />
+                              </Form.Item>
+                            </td>
+                            <td style={{ border: '1px solid #e6e6e6', padding: '3px' }}>
+                              <Form.Item name={[`sectionC`, i, `sauMen_kg_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                                <Input placeholder='Kg' size='small' style={{ fontSize: '11px' }} />
+                              </Form.Item>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <table style={{ width: '100%', borderCollapse: 'collapse', border: '1px solid #e6e6e6' }}>
+                      <thead>
+                        <tr style={{ backgroundColor: '#f5f5f5' }}>
+                          <th style={{ border: '1px solid #e6e6e6', padding: '3px', fontSize: '11px', fontWeight: 500 }}>Tên thức ăn</th>
+                          <th style={{ border: '1px solid #e6e6e6', padding: '3px', fontSize: '11px', fontWeight: 500 }}>đồng</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {['Thức ăn ủ lên men', 'Sâu canxi/trùn quế', 'Thức ăn tinh (ngô, gạo)', 'Thức ăn tổng hợp/viên', 'Thức ăn xanh'].map((thucAnType, idx) => (
+                          <tr key={idx}>
+                            <td style={{ border: '1px solid #e6e6e6', padding: '3px' }}>
+                              <Form.Item name={[`sectionC`, i, `sauMen_tenThucAnTien_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                                <Input defaultValue={thucAnType} disabled size='small' style={{ fontSize: '11px' }} />
+                              </Form.Item>
+                            </td>
+                            <td style={{ border: '1px solid #e6e6e6', padding: '3px' }}>
+                              <Form.Item name={[`sectionC`, i, `sauMen_tien_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                                <Input placeholder='đồng' size='small' style={{ fontSize: '11px' }} />
+                              </Form.Item>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <Form.Item name={[`sectionC`, i, 'tienThuocSauMen']} rules={[]} style={{ marginBottom: 0 }}>
+                      <Input placeholder='đồng' size='small' />
+                    </Form.Item>
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <Form.Item name={[`sectionC`, i, 'vatNuoiBiBenhSau']} rules={[]} style={{ marginBottom: 0 }}>
+                      <Radio.Group>
+                        <Radio value="Có">Có</Radio>
+                        <Radio value="Không">Không</Radio>
+                      </Radio.Group>
+                    </Form.Item>
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <Form.Item name={[`sectionC`, i, 'danhGiaSucKhoeSau']} rules={[]} style={{ marginBottom: 0 }}>
+                      <InputNumber min={1} max={10} placeholder='1-10' size='small' style={{ width: '100%' }} />
+                    </Form.Item>
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <Form.Item name={[`sectionC`, i, 'vatNuoiPhatTrienSau']} rules={[]} style={{ marginBottom: 0 }}>
+                      <Radio.Group>
+                        <Radio value="Có">Có</Radio>
+                        <Radio value="Không">Không</Radio>
+                      </Radio.Group>
+                    </Form.Item>
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <Form.Item name={[`sectionC`, i, 'thoiGianNuoiSau']} rules={[]} style={{ marginBottom: 0 }}>
+                      <Input placeholder='Tháng' size='small' />
+                    </Form.Item>
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <Form.Item name={[`sectionC`, i, 'trongLuongXuatSau']} rules={[]} style={{ marginBottom: 0 }}>
+                      <Input placeholder='kg/con' size='small' />
+                    </Form.Item>
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <Form.Item name={[`sectionC`, i, 'giaBanSau']} rules={[]} style={{ marginBottom: 0 }}>
+                      <Input placeholder='đồng/kg' size='small' />
+                    </Form.Item>
+                  </td>
+                  <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
+                    <Form.Item name={[`sectionC`, i, 'thanhTienSau']} rules={[]} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' />
                     </Form.Item>
                   </td>

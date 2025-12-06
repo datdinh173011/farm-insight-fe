@@ -23,16 +23,16 @@ export default function TechniqueFormSauCanxi({ form, onFinish, onBack, initialV
       {Array.from({ length: sectionACount }).map((_, i) => (
         <div key={i} className={styles.formSectionBg}>
           <div style={{display:'flex',gap:16,marginBottom:8}}>
-            <Form.Item name={['sectionA', i, 'ngayBatDau']} label={<span style={{whiteSpace:'nowrap'}}>Ngày bắt đầu</span>} rules={[]} style={{flex:'1 1 260px'}}><Input /></Form.Item>
-            <Form.Item name={['sectionA', i, 'soLuaSâuCanxi']} label={<span style={{whiteSpace:'nowrap'}}>Số lứa Sâu canxi đã nuôi</span>} rules={[]} style={{flex:'1 1 260px'}}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
+            <Form.Item name={['sectionA', i, 'ngayBatDau']} label={<span style={{whiteSpace:'nowrap'}}>Ngày bắt đầu</span>} style={{flex:'1 1 260px'}}><Input /></Form.Item>
+            <Form.Item name={['sectionA', i, 'soLuaSâuCanxi']} label={<span style={{whiteSpace:'nowrap'}}>Số lứa Sâu canxi đã nuôi</span>} style={{flex:'1 1 260px'}}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
           </div>
           <div style={{display:'flex',gap:16,marginBottom:8}}>
-            <Form.Item name={['sectionA', i, 'soNgayMotLua']} label={<span style={{whiteSpace:'nowrap'}}>Số ngày để nuôi một lứa Sâu canxi (TB 45 ngày)</span>} rules={[]} style={{flex:'1 1 260px'}}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
-            <Form.Item name={['sectionA', i, 'tongChiPhiXayDung']} label={<span style={{whiteSpace:'nowrap'}}>Tổng chi phí xây dựng khu nuôi Sâu canxi (bao gồm vật liệu và nhân công)</span>} rules={[]} style={{flex:'1 1 260px'}}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
+            <Form.Item name={['sectionA', i, 'soNgayMotLua']} label={<span style={{whiteSpace:'nowrap'}}>Số ngày để nuôi một lứa Sâu canxi (TB 45 ngày)</span>} style={{flex:'1 1 260px'}}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
+            <Form.Item name={['sectionA', i, 'tongChiPhiXayDung']} label={<span style={{whiteSpace:'nowrap'}}>Tổng chi phí xây dựng khu nuôi Sâu canxi (bao gồm vật liệu và nhân công)</span>} style={{flex:'1 1 260px'}}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
           </div>
           <div style={{display:'flex',gap:16,marginBottom:8}}>
-            <Form.Item name={['sectionA', i, 'chiPhiMuaGiong']} label={<span style={{whiteSpace:'nowrap'}}>Chi phí mua giống (trứng Sâu canxi)/tổng số lứa</span>} rules={[]} style={{flex:'1 1 260px'}}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
-            <Form.Item name={['sectionA', i, 'chiPhiDauVaoKhac']} label={<span style={{whiteSpace:'nowrap'}}>Chi phí đầu vào/vật liệu khác (cho nuôi sâu canxi)</span>} rules={[]} style={{flex:'1 1 260px'}}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
+            <Form.Item name={['sectionA', i, 'chiPhiMuaGiong']} label={<span style={{whiteSpace:'nowrap'}}>Chi phí mua giống (trứng Sâu canxi)/tổng số lứa</span>} style={{flex:'1 1 260px'}}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
+            <Form.Item name={['sectionA', i, 'chiPhiDauVaoKhac']} label={<span style={{whiteSpace:'nowrap'}}>Chi phí đầu vào/vật liệu khác (cho nuôi sâu canxi)</span>} style={{flex:'1 1 260px'}}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
           </div>
           <div style={{display:'flex',gap:16,marginBottom:8}}>
             <Form.Item name={['sectionA', i, 'cachSuDungSâuCanxi']} label={<span style={{whiteSpace:'nowrap'}}>Cách sử dụng Sâu canxi</span>} rules={[]} style={{flex:'1 1 260px'}}>
@@ -46,14 +46,14 @@ export default function TechniqueFormSauCanxi({ form, onFinish, onBack, initialV
               />
               {/* <Input placeholder="Làm thức ăn cho vật nuôi, Đem bán, Khác (ghi rõ)" /> */}
             </Form.Item>
-            <Form.Item name={['sectionA', i, 'tenLoaiVatNuoi']} label={<span style={{whiteSpace:'nowrap'}}>Tên loài vật nuôi được nuôi bằng Sâu canxi</span>} rules={[]} style={{flex:'1 1 260px'}}><Input /></Form.Item>
+            <Form.Item name={['sectionA', i, 'tenLoaiVatNuoi']} label={<span style={{whiteSpace:'nowrap'}}>Tên loài vật nuôi được nuôi bằng Sâu canxi</span>} style={{flex:'1 1 260px'}}><Input /></Form.Item>
           </div>
           <div className={styles.groupedBg} style={{display:'flex',gap:16,marginBottom:8}}>
-            <Form.Item name={['sectionA', i, 'soLuongConVatNuoi']} label={<span style={{whiteSpace:'nowrap'}}>Số lượng con vật nuôi/lứa</span>} rules={[]} style={{flex:'1 1 260px'}}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
-            <Form.Item name={['sectionA', i, 'soLuaVatNuoi']} label={<span style={{whiteSpace:'nowrap'}}>Số lứa (được cho ăn Sâu canxi)</span>} rules={[]} style={{flex:'1 1 260px'}}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
+            <Form.Item name={['sectionA', i, 'soLuongConVatNuoi']} label={<span style={{whiteSpace:'nowrap'}}>Số lượng con vật nuôi/lứa</span>} style={{flex:'1 1 260px'}}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
+            <Form.Item name={['sectionA', i, 'soLuaVatNuoi']} label={<span style={{whiteSpace:'nowrap'}}>Số lứa (được cho ăn Sâu canxi)</span>} style={{flex:'1 1 260px'}}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
           </div>
           <div className={styles.groupedBg} style={{display:'flex',gap:16,marginBottom:8}}>
-            <Form.Item name={['sectionA', i, 'cachSuDungPhanSâuCanxi']} label={<span style={{whiteSpace:'nowrap'}}>Cách sử dụng phân Sâu canxi</span>} rules={[]} style={{flex:'1 1 260px'}}>
+            <Form.Item name={['sectionA', i, 'cachSuDungPhanSâuCanxi']} label={<span style={{whiteSpace:'nowrap'}}>Cách sử dụng phân Sâu canxi</span>} style={{flex:'1 1 260px'}}>
               <Select 
                 placeholder='Chọn cách sử dụng phân Sâu canxi'
                 options={[
@@ -64,11 +64,11 @@ export default function TechniqueFormSauCanxi({ form, onFinish, onBack, initialV
               />
               {/* <Input placeholder="Bón phân cho cây trồng, Sử dụng như thuốc trừ sâu tự nhiên, Đem bán" /> */}
             </Form.Item>
-            <Form.Item name={['sectionA', i, 'tenCayTrongPhanSâuCanxi']} label={<span style={{whiteSpace:'nowrap'}}>Tên những loài cây trồng được bón bằng phân Sâu canxi (1 ô ghi 1 loại cây trồng)</span>} rules={[]} style={{flex:'1 1 260px'}}><Input /></Form.Item>
+            <Form.Item name={['sectionA', i, 'tenCayTrongPhanSâuCanxi']} label={<span style={{whiteSpace:'nowrap'}}>Tên những loài cây trồng được bón bằng phân Sâu canxi (1 ô ghi 1 loại cây trồng)</span>} style={{flex:'1 1 260px'}}><Input /></Form.Item>
           </div>
           <div style={{display:'flex',gap:16,marginBottom:8}}>
-            <Form.Item name={['sectionA', i, 'tongSoVuTrongPhanSâuCanxi']} label={<span style={{whiteSpace:'nowrap'}}>Tổng số vụ trồng (sử dụng phân bón Sâu canxi; số vụ/năm)</span>} rules={[]} style={{flex:'1 1 260px'}}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
-            <Form.Item name={['sectionA', i, 'dienTichCayTrongPhanSâuCanxi']} label={<span style={{whiteSpace:'nowrap'}}>Diện tích cây trồng được bón phân Sâu canxi (số sào/vụ)</span>} rules={[]} style={{flex:'1 1 260px'}}><Input /></Form.Item>
+            <Form.Item name={['sectionA', i, 'tongSoVuTrongPhanSâuCanxi']} label={<span style={{whiteSpace:'nowrap'}}>Tổng số vụ trồng (sử dụng phân bón Sâu canxi; số vụ/năm)</span>} style={{flex:'1 1 260px'}}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
+            <Form.Item name={['sectionA', i, 'dienTichCayTrongPhanSâuCanxi']} label={<span style={{whiteSpace:'nowrap'}}>Diện tích cây trồng được bón phân Sâu canxi (số sào/vụ)</span>} style={{flex:'1 1 260px'}}><Input /></Form.Item>
           </div>
         </div>
       ))}
@@ -84,32 +84,32 @@ export default function TechniqueFormSauCanxi({ form, onFinish, onBack, initialV
       {Array.from({ length: sectionBCount }).map((_, i) => (
         <div key={i} className={styles.formSectionBg}>
           <div style={{display:'flex',gap:16,marginBottom:8}}>
-            <Form.Item name={['sectionB', i, 'loaiPhuPhamThucAn']} label="Loại phụ phẩm nông nghiệp làm thức ăn cho Sâu canxi" rules={[]} style={{flex:'1 1 260px'}}><Input /></Form.Item>
-            <Form.Item name={['sectionB', i, 'khoiLuongPhuPhamTB']} label="Khối lượng phụ phẩm nông nghiệp thải trung bình mỗi ngày" rules={[]} style={{flex:'1 1 260px'}}><Input /></Form.Item>
+            <Form.Item name={['sectionB', i, 'loaiPhuPhamThucAn']} label="Loại phụ phẩm nông nghiệp làm thức ăn cho Sâu canxi" style={{flex:'1 1 260px'}}><Input /></Form.Item>
+            <Form.Item name={['sectionB', i, 'khoiLuongPhuPhamTB']} label="Khối lượng phụ phẩm nông nghiệp thải trung bình mỗi ngày" style={{flex:'1 1 260px'}}><Input /></Form.Item>
           </div>
           <div style={{display:'flex',gap:16,marginBottom:8}}>
-            <Form.Item name={['sectionB', i, 'soLuongVatNuoi']} label="Số lượng từng loại vật nuôi" rules={[]} style={{flex:'1 1 260px'}}><Input /></Form.Item>
-            <Form.Item name={['sectionB', i, 'soNgayLuaNuoi']} label="Số ngày/lứa nuôi" rules={[]} style={{flex:'1 1 260px'}}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
+            <Form.Item name={['sectionB', i, 'soLuongVatNuoi']} label="Số lượng từng loại vật nuôi" style={{flex:'1 1 260px'}}><Input /></Form.Item>
+            <Form.Item name={['sectionB', i, 'soNgayLuaNuoi']} label="Số ngày/lứa nuôi" style={{flex:'1 1 260px'}}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
           </div>
           <div style={{display:'flex',gap:16,marginBottom:8}}>
-            <Form.Item name={['sectionB', i, 'soLuaNuoi']} label="Số lứa nuôi" rules={[]} style={{flex:'1 1 260px'}}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
-            <Form.Item name={['sectionB', i, 'tongKhoiLuongPhuPhamSX']} label="Tổng khối lượng phụ phẩm nông nghiệp sản xuất ra được (kg/ngày)" rules={[]} style={{flex:'1 1 260px'}}><Input /></Form.Item>
+            <Form.Item name={['sectionB', i, 'soLuaNuoi']} label="Số lứa nuôi" style={{flex:'1 1 260px'}}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
+            <Form.Item name={['sectionB', i, 'tongKhoiLuongPhuPhamSX']} label="Tổng khối lượng phụ phẩm nông nghiệp sản xuất ra được (kg/ngày)" style={{flex:'1 1 260px'}}><Input /></Form.Item>
           </div>
           <div style={{display:'flex',gap:16,marginBottom:8}}>
-            <Form.Item name={['sectionB', i, 'khoiLuongPhuPhamDungChoSâuCanxi']} label="Khối lượng phụ phẩm nông nghiệp dùng cho sâu canxi (kg/ngày)" rules={[]} style={{flex:'1 1 260px'}}><Input /></Form.Item>
-            <Form.Item name={['sectionB', i, 'tyLePhuPhamDungChoSâuCanxi']} label="Tỷ lệ % phụ phẩm nông nghiệp dùng cho sâu canxi (câu 25g/25f)" rules={[]} style={{flex:'1 1 260px'}}><Input /></Form.Item>
+            <Form.Item name={['sectionB', i, 'khoiLuongPhuPhamDungChoSâuCanxi']} label="Khối lượng phụ phẩm nông nghiệp dùng cho sâu canxi (kg/ngày)" style={{flex:'1 1 260px'}}><Input /></Form.Item>
+            <Form.Item name={['sectionB', i, 'tyLePhuPhamDungChoSâuCanxi']} label="Tỷ lệ % phụ phẩm nông nghiệp dùng cho sâu canxi (câu 25g/25f)" style={{flex:'1 1 260px'}}><Input /></Form.Item>
           </div>
           <div style={{display:'flex',gap:16,marginBottom:8}}>
-            <Form.Item name={['sectionB', i, 'dienTichNuoiSâuCanxi']} label="Diện tích được sử dụng để nuôi sâu canxi (m2/lứa)" rules={[]} style={{flex:'1 1 260px'}}><Input /></Form.Item>
-            <Form.Item name={['sectionB', i, 'chiPhiMuaGiongB']} label="Chi phí mua giống (trứng sâu canxi, tính cho 1m2/lứa)" rules={[]} style={{flex:'1 1 260px'}}><Input /></Form.Item>
+            <Form.Item name={['sectionB', i, 'dienTichNuoiSâuCanxi']} label="Diện tích được sử dụng để nuôi sâu canxi (m2/lứa)" style={{flex:'1 1 260px'}}><Input /></Form.Item>
+            <Form.Item name={['sectionB', i, 'chiPhiMuaGiongB']} label="Chi phí mua giống (trứng sâu canxi, tính cho 1m2/lứa)" style={{flex:'1 1 260px'}}><Input /></Form.Item>
           </div>
           <div style={{display:'flex',gap:16,marginBottom:8}}>
-            <Form.Item name={['sectionB', i, 'soNgayDeNuoiMotLuaB']} label="Số ngày để nuôi một lứa sâu canxi (ngày)" rules={[]} style={{flex:'1 1 260px'}}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
-            <Form.Item name={['sectionB', i, 'khoiLuongSâuCanxiThuDuoc']} label="Khối lượng sâu canxi thu được (kg/lứa)" rules={[]} style={{flex:'1 1 260px'}}><Input /></Form.Item>
+            <Form.Item name={['sectionB', i, 'soNgayDeNuoiMotLuaB']} label="Số ngày để nuôi một lứa sâu canxi (ngày)" style={{flex:'1 1 260px'}}><InputNumber min={0} style={{width:'100%'}} /></Form.Item>
+            <Form.Item name={['sectionB', i, 'khoiLuongSâuCanxiThuDuoc']} label="Khối lượng sâu canxi thu được (kg/lứa)" style={{flex:'1 1 260px'}}><Input /></Form.Item>
           </div>
           <div style={{display:'flex',gap:16,marginBottom:8}}>
-            <Form.Item name={['sectionB', i, 'khoiLuongPhanSâuCanxiThuDuoc']} label="Khối lượng phân sâu canxi thu được (kg/lứa)" rules={[]} style={{flex:'1 1 260px'}}><Input /></Form.Item>
-            <Form.Item name={['sectionB', i, 'congLaoDong']} label="Công lao động (số giờ/ngày)" rules={[]} style={{flex:'1 1 260px'}}><Input /></Form.Item>
+            <Form.Item name={['sectionB', i, 'khoiLuongPhanSâuCanxiThuDuoc']} label="Khối lượng phân sâu canxi thu được (kg/lứa)" style={{flex:'1 1 260px'}}><Input /></Form.Item>
+            <Form.Item name={['sectionB', i, 'congLaoDong']} label="Công lao động (số giờ/ngày)" style={{flex:'1 1 260px'}}><Input /></Form.Item>
           </div>
         </div>
       ))}
@@ -202,12 +202,12 @@ export default function TechniqueFormSauCanxi({ form, onFinish, onBack, initialV
                     KHÔNG BÓN PHÂN<br/>SÂU CANXI
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={['sectionC', i, '26bkhong']} rules={[]} style={{ marginBottom: 0 }}>
+                    <Form.Item name={['sectionC', i, '26bkhong']} style={{ marginBottom: 0 }}>
                       <Input placeholder='Tháng/năm' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={['sectionC', i, '26ckhong']} rules={[]} style={{ marginBottom: 0 }}>
+                    <Form.Item name={['sectionC', i, '26ckhong']} style={{ marginBottom: 0 }}>
                       <Input placeholder='Sào' size='small' />
                     </Form.Item>
                   </td>
@@ -223,12 +223,12 @@ export default function TechniqueFormSauCanxi({ form, onFinish, onBack, initialV
                         {['Phân NPK bón lót', 'Phân NPK bón thúc',  'Phân khác (ghi rõ)'].map((phanType, idx) => (
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
-                              <Form.Item name={['sectionC', i, `khongPhanU_tenPhan_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                              <Form.Item name={['sectionC', i, `khongPhanU_tenPhan_${idx}`]} style={{ marginBottom: 0 }}>
                                 <Input defaultValue={phanType} disabled size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
-                              <Form.Item name={['sectionC', i, `khongPhanU_kg_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                              <Form.Item name={['sectionC', i, `khongPhanU_kg_${idx}`]} style={{ marginBottom: 0 }}>
                                 <Input placeholder='Kg' size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
@@ -249,12 +249,12 @@ export default function TechniqueFormSauCanxi({ form, onFinish, onBack, initialV
                         {['Phân NPK bón lót', 'Phân NPK bón thúc',  'Phân khác (ghi rõ)'].map((phanType, idx) => (
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
-                              <Form.Item name={['sectionC', i, `khongPhanU_tenPhanTien_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                              <Form.Item name={['sectionC', i, `khongPhanU_tenPhanTien_${idx}`]} style={{ marginBottom: 0 }}>
                                 <Input defaultValue={phanType} disabled size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
-                              <Form.Item name={['sectionC', i, `khongPhanU_tien_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                              <Form.Item name={['sectionC', i, `khongPhanU_tien_${idx}`]} style={{ marginBottom: 0 }}>
                                 <Input placeholder='đồng' size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
@@ -264,42 +264,42 @@ export default function TechniqueFormSauCanxi({ form, onFinish, onBack, initialV
                     </table>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={['sectionC', i, '32ekhong']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={['sectionC', i, '32ekhong']} style={{ marginBottom: 0 }}>
                       <InputNumber placeholder='Lần' size='small' style={{ width: '100%' }}/>
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={['sectionC', i, '32fkhong']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={['sectionC', i, '32fkhong']} style={{ marginBottom: 0 }}>
                       <InputNumber placeholder='Bình' size='small' style={{ width: '100%' }}/>
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={['sectionC', i, '32gkhong']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={['sectionC', i, '32gkhong']} style={{ marginBottom: 0 }}>
                       <InputNumber placeholder='Bình' size='small' style={{ width: '100%' }}/>
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={['sectionC', i, '32hkhong']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={['sectionC', i, '32hkhong']} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' style={{ width: '100%' }} min={0} />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={['sectionC', i, '32ikhong']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={['sectionC', i, '32ikhong']} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' style={{ width: '100%' }} min={0} />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={['sectionC', i, '32jkhong']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={['sectionC', i, '32jkhong']} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' style={{ width: '100%' }} min={0} />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={['sectionC', i, '32kkhong']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={['sectionC', i, '32kkhong']} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' style={{ width: '100%' }} />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={['sectionC', i, '32lkhong']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={['sectionC', i, '32lkhong']} style={{ marginBottom: 0 }}>
                       <Radio.Group>
                         <Radio value="Có">Có</Radio>
                         <Radio value="Không">Không</Radio>
@@ -307,17 +307,17 @@ export default function TechniqueFormSauCanxi({ form, onFinish, onBack, initialV
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={['sectionC', i, '32mtruoc']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={['sectionC', i, '32mtruoc']} style={{ marginBottom: 0 }}>
                       <Input placeholder='kg/sào' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={['sectionC', i, '32ntruoc']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={['sectionC', i, '32ntruoc']} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={['sectionC', i, '32otruoc']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={['sectionC', i, '32otruoc']} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' />
                     </Form.Item>
                   </td>
@@ -329,12 +329,12 @@ export default function TechniqueFormSauCanxi({ form, onFinish, onBack, initialV
                     SAU KHI BÓN PHÂN<br/> SÂU CANXI
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={['sectionC', i, '26bsau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={['sectionC', i, '26bsau']} style={{ marginBottom: 0 }}>
                       <Input placeholder='Tháng/năm' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={['sectionC', i, '26csau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={['sectionC', i, '26csau']} style={{ marginBottom: 0 }}>
                       <Input placeholder='Sào' size='small' />
                     </Form.Item>
                   </td>
@@ -350,12 +350,12 @@ export default function TechniqueFormSauCanxi({ form, onFinish, onBack, initialV
                         {['Phân NPK bón lót', 'Phân NPK bón thúc', 'Phân sâu canxi', 'Phân khác (ghi rõ)'].map((phanType, idx) => (
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
-                              <Form.Item name={['sectionC', i, `sauPhanU_tenPhan2_${idx}`]} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                              <Form.Item name={['sectionC', i, `sauPhanU_tenPhan2_${idx}`]} style={{ marginBottom: 0 }}>
                                 <Input defaultValue={phanType} disabled size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
-                              <Form.Item name={['sectionC', i, `sauPhanU_kg2_${idx}`]} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                              <Form.Item name={['sectionC', i, `sauPhanU_kg2_${idx}`]} style={{ marginBottom: 0 }}>
                                 <Input placeholder='Kg' size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
@@ -376,12 +376,12 @@ export default function TechniqueFormSauCanxi({ form, onFinish, onBack, initialV
                         {['Phân NPK bón lót', 'Phân NPK bón thúc', 'Phân sâu canxi', 'Phân khác (ghi rõ)'].map((phanType, idx) => (
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
-                              <Form.Item name={['sectionC', i, `sauPhanU_tenPhanTien2_${idx}`]} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                              <Form.Item name={['sectionC', i, `sauPhanU_tenPhanTien2_${idx}`]} style={{ marginBottom: 0 }}>
                                 <Input defaultValue={phanType} disabled size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
-                              <Form.Item name={['sectionC', i, `sauPhanU_tien2_${idx}`]} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                              <Form.Item name={['sectionC', i, `sauPhanU_tien2_${idx}`]} style={{ marginBottom: 0 }}>
                                 <Input placeholder='đồng' size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
@@ -391,42 +391,42 @@ export default function TechniqueFormSauCanxi({ form, onFinish, onBack, initialV
                     </table>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={['sectionC', i, '32esau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={['sectionC', i, '32esau']} style={{ marginBottom: 0 }}>
                       <InputNumber placeholder='Lần' size='small' style={{ width: '100%' }} min={0} />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={['sectionC', i, '32fsau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={['sectionC', i, '32fsau']} style={{ marginBottom: 0 }}>
                       <InputNumber placeholder='Bình' size='small' style={{ width: '100%' }} min={0} />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={['sectionC', i, '32gsau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={['sectionC', i, '32gsau']} style={{ marginBottom: 0 }}>
                       <InputNumber placeholder='Bình' size='small' style={{ width: '100%' }} min={0} />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={['sectionC', i, '32hsao']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={['sectionC', i, '32hsao']} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={['sectionC', i, '32isau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={['sectionC', i, '32isau']} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={['sectionC', i, '32jsau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={['sectionC', i, '32jsau']} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={['sectionC', i, '32ksau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={['sectionC', i, '32ksau']} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={['sectionC', i, '32lsau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={['sectionC', i, '32lsau']} style={{ marginBottom: 0 }}>
                       <Radio.Group>
                         <Radio value="Có">Có</Radio>
                         <Radio value="Không">Không</Radio>
@@ -434,18 +434,18 @@ export default function TechniqueFormSauCanxi({ form, onFinish, onBack, initialV
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                      <Form.Item name={['sectionC', i, '32msau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                      <Form.Item name={['sectionC', i, '32msau']} style={{ marginBottom: 0 }}>
                         <Input placeholder='kg/sào' size='small' />
                       </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                      <Form.Item name={['sectionC', i, '32nsau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                      <Form.Item name={['sectionC', i, '32nsau']} style={{ marginBottom: 0 }}>
                         <Input placeholder='đồng' size='small' />
                       </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
                     <div style={{ fontSize: '12px', marginBottom: '4px' }}>
-                      <Form.Item name={['sectionC', i, '32osau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                      <Form.Item name={['sectionC', i, '32osau']} style={{ marginBottom: 0 }}>
                         <Input placeholder='đồng' size='small' />
                       </Form.Item>
                     </div>
@@ -472,7 +472,6 @@ export default function TechniqueFormSauCanxi({ form, onFinish, onBack, initialV
             <Form.Item 
               name={['sectionD', i, 'loaiVatNuoi']} 
               label={<span className={styles.formLabel} style={{ fontWeight: 600 }}>Loại vật nuôi</span>} 
-              rules={i === 0 ? [{ required: true, message: 'Bắt buộc nhập loại vật nuôi' }] : []}
             > 
               <Input placeholder='Ví dụ: Gà, Vịt, Lợn...' /> 
             </Form.Item>
@@ -533,7 +532,7 @@ export default function TechniqueFormSauCanxi({ form, onFinish, onBack, initialV
                     KHÔNG SỬ DỤNG<br/>SÂU CANXI <br/>LÀM THỨC ĂN
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={['sectionD', i, '29akhong']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={['sectionD', i, '29akhong']} style={{ marginBottom: 0 }}>
                       <InputNumber placeholder='con' size='small' style={{ width: '100%' }} min={0} />
                     </Form.Item>
                   </td>
@@ -549,12 +548,12 @@ export default function TechniqueFormSauCanxi({ form, onFinish, onBack, initialV
                         {['Thức ăn tinh (ngô, gạo)', 'Thức ăn tổng hợp/viên', 'Thức ăn xanh'].map((thucAnType, idx) => (
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
-                              <Form.Item name={['sectionD', i, `khongCanxi_tenThucAn_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                              <Form.Item name={['sectionD', i, `khongCanxi_tenThucAn_${idx}`]} style={{ marginBottom: 0 }}>
                                 <Input defaultValue={thucAnType} disabled size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
-                              <Form.Item name={['sectionD', i, `khongCanxi_kg_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                              <Form.Item name={['sectionD', i, `khongCanxi_kg_${idx}`]} style={{ marginBottom: 0 }}>
                                 <Input placeholder='kg' size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
@@ -575,12 +574,12 @@ export default function TechniqueFormSauCanxi({ form, onFinish, onBack, initialV
                         {['Thức ăn tinh (ngô, gạo)', 'Thức ăn tổng hợp/viên', 'Thức ăn xanh'].map((thucAnType, idx) => (
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
-                              <Form.Item name={['sectionD', i, `khongCanxi_tenThucAnTien_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                              <Form.Item name={['sectionD', i, `khongCanxi_tenThucAnTien_${idx}`]} style={{ marginBottom: 0 }}>
                                 <Input defaultValue={thucAnType} disabled size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
-                              <Form.Item name={['sectionD', i, `khongCanxi_tien_${idx}`]} rules={[]} style={{ marginBottom: 0 }}>
+                              <Form.Item name={['sectionD', i, `khongCanxi_tien_${idx}`]} style={{ marginBottom: 0 }}>
                                 <Input placeholder='đồng' size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
@@ -590,12 +589,12 @@ export default function TechniqueFormSauCanxi({ form, onFinish, onBack, initialV
                     </table>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={['sectionD', i, '29dkhong']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={['sectionD', i, '29dkhong']} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={['sectionD', i, '29ekhong']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={['sectionD', i, '29ekhong']} style={{ marginBottom: 0 }}>
                       <Radio.Group>
                         <Radio value="Có">Có</Radio>
                         <Radio value="Không">Không</Radio>
@@ -603,12 +602,12 @@ export default function TechniqueFormSauCanxi({ form, onFinish, onBack, initialV
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={['sectionD', i, '29fkhong']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={['sectionD', i, '29fkhong']} style={{ marginBottom: 0 }}>
                       <InputNumber placeholder='1-10' size='small' style={{ width: '100%' }} min={1} max={10} />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={['sectionD', i, '29gkhong']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={['sectionD', i, '29gkhong']} style={{ marginBottom: 0 }}>
                       <Radio.Group>
                         <Radio value="Có">Có</Radio>
                         <Radio value="Không">Không</Radio>
@@ -616,22 +615,22 @@ export default function TechniqueFormSauCanxi({ form, onFinish, onBack, initialV
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={['sectionD', i, '29hkhong']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={['sectionD', i, '29hkhong']} style={{ marginBottom: 0 }}>
                       <Input placeholder='tháng' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={['sectionD', i, '29ikhong']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={['sectionD', i, '29ikhong']} style={{ marginBottom: 0 }}>
                       <Input placeholder='kg' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={['sectionD', i, '29jkhong']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={['sectionD', i, '29jkhong']} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={['sectionD', i, '29kkhong']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={['sectionD', i, '29kkhong']} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' />
                     </Form.Item>
                   </td>
@@ -643,7 +642,7 @@ export default function TechniqueFormSauCanxi({ form, onFinish, onBack, initialV
                     SAU KHI SỬ DỤNG <br/>SÂU CANXI<br/>LÀM THỨC ĂN
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={['sectionD', i, '29asau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={['sectionD', i, '29asau']} style={{ marginBottom: 0 }}>
                       <InputNumber placeholder='con' size='small' style={{ width: '100%' }} min={0} />
                     </Form.Item>
                   </td>
@@ -659,12 +658,12 @@ export default function TechniqueFormSauCanxi({ form, onFinish, onBack, initialV
                         {['Sâu canxi', 'Thức ăn tinh (ngô, gạo)', 'Thức ăn tổng hợp/viên', 'Thức ăn xanh'].map((thucAnType, idx) => (
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
-                              <Form.Item name={['sectionD', i, `sauCanxi_tenThucAn_${idx}`]} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                              <Form.Item name={['sectionD', i, `sauCanxi_tenThucAn_${idx}`]} style={{ marginBottom: 0 }}>
                                 <Input defaultValue={thucAnType} disabled size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
-                              <Form.Item name={['sectionD', i, `sauCanxi_kg_${idx}`]} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                              <Form.Item name={['sectionD', i, `sauCanxi_kg_${idx}`]} style={{ marginBottom: 0 }}>
                                 <Input placeholder='kg' size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
@@ -685,12 +684,12 @@ export default function TechniqueFormSauCanxi({ form, onFinish, onBack, initialV
                         {['Sâu canxi', 'Thức ăn tinh (ngô, gạo)', 'Thức ăn tổng hợp/viên', 'Thức ăn xanh'].map((thucAnType, idx) => (
                           <tr key={idx}>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
-                              <Form.Item name={['sectionD', i, `sauCanxi_tenThucAnTien_${idx}`]} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                              <Form.Item name={['sectionD', i, `sauCanxi_tenThucAnTien_${idx}`]} style={{ marginBottom: 0 }}>
                                 <Input defaultValue={thucAnType} disabled size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
                             <td style={{ border: '1px solid #e6e6e6', padding: '4px' }}>
-                              <Form.Item name={['sectionD', i, `sauCanxi_tien_${idx}`]} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                              <Form.Item name={['sectionD', i, `sauCanxi_tien_${idx}`]} style={{ marginBottom: 0 }}>
                                 <Input placeholder='đồng' size='small' style={{ fontSize: '12px' }} />
                               </Form.Item>
                             </td>
@@ -700,12 +699,12 @@ export default function TechniqueFormSauCanxi({ form, onFinish, onBack, initialV
                     </table>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={['sectionD', i, '29dsau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={['sectionD', i, '29dsau']} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={['sectionD', i, '29esau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={['sectionD', i, '29esau']} style={{ marginBottom: 0 }}>
                       <Radio.Group>
                         <Radio value="Có">Có</Radio>
                         <Radio value="Không">Không</Radio>
@@ -713,12 +712,12 @@ export default function TechniqueFormSauCanxi({ form, onFinish, onBack, initialV
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={['sectionD', i, '29fsau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={['sectionD', i, '29fsau']} style={{ marginBottom: 0 }}>
                       <InputNumber placeholder='1-10' size='small' style={{ width: '100%' }} min={1} max={10} />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={['sectionD', i, '29gsau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={['sectionD', i, '29gsau']} style={{ marginBottom: 0 }}>
                       <Radio.Group>
                         <Radio value="Có">Có</Radio>
                         <Radio value="Không">Không</Radio>
@@ -726,22 +725,22 @@ export default function TechniqueFormSauCanxi({ form, onFinish, onBack, initialV
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={['sectionD', i, '29hsau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={['sectionD', i, '29hsau']} style={{ marginBottom: 0 }}>
                       <Input placeholder='tháng' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={['sectionD', i, '29isau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={['sectionD', i, '29isau']} style={{ marginBottom: 0 }}>
                       <Input placeholder='kg' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={['sectionD', i, '29jsau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={['sectionD', i, '29jsau']} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' />
                     </Form.Item>
                   </td>
                   <td style={{ border: '1px solid #d9d9d9', padding: '6px' }}>
-                    <Form.Item name={['sectionD', i, '29ksau']} rules={i === 0 ? [{ required: true, message: 'Bắt buộc' }] : []} style={{ marginBottom: 0 }}>
+                    <Form.Item name={['sectionD', i, '29ksau']} style={{ marginBottom: 0 }}>
                       <Input placeholder='đồng' size='small' />
                     </Form.Item>
                   </td>
