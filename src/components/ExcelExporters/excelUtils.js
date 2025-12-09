@@ -71,6 +71,469 @@ export const fieldLabelMap = {
   'trinhDoHocVan': '70. Trình độ học vấn của bạn?',
 };
 
+// Technique-specific field label mappings
+export const techniqueFieldLabels = {
+  // Lên men phụ phẩm
+  'len-men-phu-pham': {
+    // Section A (Questions 1-14)
+    'tenPhuPhamCayTrong': '1. Tên phụ phẩm cây trồng (sử dụng ủ lên men)',
+    'thangNamDau': '2. Tháng/năm áp dụng kỹ thuật ủ lên men (lần đầu tiên)',
+    'dienTichTrong': '3. Diện tích trồng trong 1 vụ',
+    'soLanMen': '4a. Tổng số lần (số vụ) đã tiến hành lên men',
+    'thangNamGanNhat': '4b. Tháng/năm bắt đầu vụ gần đây nhất',
+    'tenPhuPhamTanDung': '4c. Tên phụ phẩm cây trồng tận dụng để ủ lên men',
+    'dienTichDat': '4d. Diện tích đất được sử dụng để trồng cây lấy phụ phẩm ủ lên men (số sào/ vụ)',
+    'khoiLuongTrenDong': '4e. Khối lượng phụ phẩm cây trồng có trên đồng ruộng (kg/ sào/ vụ x số sào)',
+    'khoiLuongThuGom': '4f. Tổng khối lượng phụ phẩm cây trồng thu gom được (kg/ sào/ vụ x số sào)',
+    'mayBamCat': '4g. Sử dụng máy để băm/ cắt nhỏ phụ phẩm cây trồng (có/ không)',
+    'khoiLuongSuDungMen': '4h. Tổng khối lượng phụ phẩm cây trồng được sử dụng để ủ lên men (kg/ sào/ vụ x số sào)',
+    'khoiLuongThucAnMen': '4i. Khối lượng thức ăn ủ lên men thu được (kg)',
+    'nhienLieu': '4j. Lượng nhiên liệu đã sử dụng cho 1 lần lên men (dầu diesel/ hoặc điện; kg/ hoặc giờ)',
+    'chiPhiKhac': '4k. Chi phí vật liệu/ đầu vào khác cho 1 lần lên men (ví dụ: thùng, túi ủ, chế phẩm,...)',
+    // Section B (Before intervention baseline)
+    'loaiCayTruoc': '5a. Loại cây trồng',
+    'dienTichTruoc': '5a. Diện tích đất trồng cây',
+    'loaiPhuPhamTruoc': '5a. Loại phụ phẩm cây trồng',
+    'khoiLuongPhuPhamTruoc': '5a. Khối lượng phụ phẩm',
+    'khoiLuongThuGomTruoc': '5a. Khối lượng thu gom',
+    // Section C (Before/After comparison for livestock - ordered by question then by period)
+    'tenVatNuoi': '5b. Tên vật nuôi sử dụng thức ăn ủ lên men',
+    // 5b. Số lứa
+    'soLuaTruocMen': '5b. Số lứa (TRƯỚC)',
+    'soLuaSauMen': '5b. Số lứa (SAU)',
+    // 5b. Số ngày/lứa
+    'soNgayNuoiTruocMen': '5b. Số ngày/lứa (TRƯỚC)',
+    'soNgayNuoiSauMen': '5b. Số ngày/lứa (SAU)',
+    // 5c. Số lượng vật nuôi
+    'soLuongVatNuoiTruoc': '5c. Số lượng vật nuôi (TRƯỚC)',
+    'soLuongVatNuoiSau': '5c. Số lượng vật nuôi (SAU)',
+    // 6a. Thức ăn - Tên và Kg
+    'truocMen_tenThucAn_0': '6a. Tên thức ăn 1 (TRƯỚC)',
+    'truocMen_kg_0': '6a. Khối lượng (kg) - Dòng 1 (TRƯỚC)',
+    'truocMen_tenThucAn_1': '6a. Tên thức ăn 2 (TRƯỚC)',
+    'truocMen_kg_1': '6a. Khối lượng (kg) - Dòng 2 (TRƯỚC)',
+    'truocMen_tenThucAn_2': '6a. Tên thức ăn 3 (TRƯỚC)',
+    'truocMen_kg_2': '6a. Khối lượng (kg) - Dòng 3 (TRƯỚC)',
+    'truocMen_tenThucAn_3': '6a. Tên thức ăn 4 (TRƯỚC)',
+    'truocMen_kg_3': '6a. Khối lượng (kg) - Dòng 4 (TRƯỚC)',
+    'sauMen_tenThucAn_0': '6a. Tên thức ăn 1 (SAU)',
+    'sauMen_kg_0': '6a. Khối lượng (kg) - Dòng 1 (SAU)',
+    'sauMen_tenThucAn_1': '6a. Tên thức ăn 2 (SAU)',
+    'sauMen_kg_1': '6a. Khối lượng (kg) - Dòng 2 (SAU)',
+    'sauMen_tenThucAn_2': '6a. Tên thức ăn 3 (SAU)',
+    'sauMen_kg_2': '6a. Khối lượng (kg) - Dòng 3 (SAU)',
+    'sauMen_tenThucAn_3': '6a. Tên thức ăn 4 (SAU)',
+    'sauMen_kg_3': '6a. Khối lượng (kg) - Dòng 4 (SAU)',
+    'sauMen_tenThucAn_4': '6a. Tên thức ăn 5 (SAU)',
+    'sauMen_kg_4': '6a. Khối lượng (kg) - Dòng 5 (SAU)',
+    // 6b. Chi phí thức ăn
+    'truocMen_tenThucAnTien_0': '6b. Tên thức ăn 1 (TRƯỚC)',
+    'truocMen_tien_0': '6b. Chi phí (đồng) - Dòng 1 (TRƯỚC)',
+    'truocMen_tenThucAnTien_1': '6b. Tên thức ăn 2 (TRƯỚC)',
+    'truocMen_tien_1': '6b. Chi phí (đồng) - Dòng 2 (TRƯỚC)',
+    'truocMen_tenThucAnTien_2': '6b. Tên thức ăn 3 (TRƯỚC)',
+    'truocMen_tien_2': '6b. Chi phí (đồng) - Dòng 3 (TRƯỚC)',
+    'truocMen_tenThucAnTien_3': '6b. Tên thức ăn 4 (TRƯỚC)',
+    'truocMen_tien_3': '6b. Chi phí (đồng) - Dòng 4 (TRƯỚC)',
+    'sauMen_tenThucAnTien_0': '6b. Tên thức ăn 1 (SAU)',
+    'sauMen_tien_0': '6b. Chi phí (đồng) - Dòng 1 (SAU)',
+    'sauMen_tenThucAnTien_1': '6b. Tên thức ăn 2 (SAU)',
+    'sauMen_tien_1': '6b. Chi phí (đồng) - Dòng 2 (SAU)',
+    'sauMen_tenThucAnTien_2': '6b. Tên thức ăn 3 (SAU)',
+    'sauMen_tien_2': '6b. Chi phí (đồng) - Dòng 3 (SAU)',
+    'sauMen_tenThucAnTien_3': '6b. Tên thức ăn 4 (SAU)',
+    'sauMen_tien_3': '6b. Chi phí (đồng) - Dòng 4 (SAU)',
+    'sauMen_tenThucAnTien_4': '6b. Tên thức ăn 5 (SAU)',
+    'sauMen_tien_4': '6b. Chi phí (đồng) - Dòng 5 (SAU)',
+    // 6c. Tiền thuốc
+    'tienThuocTruocMen': '6c. Tiền thuốc (TRƯỚC)',
+    'tienThuocSauMen': '6c. Tiền thuốc (SAU)',
+    // 6d. Vật nuôi bị bệnh
+    'vatNuoiBiBenhTruoc': '6d. Vật nuôi có bị bệnh không (TRƯỚC)',
+    'vatNuoiBiBenhSau': '6d. Vật nuôi có bị bệnh không (SAU)',
+    // 6e. Đánh giá sức khỏe
+    'danhGiaSucKhoeTruoc': '6e. Đánh giá sức khỏe (1-10) (TRƯỚC)',
+    'danhGiaSucKhoeSau': '6e. Đánh giá sức khỏe (1-10) (SAU)',
+    // 6f. Vật nuôi phát triển nhanh
+    'vatNuoiPhatTrienTruoc': '6f. Vật nuôi phát triển nhanh (TRƯỚC)',
+    'vatNuoiPhatTrienSau': '6f. Vật nuôi phát triển nhanh (SAU)',
+    // 6g. Thời gian nuôi
+    'thoiGianNuoiTruoc': '6g. Thời gian nuôi (tháng) (TRƯỚC)',
+    'thoiGianNuoiSau': '6g. Thời gian nuôi (tháng) (SAU)',
+    // 6h. Trọng lượng xuất chuồng
+    'trongLuongXuatTruoc': '6h. Trọng lượng xuất chuồng (kg/con) (TRƯỚC)',
+    'trongLuongXuatSau': '6h. Trọng lượng xuất chuồng (kg/con) (SAU)',
+    // 6i. Giá bán
+    'giaBanTruoc': '6i. Giá bán (đồng/kg) (TRƯỚC)',
+    'giaBanSau': '6i. Giá bán (đồng/kg) (SAU)',
+    // 6j. Thành tiền
+    'thanhTienTruoc': '6j. Thành tiền (đồng) (TRƯỚC)',
+    'thanhTienSau': '6j. Thành tiền (đồng) (SAU)',
+    // 6k. Tổng chi phí
+    'tongChiPhiTruoc': '6k. Tổng chi phí (đồng) (TRƯỚC)',
+    'tongChiPhiSau': '6k. Tổng chi phí (đồng) (SAU)',
+  },
+  
+  // Nuôi sâu canxi
+  'nuoi-sau-canxi': {
+    // Section A
+    'ngayBatDau': 'Ngày bắt đầu',
+    'soLuaSâuCanxi': 'Số lứa Sâu canxi đã nuôi',
+    'soNgayMotLua': 'Số ngày để nuôi một lứa Sâu canxi (TB 45 ngày)',
+    'tongChiPhiXayDung': 'Tổng chi phí xây dựng khu nuôi Sâu canxi (bao gồm vật liệu và nhân công)',
+    'chiPhiMuaGiong': 'Chi phí mua giống (trứng Sâu canxi)/tổng số lứa',
+    'chiPhiDauVaoKhac': 'Chi phí đầu vào/vật liệu khác (cho nuôi sâu canxi)',
+    'cachSuDungSâuCanxi': 'Cách sử dụng Sâu canxi',
+    'tenLoaiVatNuoi': 'Tên loài vật nuôi được nuôi bằng Sâu canxi',
+    'soLuongConVatNuoi': 'Số lượng con vật nuôi/lứa',
+    'soLuaVatNuoi': 'Số lứa (được cho ăn Sâu canxi)',
+    'cachSuDungPhanSâuCanxi': 'Cách sử dụng phân Sâu canxi',
+    'tenCayTrongPhanSâuCanxi': 'Tên những loài cây trồng được bón bằng phân Sâu canxi (1 ô ghi 1 loại cây trồng)',
+    'tongSoVuTrongPhanSâuCanxi': 'Tổng số vụ trồng (sử dụng phân bón Sâu canxi; số vụ/năm)',
+    'dienTichCayTrongPhanSâuCanxi': 'Diện tích cây trồng được bón phân Sâu canxi (số sào/vụ)',
+    // Section B
+    'loaiPhuPhamThucAn': 'Loại phụ phẩm nông nghiệp làm thức ăn cho Sâu canxi',
+    'khoiLuongPhuPhamTB': 'Khối lượng phụ phẩm nông nghiệp thải trung bình mỗi ngày',
+    'soLuongVatNuoi': 'Số lượng từng loại vật nuôi',
+    'soNgayLuaNuoi': 'Số ngày/lứa nuôi',
+    'soLuaNuoi': 'Số lứa nuôi',
+    'tongKhoiLuongPhuPhamSX': 'Tổng khối lượng phụ phẩm nông nghiệp sản xuất ra được (kg/ngày)',
+    'khoiLuongPhuPhamDungChoSâuCanxi': 'Khối lượng phụ phẩm nông nghiệp dùng cho sâu canxi (kg/ngày)',
+    'tyLePhuPhamDungChoSâuCanxi': 'Tỷ lệ % phụ phẩm nông nghiệp dùng cho sâu canxi (câu 25g/25f)',
+    'dienTichNuoiSâuCanxi': 'Diện tích được sử dụng để nuôi sâu canxi (m2/lứa)',
+    'chiPhiMuaGiongB': 'Chi phí mua giống (trứng sâu canxi, tính cho 1m2/lứa)',
+    'soNgayDeNuoiMotLuaB': 'Số ngày để nuôi một lứa sâu canxi (ngày)',
+    'khoiLuongSâuCanxiThuDuoc': 'Khối lượng sâu canxi thu được (kg/lứa)',
+    'khoiLuongPhanSâuCanxiThuDuoc': 'Khối lượng phân sâu canxi thu được (kg/lứa)',
+    'congLaoDong': 'Công lao động (số giờ/ngày)',
+    // Section C - Comparison table
+    'tenCayTrong': 'Tên loại cây trồng được bón phân sâu canxi',
+    // KHÔNG BÓN PHÂN SÂU CANXI
+    '26bkhong': '26b. Cây được trồng tháng/năm nào? (TRƯỚC)',
+    '26ckhong': '26c. Diện tích trồng (sào/vụ) (TRƯỚC)',
+    'khongPhanU_tenPhan_0': '26d. Phân NPK bón lót - Tên (TRƯỚC)',
+    'khongPhanU_kg_0': '26d. Phân NPK bón lót - Kg (TRƯỚC)',
+    'khongPhanU_tenPhan_1': '26d. Phân NPK bón thúc - Tên (TRƯỚC)',
+    'khongPhanU_kg_1': '26d. Phân NPK bón thúc - Kg (TRƯỚC)',
+    'khongPhanU_tenPhan_2': '26d. Phân khác - Tên (TRƯỚC)',
+    'khongPhanU_kg_2': '26d. Phân khác - Kg (TRƯỚC)',
+    'khongPhanU_tenPhanTien_0': '26e. Phân NPK bón lót - Tiền (TRƯỚC)',
+    'khongPhanU_tien_0': '26e. Phân NPK bón lót - Số tiền (TRƯỚC)',
+    'khongPhanU_tenPhanTien_1': '26e. Phân NPK bón thúc - Tiền (TRƯỚC)',
+    'khongPhanU_tien_1': '26e. Phân NPK bón thúc - Số tiền (TRƯỚC)',
+    'khongPhanU_tenPhanTien_2': '26e. Phân khác - Tiền (TRƯỚC)',
+    'khongPhanU_tien_2': '26e. Phân khác - Số tiền (TRƯỚC)',
+    '32ekhong': '26f. Số lần phun thuốc trừ sâu hóa học (TRƯỚC)',
+    '32fkhong': '26g. Số lượng thuốc trừ sâu hóa học được sử dụng (số bình 15-20l/sào/vụ) (TRƯỚC)',
+    '32gkhong': '26h. Số lượng thuốc trừ cỏ được sử dụng (số bình 15-20l/sào/vụ) (TRƯỚC)',
+    '32hkhong': '26i. Số tiền đã chi cho thuốc trừ sâu hóa học (đồng/sào/vụ) (TRƯỚC)',
+    '32ikhong': '26j. Số tiền đã chi cho thuốc trừ cỏ hóa học (đồng/sào/vụ) (TRƯỚC)',
+    '32jkhong': '26k. Số tiền đã chi cho công chăm sóc cây trồng (đồng/sào/vụ) (TRƯỚC)',
+    '32kkhong': '26l. Số tiền đã chi cho mua hạt giống (đồng/sào/vụ) (TRƯỚC)',
+    '32lkhong': '26m. Cây trồng có bị sâu bệnh tấn công (có/không) (TRƯỚC)',
+    '32mtruoc': '26n. Năng suất thu hoạch (kg/sào) (TRƯỚC)',
+    '32ntruoc': '26o. Giá bán (đồng/kg) (TRƯỚC)',
+    '32otruoc': '26p. Thành tiền (đồng) (TRƯỚC)',
+    // SAU KHI BÓN PHÂN SÂU CANXI
+    '26bsau': '26b. Cây được trồng tháng/năm nào? (SAU)',
+    '26csau': '26c. Diện tích trồng (sào/vụ) (SAU)',
+    'sauPhanU_tenPhan2_0': '26d. Phân NPK bón lót - Tên (SAU)',
+    'sauPhanU_kg2_0': '26d. Phân NPK bón lót - Kg (SAU)',
+    'sauPhanU_tenPhan2_1': '26d. Phân NPK bón thúc - Tên (SAU)',
+    'sauPhanU_kg2_1': '26d. Phân NPK bón thúc - Kg (SAU)',
+    'sauPhanU_tenPhan2_2': '26d. Phân sâu canxi - Tên (SAU)',
+    'sauPhanU_kg2_2': '26d. Phân sâu canxi - Kg (SAU)',
+    'sauPhanU_tenPhan2_3': '26d. Phân khác - Tên (SAU)',
+    'sauPhanU_kg2_3': '26d. Phân khác - Kg (SAU)',
+    'sauPhanU_tenPhanTien2_0': '26e. Phân NPK bón lót - Tiền (SAU)',
+    'sauPhanU_tien2_0': '26e. Phân NPK bón lót - Số tiền (SAU)',
+    'sauPhanU_tenPhanTien2_1': '26e. Phân NPK bón thúc - Tiền (SAU)',
+    'sauPhanU_tien2_1': '26e. Phân NPK bón thúc - Số tiền (SAU)',
+    'sauPhanU_tenPhanTien2_2': '26e. Phân sâu canxi - Tiền (SAU)',
+    'sauPhanU_tien2_2': '26e. Phân sâu canxi - Số tiền (SAU)',
+    'sauPhanU_tenPhanTien2_3': '26e. Phân khác - Tiền (SAU)',
+    'sauPhanU_tien2_3': '26e. Phân khác - Số tiền (SAU)',
+    '32esau': '26f. Số lần phun thuốc trừ sâu hóa học (SAU)',
+    '32fsau': '26g. Số lượng thuốc trừ sâu hóa học được sử dụng (số bình 15-20l/sào/vụ) (SAU)',
+    '32gsau': '26h. Số lượng thuốc trừ cỏ được sử dụng (số bình 15-20l/sào/vụ) (SAU)',
+    '32hsao': '26i. Số tiền đã chi cho thuốc trừ sâu hóa học (đồng/sào/vụ) (SAU)',
+    '32isau': '26j. Số tiền đã chi cho thuốc trừ cỏ hóa học (đồng/sào/vụ) (SAU)',
+    '32jsau': '26k. Số tiền đã chi cho công chăm sóc cây trồng (đồng/sào/vụ) (SAU)',
+    '32ksau': '26l. Số tiền đã chi cho mua hạt giống (đồng/sào/vụ) (SAU)',
+    '32lsau': '26m. Cây trồng có bị sâu bệnh tấn công (có/không) (SAU)',
+    '32msau': '26n. Năng suất thu hoạch (kg/sào) (SAU)',
+    '32nsau': '26o. Giá bán (đồng/kg) (SAU)',
+    '32osau': '26p. Thành tiền (đồng) (SAU)',
+    // Section D - Livestock feeding comparison
+    'loaiVatNuoi': 'Loại vật nuôi',
+    // KHÔNG SỬ DỤNG SÂU CANXI LÀM THỨC ĂN
+    '29akhong': '29a. Số con vật nuôi (số con/lứa) (TRƯỚC)',
+    'khongCanxi_tenThucAn_0': '29b. Thức ăn tinh (ngô, gạo) - Tên (TRƯỚC)',
+    'khongCanxi_kg_0': '29b. Thức ăn tinh (ngô, gạo) - Kg (TRƯỚC)',
+    'khongCanxi_tenThucAn_1': '29b. Thức ăn tổng hợp/viên - Tên (TRƯỚC)',
+    'khongCanxi_kg_1': '29b. Thức ăn tổng hợp/viên - Kg (TRƯỚC)',
+    'khongCanxi_tenThucAn_2': '29b. Thức ăn xanh - Tên (TRƯỚC)',
+    'khongCanxi_kg_2': '29b. Thức ăn xanh - Kg (TRƯỚC)',
+    'khongCanxi_tenThucAnTien_0': '29c. Thức ăn tinh (ngô, gạo) - Tiền (TRƯỚC)',
+    'khongCanxi_tien_0': '29c. Thức ăn tinh (ngô, gạo) - Số tiền (TRƯỚC)',
+    'khongCanxi_tenThucAnTien_1': '29c. Thức ăn tổng hợp/viên - Tiền (TRƯỚC)',
+    'khongCanxi_tien_1': '29c. Thức ăn tổng hợp/viên - Số tiền (TRƯỚC)',
+    'khongCanxi_tenThucAnTien_2': '29c. Thức ăn xanh - Tiền (TRƯỚC)',
+    'khongCanxi_tien_2': '29c. Thức ăn xanh - Số tiền (TRƯỚC)',
+    '29dkhong': '29d. Số tiền đã chi cho mua thuốc thú y/lứa (đồng) (TRƯỚC)',
+    '29ekhong': '29e. Vật nuôi có bị bất kỳ bệnh nào không (TRƯỚC)',
+    '29fkhong': '29f. Bạn đánh giá sức khỏe vật nuôi (1 = cực kỳ tệ, 10: rất tốt) (TRƯỚC)',
+    '29gkhong': '29g. Vật nuôi có phát triển nhanh hơn và/hoặc lớn hơn (TRƯỚC)',
+    '29hkhong': '29h. Thời gian nuôi đến khi xuất chuồng (tháng) (TRƯỚC)',
+    '29ikhong': '29i. Trọng lượng trung bình khi xuất chuồng (kg/con) (TRƯỚC)',
+    '29jkhong': '29j. Giá bán (đồng/kg) (TRƯỚC)',
+    '29kkhong': '29k. Thành tiền (đồng) (TRƯỚC)',
+    // SAU KHI SỬ DỤNG SÂU CANXI LÀM THỨC ĂN
+    '29asau': '29a. Số con vật nuôi (số con/lứa) (SAU)',
+    'sauCanxi_tenThucAn_0': '29b. Sâu canxi - Tên (SAU)',
+    'sauCanxi_kg_0': '29b. Sâu canxi - Kg (SAU)',
+    'sauCanxi_tenThucAn_1': '29b. Thức ăn tinh (ngô, gạo) - Tên (SAU)',
+    'sauCanxi_kg_1': '29b. Thức ăn tinh (ngô, gạo) - Kg (SAU)',
+    'sauCanxi_tenThucAn_2': '29b. Thức ăn tổng hợp/viên - Tên (SAU)',
+    'sauCanxi_kg_2': '29b. Thức ăn tổng hợp/viên - Kg (SAU)',
+    'sauCanxi_tenThucAn_3': '29b. Thức ăn xanh - Tên (SAU)',
+    'sauCanxi_kg_3': '29b. Thức ăn xanh - Kg (SAU)',
+    'sauCanxi_tenThucAnTien_0': '29c. Sâu canxi - Tiền (SAU)',
+    'sauCanxi_tien_0': '29c. Sâu canxi - Số tiền (SAU)',
+    'sauCanxi_tenThucAnTien_1': '29c. Thức ăn tinh (ngô, gạo) - Tiền (SAU)',
+    'sauCanxi_tien_1': '29c. Thức ăn tinh (ngô, gạo) - Số tiền (SAU)',
+    'sauCanxi_tenThucAnTien_2': '29c. Thức ăn tổng hợp/viên - Tiền (SAU)',
+    'sauCanxi_tien_2': '29c. Thức ăn tổng hợp/viên - Số tiền (SAU)',
+    'sauCanxi_tenThucAnTien_3': '29c. Thức ăn xanh - Tiền (SAU)',
+    'sauCanxi_tien_3': '29c. Thức ăn xanh - Số tiền (SAU)',
+    '29dsau': '29d. Số tiền đã chi cho mua thuốc thú y/lứa (đồng) (SAU)',
+    '29esau': '29e. Vật nuôi có bị bất kỳ bệnh nào không (SAU)',
+    '29fsau': '29f. Bạn đánh giá sức khỏe vật nuôi (1 = cực kỳ tệ, 10: rất tốt) (SAU)',
+    '29gsau': '29g. Vật nuôi có phát triển nhanh hơn và/hoặc lớn hơn (SAU)',
+    '29hsau': '29h. Thời gian nuôi đến khi xuất chuồng (tháng) (SAU)',
+    '29isau': '29i. Trọng lượng trung bình khi xuất chuồng (kg/con) (SAU)',
+    '29jsau': '29j. Giá bán (đồng/kg) (SAU)',
+    '29ksau': '29k. Thành tiền (đồng) (SAU)',
+  },
+  
+  // Nuôi gà đệm lót
+  'nuoi-ga-dem-lot': {
+    // Section A
+    'tenPhuPhamTruoc': 'Tên phụ phẩm cây trồng (tận dụng làm đệm lót sinh học dày TỪ TRƯỚC ĐẾN NAY)',
+    'thangNamBatDau': 'Tháng/năm bắt đầu áp dụng kỹ thuật',
+    'tongSoMuaVu': 'Tổng số mùa vụ đã tận dụng phụ phẩm để làm đệm lót sinh học TỪ TRƯỚC ĐẾN NAY (vụ)',
+    'tenCayBonPhan': 'Tên những loại cây trồng được bón phân ủ thu được từ lớp đệm lót',
+    'dienTichCayBonPhan': 'Diện tích cây trồng được bón phân ủ thu được từ lớp đệm lót trong 1 vụ (sào/vụ)',
+    'tongSoMuaVuBonPhan': 'Tổng số mùa vụ đã được bón phân ủ thu được từ lớp đệm lót',
+    'tenPhuPhamDuocTao': 'Tên phụ phẩm cây trồng được tận dụng làm đệm lót sinh học dày',
+    'dienTichTaoPhuPham': 'Diện tích cây trồng tạo ra loại phụ phẩm được tận dụng làm đệm lót sinh học dày (sào)',
+    'khoiLuongTrenDong': 'Khối lượng phụ phẩm cây trồng có trên đồng ruộng (kg/sào x số sào)',
+    'khoiLuongThuGom': 'Khối lượng phụ phẩm cây trồng thu gom được (kg/sào x số sào)',
+    'tongKhoiLuongLamDemLot': 'Tổng khối lượng phụ phẩm cây trồng được tận dụng để làm đệm lót (kg)',
+    'tongKhoiLuongPhanU': 'Tổng khối lượng phân ủ thu được từ lớp đệm lót (kg)',
+    'mayBamCat': 'Sử dụng máy để băm/cắt nhỏ phụ phẩm cây trồng',
+    'nhienLieu': 'Lượng nhiên liệu đã sử dụng (dầu diesel/ hoặc điện)',
+    'chiPhiKhac': 'Chi phí vật liệu/đầu vào khác (ví dụ: nhân công, chế phẩm, …) (đồng)',
+    // Section B
+    'loaiCayTruoc': 'Loại cây trồng, TRƯỚC KHI áp dụng kỹ thuật',
+    'dienTichTruoc': 'Diện tích đất trồng cây, TRƯỚC KHI áp dụng kỹ thuật (sào/vụ x số vụ/năm)',
+    'loaiPhuPhamTruoc': 'Có những loại phụ phẩm cây trồng nào, TRƯỚC KHI áp dụng kỹ thuật',
+    'khoiLuongPhuPhamTruoc': 'Có bao nhiêu kg phụ phẩm cây trồng tại ruộng/vườn TRƯỚC KHI áp dụng kỹ thuật (kg/sào/vụ x số sào/vụ)',
+    'khoiLuongThuGomTruoc': 'Có bao nhiêu kg phụ phẩm cây trồng được thu gom TRƯỚC KHI áp dụng kỹ thuật (kg/sào/vụ x số sào/vụ)',
+    // Section C (phanU) - Phân ủ comparison table
+    'tenCayTrong': 'Tên cây trồng được bón phân ủ từ lớp đệm lót',
+    // KHÔNG BÓN PHÂN Ủ (TRƯỚC)
+    '32bkhong': '32b. Diện tích (sào) (TRƯỚC)',
+    'khongPhanU_tenPhan_0': '32c. Phân NPK bón lót - Tên (TRƯỚC)',
+    'khongPhanU_kg_0': '32c. Phân NPK bón lót - Kg (TRƯỚC)',
+    'khongPhanU_tenPhan_1': '32c. Phân NPK bón thúc - Tên (TRƯỚC)',
+    'khongPhanU_kg_1': '32c. Phân NPK bón thúc - Kg (TRƯỚC)',
+    'khongPhanU_tenPhan_2': '32c. Phân khác - Tên (TRƯỚC)',
+    'khongPhanU_kg_2': '32c. Phân khác - Kg (TRƯỚC)',
+    'khongPhanU_tenPhanTien_0': '32d. Phân NPK bón lót - Tiền (TRƯỚC)',
+    'khongPhanU_tien_0': '32d. Phân NPK bón lót - Số tiền (TRƯỚC)',
+    'khongPhanU_tenPhanTien_1': '32d. Phân NPK bón thúc - Tiền (TRƯỚC)',
+    'khongPhanU_tien_1': '32d. Phân NPK bón thúc - Số tiền (TRƯỚC)',
+    'khongPhanU_tenPhanTien_2': '32d. Phân khác - Tiền (TRƯỚC)',
+    'khongPhanU_tien_2': '32d. Phân khác - Số tiền (TRƯỚC)',
+    '32ekhong': '32e. Số lần phun thuốc trừ sâu hóa học (TRƯỚC)',
+    '32fkhong': '32f. Số lượng thuốc sâu hóa học được sử dụng (bình) (TRƯỚC)',
+    '32gkhong': '32g. Số lượng thuốc cỏ được sử dụng (bình) (TRƯỚC)',
+    '32hkhong': '32h. Số tiền đã chi cho thuốc trừ sâu hóa học (đồng/sào) (TRƯỚC)',
+    '32ikhong': '32i. Số tiền đã chi cho thuốc trừ cỏ hóa học (đồng/sào) (TRƯỚC)',
+    '32jkhong': '32j. Số tiền công lao động (số công/sào x số sào x đơn giá ngày công TB) (1 công = 8 giờ) (TRƯỚC)',
+    '32kkhong': '32k. Số tiền mua hạt giống (đồng/sào) (TRƯỚC)',
+    '32lkhong': '32l. Cây trồng có bị sâu bệnh tấn công không? (TRƯỚC)',
+    '32mtruoc': '32m. Năng suất thu hoạch (kg/sào) (TRƯỚC)',
+    '32ntruoc': '32n. Giá bán (đồng/kg) (TRƯỚC)',
+    '32otruoc': '32o. Thành tiền (đồng) (TRƯỚC)',
+    // SAU KHI BÓN PHÂN Ủ (SAU)
+    'dienTichSauPhanU2': '32b. Diện tích (sào) (SAU)',
+    'sauPhanU_tenPhan2_0': '32c. Phân NPK bón lót - Tên (SAU)',
+    'sauPhanU_kg2_0': '32c. Phân NPK bón lót - Kg (SAU)',
+    'sauPhanU_tenPhan2_1': '32c. Phân NPK bón thúc - Tên (SAU)',
+    'sauPhanU_kg2_1': '32c. Phân NPK bón thúc - Kg (SAU)',
+    'sauPhanU_tenPhan2_2': '32c. Phân ủ từ lớp đệm lót - Tên (SAU)',
+    'sauPhanU_kg2_2': '32c. Phân ủ từ lớp đệm lót - Kg (SAU)',
+    'sauPhanU_tenPhan2_3': '32c. Phân khác - Tên (SAU)',
+    'sauPhanU_kg2_3': '32c. Phân khác - Kg (SAU)',
+    'sauPhanU_tenPhanTien2_0': '32d. Phân NPK bón lót - Tiền (SAU)',
+    'sauPhanU_tien2_0': '32d. Phân NPK bón lót - Số tiền (SAU)',
+    'sauPhanU_tenPhanTien2_1': '32d. Phân NPK bón thúc - Tiền (SAU)',
+    'sauPhanU_tien2_1': '32d. Phân NPK bón thúc - Số tiền (SAU)',
+    'sauPhanU_tenPhanTien2_2': '32d. Phân ủ từ lớp đệm lót - Tiền (SAU)',
+    'sauPhanU_tien2_2': '32d. Phân ủ từ lớp đệm lót - Số tiền (SAU)',
+    'sauPhanU_tenPhanTien2_3': '32d. Phân khác - Tiền (SAU)',
+    'sauPhanU_tien2_3': '32d. Phân khác - Số tiền (SAU)',
+    '32esau': '32e. Số lần phun thuốc trừ sâu hóa học (SAU)',
+    '32fsau': '32f. Số lượng thuốc sâu hóa học được sử dụng (bình) (SAU)',
+    '32gsau': '32g. Số lượng thuốc cỏ được sử dụng (bình) (SAU)',
+    '32hsao': '32h. Số tiền đã chi cho thuốc trừ sâu hóa học (đồng/sào) (SAU)',
+    '32isau': '32i. Số tiền đã chi cho thuốc trừ cỏ hóa học (đồng/sào) (SAU)',
+    '32jsau': '32j. Số tiền công lao động (số công/sào x số sào x đơn giá ngày công TB) (1 công = 8 giờ) (SAU)',
+    '32ksau': '32k. Số tiền mua hạt giống (đồng/sào) (SAU)',
+    '32lsau': '32l. Cây trồng có bị sâu bệnh tấn công không? (SAU)',
+    '32msau': '32m. Năng suất thu hoạch (kg/sào) (SAU)',
+    '32nsau': '32n. Giá bán (đồng/kg) (SAU)',
+    '32osau': '32o. Thành tiền (đồng) (SAU)',
+    // Section D (danGa) - Poultry comparison table
+    // SAU KHI (TRƯỚC KHI đệm lót)
+    'soLuongGaSauDemLot': '35a. Số lượng gà trong đợt nuôi (con) (TRƯỚC)',
+    'sauDemLot_tenThucAn_0': '35b. Sâu canxi/trùn quế - Tên (TRƯỚC)',
+    'sauDemLot_kg_0': '35b. Sâu canxi/trùn quế - Kg (TRƯỚC)',
+    'sauDemLot_tenThucAn_1': '35b. Thức ăn tinh (ngô, gạo) - Tên (TRƯỚC)',
+    'sauDemLot_kg_1': '35b. Thức ăn tinh (ngô, gạo) - Kg (TRƯỚC)',
+    'sauDemLot_tenThucAn_2': '35b. Thức ăn tổng hợp/viên - Tên (TRƯỚC)',
+    'sauDemLot_kg_2': '35b. Thức ăn tổng hợp/viên - Kg (TRƯỚC)',
+    'sauDemLot_tenThucAn_3': '35b. Thức ăn xanh - Tên (TRƯỚC)',
+    'sauDemLot_kg_3': '35b. Thức ăn xanh - Kg (TRƯỚC)',
+    'sauDemLot_tenThucAnTien_0': '35c. Sâu canxi/trùn quế - Tiền (TRƯỚC)',
+    'sauDemLot_tien_0': '35c. Sâu canxi/trùn quế - Số tiền (TRƯỚC)',
+    'sauDemLot_tenThucAnTien_1': '35c. Thức ăn tinh (ngô, gạo) - Tiền (TRƯỚC)',
+    'sauDemLot_tien_1': '35c. Thức ăn tinh (ngô, gạo) - Số tiền (TRƯỚC)',
+    'sauDemLot_tenThucAnTien_2': '35c. Thức ăn tổng hợp/viên - Tiền (TRƯỚC)',
+    'sauDemLot_tien_2': '35c. Thức ăn tổng hợp/viên - Số tiền (TRƯỚC)',
+    'sauDemLot_tenThucAnTien_3': '35c. Thức ăn xanh - Tiền (TRƯỚC)',
+    'sauDemLot_tien_3': '35c. Thức ăn xanh - Số tiền (TRƯỚC)',
+    'tienThuoc': '35d. Số tiền đã chi cho mua thuốc thú y (đồng) (TRƯỚC)',
+    'gioDonDep': '35e. Số giờ dành cho việc dọn dẹp chuồng gà trong 1 tuần (TRƯỚC)',
+    'gaBiBenh': '35f. Đàn gà có mắc bệnh gì không (TRƯỚC)',
+    'danhGiaSucKhoe': '35g. Đánh giá sức khỏe đàn gà (1= cực kỳ tệ, 10= rất tốt) (TRƯỚC)',
+    'soNgayDatTrongLuong': '35h. Số ngày để đạt được trọng lượng mong muốn? (TRƯỚC)',
+    'trongLuongXuatChuong': '35i. Trọng lượng trung bình khi xuất chuồng (kg/con) (TRƯỚC)',
+    'tongThoiGianNuoi': '35j. Tổng thời gian nuôi đến khi xuất chuồng (tháng) (TRƯỚC)',
+    'gaPhatTrienNhanhHon': '35k. Đàn gà có phát triển nhanh hơn và/hoặc lớn hơn (TRƯỚC)',
+    'giaBan': '35l. Giá bán (đồng/kg) (TRƯỚC)',
+    'tongThuNhap': '35m. Tổng thu nhập (TRƯỚC)',
+    'danhGiaMui': '35n. Đánh giá mùi từ chuồng gà (0= không có mùi, 10= cực kỳ khó chịu) (TRƯỚC)',
+    // TRƯỚC KHI đệm lót (SAU)
+    'soLuongGaTruocDemLot': '35a. Số lượng gà trong đợt nuôi (con) (SAU)',
+    'truocDemLot_tenThucAn_0': '35b. Thức ăn tinh (ngô, gạo) - Tên (SAU)',
+    'truocDemLot_kg_0': '35b. Thức ăn tinh (ngô, gạo) - Kg (SAU)',
+    'truocDemLot_tenThucAn_1': '35b. Thức ăn tổng hợp/viên - Tên (SAU)',
+    'truocDemLot_kg_1': '35b. Thức ăn tổng hợp/viên - Kg (SAU)',
+    'truocDemLot_tenThucAn_2': '35b. Thức ăn xanh - Tên (SAU)',
+    'truocDemLot_kg_2': '35b. Thức ăn xanh - Kg (SAU)',
+    'truocDemLot_tenThucAnTien_0': '35c. Thức ăn tinh (ngô, gạo) - Tiền (SAU)',
+    'truocDemLot_tien_0': '35c. Thức ăn tinh (ngô, gạo) - Số tiền (SAU)',
+    'truocDemLot_tenThucAnTien_1': '35c. Thức ăn tổng hợp/viên - Tiền (SAU)',
+    'truocDemLot_tien_1': '35c. Thức ăn tổng hợp/viên - Số tiền (SAU)',
+    'truocDemLot_tenThucAnTien_2': '35c. Thức ăn xanh - Tiền (SAU)',
+    'truocDemLot_tien_2': '35c. Thức ăn xanh - Số tiền (SAU)',
+    'tienThuoc2': '35d. Số tiền đã chi cho mua thuốc thú y (đồng) (SAU)',
+    'gioDonDep2': '35e. Số giờ dành cho việc dọn dẹp chuồng gà trong 1 tuần (SAU)',
+    'gaBiBenh2': '35f. Đàn gà có mắc bệnh gì không (SAU)',
+    'danhGiaSucKhoe2': '35g. Đánh giá sức khỏe đàn gà (1= cực kỳ tệ, 10= rất tốt) (SAU)',
+    'soNgayDatTrongLuong2': '35h. Số ngày để đạt được trọng lượng mong muốn? (SAU)',
+    'trongLuongXuatChuong2': '35i. Trọng lượng trung bình khi xuất chuồng (kg/con) (SAU)',
+    'tongThoiGianNuoi2': '35j. Tổng thời gian nuôi đến khi xuất chuồng (tháng) (SAU)',
+    'gaPhatTrienNhanhHon2': '35k. Đàn gà có phát triển nhanh hơn và/hoặc lớn hơn (SAU)',
+    'giaBan2': '35l. Giá bán (đồng/kg) (SAU)',
+    'tongThuNhap2': '35m. Tổng thu nhập (SAU)',
+    'danhGiaMui2': '35n. Đánh giá mùi từ chuồng gà (0= không có mùi, 10= cực kỳ khó chịu) (SAU)',
+  },
+  
+  // Nuôi trùn quế
+  'nuoi-trun-que': {
+    // Section A
+    'ngayBatDau': 'Ngày bắt đầu',
+    'soLuaTrunQue': 'Số lứa trùn quế đã nuôi',
+    'soNgayMotLua': 'Số ngày để nuôi một lứa trùn quế (bắt đầu thả sinh khối – thu hoạch, TB 60 ngày)',
+    'tongChiPhiXayDung': 'Tổng chi phí xây dựng khu nuôi trùn quế (bao gồm vật liệu và nhân công)',
+    'chiPhiMuaGiong': 'Chi phí mua giống (sinh khối trùn quế)',
+    'chiPhiDauVaoKhac': 'Chi phí đầu vào/vật liệu khác (cho Trùn quế)',
+    'cachSuDungTrunQue': 'Cách sử dụng trùn quế',
+    'tenLoaiVatNuoi': 'Tên loài vật nuôi được nuôi bằng trùn quế',
+    'soLuongConVatNuoi': 'Số lượng con vật nuôi/lứa',
+    'soLuaVatNuoi': 'Số lứa (được cho ăn trùn quế)',
+    'cachSuDungPhanTrunQue': 'Cách sử dụng phân trùn quế',
+    'tenCayTrongPhanTrunQue': 'Nêu tên những loài cây trồng được bón bằng phân trùn quế (1 ô ghi 1 loại cây trồng)',
+    'tongSoVuTrongPhanTrunQue': 'Tổng số vụ trồng (sử dụng phân bón trùn quế/vụ; số vụ/năm x số năm)',
+    'dienTichCayTrongPhanTrunQue': 'Diện tích cây trồng được bón phân trùn quế (số sào/vụ x số vụ/năm)',
+    // Section B
+    'loaiPhuPhamThucAn': 'Loại phụ phẩm nông nghiệp làm thức ăn cho trùn quế',
+    'khoiLuongPhuPhamTB': 'Khối lượng phụ phẩm nông nghiệp thải trung bình mỗi ngày (kg/con/ngày)',
+    'soLuongVatNuoi': 'Số lượng từng loại vật nuôi',
+    'soNgayLuaNuoi': 'Số ngày/lứa nuôi',
+    'soLuaNuoi': 'Số lứa nuôi',
+    'tongKhoiLuongPhuPhamSX': 'Tổng khối lượng phụ phẩm nông nghiệp sản xuất ra được (kg)',
+    'khoiLuongPhuPhamDungChoTrunQue': 'Khối lượng phụ phẩm nông nghiệp dùng cho trùn quế (kg/ngày)',
+    'tyLePhuPhamDungChoTrunQue': 'Tỷ lệ % phụ phẩm nông nghiệp dùng cho trùn quế (19g/19f)',
+    'dienTichNuoiTrunQue': 'Diện tích được sử dụng để nuôi trùn quế (m2/lứa)',
+    'chiPhiMuaGiongB': 'Chi phí mua giống (sinh khối trùn quế, tính cho 1m2/lứa)',
+    'soNgayDeNuoiMotLuaB': 'Số ngày để nuôi một lứa trùn quế (ngày)',
+    'khoiLuongTrunQueThuDuoc': 'Khối lượng trùn quế thu được (kg/lứa)',
+    'khoiLuongPhanTrunQueThuDuoc': 'Khối lượng phân trùn quế thu được (kg/lứa)',
+    'congLaoDong': 'Công lao động (số giờ/ngày)',
+    'gioQuetDonPhanChuongTruoc': 'Khi chưa nuôi trùn quế, trong 1 ngày dành bao nhiêu giờ để quét dọn phân chuồng',
+    'gioDonPhanChuongSau': 'Khi nuôi trùn quế, 1 ngày dành bao nhiêu giờ để dọn dẹp phân chuồng dùng cho trùn quế',
+    // Section C & D will have similar BEFORE/AFTER pattern as other forms
+    '20atenCayTrong': '20a. Nêu tên loại cây trồng được bón phân trùn quế',
+  },
+  
+  // Ủ phân hữu cơ tại ruộng
+  'u-phan-huu-co-tai-ruong': {
+    // Section A
+    'tenPhuPham': 'Tên phụ phẩm cây trồng (tận dụng ủ phân từ trước đến nay)',
+    'thangNamBatDau': 'Tháng/năm bắt đầu tiến hành ủ phân',
+    'tenPhuPhamTanDung': 'Tên phụ phẩm cây trồng tận dụng để ủ phân',
+    'khoiLuongPhuPhamTrenRuong': 'Khối lượng phụ phẩm cây trồng có trên đồng ruộng (kg/sào x số sào)',
+    'khoiLuongPhuPhamThuGom': 'Khối lượng phụ phẩm cây trồng thu gom được (kg/sào x số sào)',
+    'tongKhoiLuongPhuPhamSuDung': 'Tổng khối lượng phụ phẩm cây trồng được sử dụng để ủ phân (kg/sào x số sào)',
+    'khoiLuongPhanHuuCoThuDuoc': 'Khối lượng phân hữu cơ thu được sau khi ủ (kg/sào x số sào)',
+    'nhungLoaiCayDuocBonPhan': 'Những loại cây trồng được bón phân ủ hữu cơ (1 ô ghi 1 loại cây trồng)',
+    'tongSoMuaVuBonPhan': 'Tổng số mùa vụ đã được bón phân ủ hữu cơ (theo từng loại cây trồng)',
+    'dienTichCayDuocBonPhan': 'Diện tích cây trồng được bón phân ủ hữu cơ (số sào/vụ)',
+    'suDungMayCatNho': 'Sử dụng máy để băm/cắt nhỏ phụ phẩm cây trồng',
+    'nhienLieuSuDung': 'Lượng nhiên liệu đã sử dụng (dầu diesel/ hoặc điện)',
+    'chiPhiVatLieuKhac': 'Chi phí vật liệu/đầu vào khác (nhân công, ống thông khí, bạt, chế phẩm, rỉ mật…) (đồng)',
+    // Section B
+    'loaiCayTrongTruoc': 'Loại cây trồng',
+    'coTrongTruoc': 'Có trồng không?',
+    'dienTichDatTruoc': 'Diện tích đất trồng cây (sào/vụ x số vụ/năm)',
+    'tenPhuPhamTruoc': 'Tên phụ phẩm cây trồng (ghi tên từng loại)',
+    'khoiLuongPhuPhamTruoc': 'Khối lượng phụ phẩm cây trồng (kg/sào/vụ x số sào)',
+    'khoiLuongPhuPhamThuGomTruoc': 'Khối lượng phụ phẩm cây trồng được thu gom (kg/sào/vụ x số sào)',
+    // Section C
+    '11atenCayTrong': '11a. Tên cây trồng được bón phân ủ hữu cơ',
+  },
+  
+  // Xử lý gốc rạ che phẩm
+  'xu-ly-goc-ra-che-pham': {
+    // Section A
+    'thangNamBatDauApDung': 'Tháng/năm bắt đầu áp dụng xử lý gốc rạ bằng chế phẩm sinh học',
+    'soVuXuLyGocRa': 'Số vụ xử lý gốc rạ bằng chế phẩm (số vụ/năm x số năm)',
+    'thangNamBatDauVuGanDay': 'Tháng/năm bắt đầu vụ gần đây',
+    'dienTichGocRaSauThuHoach': 'Diện tích ruộng có gốc rạ sau thu hoạch được xử lý bằng chế phẩm sinh học (sào/vụ)',
+    'chePhamSinhHocSuDung': 'Các loại chế phẩm sinh học được sử dụng',
+    'tienMuaChePham': 'Số tiền chi mua chế phẩm sinh học (đồng/sào)',
+    'tienNhanCongPhun': 'Số tiền chi nhân công phun chế phẩm sinh học (đồng/sào)',
+    'nangSuatLuaSauXuLy': 'Năng suất lúa của vụ sau khi xử lý gốc rạ bằng chế phẩm (kg/sào)',
+    // Section B
+    '16atenCayTrong': '16a. Tên cây trồng được xử lý gốc rạ bằng chế phẩm vi sinh',
+  },
+};
+
 // Section name mapping
 export const sectionNameMap = {
   'sectionA': 'Section A',
@@ -263,8 +726,9 @@ export const flattenDataForExcel = (data) => {
  * Apply beautiful styling to Excel worksheet
  * @param {Object} worksheet - XLSX worksheet object
  * @param {Array} sheetData - Array of row objects
+ * @param {number} headerRows - Number of header rows (default 1)
  */
-export const applyExcelStyling = (worksheet, sheetData) => {
+export const applyExcelStyling = (worksheet, sheetData, headerRows = 1) => {
   if (!sheetData || sheetData.length === 0) return;
 
   const range = worksheet['!ref'];
@@ -278,7 +742,7 @@ export const applyExcelStyling = (worksheet, sheetData) => {
   // Get the number of columns
   const headers = Object.keys(sheetData[0]);
   const numCols = headers.length;
-  const numRows = sheetData.length + 1; // +1 for header row
+  const numRows = sheetData.length + headerRows; // +headerRows for header row(s)
 
   // Helper to convert column number to letter (0 = A, 1 = B, etc.)
   const colToLetter = (num) => {
@@ -290,7 +754,7 @@ export const applyExcelStyling = (worksheet, sheetData) => {
     return letter;
   };
 
-  // Style for header row (row 1)
+  // Style for header row(s)
   const headerStyle = {
     font: { 
       name: 'Arial', 
@@ -350,20 +814,23 @@ export const applyExcelStyling = (worksheet, sheetData) => {
         worksheet[cellRef] = { t: 's', v: '' };
       }
 
-      if (row === 1) {
-        // Header row
+      if (row <= headerRows) {
+        // Header row(s)
         worksheet[cellRef].s = headerStyle;
       } else {
         // Data rows - alternating colors
-        worksheet[cellRef].s = (row % 2 === 0) ? dataStyleEven : dataStyleOdd;
+        const dataRowIndex = row - headerRows;
+        worksheet[cellRef].s = (dataRowIndex % 2 === 1) ? dataStyleEven : dataStyleOdd;
       }
     }
   }
 
   // Set row heights
   if (!worksheet['!rows']) worksheet['!rows'] = [];
-  worksheet['!rows'][0] = { hpt: 30 }; // Header row height
-  for (let i = 1; i < numRows; i++) {
+  for (let i = 0; i < headerRows; i++) {
+    worksheet['!rows'][i] = { hpt: 30 }; // Header row height
+  }
+  for (let i = headerRows; i < numRows; i++) {
     worksheet['!rows'][i] = { hpt: 20 }; // Data row height
   }
 };
@@ -416,45 +883,94 @@ export const extractGeneralInfo = (record) => {
 /**
  * Extract common form questions (câu 40-70) from data
  * @param {Object} data - The submission data object
- * @returns {Object} Common questions with readable labels
+ * @returns {Object} Common questions with readable labels in correct order
  */
 export const extractCommonFormData = (data) => {
   const commonData = {};
   
   if (!data) return commonData;
   
-  // List of common question field names (actual field names used in CommonForm)
-  const commonFieldNames = [
-    // Câu 40-44
-    'xulyPhuPhamTruoc', 'xulyPhuPhamSau', 'biogasGasPercent', 'biogasPhanPercent', 'biogasNgayXaKhi',
-    'coTrongLua', 'xulyGocRaTruoc', 'xulyGocRaSau', 'coNuoiDongVat',
-    'xulyPhanTruoc', 'xulyPhanSau', 'biogasPhanGasPercent', 'biogasPhanPhanPercent', 'biogasPhanNgayXaKhi',
-    
-    // Câu 45-50
-    'kyThuatDeHayKho', 'ykienKyThuat_0', 'ykienKyThuat_1', 'ykienKyThuat_2', 'ykienKyThuat_3', 'ykienKyThuat_4',
-    
-    // Câu 54-56
-    'suKienThamGia', 'loiIch1', 'loiIch2', 'lyDoKhongThamGia',
-    
-    // Câu 60-61
-    'soNguoiChiaSeKyThuat', 'duDinhChiaSe',
-    
-    // Câu 64, 66-70
-    'tyLeHoApDung', 'bietDanhHieuXanh', 'muonThamGiaXanh', 'thuNhap2025', 'nguonThuNhap', 'trinhDoHocVan',
-  ];
+  // Câu 40: Xử lý phụ phẩm
+  if (data['xulyPhuPhamTruoc'] !== undefined) {
+    commonData['40. Xử lý phụ phẩm - Trước khi tham gia mô hình'] = data['xulyPhuPhamTruoc'] || '';
+  }
+  if (data['xulyPhuPhamSau'] !== undefined) {
+    commonData['40. Xử lý phụ phẩm - Sau khi tham gia mô hình'] = data['xulyPhuPhamSau'] || '';
+  }
+  if (data['biogasGasPercent'] !== undefined) {
+    commonData['40. Biogas - Ước lượng % lượng gas dùng nấu ăn/sưởi ấm'] = data['biogasGasPercent'] || '';
+  }
+  if (data['biogasPhanPercent'] !== undefined) {
+    commonData['40. Biogas - Ước tính % phân vật nuôi cho vào hố Biogas/Tổng phân chuồng thu gom'] = data['biogasPhanPercent'] || '';
+  }
+  if (data['biogasNgayXaKhi'] !== undefined) {
+    commonData['40. Biogas - Sau bao nhiêu ngày phải xử lý xả khí gas 1 lần'] = data['biogasNgayXaKhi'] || '';
+  }
   
-  // Extract basic common fields
-  commonFieldNames.forEach(fieldName => {
-    if (data[fieldName] !== undefined) {
-      const label = fieldLabelMap[fieldName] || fieldName;
-      // Handle arrays and objects
-      if (typeof data[fieldName] === 'object' && data[fieldName] !== null) {
-        commonData[label] = JSON.stringify(data[fieldName]);
-      } else {
-        commonData[label] = data[fieldName] || '';
-      }
-    }
-  });
+  // Câu 41
+  if (data['coTrongLua'] !== undefined) {
+    commonData['41. Gia đình bạn có trồng Lúa không?'] = data['coTrongLua'] || '';
+  }
+  
+  // Câu 42: Xử lý gốc rạ
+  if (data['xulyGocRaTruoc'] !== undefined) {
+    commonData['42. Xử lý gốc rạ - Trước khi tham gia mô hình'] = data['xulyGocRaTruoc'] || '';
+  }
+  if (data['xulyGocRaSau'] !== undefined) {
+    commonData['42. Xử lý gốc rạ - Sau khi tham gia mô hình'] = data['xulyGocRaSau'] || '';
+  }
+  
+  // Câu 43
+  if (data['coNuoiDongVat'] !== undefined) {
+    commonData['43. Gia đình bạn có nuôi động vật nào không?'] = data['coNuoiDongVat'] || '';
+  }
+  
+  // Câu 44: Xử lý phân gia súc
+  if (data['xulyPhanTruoc'] !== undefined) {
+    commonData['44. Xử lý phân gia súc - Trước khi tham gia mô hình'] = data['xulyPhanTruoc'] || '';
+  }
+  if (data['xulyPhanSau'] !== undefined) {
+    commonData['44. Xử lý phân gia súc - Sau khi tham gia mô hình'] = data['xulyPhanSau'] || '';
+  }
+  if (data['biogasPhanGasPercent'] !== undefined) {
+    commonData['44. Hầm Biogas - Ước lượng % lượng gas dùng nấu ăn/sưởi ấm'] = data['biogasPhanGasPercent'] || '';
+  }
+  if (data['biogasPhanPhanPercent'] !== undefined) {
+    commonData['44. Hầm Biogas - Ước tính % phân vật nuôi cho vào hố Biogas/Tổng phân chuồng thu gom'] = data['biogasPhanPhanPercent'] || '';
+  }
+  if (data['biogasPhanNgayXaKhi'] !== undefined) {
+    commonData['44. Hầm Biogas - Sau bao nhiêu ngày phải xử lý xả khí gas 1 lần'] = data['biogasPhanNgayXaKhi'] || '';
+  }
+  
+  // Câu 45
+  if (data['kyThuatDeHayKho'] !== undefined) {
+    commonData['45. Kỹ thuật đó thực hiện dễ hay khó (1 cực kỳ dễ, 10 cực kỳ khó)'] = data['kyThuatDeHayKho'] || '';
+  }
+  
+  // Câu 46
+  if (data['ykienKyThuat_0'] !== undefined) {
+    commonData['46. Thực hiện đúng kỹ thuật sẽ giúp tăng lợi nhuận'] = data['ykienKyThuat_0'] || '';
+  }
+  
+  // Câu 47
+  if (data['ykienKyThuat_1'] !== undefined) {
+    commonData['47. Thực hiện đúng kỹ thuật sẽ giúp giảm chi phí'] = data['ykienKyThuat_1'] || '';
+  }
+  
+  // Câu 48
+  if (data['ykienKyThuat_2'] !== undefined) {
+    commonData['48. Thực hiện đúng kỹ thuật sẽ giúp giảm khối lượng công việc'] = data['ykienKyThuat_2'] || '';
+  }
+  
+  // Câu 49
+  if (data['ykienKyThuat_3'] !== undefined) {
+    commonData['49. Thực hiện đúng kỹ thuật sẽ tốt cho môi trường'] = data['ykienKyThuat_3'] || '';
+  }
+  
+  // Câu 50
+  if (data['ykienKyThuat_4'] !== undefined) {
+    commonData['50. Thực hiện đúng kỹ thuật sẽ giúp cải thiện chất lượng đất'] = data['ykienKyThuat_4'] || '';
+  }
   
   // Câu 51-53: Hoạt động liên quan xử lý chất thải
   const hoatDongLabels = [
@@ -479,6 +995,25 @@ export const extractCommonFormData = (data) => {
     if (data[`hoatDong_${idx}_anhHuong`] !== undefined) {
       commonData[`53. ${hoatDongName} - Ảnh hưởng đến quyết định áp dụng kỹ thuật`] = data[`hoatDong_${idx}_anhHuong`] || '';
     }
+  }
+  
+  // Câu 54
+  if (data['suKienThamGia'] !== undefined) {
+    const value = data['suKienThamGia'];
+    commonData['54. Bạn sẽ tham gia sự kiện nào?'] = (typeof value === 'object' && value !== null) ? JSON.stringify(value) : (value || '');
+  }
+  
+  // Câu 55
+  if (data['loiIch1'] !== undefined) {
+    commonData['55. Lợi ích quan trọng nhất của các sự kiện đã tham dự'] = data['loiIch1'] || '';
+  }
+  if (data['loiIch2'] !== undefined) {
+    commonData['55. Lợi ích quan trọng thứ hai của các sự kiện đã tham dự'] = data['loiIch2'] || '';
+  }
+  
+  // Câu 56
+  if (data['lyDoKhongThamGia'] !== undefined) {
+    commonData['56. Nếu không tham gia hoạt động nào, hãy nêu lý do'] = data['lyDoKhongThamGia'] || '';
   }
   
   // Câu 57-58: Truyền thông
@@ -523,6 +1058,16 @@ export const extractCommonFormData = (data) => {
     }
   }
   
+  // Câu 60
+  if (data['soNguoiChiaSeKyThuat'] !== undefined) {
+    commonData['60. Bạn đã từng chia sẻ kỹ thuật này với bao nhiêu người? (0=chưa từng chia sẻ)'] = data['soNguoiChiaSeKyThuat'] || '';
+  }
+  
+  // Câu 61
+  if (data['duDinhChiaSe'] !== undefined) {
+    commonData['61. Trong tương lai, bạn có dự định chia sẻ những kỹ thuật này với hàng xóm, bạn bè và người thân không?'] = data['duDinhChiaSe'] || '';
+  }
+  
   // Câu 62: Mặt hấp dẫn
   const kyThuatLabels = [
     "Lên men phụ phẩm cây trồng làm thức ăn chăn nuôi",
@@ -564,6 +1109,11 @@ export const extractCommonFormData = (data) => {
     }
   }
   
+  // Câu 64
+  if (data['tyLeHoApDung'] !== undefined) {
+    commonData['64. Theo bạn, hiện nay tỷ lệ hộ gia đình trong thôn áp dụng kỹ thuật như bạn là bao nhiêu?'] = data['tyLeHoApDung'] || '';
+  }
+  
   // Câu 65: Chấp thuận
   const phuongPhapLabels = [
     "Lên men phụ phẩm cây trồng làm thức ăn chăn nuôi",
@@ -581,41 +1131,97 @@ export const extractCommonFormData = (data) => {
     }
   }
   
+  // Câu 66
+  if (data['bietDanhHieuXanh'] !== undefined) {
+    commonData['66. Bạn có biết đến tên gọi/ danh hiệu "Người gìn giữ tương lai xanh" không?'] = data['bietDanhHieuXanh'] || '';
+  }
+  
+  // Câu 67
+  if (data['muonThamGiaXanh'] !== undefined) {
+    commonData['67. Bạn có muốn tham gia nhóm "Người gìn giữ tương lai xanh" không?'] = data['muonThamGiaXanh'] || '';
+  }
+  
+  // Câu 68
+  if (data['thuNhap2025'] !== undefined) {
+    commonData['68. Ước tính thu nhập trung bình hàng tháng trong năm 2025 của hộ gia đình (đồng)'] = data['thuNhap2025'] || '';
+  }
+  
+  // Câu 69
+  if (data['nguonThuNhap'] !== undefined) {
+    const value = data['nguonThuNhap'];
+    commonData['69. Nguồn thu nhập của hộ gia đình bạn từ đâu?'] = (typeof value === 'object' && value !== null) ? JSON.stringify(value) : (value || '');
+  }
+  
+  // Câu 70
+  if (data['trinhDoHocVan'] !== undefined) {
+    commonData['70. Trình độ học vấn của bạn?'] = data['trinhDoHocVan'] || '';
+  }
+  
   return commonData;
 };
 
 /**
  * Extract technique-specific data (sections A, B, C, D) from data
  * @param {Object} data - The submission data object
- * @returns {Object} Technique data with readable labels
+ * @param {string} techniqueType - The technique type slug
+ * @returns {Object} Technique data with readable labels in correct order
  */
-export const extractTechniqueData = (data) => {
+export const extractTechniqueData = (data, techniqueType) => {
   const techniqueData = {};
   
   if (!data) return techniqueData;
   
-  // Extract only section data (A, B, C, D)
+  // Get field order from techniqueFieldLabels for this technique
+  const fieldLabelsForTechnique = techniqueFieldLabels[techniqueType] || {};
+  const orderedFieldKeys = Object.keys(fieldLabelsForTechnique);
+  
+  // Extract only section data (A, B, C, D) in order
   const sections = ['sectionA', 'sectionB', 'sectionC', 'sectionD'];
   
   sections.forEach(sectionKey => {
     if (data[sectionKey] && Array.isArray(data[sectionKey])) {
       data[sectionKey].forEach((item, index) => {
         if (typeof item === 'object' && item !== null) {
+          // First, process fields in the order they appear in techniqueFieldLabels
+          orderedFieldKeys.forEach(fieldKey => {
+            if (item.hasOwnProperty(fieldKey)) {
+              const arrayKey = `${sectionKey}[${index}].${fieldKey}`;
+              const subValue = item[fieldKey];
+              const customLabel = fieldLabelsForTechnique[fieldKey];
+              const label = customLabel || createFieldLabel(arrayKey);
+              
+              if (typeof subValue === 'object' && subValue !== null && !Array.isArray(subValue)) {
+                // Nested object
+                Object.keys(subValue).forEach(subSubKey => {
+                  const nestedLabel = createFieldLabel(`${arrayKey}.${subSubKey}`);
+                  techniqueData[nestedLabel] = subValue[subSubKey] || '';
+                });
+              } else if (Array.isArray(subValue)) {
+                techniqueData[label] = JSON.stringify(subValue);
+              } else {
+                techniqueData[label] = subValue || '';
+              }
+            }
+          });
+          
+          // Then, process any remaining fields not in the ordered list
           Object.keys(item).forEach(subKey => {
-            const arrayKey = `${sectionKey}[${index}].${subKey}`;
-            const subValue = item[subKey];
-            const label = createFieldLabel(arrayKey);
-            
-            if (typeof subValue === 'object' && subValue !== null && !Array.isArray(subValue)) {
-              // Nested object
-              Object.keys(subValue).forEach(subSubKey => {
-                const nestedLabel = createFieldLabel(`${arrayKey}.${subSubKey}`);
-                techniqueData[nestedLabel] = subValue[subSubKey] || '';
-              });
-            } else if (Array.isArray(subValue)) {
-              techniqueData[label] = JSON.stringify(subValue);
-            } else {
-              techniqueData[label] = subValue || '';
+            if (!orderedFieldKeys.includes(subKey)) {
+              const arrayKey = `${sectionKey}[${index}].${subKey}`;
+              const subValue = item[subKey];
+              const label = createFieldLabel(arrayKey);
+              
+              if (typeof subValue === 'object' && subValue !== null && !Array.isArray(subValue)) {
+                // Nested object
+                Object.keys(subValue).forEach(subSubKey => {
+                  const nestedLabel = createFieldLabel(`${arrayKey}.${subSubKey}`);
+                  techniqueData[nestedLabel] = subValue[subSubKey] || '';
+                });
+              } else if (Array.isArray(subValue)) {
+                techniqueData[label] = JSON.stringify(subValue);
+              } else {
+                techniqueData[label] = subValue || '';
+              }
             }
           });
         }

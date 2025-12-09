@@ -11,6 +11,7 @@ export {
   techniqueNameMap, 
   fieldLabelMap, 
   sectionNameMap,
+  techniqueFieldLabels,
   createFieldLabel,
   flattenDataForExcel,
   calculateColumnWidths,
