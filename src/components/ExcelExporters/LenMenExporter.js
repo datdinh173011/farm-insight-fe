@@ -21,10 +21,10 @@ export const exportLenMenSheet = (wb, records, techType) => {
   const fieldLabels = techniqueFieldLabels[techType] || {};
   
   // Build single header row
-  const headerRow = ['STT', 'Ngày gửi'];
+  const headerRow = [];
   
   // Add General Info headers
-  const generalHeaders = ['Họ tên', 'Năm sinh', 'Số điện thoại', 'Thôn', 'Xã', 'Tỉnh'];
+  const generalHeaders = ['STT', 'Ngày gửi', 'Họ tên', 'Năm sinh', 'Số điện thoại', 'Thôn', 'Xã', 'Tỉnh'];
   headerRow.push(...generalHeaders);
   
   // Get technique and common headers from first record
@@ -145,46 +145,87 @@ export const exportLenMenSheet = (wb, records, techType) => {
   // Build top-level header row with grouped columns
   const totalCols = headerRow.length;
   const topHeader = new Array(totalCols).fill('');
-  
-  // Track column positions
+
+  // Track column positions based on actual headerRow structure:
+  // [8 general] + [techniqueHeaders (A + B)] + [59 section C] + [commonHeaders]
   let colIndex = 0;
-  
-  // Meta columns: STT, Ngày gửi
-  const metaStart = colIndex;
-  topHeader[colIndex++] = 'Thông tin cơ bản';
-  topHeader[colIndex++] = '';
-  const metaEnd = colIndex - 1;
-  
-  // General Info columns: Họ tên, Năm sinh, SĐT, Thôn, Xã, Tỉnh
+
+  // General Info columns: STT, Ngày gửi, Họ tên, Năm sinh, SĐT, Thôn, Xã, Tỉnh
   const genStart = colIndex;
   topHeader[colIndex++] = 'Thông tin người tham gia';
   for (let i = 1; i < generalHeaders.length; i++) {
     topHeader[colIndex++] = '';
   }
   const genEnd = colIndex - 1;
+
+  // Section A & B: techniqueHeaders columns
+  // Separate Section A (3a-4i) from Section B (7a-7e) based on field names
+  const sectionAStart = colIndex;
+  const sectionAFields = [
+    'tenPhuPhamCayTrong','thangNamDau','dienTichTrong','soLanMen','thangNamGanNhat','tenPhuPhamTanDung','dienTichDat','khoiLuongTrenDong','khoiLuongThuGom','mayBamCat','khoiLuongSuDungMen','khoiLuongThucAnMen','nhienLieu','chiPhiKhac'
+  ];
+  const sectionBFields = [
+    'loaiCayTruoc','dienTichTruoc','loaiPhuPhamTruoc','khoiLuongPhuPhamTruoc','khoiLuongThuGomTruoc'
+  ];
   
-  // Technique columns (Section A & B)
-  const techStart = colIndex;
-  if (techniqueHeaders.length > 0) {
-    topHeader[colIndex++] = 'Kỹ thuật lên men (Section A & B)';
-    for (let i = 1; i < techniqueHeaders.length; i++) {
+let sectionAColCount = 0;
+let sectionBColCount = 0;
+
+if (records.length > 0 && records[0].data) {
+  const techniqueData = extractTechniqueData(records[0].data, techType);
+  techniqueHeaders = Object.keys(techniqueData);
+  
+  // ✅ Đếm dựa trên pattern trong labels (3a, 3b, 3c, 4... vs 7a, 7b, 7c...)
+  techniqueHeaders.forEach(header => {
+    // Section A: Bắt đầu bằng "3a", "3b", "3c", "4..."
+    if (/^(3a\.|3b\.|3c\.|4[a-i]\.)/.test(header)) {
+      sectionAColCount++;
+    }
+    // Section B: Bắt đầu bằng "7a", "7b", "7c", "7d", "7e"
+    if (/^7[a-e]\./.test(header)) {
+      sectionBColCount++;
+    }
+  });
+  
+  const commonData = extractCommonFormData(records[0].data);
+  commonHeaders = Object.keys(commonData);
+}
+
+console.log('sectionAColCount:', sectionAColCount); // Sẽ là 14
+console.log('sectionBColCount:', sectionBColCount); // Sẽ là 5
+console.log('techniqueHeaders:', techniqueHeaders);
+  
+  // Fill Section A header
+  if (sectionAColCount > 0) {
+    topHeader[colIndex++] = 'A. Nhóm câu hỏi: Quản lý phụ phẩm cây trồng SAU KHI áp dụng kỹ thuật ủ lên men';
+    for (let i = 1; i < 14; i++) {
       topHeader[colIndex++] = '';
     }
   }
-  const techEnd = colIndex - 1;
-  
-  // Section C comparison columns (59 columns total)
+  const sectionAEnd = colIndex - 1;
+
+  // Fill Section B header
+  const sectionBStart = colIndex;
+  if (sectionBColCount > 0) {
+    topHeader[colIndex++] = 'B. Nhóm câu hỏi: Quản lý phụ phẩm cây trồng TRƯỚC KHI áp dụng kỹ thuật ủ lên men';
+    for (let i = 1; i < 5; i++) {
+      topHeader[colIndex++] = '';
+    }
+  }
+  const sectionBEnd = colIndex - 1;
+
+  // Section C: 5a đến 6j (so sánh trước/sau) - 59 cột cố định
   const sectionCStart = colIndex;
-  topHeader[colIndex++] = 'So sánh trước/sau khi áp dụng kỹ thuật (Section C)';
-  for (let i = 1; i < 59; i++) {
+  topHeader[colIndex++] = 'C. Nhóm câu hỏi: Sử dụng thức ăn ủ lên men làm thức ăn chăn nuôi, sức khoẻ vật nuôi, hiệu quả kinh tế SAU và TRƯỚC khi sử dụng thức ăn ủ lên men';
+  for (let i = 1; i < 41; i++) {
     topHeader[colIndex++] = '';
   }
   const sectionCEnd = colIndex - 1;
-  
+
   // Common Form columns
   const commonStart = colIndex;
   if (commonHeaders.length > 0) {
-    topHeader[colIndex++] = 'Câu hỏi chung (Q40-Q70)';
+    topHeader[colIndex++] = 'Nhóm câu hỏi chung';
     for (let i = 1; i < commonHeaders.length; i++) {
       topHeader[colIndex++] = '';
     }
@@ -309,33 +350,64 @@ export const exportLenMenSheet = (wb, records, techType) => {
   
   // Define merged cells for top header row (row 0)
   const merges = [];
-  
-  // Meta columns merge (STT, Ngày gửi)
-  if (metaEnd >= metaStart) {
-    merges.push({ s: { r: 0, c: metaStart }, e: { r: 0, c: metaEnd } });
-  }
-  
+
   // General Info merge
   if (genEnd >= genStart) {
     merges.push({ s: { r: 0, c: genStart }, e: { r: 0, c: genEnd } });
   }
-  
-  // Technique Section A & B merge
-  if (techEnd >= techStart) {
-    merges.push({ s: { r: 0, c: techStart }, e: { r: 0, c: techEnd } });
+  // Section A merge
+  if (sectionAEnd >= sectionAStart) {
+    merges.push({ s: { r: 0, c: sectionAStart }, e: { r: 0, c: sectionAEnd } });
   }
-  
-  // Section C comparison merge
+  // Section B merge
+  if (sectionBEnd >= sectionBStart) {
+    merges.push({ s: { r: 0, c: sectionBStart }, e: { r: 0, c: sectionBEnd } });
+  }
+  // Section C merge
   if (sectionCEnd >= sectionCStart) {
     merges.push({ s: { r: 0, c: sectionCStart }, e: { r: 0, c: sectionCEnd } });
   }
-  
   // Common Form merge
   if (commonEnd >= commonStart) {
     merges.push({ s: { r: 0, c: commonStart }, e: { r: 0, c: commonEnd } });
   }
-  
   ws['!merges'] = merges;
+  
+  // Apply styling to top header row (row 0) - center align and bold
+  const headerRowIndex = 0;
+  for (let c = genStart; c <= commonEnd; c++) {
+    const cellRef = XLSX.utils.encode_col(c) + XLSX.utils.encode_row(headerRowIndex);
+    if (!ws[cellRef]) ws[cellRef] = { t: 's', v: '' };
+    ws[cellRef].s = {
+      alignment: { horizontal: 'center', vertical: 'center', wrapText: true },
+      font: { bold: true },
+      fill: { fgColor: { rgb: 'FFD3D3D3' } }, // Light gray background
+      border: {
+        top: { style: 'thin' },
+        bottom: { style: 'thin' },
+        left: { style: 'thin' },
+        right: { style: 'thin' }
+      }
+    };
+  }
+  
+  // Apply styling to second header row (row 1) - center align and bold
+  const secondHeaderRowIndex = 1;
+  for (let c = genStart; c <= commonEnd; c++) {
+    const cellRef = XLSX.utils.encode_col(c) + XLSX.utils.encode_row(secondHeaderRowIndex);
+    if (!ws[cellRef]) ws[cellRef] = { t: 's', v: '' };
+    ws[cellRef].s = {
+      alignment: { horizontal: 'center', vertical: 'center', wrapText: true },
+      font: { bold: true },
+      fill: { fgColor: { rgb: 'FFE0E0E0' } }, // Slightly lighter gray
+      border: {
+        top: { style: 'thin' },
+        bottom: { style: 'thin' },
+        left: { style: 'thin' },
+        right: { style: 'thin' }
+      }
+    };
+  }
   
   // Set column widths
   ws['!cols'] = [];
