@@ -38,17 +38,21 @@ export default function SubmissionsTable() {
     total: 0,
   });
 
-  // Fetch data from API
-  const fetchData = async (page = 1, pageSize = 10, technique = 'all') => {
+  // Fetch data from API with option to fetch all records
+  const fetchData = async (page = 1, pageSize = 10, technique = 'all', fetchAll = false) => {
     setLoading(true);
     try {
       const access = localStorage.getItem('access');
       if (!access) {
         message.error('Vui lòng đăng nhập lại');
-        return;
+        return fetchAll ? [] : undefined;
       }
 
-      let url = `https://isatsbangkhaosat.com:81/api/forms/submissions/?page=${page}&page_size=${pageSize}`;
+      // If fetchAll is true, use large page_size to get all data in one request
+      const actualPageSize = fetchAll ? 999999 : pageSize;
+      const actualPage = fetchAll ? 1 : page;
+
+      let url = `https://isatsbangkhaosat.com:81/api/forms/submissions/?page=${actualPage}&page_size=${actualPageSize}`;
       if (technique !== 'all') {
         url += `&template_type=${technique}`;
       }
@@ -77,6 +81,11 @@ export default function SubmissionsTable() {
           return record;
         });
         
+        // If fetchAll, return the data instead of setting state
+        if (fetchAll) {
+          return parsedResults;
+        }
+        
         setData(parsedResults);
         setPagination({
           current: page,
@@ -88,12 +97,15 @@ export default function SubmissionsTable() {
         localStorage.removeItem('access');
         localStorage.removeItem('refresh');
         window.location.href = '/login';
+        return fetchAll ? [] : undefined;
       } else {
         message.error('Không thể tải dữ liệu');
+        return fetchAll ? [] : undefined;
       }
     } catch (error) {
       console.error('Error fetching data:', error);
       message.error('Có lỗi khi tải dữ liệu');
+      return fetchAll ? [] : undefined;
     } finally {
       setLoading(false);
     }
@@ -114,18 +126,27 @@ export default function SubmissionsTable() {
     setModalVisible(true);
   };
 
-  // Export to Excel with modular technique exporters
-  const exportToExcel = () => {
-    if (data.length === 0) {
-      message.warning('Không có dữ liệu để xuất');
-      return;
-    }
-
+  // Export to Excel with modular technique exporters - Fetch ALL data
+  const exportToExcel = async () => {
     try {
+      message.loading('Đang tải tất cả dữ liệu...', 0);
+      
+      // Fetch all data using page_size=999999
+      const allData = await fetchData(1, 10, filterTechnique, true);
+      
+      message.destroy();
+      
+      if (!allData || allData.length === 0) {
+        message.warning('Không có dữ liệu để xuất');
+        return;
+      }
+
+      message.loading(`Đang xuất ${allData.length} bản ghi...`, 0);
+
       const wb = XLSX.utils.book_new();
 
       // Sheet 1: Summary data
-      const summaryData = data.map((record, index) => ({
+      const summaryData = allData.map((record, index) => ({
         'STT': index + 1,
         'Họ tên': record.ho_ten || '',
         'Năm sinh': record.nam_sinh || '',
@@ -159,7 +180,7 @@ export default function SubmissionsTable() {
 
       // Sheet 2-7: Detailed data for each technique using modular exporters
       const techniqueGroups = {};
-      data.forEach((record) => {
+      allData.forEach((record) => {
         const techType = record.template_type;
         if (!techniqueGroups[techType]) {
           techniqueGroups[techType] = [];
@@ -189,11 +210,13 @@ export default function SubmissionsTable() {
         }
       });
 
+      message.destroy();
       XLSX.writeFile(wb, `Khao_sat_${dayjs().format('YYYY-MM-DD_HHmmss')}.xlsx`);
-      message.success('Xuất dữ liệu thành công');
+      message.success(`Xuất thành công ${allData.length} bản ghi`);
     } catch (error) {
       console.error('Error exporting to Excel:', error);
-      message.error('Có lỗi khi xuất dữ liệu');
+      message.destroy();
+      message.error('Có lỗi khi xuất dữ liệu: ' + (error.message || 'Unknown error'));
     }
   };
 
@@ -330,7 +353,12 @@ export default function SubmissionsTable() {
           dataSource={data}
           rowKey="id"
           loading={loading}
-          pagination={pagination}
+          pagination={{
+            ...pagination,
+            showSizeChanger: true,
+            showTotal: (total, range) => `${range[0]}-${range[1]} của ${total} bản ghi`,
+            pageSizeOptions: ['10', '20', '50', '100', '500'],
+          }}
           onChange={handleTableChange}
           scroll={{ x: 1400 }}
           size="middle"

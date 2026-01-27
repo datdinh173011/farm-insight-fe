@@ -2,6 +2,8 @@
 
 // Field label mapping for common questions - Full question text
 export const fieldLabelMap = {
+
+  
   // Câu 40: Xử lý phụ phẩm
   'xulyPhuPhamTruoc': '40. Xử lý phụ phẩm - Trước khi tham gia mô hình',
   'xulyPhuPhamSau': '40. Xử lý phụ phẩm - Sau khi tham gia mô hình',
@@ -1091,13 +1093,43 @@ export const extractCommonFormData = (data) => {
   
   if (!data) return commonData;
   
-  // Câu 40: Xử lý phụ phẩm
-  if (data['xulyPhuPhamTruoc'] !== undefined) {
-    commonData['40. Xử lý phụ phẩm - Trước khi tham gia mô hình'] = data['xulyPhuPhamTruoc'] || '';
+  // Câu 40: Xử lý phụ phẩm cây trồng (15 phương pháp)
+  const xulyPhuPhamMethods = [
+    "Vứt bỏ trong vườn hoặc cánh đồng",
+    "Đốt",
+    "Đưa đến bãi tập kết chôn lấp",
+    "Chôn, đầy hố có lấp đất",
+    "Bán",
+    "Đem cho người khác",
+    "Ủ phân hữu cơ không ống khí",
+    "Ủ phân hữu cơ có ống khí",
+    "Cho vật nuôi ăn trực tiếp",
+    "Lên men làm thức ăn chăn nuôi",
+    "Làm thức ăn cho sâu canxi",
+    "Làm thức ăn cho trùn quế",
+    "Làm lớp lót nuôi gà trên đệm lót sinh học dày",
+    "Khác (chỉ định phương pháp)",
+    "Cho vào hố Biogas tạo khí sinh học"
+  ];
+  
+  if (data['xulyPhuPhamTruoc']) {
+    xulyPhuPhamMethods.forEach((method, idx) => {
+      const value = data['xulyPhuPhamTruoc'][idx];
+      if (value !== undefined && value !== null) {
+        commonData[`40. Trước - ${method} (%)`] = value;
+      }
+    });
   }
-  if (data['xulyPhuPhamSau'] !== undefined) {
-    commonData['40. Xử lý phụ phẩm - Sau khi tham gia mô hình'] = data['xulyPhuPhamSau'] || '';
+  
+  if (data['xulyPhuPhamSau']) {
+    xulyPhuPhamMethods.forEach((method, idx) => {
+      const value = data['xulyPhuPhamSau'][idx];
+      if (value !== undefined && value !== null) {
+        commonData[`40. Sau - ${method} (%)`] = value;
+      }
+    });
   }
+  
   if (data['biogasGasPercent'] !== undefined) {
     commonData['40. Biogas - Ước lượng % lượng gas dùng nấu ăn/sưởi ấm'] = data['biogasGasPercent'] || '';
   }
@@ -1113,12 +1145,31 @@ export const extractCommonFormData = (data) => {
     commonData['41. Gia đình bạn có trồng Lúa không?'] = data['coTrongLua'] || '';
   }
   
-  // Câu 42: Xử lý gốc rạ
-  if (data['xulyGocRaTruoc'] !== undefined) {
-    commonData['42. Xử lý gốc rạ - Trước khi tham gia mô hình'] = data['xulyGocRaTruoc'] || '';
+  // Câu 42: Xử lý gốc rạ (5 phương pháp)
+  const xulyGocRaMethods = [
+    "Đốt",
+    "Vùi trong nước",
+    "Chôn xuống đất",
+    "Sử dụng chế phẩm sinh học",
+    "Khác (Ghi rõ)"
+  ];
+  
+  if (data['xulyGocRaTruoc']) {
+    xulyGocRaMethods.forEach((method, idx) => {
+      const value = data['xulyGocRaTruoc'][idx];
+      if (value !== undefined && value !== null) {
+        commonData[`42. Trước - ${method} (%)`] = value;
+      }
+    });
   }
-  if (data['xulyGocRaSau'] !== undefined) {
-    commonData['42. Xử lý gốc rạ - Sau khi tham gia mô hình'] = data['xulyGocRaSau'] || '';
+  
+  if (data['xulyGocRaSau']) {
+    xulyGocRaMethods.forEach((method, idx) => {
+      const value = data['xulyGocRaSau'][idx];
+      if (value !== undefined && value !== null) {
+        commonData[`42. Sau - ${method} (%)`] = value;
+      }
+    });
   }
   
   // Câu 43
@@ -1126,13 +1177,37 @@ export const extractCommonFormData = (data) => {
     commonData['43. Gia đình bạn có nuôi động vật nào không?'] = data['coNuoiDongVat'] || '';
   }
   
-  // Câu 44: Xử lý phân gia súc
-  if (data['xulyPhanTruoc'] !== undefined) {
-    commonData['44. Xử lý phân gia súc - Trước khi tham gia mô hình'] = data['xulyPhanTruoc'] || '';
+  // Câu 44: Xử lý phân gia súc (9 phương pháp)
+  const xulyPhanMethods = [
+    "Ủ phân",
+    "Xả bằng nước ra khu vực xung quanh",
+    "Chôn xuống đất",
+    "Bán cho người khác",
+    "Lưu trữ trong hố tự hoại",
+    "Làm thức ăn cho sâu canxi",
+    "Làm thức ăn cho trùn quế",
+    "Khác (Ghi rõ)",
+    "Sử dụng cho hầm Biogas"
+  ];
+  
+  if (data['xulyPhanTruoc']) {
+    xulyPhanMethods.forEach((method, idx) => {
+      const value = data['xulyPhanTruoc'][idx];
+      if (value !== undefined && value !== null) {
+        commonData[`44. Trước - ${method} (%)`] = value;
+      }
+    });
   }
-  if (data['xulyPhanSau'] !== undefined) {
-    commonData['44. Xử lý phân gia súc - Sau khi tham gia mô hình'] = data['xulyPhanSau'] || '';
+  
+  if (data['xulyPhanSau']) {
+    xulyPhanMethods.forEach((method, idx) => {
+      const value = data['xulyPhanSau'][idx];
+      if (value !== undefined && value !== null) {
+        commonData[`44. Sau - ${method} (%)`] = value;
+      }
+    });
   }
+  
   if (data['biogasPhanGasPercent'] !== undefined) {
     commonData['44. Hầm Biogas - Ước lượng % lượng gas dùng nấu ăn/sưởi ấm'] = data['biogasPhanGasPercent'] || '';
   }
